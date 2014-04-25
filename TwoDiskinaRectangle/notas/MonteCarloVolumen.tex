@@ -1,0 +1,93 @@
+\documentclass[a4paper,10pt]{article}
+
+
+%\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsfonts}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{caption}
+\usepackage{subcaption}
+
+
+
+\bibliographystyle{alpha}
+
+%opening
+\title{Monte-Carling the Volume}
+\author{ W. P. K. Zapfe}
+%\address{Departamento de Física, Facultad de Ciencias, Universidad Nacional Autónoma de México, Ciudad Universitaria, Del.~Coyoacán, México D.F. 04510, Mexico}
+
+\usepackage{mathptmx}
+
+\newcommand{\defeq}{:=}
+\newcommand{\mean}[1]{\left \langle #1 \right \rangle}
+\newcommand{\rd}{\, \mathrm{d}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\indicator}[1]{\mathbf{1}_{ \{   #1 \} } } 
+\newcommand{\Indi}{\mathbf{1}}
+
+
+\setlength{\parskip}{10pt}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section{Volume}
+
+We shall test the formula for the unavailable volume shown in the 
+previous report.  To remind, the volume \emph{unavailable} for
+the initial conditions in the 4 dimensional configuration space was 
+given in the following form:
+\begin{equation}
+V=4 \pi abd^2-\frac{8 d^3}{3}(a+b)+\frac{d^4}{2},
+\end{equation} 
+This formula applies only if $d< 2a , 2b $.
+The geometric abbreviations are as following, $a=w/2-r$, $b=h/2-r$
+and $d=2 r$, where $w,h$ are the width and height of the billiard table,
+$r$ is the radius of the disks. I shall rewrite the above formula
+in explicit dependence of $r$:
+\begin{equation}
+V(r)=r^4 (128/3+8+16\pi)-r^3(w+l)(32/3+8\pi)+r^2 w l 4 \pi 
+\end{equation}
+
+For a simple test we run an homogeneous random conditions generator
+on the $2a\times 2a\times  2a \times 2b\times 2b$ rectangle. This of course
+is more efficient than searching on the whole billiard table, but needs a correction.
+As I count every time that I hit inside the prohibited volume, that is,
+every time that the centres of the cylinder are at distance less than $d$,
+I am counting the fraction of volume occupied by the cylinder inside
+the effective hyper-cube. This hyper-cube has volume $(w-2r)^2 (l-2r)^2$.
+The function which shall fit the data is then $V(r)/((w-2r)^2 (l-2r)^2)$.
+The Monte Carlo routine uses 4 million tries, and, as the graphic below shows,
+this becomes terrible inefficient for the bigger radius end, but fits perfectly for most
+of the range. We take into account that the maximal radius possible
+is, for $w=l=1$, $r=1-\sqrt{1/2}\approx 0.29$. The Monte Carlo shows inefficacy at
+$r\approx 0.27$. Notice that is inefficiency, not inaccuracy: the counting falls
+more often than not inside of the cylinder\ldots.
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{VolumenOccupiedByCilinder01.pdf}
+\caption{Fraction of occupied volume by the 
+Four Dimensional Prohibition Cylinder for the configuration space of the 
+Two Disks problems.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{Muestrax1x2Subspace01.pdf}
+\caption{ A projection of the initial conditions for the $r=0.1519$ case, in the
+$(x_1,x_2)$ subspace. It is clear how the density in the diagonal band decreases
+because of the exclusion condition. }
+\end{figure}
+
+
+
+\end{document}
+
+

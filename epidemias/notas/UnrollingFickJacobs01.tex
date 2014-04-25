@@ -1,0 +1,113 @@
+\documentclass[letterpaperr,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+
+%\usepackage[spanish]{babel}
+
+\usepackage[T1]{fontenc}  
+\usepackage{textcomp}
+
+
+%\usepackage[garamond,cmbraces]{newtxmath}
+
+\usepackage{xspace}
+\usepackage{graphicx}
+
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{anysize}
+\usepackage[margin=2cm]{geometry}
+
+%\usepackage{bm}
+
+\bibliographystyle{alpha}
+
+\newcommand{\Acase}{\textbf{A}\xspace}
+\newcommand{\Bcase}{\textbf{B}\xspace}
+\newcommand{\Ccase}{\textbf{C}\xspace}
+\newcommand{\Dcase}{\textbf{D}\xspace}
+\newcommand{\Uno}{\textbf{1}\xspace}
+\newcommand{\Dos}{\textbf{2}\xspace}
+
+\renewcommand{\rmdefault}{ugm}
+  
+
+\title{Unrolling Fick-Jacobs}
+\author{W. P. K. Zapfe}
+
+\abstract{ Due to the apparent impossibility to explain with
+  Szabos's Formula the 
+ first encounter times in the problem of the two Brownian 
+ disks inside a rectangular container, we proceed to adapt the 
+ develpment of Vazques and Dagdug for Fick-Jacobs' Formula.}
+
+
+\section{The Story so far}
+
+The application of Szabo's formula to the problem of
+the \emph{contagious disks}  assumed that it was applicable
+to consider the avaible free space as essentially equivalent to
+the same space distributed inside more simmetrical shapes. 
+To be precisse, we were trying to approximate an hypercube with
+a fourdimensional absorving rod placed inside it by 
+an anular section and two irrelevant ``heights''. We
+have trustworthy arguments to support the idea that if this
+approximation would have been the real system under study, 
+Szabo's, David and Luca Formulas would have applied without
+any significant modification. 
+
+To apply Szabo's two dimensional formula, we needed an equivalent
+anular geometry. Our approach was to obtain interior and exterior
+radii by preserving the aviable free space and absorving surface. 
+The extra dimensional ``heights'' of the cilinder turn out to be
+unimportant. This approach lead us to an effective interior radious
+as function of the disks original radii. Due to the
+diagonal placement of this absorving object inside the hypercube,
+the formula had to account for pointy tips, which were more
+relevant as the radious became larger.  The rather unconfortable
+formula accounted correctly for all these geometric conundrums. 
+
+Once in possesion of an effective inner and outer radious in function
+of the disks radius ($\rho(r)$) we could apply Szabo's Result. 
+It shows a rather systematic discrepance with our numerical results. 
+Being that these Numerical Simulations where done by two different
+persons using diferent set of dynamic rules with different programing
+styles and  languages, and that these coincide rather well, we are
+lead to believe that these Numerics represent adecuatelly the 
+\emph{mean encounter time} of the two disks, and that our reasoning
+for the application of Szabo's is wrong, or is simply not
+applicable.
+
+The effective inner radius of the annulus is given in the formula below,
+an the figure following shows our simulations (David, Karel) 
+against Szabo's Formula
+with this expression used. 
+
+
+\section{ Conjecture about the geometry}.
+ 
+We could make an intermediary approximation to the problem.
+In this approximation we still shall use the rotational symetry, that
+is, we shall still have sections with anular free space. But we shall preserve
+from the original problems the ``narrowing'' of the free space along
+the axis of the absorving cilinder. This gives us  
+conic anular approximation. This is easy to represent in the 3d case, and
+a bit more complicated in the 4d case, but nonetheless is the same
+geometry. In this case Szabo's approximation would not be valid as it is, 
+due to the narrowing of the free space. In order to test our conjecture
+first we present simulations in this geometry and compare it to 
+the ``animals in a territory'' simulations. 
+If these are aceptably close, we may try to use a Fick-Jacobs approach here.
+
+
+
+
+
+\begin{document}
+
+\maketitle
+
+
+\end{document}

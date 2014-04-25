@@ -1,0 +1,150 @@
+\documentclass[letterpaperr,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage[spanish]{babel}
+
+\usepackage[T1]{fontenc}  
+\usepackage{textcomp}
+
+
+%\usepackage[garamond,cmbraces]{newtxmath}
+
+\usepackage{xspace}
+\usepackage{graphicx}
+
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{anysize}
+\usepackage[margin=2cm]{geometry}
+
+%\usepackage{bm}
+
+\bibliographystyle{alpha}
+
+\newcommand{\Acase}{\textbf{A}\xspace}
+\newcommand{\Bcase}{\textbf{B}\xspace}
+\newcommand{\Ccase}{\textbf{C}\xspace}
+\newcommand{\Dcase}{\textbf{D}\xspace}
+\newcommand{\Uno}{\textbf{1}\xspace}
+\newcommand{\Dos}{\textbf{2}\xspace}
+
+\renewcommand{\rmdefault}{ugm}
+  
+
+\title{Aproximaciones Cilíndricas, Relación entre cantidades numéricas.}
+\author{W. P. K. Zapfe}
+
+
+\begin{document}
+
+\maketitle
+
+
+\section{Dos animálculos en un cuadrado: 4D efectivas.}
+
+La generalización es menos fea de lo que uno podría pensar.
+Establezcamos las relaciones que definen la geometría:
+
+\begin{align}
+x_1,x_2 \in  & [ -a, a], \\
+y_1, y_2\in & [ -b, b], \\
+(x_1-x_2)^2+(y_1-y_2)^2 & \ge (2 r)^2.
+\end{align}
+
+Como podemos ver, son casi iguales, excepto la auscencia de la
+constricción $y_2=0$. La misma transformación aplicada a 
+las coordendadas nos simplifica la última desigualdad
+y nos define un círculo en el plano $x,y$. La frontera
+absorvente se vuelve un cilindro cuadridimensiónal, con
+dos ejes rectos y una base cilíndrica. Los ejes son a lo largo de
+las coordenadas $X,Y$, y su longitud no depende una de la otra, siendo
+cada uno de ellos diagonal a una de las caras del hipercubo. Asi
+que su extensión, en ambos casos, despreciando las cuñas, es la
+diagonal del cuadrado en las $x_i$ o en las $y_i$.
+
+El volumen y el área totales resultan ser entonces, en
+términos tanto del diametro como del radio;
+
+\begin{align}
+ V & = d^2(4\pi ab - [(a+b)8/3] d +d^2/2) \\
+ & = r ^2(16\pi ab - [(a+b)64/3] r +8 r^2)  \\
+A & = 8\pi\sqrt{2} a b d -8 \sqrt{2}(a+b) d^2 +4 d^3/\sqrt{2} \\
+ & =  16\pi\sqrt{2} a b r  -32 \sqrt{2}(a+b) r^2 +16  \sqrt{2} r^3.
+\end{align}
+
+\subsection{El Hipercilíndro equivalente}
+
+Ahora bien, tenemos dos ``alturas'' que ajustar, y el
+ hipercubo
+tiene una relación de aspecto de $a/b$. Quisieramos
+preservar esto, asi que sugiero corregir las dos alturas
+equivalentes del cilindro por el mismo factor $z$.
+
+\begin{align}
+V &= R^2 ( a z)( b z) \pi \\
+A &= R ( a z)( b z) 2  \pi \\
+\rightarrow & R= 2V/A, \text{ } z^2=A^2/( 4\pi V a b).  
+\end{align}
+
+Honestamente, poner esto en términos de $r_0$ está bastante feo, pero no imposible.
+El radio del cilindro interior queda así:
+
+\begin{equation}
+R_{int}=\frac{ (2 \pi ab)r - [4/3 (a+b)]r^2 +8r^3}
+{\sqrt{2}(\pi ab -2(a+b) r +2r^2)}
+\end{equation}
+
+El comportamiento aproximado para $r\ll a,b$ es $R_{int} \approx r\sqrt{2}$, lo cual
+es lo correcto. 
+
+Se puede ver que usando sólo los primeros términos arriba y abajo, 
+recuperamos la expresión
+que resultaría de no haber cuñas. 
+
+El término correctivo $z$ adimensional esta dado por la expresión:
+
+\begin{equation}
+R_{int}=\frac{r_0 [ 4 \pi ab + r_0 ^2 (10 \pi -13/3) - 4 \sqrt{2}\pi r_0 (a+b)]}
+{\sqrt{2}\pi[2 ab- 2r_0 \sqrt{2} (a+b)] +r_0^2 (8\sqrt{2} \pi + \pi/2 -3/2)}
+\end{equation}
+
+\begin{equation}
+z^2=\frac{16 \big( ab\pi -2(a+b)r+2r^2 \big)^2}
+{ a b \pi (2\pi ab -[8(a+b)/3]r+r^2}
+\end{equation}
+También en el límite $r\ll a,b$ da un resultado coherente: $z\approx 2\sqrt{2}$,
+que sería el factor de escala para la convención geométrica usada despreciando
+las cuñas.
+
+Una vez más, el cilindro exterior tendrá las mismas alturas que el interior,
+pero el radio estará determinado por el volumen total:
+\begin{equation}
+R_{ext}^2=\frac{16ab}{\pi z^2},
+\end{equation}
+que también da el resultado correcto si $r\ll a,b$.
+
+
+\section{Formulazo de Szabo}
+
+En la fórmula de Szabo, para el caso con interior completamente
+absorvente, la cantidad relevante que aparece es $x=R_{int}/R_{ext}$.
+Usando los resultados de arriba, podemos llegar a que está cantidad está
+dada por
+\begin{equation}
+x=\frac{\sqrt{V}}{4ab}.
+\end{equation}
+Dado que por la simetría translacional del sistema equivalente
+esto se puede reducir a un problema en dos dimensiones, tenemos
+que el tiempo de absorción promedio es, segun Szabo
+\begin{equation}
+\tau(x)=\frac{D}{R_{ext}}
+\bigg[ 
+\frac{x^2-3}{8}-\frac{\ln (x)}{2(1-x^2)}\bigg] 
+\end{equation}
+
+Esto reduciría todo a hacer simplemente el ajuste de la $D$ efectiva.
+
+
+\end{document}

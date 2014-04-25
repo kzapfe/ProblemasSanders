@@ -1,0 +1,507 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsfonts}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{caption}
+\usepackage{subcaption}
+
+
+\bibliographystyle{alpha}
+
+%opening
+\title{A bunch of Histograms}
+\author{W. P. Karel Zapfe}
+
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+ We present histograms for the two more significant events of
+the two-disks-inside-a-rectangle billiards.
+\end{abstract}
+
+\section{The Words}
+
+Inside a two dimensional rectangular billiard two disks with same mass
+and radius bounce elastically. The two events which for which we would 
+like to obtain a time distribution function are the free flight time and
+the hopping time. The numeric distributions are more or less an
+effort of computing alone, but to make sense of this weird histograms
+shall produce a pair of headaches.
+
+These histograms have been obtained by a simulation of 24 different geometries,
+changing linearly the radius of the disks. The walls of the billiard
+where keep set at constant length and width, 1 arbitrary unit. 
+The radius of the disks was in the range $[0, 1/4)$.
+We use an ensemble of 2000 initial conditions and let the simulation
+run for 8000 bounces. Providing that the mixing rate of the
+billiard is high enough, these shall suffice. 
+
+The two different events tend to have an exponential time distribution
+as $r\rightarrow 1/4$. When the radius of the disks is significantly smaller
+than that (around $ r < 1/6$) the pdf behave quite differently from exponential 
+decay, which is expected, as the system has very little interaction
+between the different disks and mixing and ergodicity take time to be
+significant properties. Interesting is the fact that, in this
+semi-logarithmic representations,  the hopping time distribution
+tends to the exponential from a \emph{concave} function, while 
+the free flight time arrives from a \emph{convex} one.
+Other curious feature is that this last pdf has a 
+notorious hump after the middle of its support. In a non-logarithmic scale this
+hump is quite pronounced, and it seems to hint the superposition of 
+two different distributions, the second one having a Maxwell-Boltzmann flavour
+in it (see last figure, \ref{NotLogPDE}).
+
+\section{The histograms}
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1000_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1000_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.00$. }
+\end{figure}
+
+
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1001_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1001_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.0104$. }
+\end{figure}
+
+ 
+
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1002_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1002_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.0208$. }
+\end{figure}
+
+
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1003_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1003_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.0312$. }
+\end{figure}
+
+
+
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1004_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1004_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.0416$. }
+\end{figure}
+
+
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1005_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1005_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.0521$. }
+\end{figure}
+
+
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1006_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1006_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.0625r$. }
+\end{figure}
+
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1007_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1007_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.0729r$. }
+\end{figure}
+
+
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1008_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1008_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.0833$. }
+\end{figure}
+
+\clearpage
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1009_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1009_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.0937$. }
+\end{figure}
+
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1010_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1010_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.1041$. }
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1011_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1011_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.1146$. }
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1012_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1012_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.1250$. }
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1013_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1013_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.1354$. }
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1014_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1014_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.1458$. }
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1015_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1015_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.15625$. }
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1016_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1016_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.1666$. }
+\end{figure}
+
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1017_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1017_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.1771$. }
+
+\end{figure}
+
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1018_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1018_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.1875$. }
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1019_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1019_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.1979$. }
+\end{figure}
+
+
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1020_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1020_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.2083$. }
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1021_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1021_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.2188$. }
+\end{figure}
+
+
+
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1022_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1022_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.2292$. }
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1023_HopTime-Histograma.pdf}
+                \caption{Hopping Time}              
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{1023_FreeTime-Histograma.pdf}
+                \caption{Free Flight Time}                
+        \end{subfigure}       
+        \caption{ $r=0.2396$. }
+\end{figure}
+
+\begin{figure}
+ \centering
+ \includegraphics[width=0.78\textwidth]{NoLog1005-FreeTime.pdf}
+ \caption{The same  free flight time distribution as figure 6, but
+   without the logarithmic scale. $r=0.0521$. Notice the hump
+and its decay.}\label{NotLogPDE}
+\end{figure}
+
+
+
+
+\end{document}

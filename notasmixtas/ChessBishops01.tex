@@ -1,0 +1,92 @@
+\documentclass[leterpaper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+\title{About Chess Bishops, tacit assumptions and geometry}
+
+\author{K. Zapfe}
+
+\begin{document}
+
+\maketitle
+
+\abstract{
+When we change coordinates on the problem of 2 $f$-dimensional random
+walkers to represent its motion as a single random walker in 
+a space of $2f$ dimensions we use \emph{tacitally} an extra
+assumption wich changes the dynamics and the geometry of the space.
+This could have nefarious consecuences on our results.
+}
+
+\section{Luca, Sebastian and David $1$-dimensional walkers}
+
+In the article \cite{SandersLuca} two one dimensional walkers 
+with an intersecting territorry where presented as equivalent
+to a single 2d random walker on an unfolded domain. There
+was an implicit assumption which was never adressed about the dinamyc 
+of this representative system. Depending of the choice of
+rules for the original pair of random wallkers, the representative walker
+can or not cover the whole 2d space.
+
+We have three different options, depicted in figure \ref{3casos}.
+
+\begin{itemize}
+\item Both 1d walkers move simultaneously at every time step.
+\item Onle one of the walkers moves each time step, choosen at random.
+\item Every time step it is  choosen at random to move one or two of the
+  1d walkers.
+\end{itemize}
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.75\textwidth]{3casosrw01.pdf}
+  \caption{The three possible dynamics, as indicated previously.
+  In each case, the RW can only go to the red squares in one
+time step. In case ``a'', the ``chess' bishop'' case, the walker is
+condemned to stay in the diagonals and explore just half of the
+unfolded territory, as explained below. Cases ``b'' and ``c'' can
+explore the whole space, but have different difussion constants. }
+  \label{3casos}
+\end{figure}
+
+The first one is the most problematic. We shall call it
+the bishop dynamics, as the representative
+system can only move along diagonals. 
+It can be seen that for
+some configurations of the initial condition it is possible
+that the two walkers do not met before a collition
+with the boundary of their territory. We could say that when we change
+represantation to the full face space, it is divided into white and
+black squares, as a chess board, and the 2d walker
+is forced to move along diagonals, as a bishop. Thus, if the
+line which represents the colition condition belongs to 
+a different set of squares, cannot be reached until a wall is hit,
+then the walker moves on the other set of diagonals. On the unfolded
+version of the space this would produce a very odd looking
+target, consisting of two parallel lines on opposite realitations
+of the fundamental domain. This problem cannot be approximated by
+the circles used in the mentioned work, and a numerical calculation
+shows that the first encounter times on average follow a very
+different curve that the ones which adapt to Szabo's prediction
+for an anular region. 
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{cuadritosajedrex01.pdf}
+  \caption{The first case for the dynamics after unfolding
+    along the red lines. If the walker, represented by the green
+    circle, begins on the black squares, it can never ocupy the
+    white ones, thus the absorving target is reduced only to 
+    the deep blue lines. If it starts on the white ones, its target 
+    are the light blue squares. }
+  \label{bishop01}
+\end{figure}
+
+\section{ 2d walkers'}
+
+Here it goes even WORSE.
+
+\end{document}

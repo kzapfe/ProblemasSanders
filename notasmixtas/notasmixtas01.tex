@@ -1,0 +1,308 @@
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+%Nueva convenvion para las subfigures es el subcaption package
+
+\usepackage[spanish]{babel}
+\usepackage{bm}
+
+\bibliographystyle{alpha}
+
+
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{Notas Varias sobre problemas varios}
+\author{ W. P. Karel Zapfe\\Fac. de Ciencias, UNAM}
+
+
+\begin{document}
+
+\section{Billares Cilindricos Truncados.}
+
+\subsection{Coordenadas}
+El billar de una partícula dentro de un cilíndro truncado
+requiere un buen sistema de coordenadas. Aunque no tenemos claro
+aún que tan caótico es el sistema en sí, tenemos experimentos numéricos
+aceptables que parecen indicar  caos fuerte (ergodicidad, hiperbolicidad,
+mezclante).
+
+La anidación de conos es una forma usual
+de buscar la hiperbolicidad en un sistema dinámico.
+A grandes rasgos consiste en definir objetos que
+coinciden con nuestra idea intuitiva de un cono, en el haz tangente
+al espacio fase del sistema dinámico. Si este campo de conos es
+tal que bajo el \emph{push-forward} la imagen de cada cono se anida dentro
+del cono en el nuevo punto, el sistema es hiperbólico y además cuenta
+con variedades hiperbólicas en casi cada punto lo suficientemente
+largas como para encontrar ergodicidad.
+
+Si en un momento nos interesara seguir esta linea de razonamiento
+para demostrar caos fuerte en los billares, necesitamos
+un sistema de coordenadas para el billar. Dado que que el argumento
+de los conos funciona mejor en sistemas dinámicos discretos en el tiempo,
+debemos tener una sección de Birkhoff-Poincaré adecuada.
+Una malla ortogonal sobre el 
+cilindro puede resultar cómoda para trabajar. 
+
+El siguiente sistema de coordenadas funciona bien 
+si el corte truncado es a cualquier
+altura, pero es más claro explicarlo si el plano de corte no
+interseca la base del cilindro. El origen estará en la base, al centro
+del círculo, como un sistema polar plano común. Sin embargo,
+por consistencia de conceptos y unidades, usaré en la dirección 
+ortogonal al radio  \emph{longitud de arco} en lugar de ángulos.
+Esto hace que su cubriente parezca un tríangulo, y que la única
+coordenada en el origen sea $(0,0)$, a diferencia de las polares normales,
+en los cuales colapsa todo el sistema. La gran desventaja de
+esta convención es que las lineas radiales no son aquellas que tienen
+la coordenada ortogonal constante. De ahora en adelante las lineas radiales
+y su continuación definirán lo que denotaré por la coordenada $\rho$ y
+las ortogonales a ésta serán la coordenada $s$ (figura \ref{suelo}).
+
+En un segundo paso extendemos las lineas
+radiales sobre la superficie del cilindro
+paralelas al eje $z$. Éstas continuarán los valores de la coordenada
+$\rho$ siguiendo la longitud de arco total desde el origen.
+ La coordenada ortogonal $s$ serán los círculos perimetrales al cilindro,
+paralelos siguiendo el eje $z$ como en la figura \ref{pared}. 
+
+Finalmente, sobre el plano inclinado que termina el cilindro truncado,
+comenzamos lo realmente molesto. Hay dos opciones. Ambas tienen
+que tomar en cuenta que para que sean continuas, tenemos que extender
+las lineas $\rho$ desde fuera hacia dentro. La superficie es una elípse,
+asi que lo correcto sería usar alguna buena modificación de las coordenadas 
+elípticas. Sin embargo, como lo que nos interesa es la longitud de arco, 
+caemos en el problema de las integrales elípticas. Puede ser que haciendo
+una buena reducción de ésto, el problema no quede tan espantoso.
+Para evaluar numericamente el valor de las coordenadas en cada
+punto habrá que escoger una rutina numérica adecuadamente rápida
+(¿tal vez \verb1gsl_elliptic_n.h1 ?). No estoy muy seguro que el esfuerzo númerico
+valga la pena, pero calcular la derivada del mapeo va a
+requerrir al menos la manipulación de éstas formas.
+Otra forma un poco más sucia es usar coordenadas polares sobre el plano
+inclinado, pero eso producirá discontinuidades a lo largo
+de las lineas $s$.
+
+
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{CoordenadasBillar01.pdf}
+                \caption{Suelo}
+                \label{suelo}
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.3\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{CoordenadasBillar02.pdf}
+                \caption{Pared}
+                \label{pared}
+        \end{subfigure}
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.3\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{CoordenadasBillar03.pdf}
+                \caption{Techo}
+                \label{techo}
+        \end{subfigure}
+        \caption{Construccion de las coordenadas}\label{WireFrameCilindro}
+\end{figure}
+
+
+
+\section{Dos Discos en un círculo}
+
+A partir del Phys.Rev. que mandaste, hay unos comentarios que hacer y
+discutir. 
+El articulo versa mayoritariamente sobre
+ los conceptos de entropía y temperatura. 
+Usan la definición de entropía de Boltzman,
+\begin{equation}
+  S=k \log (\Gamma(E,L) ),
+\end{equation}
+restringida a capas de momemto angular constante.
+Por supuesto que asumen que el sistema es ergódico o al menos
+tiene un componente ergódico tan grande que los demás no afectan. Lo
+que a mi me gustaría ver sería nuestro concepto ``intuitivo''
+de entropía y temperatura en este sistema:
+\begin{equation}
+T=\Big(\frac{\partial S}{\partial E} \Big)^{-1}.
+\end{equation}
+En un gas ideal esto es bastante claro: asociamos entropía a la falta
+de un patrón claro, a una forma de desorden o a excesiva riqueza en la
+estructura. Un gas ``muy caliente'' ya se encuentra sin patrón definido,
+por lo tanto aumentando la energía total no va a cambiar mucho su
+configuración, la derivada parcial es pequeña y la temperatura
+es alta. Busquemos interpretar así la figura 1 del artículo.
+
+Vemos que la temperatura es máxima para el caso de momento
+angular total igual a cero. ¿Tiene esto sentido? 
+$L=0$ significa que o las partículas giran
+en direcciones opuestas o recorren diámetros del círculo. 
+Por conservación de $L$ si se llegan a estrellar
+sólo pueden cambiar entre estos dos estados. Si aumentamos la energía
+no hay cambio en la calidad del movimiento (rescalando las velocidades
+se ven iguales), asi que la temperatura es efectivamente alta en
+el sentido de que no hay un cambio cualitativo en la dinámica
+del estado. No se puede acceder a otra parte del espacio fase conforme
+aumentamos la energía.
+
+Si tenemos, en cambio momento angular muy grande, tenemos varios 
+posibles escenarios. Las dos partículas pueden estar girando
+en la misma dirección, con velocidades parecidas. Pueden
+cambiar de esar dando vueltas muy cerca de la pared a cruzar cerca
+del diámetro, pero cambiando la magnitud de su velocidad mucho. 
+O incluso puede una estar girando en la dirección opuesta,
+pero una de forma lenta en relación a la otra. Los choques pueden
+hacer que cambie de un estado a otro. 
+El volumen del espacio fase accesible parece ser mayor,
+ya que tenemos tres forma cualitativas distintas de movimiento. 
+La energía puede distribuirse \emph{aparentemente} de
+forma más rica en este caso, por lo tanto el sistema esta
+``frio'' y puede calentarse. 
+
+
+\section{Animales circulares enfermos y contagiosos}
+
+Ordenemos los cálculos hechos hasta ahora, para disponer de ellos
+en cualquier momento. 
+Los cuadrados habitables tienen longitud 2, centrados en el
+origen de coordenadas. 
+Los animales se llaman Uno y Dos, con subíndices 
+en las coordenadas indicando su propiedad, y
+ambos tienen radio $\epsilon$.
+Los animales se mueven con el centro
+dentro de su cuadrado de confianza
+siguiendo una ruta de caminante aleatoreo.
+
+\subsection{Caso simplificado}
+
+Uno de los dos animales se mueve en una linea en el eje 
+horizontal, de lado al lado. Aun así usaremos las cuatro
+coordenadas, con el sobreentendido de que tenemos una
+restricción absoluta.
+Todas las condiciones se resumen en la siguiente
+lista de ecuaciones.
+
+\begin{align}
+& x_1, y_1, x_2 \in [-1,1] \\
+& y_2=0 \\
+& (x_1-x_2)^2+(y_1-y_2)^2 \geq (2\epsilon)^2 \label{circle}
+\end{align}
+
+Para ahorrarnos talacha espantosa,
+vamos a usar un sistema de coordenadas relativas
+que preserve tamaño.
+
+\begin{align} \label{transformas}
+ \frac{1}{\sqrt{2}}(x_1-x_2)=x \text{ y } 
+\frac{1}{\sqrt{2}}(y_1-y_2)=y, \\
+\frac{1}{\sqrt{2}}(x_1+x_2)=X \text{ y } 
+\frac{1}{\sqrt{2}}(y_1+y_2)=Y. 
+\end{align}
+
+La transformación \ref{transformas} es
+una rotación de coordenadas por $pi/2$ en 
+cada par de coordenadas de nomnbre $a_i$, digamos
+
+\begin{equation}
+  \begin{pmatrix}
+    a \\
+    A
+  \end{pmatrix}
+  =\frac{1}{\sqrt{2}}
+  \begin{pmatrix}
+    1 & -1 \\
+    1 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    a_1 \\
+    a_2
+  \end{pmatrix}
+\end{equation}
+
+La condición \ref{circle} queda así:
+\begin{equation}
+x^2+y^2 \geq 2 \epsilon^2
+\end{equation}
+
+La condición 4 queda como $y=Y$.  De ahora
+en adelante  se sobreentiende que este  la sección del
+espacio en el que hacemos los razonamientos siguientes.
+
+La frontera de absorción es un cilindro
+contenido de radio $\sqrt{2} \epsilon$, que va de 
+arista a arista opuesta en un cubo de lado $2$
+(figura \ref{CilindroenCubo01}).
+
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{CilindroCubo03.png}
+\caption{El cilindro absorvente y el espacio fase total
+del problema reducido. El cubo es
+una frontera reflejante para la particula.}
+\label{CilindroenCubo01}
+\end{figure}
+
+En este caso tenemos que solucionar una ecuación de
+difusión para la partícula en un espacio de
+tres dimensiones, con condiciones
+reflejantes en las paredes del cubo y condiciones
+absorventes en el cilindro. Nuestra intención es encontrar
+un tiempo medio de primer encuentro con el cilindro
+para condiciones iniciales arbitrarias en el cubo. 
+Esto correspondería \emph{a grosso modo} al tiempo de
+primer contacto y posible contagio.
+
+
+\subsection{Los animales se mueven en el mismo habitat.}
+
+Prescindimos de la condición $y_2=0$, pero mantenemos
+el mismo sistema de coordenadas auxiliar. Ahora
+sabemos como se ve la superficie absorvente
+en una sección de tres dimensiones, la sección $y-Y=0$. 
+
+La superficie absorvente sigue siendo un cilindro, pero
+encajado esta vez en un hipercubo, aun de forma diagonal.
+Las aristas son caras de dimensión dos. 
+Este cilindro tiene un corte circular, en cada plano
+$X,Y$ constantes. El cilindro se extiende en recto
+en las direcciónes $X,Y$, asi que su corte en el plano
+$x-X=0$ se ve igual también como la figura 
+\ref{CilindroenCubo03}.
+
+
+
+
+
+
+\end{document}
+
+

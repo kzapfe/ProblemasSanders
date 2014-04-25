@@ -1,0 +1,362 @@
+\documentclass[letterpaperr,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+%\usepackage{commath}
+\usepackage[T1]{fontenc}
+%\usepackage{garamond}
+%\usepackage[garamond,cmbraces]{newtxmath}
+\usepackage{natbib}
+
+\usepackage{xspace}
+\usepackage{graphicx}
+
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{anysize}
+\usepackage[margin=2cm]{geometry}
+
+%\usepackage{bm}
+
+\bibliographystyle{alpha}
+
+\newcommand{\Acase}{\textbf{A}\xspace}
+\newcommand{\Bcase}{\textbf{B}\xspace}
+\newcommand{\Ccase}{\textbf{C}\xspace}
+\newcommand{\Dcase}{\textbf{D}\xspace}
+\newcommand{\Lagr}{\mathcal{L}\xspace}
+\newcommand{\Uno}{\textbf{1}\xspace}
+\newcommand{\Dos}{\textbf{2}\xspace}
+
+\title{Two disks in a circle}
+\author{W. P. K. Zapfe}
+
+\begin{document}
+
+\section{Some Lagrangian considerations}
+
+The system consists on two disks following usual billiard dynamics 
+\cite{markchern} inside
+a table delimited by a circular wall. The disks have no internal degrees
+of freedom, so we can describe their dynamics using only the coordinates 
+of their centre.
+The billiard border has ratio of one arbitrary unit 
+and both disks inside have ratio
+$r$ and  mass equal to one arbitrary unit. We will call the discs as
+\Uno and \Dos, and give subscripts to the symbols denoting
+their properties
+accordingly.
+
+The available  configurations space is determined by the billiard
+table and the collision condition:
+
+\begin{equation}
+x_i^2+y_i^2 \leq (1-r)^2 \text{ for } i=1,2,
+\end{equation}
+
+\begin{equation}
+(x_1-x_2)^2+(y_1-y_2)^2 \geq (2r)^2.
+\end{equation}
+ 
+The energy is conserved, being equal to the kinetic energy:
+
+\begin{equation}
+E=\frac{m_1(\dot{x_1}^2+\dot{y_1}^2)+m_2(\dot{x_2}^2+\dot{y_2}^2)}{2}.
+\end{equation}
+
+By Noether's Theorem we also known that the total angular momentum is conserved.
+We will denote it $L$. We shall try to give a meaning full geometric interpretation
+to it.
+
+\begin{equation}
+\Lagr (q_i,\dot{q}_i,t) 
+=\frac{m_1(\dot{x_1}^2+\dot{y_1}^2)+m_2(\dot{x_2}^2+\dot{y_2}^2)}{2}
++V(x_i, y_i)
+\end{equation}
+
+ The Lagrangian function has a singular term
+ representing the infinitely strong wall and the perfectly
+elastic collisions. Allow a lack of rigour here and let us
+put this term as an infinite Heaviside function: 
+
+\begin{equation}
+u(x)=\begin{cases}
+0 &\mbox{ if } x < 0 \\
+\infty &\mbox{ if } x \ge 0 
+\end{cases}
+\end{equation}
+
+By taking the polar coordinates in the usual way:
+\begin{align}
+x_i & = \rho_i \cos \theta_i, \\
+y_i & = \rho_i \sin \theta_i, \\
+\end{align}
+the  potential could be written as the sum of the 
+terms of each possible coalition:
+\begin{equation}
+V(x_i, y_i)=u(1-r-\rho_1)+u(1-r-\rho_2)
++u(-(\rho_1^2+\rho_2^2-\rho_1\rho_2\cos(\theta_1-\theta_2))).
+\end{equation}
+We should notice that, even when the difference in
+angles appears, the sum of them does not. 
+
+We can obtain the individual angular momenta $l_i$ as partial 
+derivatives of the Lagrangian function with respect to
+the $\dot{\theta_i}$. 
+
+\begin{equation}
+L=l_2+l_2=\frac{\partial \Lagr}{\partial \dot{\theta}_1}
++\frac{\partial \Lagr}{\partial \dot{\theta}_2}
+\end{equation}
+This turns to be, thank to the convenient linearity
+of the partial derivative \emph{with respect to the deriving}:
+\begin{equation}
+\frac{\partial}{\partial \dot{\theta}_1}
++\frac{\partial}{\partial \dot{\theta}_2}=
+\frac{\partial}{\partial(\dot{\theta}_1 +\dot{\theta}_2)},
+\end{equation}
+and also:
+\begin{equation}
+(\dot{\theta}_1 +\dot{\theta}_2)=\frac{d}{d t} (\theta_i +\theta_2).
+\end{equation}
+
+Then the total angular momentum $L$ is conjugate to the
+sum of the angular variables $\theta_i$. This quantity is not as
+intuitively clear as it seems. Let us try and find a coordinate
+system where this quantity shows its conservation explicitly.
+Remember that angles do not appear in the kinetic
+therm in usual polar coordinates:
+
+\begin{equation}
+\begin{split}
+T & =1/2 (m (\dot{x}^2+\dot{y}^2)) \\
+ & =1/2 (m (\dot{\rho}^2+\rho^2 \dot{\theta}^2))
+\end{split}
+\end{equation}
+
+Rewriting the Lagrangian function with this considerations in
+polar coordinates, we can try to make obvious that
+the \emph{individual angles} are not good coordinates
+for the problem.
+
+\begin{equation}
+\begin{split}
+\Lagr (q_i,\dot{q}_i,t) 
+= & 1/2 (m_1 (\dot{\rho_1}^2+\rho_1^2 \dot{\theta_1}^2))
+  +1/2 (m_2 (\dot{\rho_2}^2+\rho_1^2 \dot{\theta_2}^2)) \\
+ & +u(1-r-\rho_1)+u(1-r-\rho_2) \\
+ & +u(-(\rho_1^2+\rho_2^2-\rho_1\rho_2\cos(\theta_1-\theta_2))).
+\end{split}
+\end{equation}.
+
+Then one can see that the partial derivatives with respect
+to $\theta_i$ eliminate each other, making $L$ a conserved
+quantity, and that the combination $\theta_1-\theta_2$,
+the relative phase, appears as a relevant quantity. It
+comes to mind the simple, linear change of variables:
+\begin{align}
+\Theta & = (\theta_1+\theta_2)/C \\
+\vartheta  & = (\theta_1-\theta_2)/C,
+\end{align}
+where $C$ can be $1,2,\sqrt{2}$ according
+to researchers taste and convenience. For graphical representation
+purposes, here I use $C=2$. This makes the $\Theta$ variable
+the angle exactly at the middle between the radial vectors
+of both discs, and the little $\vartheta$ variable is just how
+much each of the two disks depart from this middle value.
+
+Expressing the Lagrangian and obtaining the momenta in terms of these
+variables is an exercises in tedious substitutions:
+
+\begin{align}
+\dot{\theta_1} & = \dot{\Theta}+\dot{\vartheta}, \\
+\dot{\theta_2} & = \dot{\Theta}-\dot{\vartheta}; \\
+\dot{\theta_1}^2 & = \dot{\Theta}^2+\dot{\vartheta}^2+2\dot{\Theta}\dot{\vartheta}, \\
+\dot{\theta_2}^2 & = \dot{\Theta}^2+\dot{\vartheta}^2-2\dot{\Theta}\dot{\vartheta}.
+\end{align}
+
+
+
+\begin{equation}
+\begin{split}
+\Lagr (q_i,\dot{q}_i,t) 
+= & \frac{1}{2} \Big( (m_1\dot{\rho_1}^2+m_2\dot{\rho_2}^2)
+  + m_1 \rho_1^2 (\dot{\Theta}^2+\dot{\vartheta}^2+2\dot{\Theta}\dot{\vartheta})
+  + m_2 \rho_2^2 (\dot{\Theta}^2+\dot{\vartheta}^2-2\dot{\Theta}\dot{\vartheta})
+\Big) \\
+ & +u(1-r-\rho_1)+u(1-r-\rho_2) \\
+ & +u(-(\rho_1^2+\rho_2^2-\rho_1\rho_2\cos(2\vartheta))).
+\end{split}
+\end{equation}.
+
+There is no way to simplify further the kinetic therm in this
+set of coordinates, and actually, is not warranted.
+To get the new momenta, we work straight from the
+definition and check with Noether's conserved quantity:
+
+\begin{equation}
+\begin{split}
+L : & = \frac{\partial \Lagr}{\partial \dot{\Theta}} \\
+&=m_1\rho_1^2\dot{\Theta}+m_1\rho_1^2\dot{\vartheta}
++m_2\rho_2^2\dot{\Theta}-m_2\rho_2^2\dot{\vartheta} \\
+&=\frac{\dot{\theta_1}+\dot{\theta_2}}{2}m_1\rho_1^2+
+\frac{\dot{\theta_1}-\dot{\theta_2}}{2}m_1\rho_1^2
+\frac{\dot{\theta_1}+\dot{\theta_2}}{2}m_2\rho_2^2-
+\frac{\dot{\theta_1}-\dot{\theta_2}}{2}m_2\rho_2^2 \\
+&= \dot{\theta_1} m_1 \rho_1+\dot{\theta_2} m_2 \rho_2 \\
+& = l_1+l_2.
+\end{split}
+\end{equation}
+
+I noticed that there is a factor $2$ missing somewhere,
+see if you can spot where it leaked  \ldots
+
+
+
+\section{Some Keplerian Considerations}
+
+If we had only one particle with billiard dynamics in a rotational
+invariant system,  there is a trick which shows the irrelevant characteristic
+of the variable conjugated to angular momenta \cite{Benet}.
+We proceed to rotate using an ``effective'' angular velocity, which
+renders the angular variable constant in such a representation.
+
+A point particle, (or the centre of a disk, for all effects), bouncing
+in a rigid wall describes chords of constant length at constant velocity,
+which gives an average angular velocity. If we rotate the frame of
+reference with this angular velocity smoothly, it will appear as if
+the particle describes a bounce always on the same spot, describing
+a cusped curve between bounces. The effective angular
+velocity, $\omega$, has a relatively unappealing expression, but the
+curve is quite well understood. 
+
+The formulae look unappealing by the simple reason that
+the particle is travelling in straight lines, and the angle sweeps
+circular sectors of circle. So the homogeneous time using
+spent in travelling the straights line looks weird from a curve 
+standpoint. 
+Let us calculate this effective angular velocity.
+The geometry is as in figure \ref{geocaustica01}
+The interval has length  $ 2 R \sin \theta$, so the
+time in which is travelled is $ t= 2 R \sin \theta/\|v\|$.
+Then the average angular velocity would be
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.88]{GeometriaCaustica01.pdf}
+\caption{The geometry for  a single particle caustic in
+the billiard.} \label{geocaustica01}
+\end{figure}
+
+\begin{equation}
+  \bar{\omega}=\frac{2 \|v\| } { 2 R \sin \theta}.
+\end{equation}
+
+Now relating $\omega$ with the properties of the particle we 
+could arrive at final expression:
+
+\begin{equation}
+\theta=\arccos \Big(\frac{L/\|p\|}{R}\Big)
+\end{equation}
+
+The effect of rotating the frame
+by this constant angular velocity is illustrated on the figure
+\ref{effectiveomega}.
+
+In that last equation appears the quantity $L/\|p\|$, which
+in the single particle billiard is the radius of the inner caustic.
+This circular caustic is a configuration space effect of
+super-integrability:
+the conservation of angular momentum.
+ 
+The angular momenta is not an angular velocity, except 
+in the very special case that particles are forced to travel 
+in perfect circles, and we measure the momentum from the 
+centre of the circle.
+
+The conservation of angular momenta is Kepler's second law:
+Equal Areas are swept in equal time. So in this system
+(or any rotational invariant system), the pertinent
+quantity is the rate at which all the particles 
+swap, all together, area. This area, is, of course,
+directed, and we shall take into account the direction
+of rotation to determine its sign. 
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[scale=0.88]{TrayectoriaNORotada01.pdf}
+    \caption{``Fixed Stars'' frame of reference.}
+    \label{fixedtray01}
+  \end{subfigure}%
+\begin{subfigure}[b]{0.48\textwidth}
+    \centering
+          \includegraphics[scale=0.88]{TrayectoriaRotada01.pdf}
+                \caption{Rotating frame of reference.}
+                \label{ftigre01}
+  \end{subfigure}
+\caption{ With one single particle or disk, we can set a 
+homogeneous rotating system of reference, which makes 
+the conservation of angular momenta appear as an
+effective conserved angular velocity. Sadly, this tricks
+stops working easily if we have two interacting particles.
+ }\label{effectiveomega}
+\end{figure}
+
+Taking that into account, it seems that this
+average $\omega$ is not a very useful quantity to rotate the system
+with two disks. Even if the disk do not interact, each one is hitting
+the walls at a different rate, typically with an irrational ratio
+and phase. 
+
+We should thing in terms of the \emph{instantaneous} angular
+velocity. Remember: the Keplerian property of the conservation
+of angular momentum means not that ``angle sweeping'' is constant,
+but ``area sweeping''. This still means that the angles are
+``cyclic'' variables, which is not the same as saying that
+they have constant linear change, but have regular, quasi-periodic
+behaviour. This can be better understood with an angle vs angular
+velocity plot, in the figure \ref{anglevsvelo}. For the
+moment, we have made so that the second disk is static at the middle,
+so its graph is just a point in the origin.
+Notice, carefully, how each cusp in the figure
+is evenly spaced from its neighbours. That should be obvious
+from the dynamics: the particle or disk is bouncing around a 
+caustic, always describing the same chords of the circle,
+monotonically rotating. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{AnglevsVelocity01.png}
+\caption{The cyclic behaviour of the angular variable.}
+\label{anglevsvelo}
+\end{figure}
+
+Even when we do not have a clear geometric interpretation
+for $\theta_1+\theta_2$, the conservation of the conjugate
+momentum tells us that it is a cyclic variable.
+Its behaviour should be as as the curves shown in
+that plot, even when the two disks interact, and therefore,
+change their behaviour in this space individually.
+Making a quick numeric test (where errors in the
+$2 \pi$ modulus are evident) we can appreciate some regularity
+on that ``quasi-periodicity''. In the last figure, \ref{anglevsvelotest},
+we can appreciate that even after a collision between the disks,
+appreciable as a discontinuity in every line, the
+interval covered by each black ``mountain'' remains constant.
+We can test the exact value numerically after the weekend!
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{AnglevsVelocity02.png}
+\caption{The cyclic behaviour of the angular variable, and their sum
+as a black line.}
+\label{anglevsvelotest}
+\end{figure}
+
+\bibliography{../../notasmixtas/TwoDiskBiblio}
+
+\end{document}

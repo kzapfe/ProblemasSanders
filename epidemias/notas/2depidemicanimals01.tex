@@ -1,0 +1,173 @@
+\documentclass[letterpaperr,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+
+
+\usepackage[T1]{fontenc}  
+\usepackage{textcomp}
+
+
+%\usepackage[garamond,cmbraces]{newtxmath}
+
+\usepackage{xspace}
+\usepackage{graphicx}
+
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{anysize}
+\usepackage[margin=2cm]{geometry}
+
+%\usepackage{bm}
+
+\bibliographystyle{alpha}
+
+\newcommand{\Acase}{\textbf{A}\xspace}
+\newcommand{\Bcase}{\textbf{B}\xspace}
+\newcommand{\Ccase}{\textbf{C}\xspace}
+\newcommand{\Dcase}{\textbf{D}\xspace}
+\newcommand{\Uno}{\textbf{1}\xspace}
+\newcommand{\Dos}{\textbf{2}\xspace}
+
+\renewcommand{\rmdefault}{ugm}
+  
+
+\title{Epidemic spread in territorial Animals}
+\author{ D. P. Sanders, W. P. K. Zapfe}
+
+
+\begin{document}
+
+%r\marginsize{2cm}{2cm>}{2cm}{2cm}
+\maketitle
+
+\begin{abstract}
+
+We will expand previous work by Sanders et Luca to animals
+moving in a two dimensional territory. A lot of simplifications
+are made in order to bring this toy model to something
+tractable.
+
+\end{abstract}
+
+
+\section{Definitions}
+
+We start by possing an array of ``animals'' on the plane.
+each animal is confined to a territory, which we model by
+a square of side one. The squares are centered approximatively
+in an square lattice. Each animal moves as a random walker
+inside its territory, and they can meet on overlaping territories.
+If the animals where points, occupying exactly one cell
+of the lattice in which they move, their chance
+of encountering on the diffusive limit would be exactly zero.
+We solve that giving the animals a radious of
+interraction, which should be small compared to territory
+and relative big compared to their stepsize. Animals
+which are less than two radious of interaction apart can
+be prone to infection from each other. 
+
+Let us intrudece some notation and specifications of our
+simulation. Each animal shall be denoted by an $a_k$
+ symbol, the $k$ serving as a counting index, and its
+square territory shall be denoted by $T_k$. Each 
+territory is centered at a point $(\bar{x}_k, \bar{y}_k)$,
+which is inmutable during the ``life'' of its owner. 
+The centre of each territory is randomly displaced
+from the points of a square lattice. The interesting
+parameter in this case is a number denoted $h$ which
+represents how territorial the species is. The $h$ is the
+spacing in the lattice. A smaller $h$ results
+in territories that have large area of overlapping,
+producing really fast infection rates, but an $h$ larger
+than one produces very disconected territories,
+and thus very low infection rates. The selection
+of each centre of the territory is a Gaussian displacement
+from a lattice of spacing $h$. That gives for
+$z=x,y$ the next expression:
+
+\begin{gather}
+\bar{z}= j \cdot h + \epsilon, j\in \mathbb{N},\\
+P(\epsilon)=\frac{\exp(-\epsilon^2/\sigma^2)}{\sigma\sqrt{\pi}}, \\
+\sigma=h/4.
+\end{gather}
+
+The variance in the pdf for the displacement is
+adjusted acording to $h$, so that the territories keep
+a private area. The distribution of territories looks
+locally as in figure \ref{territories}.
+In the case that $h > 1.0$ the animal territories
+are largerly disconected, thus making epidemic spread
+imposible. We focus our interest in  $h<1.0$.
+
+All animals will have the same radius of interaction, $\rho$.
+
+\begin{figure}{h}
+ \centering
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=0.99\textwidth]{Territorios05.pdf}
+    \caption{$h=0.5$}
+    \label{h05}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.40\textwidth}
+    \centering
+    \includegraphics[width=0.99\textwidth]{Territorios075.pdf}
+    \caption{$h=0.75$}
+    \label{h075}
+  \end{subfigure}
+ \\ 
+ \centering
+  \begin{subfigure}[b]{0.40\textwidth}
+    \centering
+    \includegraphics[width=0.99\textwidth]{Territorios090.pdf}
+    \caption{$h=0.5$}
+    \label{h09}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.40\textwidth}
+    \centering
+    \includegraphics[width=0.99\textwidth]{Territorios120.pdf}
+    \caption{$h=1.20$}
+    \label{h075}
+  \end{subfigure}
+  \caption{ The spread and overlaping of the square
+territories, in function of $h$. Notice that
+in the last figure the animals live in practical isolation,
+making epidemic diseases by direct contact imposible. A single
+territory has been remarked for comparition.}\label{territories}
+\end{figure}
+
+In our first approach, the probabiliy of infection
+on contact is certain. 
+
+
+\section{Random Walker considerations}
+
+
+We pose
+our reasoning by dividing the territory each animal into equal 
+square cells. In the limit of very small cells, 
+it shall behave as a diffusive particle with reflecting boundaries
+inside each square. This continous approximation gives us a
+induced distribution over the overlapping areas. The problem
+of solving the first encounter time analitically there
+is quite difficult, as the geometric conditions result in
+non-separable parcial differencial equations \cite{NotasAnteriores}. 
+Also, there are doubts in regards that a Random Walker is
+a good aproximation the movements of a territorial animal,
+although our model could be applied to bacteries in a jelly
+suspension.
+
+It should be possible to infer this first passage time
+from the expantion of the epidemic, which intuitivelly should
+be a simple algebraic law of the overlapping area. An educated
+guess would be that is simply inverselly proportional to
+the probability that both animals are in the overlapping
+area, and proportional to the radius of interaction.
+
+
+
+
+\end{document}
+

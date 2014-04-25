@@ -1,0 +1,448 @@
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+%Nueva convenvion para las subfigures es el subcaption package
+
+\usepackage[spanish]{babel}
+\usepackage{bm}
+\usepackage[cm]{fullpage}
+
+\bibliographystyle{alpha}
+
+
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{Sobre la longitud y distribución de las trayectorias balísticas y cuasi balísticas en una latiz de billares Cilíndricos.}
+\author{ W. P. Karel Zapfe\\Fac. de Ciencias, UNAM}
+
+
+\begin{document}
+
+\maketitle
+
+\abstract{
+Aquí analizamos la distribución de órbitas que se propagan de forma balística
+en una latiz cuadrada o cúbica de billares cilíndricos. Demostramos como
+las transformaciones lineales del cilindro en sí mismo son la dinámica fundamental
+a resolver y que de las recurrencias de los mapas del círculo en si mismo se
+encuentra la causa del quiebre de las orbitas periódicas.
+}
+
+\section{Introducción}
+
+Los billares cilíndricos truncados con cortes a $\pi/4$ respecto al eje 
+resultan tener una dinámica bastante rica. La motivación inicial
+fue obtenida por una representación de la dinámica de dos partículas
+encerradas en una caja atadas por un hilo \cite{SandersGilbert}. 
+Si la caja sólo tiene fronteras paralelas e infinitas en una dirección,
+una transformación lineal de coordenadas produce
+un sistema interpretable como  billar
+en el interior de una cuña cilíndrica (ver figura \ref{cunha01}).
+ Este problema produce una dinámica bastante complicada, y tiene una
+sensibilidad curiosa dependiendo de su aspecto geométrico que varía entre 
+varios régimenes de estabilidad según Liapunov.
+Podemos hacer el desdoble
+especular sobre la frontera del billar, primeramente
+a través de las superficies semi elípticas de la cuña,
+obteniendo así una cruz.
+El desdoble subsecuente sobre las
+caras circulares de la cruz produce una latiz
+de cilindros ortogonales como se muestra
+en la figura \ref{latiz01}. El billar desdoblado
+puede modelar transporte de partículas en sistemas porosos,
+tales como areogeles de distintas densidades \cite{Veamos}.
+Querríamos saber si el transporte en dicho sistema es normalmente
+difusivo o presenta cualidades diferentes. Para ello
+tendríamos que encontrar si la latiz
+presenta preferencia por mantener el transporte en una
+dirección establecida, o, a \emph{grosso modo} se comporta como
+un caminante aleatorio equiprobable en una red bidimensional.
+Para ver que tan válida es esa aproximación, tenemos que ver
+que conjunto de trayectorias se comporta
+efectivamente como si tuviera \emph{horizonte infinito}, es
+decir, que no haya nada en su camino que les haga cambiar de dirección
+de propagación, y, si no hay conjunto de medida significativa de ellos,
+como es que el número de orbitas con \emph{horizontes muy lejanos}
+va disminuyendo con el tiempo o distancia \cite{SandersHorizon}. 
+
+
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}[c]{0.5\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{DosParticulasAmarradasCanalInfinito01.pdf}
+                \caption{Sistema original}
+                \label{particulasamarradas}
+  \end{subfigure}%
+\hfill
+\begin{subfigure}[c]{0.4\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{CunhaCilindricaTrayectoriasTransparenteChingona02.png}
+          \caption{Sistema equivalente}      
+          \label{cunhadeparticlas}
+  \end{subfigure}%
+\caption{Una interacción atractiva dura en un canal infinito obtenida por un ``hilo'' infinitamente
+rígido. El sistema es equivalente a un billar en una cuña cilíndrica.}\label{cunha01}
+\end{figure}
+
+
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}[c]{0.5\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{CruzyTrayectorias02.png}
+                \caption{Desdoble a través de las caras semi-elípticas.}
+                \label{Cruz01}
+  \end{subfigure}%
+\hfill
+\begin{subfigure}[c]{0.4\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{CruzLatizyTray01.png}
+          \caption{Desdoble continuado}      
+          \label{CruzLatiz}
+  \end{subfigure}%
+\caption{Al desdoblar el sistema de la cuña, obtenemos una latiz infinita de cilindros
+cruzados.}\label{latiz01}
+\end{figure}
+
+
+
+\section{El Modelo}
+
+\subsection{Difusión en una latiz de cruces.}
+
+Imaginemos un punto arbitrario dentro de uno de los cilindros
+que conforman la latiz. De ese punto tomemos el haz de
+todas las direcciones posibles, que forma una esfera.
+Cada rayo con origen en ese punto podría chocar con la
+frontera definida por el cilindro con el que estamos, 
+o con cualquiera de los que lo atraviesan ortogonalmente.
+Mientras lo haga con el primer cilindro, su momento
+angular y momento axial se mantendrán constantes,
+por lo tanto, su difusión será balística, hasta que
+se estrelle con algún otro cilindro. Se estrellaría con aquellos
+segundos cilindros si pasara a través de la superficie del hueco
+de la intersección de los segundos con el primero, así que
+basta considerar como terminada una trayectoria balística
+que choque contra alguna de estas áreas especiales.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.45\textwidth]{CilindroConAreaProhibida01.png}
+  \caption{El área de los hoyos en una sección periódica del cilindro.
+    Repitiendo esta figura a lo largo del eje del cilindro obtenemos
+    todos los hoyos que indican un cambio del momento axial y angular.}
+  \label{huecos01}
+\end{figure}
+
+
+Consideremos primero un billar cilíndrico infinito con ciertos
+sectores de su superficie marcadas (véase la fig. \ref{huecos01}). 
+El área marcada corresponde
+a la intersección con los billares transversales. Dada la geometría
+de la intersección (el cilindro transversal se encuentra por fuera del 
+área virtual del otro), un golpe en la zona marcada es equivalente
+a una partícula que cambió su dirección de propagación. 
+Llamaremos trayectorias balísticas no sólo aquellas que viajan sin golpear nada,
+sino a todas ellas que viajan sin golpear las secciones marcadas, que de
+ahora en adelante llamaremos hoyos. En este primer caso, los hoyos están
+delimitados por arcos de elipse, para ser exactos cada arco es media
+elipse cortada por el semieje menor. 
+
+Escojamos un punto arbitrario dentro del cilindro.
+Sin pérdida de generalidad, podemos decir que su altura, que identificaremos
+como la coordenada $z$ de un sistema cartesiano, es cero, y 
+que se encuentra sobre el eje $x$, digamos pues que sus coordenadas
+son $\qfase=(q_x,0,0)$. Este punto conlleva la esfera $S^2$ de todas las direcciones
+posibles. Escodamos unidades tales que el cilindro tenga radio $1$ y
+que la magnitud de la velocidad sea también $1$. 
+Entonces el problema es equivalente a proyectar una esfera desde su centro
+ sobre la superficie del cilindro. Nótese que lo único que necesitamos
+es que la esfera tenga el centro dentro del cilindro, el tamaño es irrelevante,
+ya que su medida está determinada por la magnitud de la velocidad. Su
+área es, en nuestras unidades, siempre igual a $4\pi$ y está uniformemente
+distribuida. Nuestro primer resultado será la distribución de esta densidad
+de medida sobre el cilindro. Lo que nos interesa en primera instancia
+es la medida sobre la esfera de la preimagen del área de los hoyos.
+
+Un par de diagramas (en la figura \ref{diagramaschoque} )
+y una simple aplicación de trigonometría nos dará
+las coordenadas de cada punto de choque a partir del punto inicial.
+El choque está dado por la cantidad de momento distribuido en
+las direcciones $x,y$. Usando las variables coordenadas
+esféricas usuales, 
+$v=(\cos \phi \cos\theta, \sin \phi \cos\theta, \sin \theta)$,
+ la cantidad $\|v_{plano}\|= \cos \theta$ es la rapidez 
+con la cual encontraremos la frontera. La distancia se puede determinar
+de la figura \ref{Diag01} y una simple aplicación
+de la ley de los cosenos. Dado que el coseno del ángulo interior
+y exterior de un par de rayos coinciden, podemos afirmar que la 
+distancia a la pared está determinada por
+
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}[c]{0.4\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{Diagramachoque01.pdf}
+                \caption{Corte Transversal}
+                \label{Diag01}
+  \end{subfigure}%
+\hfill
+\begin{subfigure}[c]{0.4\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{Diagramachoque02.pdf}
+          \caption{Corte Axial}      
+          \label{Diag02}
+  \end{subfigure}%
+\caption{Diagramas para la proyección de una esfera en el cilindro.}
+\label{diagramaschoque}
+\end{figure}
+
+\begin{equation}
+q_x^2+d^2-2q_x d \cos\phi=1.
+\end{equation}
+
+Sólo nos interesa la solución mayor de esta expresión cuadrática,
+así que la distancia en cuestión es:
+
+\begin{equation}\label{distanciaplano}
+d=q_x \cos\phi+\sqrt{ 1- q_x^2 \sin^2 \phi } 
+\end{equation}
+
+La función de $d(q_x, \phi)$ se puede ver en la figura \ref{dgrafica}.
+Podemos apreciar que si $q_x=-1$, entonces todo el rango de
+direcciones que apuntan a la pared más cercana dan $d=0$, como debe ser. 
+Por simetría, sólo presentamos valores entre $-1$ y $0$, correspondiente
+este último a la proyección de Mercator. 
+
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}[c]{0.47\textwidth}
+    \centering
+    \includegraphics[width=0.95\textwidth]{D-en-funcion-q-phi.pdf}
+    \caption{ $d(q_x, \phi)$}\label{dgrafica}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[c]{0.47\textwidth}
+    \centering
+    \includegraphics[width=0.95\textwidth]{z-en-funcion-theta-pi-q-050.pdf}
+    \caption{ $z(\phi, \theta), q_x=-0.5$}\label{dgrafica}
+  \end{subfigure}
+  \caption{Las distancias relevantes del mapeo de la esfera en el cilindro,
+$d,z$.}\label{graficasmapeo01}
+\end{figure}
+    
+
+
+De la expresión obtenemos el tiempo de choque, $t=d/\|v_{plano}\|$ y de ahí
+la altura del punto imagen, $z=d \tan \theta$. Con esto, fijo el valor
+$q_x$ tenemos entonces la proyección de la esfera de velocidades sobre
+el cilindro:
+
+\begin{equation}\label{SuperMercator}
+T_{q_x}(\phi,\theta)=( d \cos \phi +q_x, d \sin \phi, d \tan\theta)
+\end{equation}
+
+Esta última expresión resulta práctica para obtener la imagen de cada
+punto de la esfera de velocidades con origen en un punto $\qfase_c$ del
+espacio de configuración. La generalización es trivial, consistente
+en una simple rotación de los ejes $x,y$ y una traslación a lo
+largo del eje de coordenadas. Sin embargo resulta particularmente
+incómoda para calcular algo que nos interesa más, que es la imagen
+inversa de los agujeros en una esfera de velocidades con pie en un
+punto arbitrario dentro del cilindro. 
+Es claro que lo que estamos haciendo simplemente es obtener una proyección
+del cilindro en una esfera con centro arbitrario $\qfase_c$. La proyección
+cartesiana
+de cualquier punto del espacio en esta esfera es dividir sus coordenadas entre
+la distancia que separa al punto del cento: 
+
+\begin{equation}
+P(x,y,z)=\frac{(x,y,z)}{\|(x-q_x,y-q_y,z-q_z)\|} \in S^2 
+\end{equation} 
+
+Con esto ya podemos visualizar el conjunto de vectores velocidad
+que escapan \emph{antes del primer choque} del cilindro, es decir, que
+se encuentran con uno de los hoyos. Un par de ejemplos se puede ver en la figura
+\ref{esferaconhuecos}. Recordemos que el parámetro $h$ controla la distancia
+entre intersecciones del cilindro, siendo está, medida de centro a centro,
+$2h+2$. En el caso de que $h=0$ (el cílindro se reduce a la cuña), los huecos
+son tangentes entre ellos y por lo tanto sus imágenes en la esfera también. Esto
+produce el curioso hecho de que la esfera se encuentra dividida por proyecciones
+de dos elementos romboidales. La longitud balística de las trayectorias que no
+escapan al primer rebote está simplemente determinada por el valor $\cos \theta$
+en las coordenadas de la esfera. 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{EsferaConHuecosCilindroSimple01.png}
+  \caption{Un caso particular de la proyección de los hoyos en la esfera,
+    los parámetros son $\qfase=(-0.5,0,0), h=0.5$. La resolución de la imagen permite
+ver hasta 5 niveles de hoyos en el cilindro, hacia arriba y abajo.}
+  \label{esferaconhuecos}
+\end{figure}
+
+Un poco más dificil es conseguir ver cuales son las trayectorias que escapan
+después del primer choque con el cilindro. Sin embargo esto no 
+pasa de ser un ejercicio algo fastidioso de trigonometría, dado que una vez
+dado el vector velocidad y el punto de origen $\qfase$, el momento angular
+y la altura que separa cada choque están determinados. Así que resolviendo
+el segundo choque, resolvemos todos. Hay una serie de consideraciones previas.
+
+Las condiciones iniciales que dan momento angular axial constante
+dibujan, sobre la superficie de la esfera, círculos. Usando las coordenadadas de
+la figura \ref{diagramaschoque}, las curvas de momento angular axial
+constante están dadas por 
+
+\begin{equation}
+ \cos \theta \sin \phi = L_z /q_x.
+\end{equation}
+
+Es fácil ver que el máximo momento angular se alcanza en la
+dirección $\theta=0, \phi=3 \pi /2$ y el mínimo en la opuesta,
+siendo el meridiano $\phi=0,\pi$ la linea nodal sobre la esfera. Los
+vectores velocidad que forman un cono con eje en $\phi= \pi /2, 3\pi /2$ 
+producen todos el mismo valor para $L_z$
+
+Cada uno de los puntos imágen de estos círculos rotará alrededor
+del cilindro un ángulo constante con cada choque, mientras se
+desplaza en la dirección vertical de forma equiespaciada.
+El ángulo en cuestión es 
+\begin{equation}
+\psi=2 \arccos (q_x \sin \phi)
+\end{equation}
+
+El tiempo que le toma a la partícula llevar a cabo este choque
+es la longitud de cuerda dividia entre la rapidez planar  $\cos \theta$.
+De ahí podemos obtener el cambio en la altura con cada choque:
+
+\begin{equation}
+  z\rightarrow z+2\tan(\theta)\sqrt{1-q_x^2\sin^2\phi}
+\end{equation}
+
+Mientras una partícula no choque contra un hoyo, se propagará
+balísticamente en la dirección $z$ al ritmo arriba mostrado.
+Ahora bien: propongo proyectar cada imágen producida de este mapeo
+sobre la esfera otra vez. La razón es que en la esfera tenemos la 
+información del momento angular y la velocidad balística $v_z$
+
+Un problema de considerar la iteración de los choques tanto
+sobre la esfera como sobre el cilindro es que no inducen un mapeo
+uno a uno. De hecho ninguna medida que no esté concentrada
+en los polos de la esfera se conserva con este mapeo, lo cual 
+lo hace terriblemente inconveniente desde el punto de vista
+de teoría ergódica. Así que tendríamos que remitir todas las
+medidas a la esfera de condiciones iniciales. 
+
+\subsection{Una version plana del problema}
+
+Uno podría pensar que resolviendo el problema por secciones 
+a lo largo de $\phi= cte$ pero no adelanta en nada eso. Dado
+que excepto en $\phi=0$ tenemos un conjunto donde todos
+tienen el mismo momento angular, es el único con el que podemos
+hacer un estudio descente. Estudiaremos ese caso
+para ganar un poco de percepción. Supongamos que tomamos las condiciones
+iniciales con velocidad $\phi=0,pi$, es decir, $L_z=0$, que se hayan
+alrededor de la esfera en un círculo máximo que cruza los polos. 
+De forma más general, dicho círculo no debe estar alineado
+en ninguna forma con el plano  que contiene a los cilindros 
+que intersecan a nuestro cilindro, es decir, no está alineado en 
+forma alguna con los agujeros. Digamos que hay una diferencia
+de $\psi$ entre estos dos planos, siendo los hoyos centrados
+en $\psi$ (ver diagrama en la figura \ref{diagramaforplano01}).
+
+ 
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[c]{0.6\textwidth}
+  \centering
+  \includegraphics[width=0.45\textwidth]{Diagramachoque03.pdf}
+  \caption{Corte transversal.}
+\end{subfigure}
+\begin{subfigure}[c]{0.32\textwidth}
+  \centering
+  \includegraphics[width=0.85\textwidth]{Diagramachoque04.pdf}
+  \caption{Corte coaxial.}
+\end{subfigure}
+\caption{Resulta comodo usar las coordenadas ya fijas
+para la esfera de las velocidades, pero considererar que
+los huecos no están alineados con el eje $x$. Aquí la
+zona roja indica la posible posición de los huecos en un
+corte transversal y el angulo $\psi$ su alineación central. }
+\label{diagramaforplano01}
+\end{figure}
+
+La partícula que comience en éste circulo máximo se mantendrá
+en un plano que contiene al eje del cilindro. 
+Desde el punto de vista de la partícula, ella se encontrará
+rebotando entre dos paredes rectas con hoyos de tamaño
+$2\cos\psi$ centrados a la misma altura como
+en la figura \ref{diagramaforplano02}.
+
+De esos diagramas es claro que todas las trayectorias excepto un conjunto 
+racional de medida zero terminan escapando por los huecos. 
+Simplemente podemos desdoblar la trayectoria a lo largo de las
+paredes y marcar los huecos como obstaculos.
+De ahí se puede ver que el conjunto de trayectorias que pasan
+entre todos los obstaculos son casos aislados. Para formalizar 
+ese efecto podemos hacer lo siguiente: una vez desdoblada
+la órbita a travez de las paredes rígidas, podemos considedarar
+los hoyos como una latiz de paredes absorventes. Nuestro único
+interés es ver cuanto se propagan en la direcció n $z$ positiva, asi
+que integramos el ángulo que proyectan todos los absorventes
+hasta cierta distancia. Dado que forman una latiz, resulta conveniente
+hacerlo por pasos iguales a la longitud de la celda. Podemos
+apreciar el proceso en la figura \ref{RedAbsorvers}.
+Para ser consistenes, supongamos que el cero del eje $z$ coincide con 
+el centro de la longitud de los absorvedores. Los parámetros
+iniciales son entonces $(q_x, q_z)$ para el pie de las velocidades
+iniciales. El primero por simetría lo consideraré $\in (-1, 0]$,
+y el segundo tiene que estar $\in (0, 2h+2)$.
+
+Vamos a llamare $\alpha_kj$ a los angulos subtendidos por
+ aquellos absorvente que se encuentran
+a la derecha en el diagrama, y $\beta_kj$ a los de la izquierda. 
+Si la partícula se encuentra entre las alturas $(-\cos \psi, \cos \psi)$,
+los absorventes más cercanos estarán asociados a los ángulos
+$\alpha_0, \beta_0$. Dado que estos cubren completamente la posibilidad
+de topar uno detrás de ellos, sólo es necesario un índice 
+para localizarlos. El índice $j$ indicará la altura, el índice
+$k$ la posición horizontal (podríamos utilizar $k<0 $ para evitar
+la $\beta$).  
+
+Las relaciones que describen el choque con un absorvente son
+
+\begin{align}
+q_x+t \cos \theta & = k, \\
+q_z+t\sin \theta  & \in  (j (2h+2)-\cos \psi, j (2h+2)+\cos \psi ).
+\end{align}
+
+Buscamos siempre la solución con el valor de $k$ más pequeño. 
+
+
+\end{document}
+
+

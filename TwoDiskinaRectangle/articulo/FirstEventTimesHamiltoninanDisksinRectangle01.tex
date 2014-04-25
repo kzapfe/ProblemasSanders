@@ -1,0 +1,509 @@
+\documentclass[letterpaper,12pt]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsfonts}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{caption}
+\usepackage{subcaption}
+
+
+\bibliographystyle{alpha}
+
+%opening
+
+
+\usepackage{mathptmx}
+
+\newcommand{\defeq}{:=}
+\newcommand{\mean}[1]{\left \langle #1 \right \rangle}
+\newcommand{\rd}{\, \mathrm{d}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\indicator}[1]{\mathbf{1}_{ \{   #1 \} } } 
+
+\setlength{\parskip}{10pt}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\title{Times for first events in Billiards: hopping and encounters}
+\author{Rosa Rodríguez,  David P.~Sanders, W.P. Karel Zapfe}
+\address{Departamento de Física, Facultad de Ciencias, 
+Universidad Nacional Autónoma de México, Ciudad Universitaria, 
+Del.~Coyoacán, México D.F. 04510, Mexico}
+
+\maketitle
+\begin{abstract}
+  We obtain exact results for the kinetics of the inertial motion of 
+two hard discs in a rectangular two-dimensional box.
+We calculate the first encounter (first crash between the discs),
+the first \emph{hopping time} and the mean times for these events.
+  We define the  hopping time as the interval 
+ between exchanges of the horizontal positions of the discs.
+\pmb{We show numerically that the distributions are exponential, perhaps.}
+\end{abstract}
+
+
+\section{Introduction}
+
+Billiars are ubicuous models for
+Hamiltonian Classical Mechanics. They have been used since times
+of Galileo, but their usage skyrocketed after two great
+discoveries: the Boltzman $\mathit{H}$ theorem and Sinai's Ergodic
+Theorem.  A planar billiard produces, with very simple static elements
+which take the place of potentials (the borders) and the most simple
+dinamic element (the point particle) the hardest 
+forms of rigourosly chaotic motion. 
+
+Most of the work in chaotic behaviour present results that
+are only aplicable on averege, or after long periods of time, that is,
+after some termalization process has been noticeable. 
+How these procesess begin
+or how short time dynamics are affected by the chaotic propiertes
+is largerly unknown. A remarkable exception to this
+is the study of ``stickiness'' \cite{Altman} 
+of integrable KAM islands and other
+transient results. 
+We must not neglect short time phenomena, as they can be essential
+to the interpretations of our models. 
+
+In this work we present a planar billiard, which could belong
+to a \emph{two particle Boltzmann gas} class. The mean first
+encounter of the particles could give us an insight in
+reaction times of very diluted gases, and the hopping times
+could be used as a random binary switch for a nanotechnolgy device.
+It would be usseful to understand how the distributions for
+such events are generated, and what their propiertes are.
+
+
+\section{Model}
+
+We consider two discs of radius $r$ (and diameter $d=2r$) 
+in a box of width $w$ and height $h$ (figure\ref{billar01}). 
+The discs move inertly in the absence of forces, 
+following straight-line trajectories, 
+and undergo elastic collisions with each other and with the walls of the box.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.56\textwidth]{DiscosenCajaCuadrada01.pdf}
+  \caption{The Billiard}\label{billar01}
+\end{figure}
+
+
+We denote the position of the centre of the $i$th disc by 
+$(x_{i}, y_{i})$ for $i=1,2$. 
+Since the discs and walls are infinitelly hard, 
+the disc centres are restricted to the region $(x_i, y_i) \in [-a,a] \times [-b, b]$, 
+where $a \defeq a(d) \defeq \frac{w}{2} - r = \frac{w-d}{2}$ and 
+$b \defeq b(d) \defeq \frac{h}{2} - r = \frac{h-d}{2}$.
+
+The exclusion condition is $(x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 = d^2$.
+It is thus useful to work in terms of the new coordinates
+\begin{equation}\label{cambiocoor01}
+ x \defeq \frac{x_1 - x_2}{\sqrt{2}}; 
+\quad X \defeq \frac{x_1 + x_2}{\sqrt{2}}; 
+\quad y \defeq \frac{y_1 - y_2}{\sqrt{2}}; 
+\quad Y \defeq \frac{y_1 + y_2}{\sqrt{2}}.
+\end{equation}
+
+These coordinates are a $\pi/4$ rotation of the $x_i$, and  $y_i$ planes in the
+full configuration space. They are isometric.
+
+In these coordinates, we have the conditions 
+$x \in [-a \sqrt{2}, +a \sqrt{2}]$ with $X \in [-a \sqrt{2} + |x|, a \sqrt{2} - |x|]$ 
+and similarly $y \in [-b \sqrt{2}, b \sqrt{2}]$ and 
+$Y \in [-b \sqrt{2} + |y|, +b \sqrt{2} - |y|]$,  
+with the constraint $x^2 + y^2 \ge \frac{d^2}{2}$.
+
+The border conditions define an hypercube with  sides of lengths $a,a,b,b$.
+The exclusion defines a  hypercylindrical wall inside, placed
+diagonally between two hyperaristas. Sections from this hypercilinder
+orthogonal to the $X,Y$ axis produce circles with radius $\sqrt{2} r$
+The dynamics in such a space
+would be the usual billiard dynamics in a four dimensional table with
+three dimensional borders. The rules for ellastic collitions
+are exactly the same as for point particles 
+in planar billiards with one dimensional
+borders, namelly, the change of velocity after a collition would only
+affect the normal component of the velocity, changing its sign. 
+
+
+The fact that this kind of systems are equivalent to a Bernoulli flow,
+and thus ergodic and mixing, have been fully established. For this kind
+of systems we would expect a certain shape of decay distributions, namely, 
+exponential. The time distribution for all the events that we are
+interested should be of this sort.  
+
+
+\section{Mean time between events}
+
+A system of $N$ hard spheres confined by hard walls inside a $d$ dimensional
+pace may be treated as a billiard system \cite{Sinai70, MarkChern}, 
+in which a single point  
+particle undergoes free motion between reflecting obstacles 
+in a $ d N $-dimensional configuration space. 
+
+If the resulting billiard is ergodic and hyperbolic, 
+there exists 
+a result for the mean free time, i.e. the mean time between 
+collisions of the particle with the walls \cite{MarkChern}. 
+This can be thought of as a mean return time to the $(d-1)$-dimensional 
+(i.e. co-dimension-$1$) cross-section given by the wall boundaries.
+If the particle in question has velocity scaled
+to unity, this formula reads as follows:
+\begin{equation}
+ \mean{\tau} = \frac{|Q|}{|A|} \frac{|S^{d-1}|}{|B^{d-1}|},
+\end{equation}
+Here $|Q|$ denotes the $d$-dimensional volume of the available space in the 
+billiard and 
+$|A|$ the $(d-1)$-dimensional area of the cross-section.
+ $|S^{d-1}|$ is the $(d-1)$-dimensional area of the unit sphere in $\RR^d$ given by
+\begin{equation}
+  |S^{d-1}| = \frac{2 \pi^{d/2}}{\Gamma(d/2)},
+\end{equation}
+where $\Gamma(\cdot)$ is the gamma function. 
+$|B^{d-1}|$ is the volume of the unit ball 
+in $\RR^{d-1}$, given by $|B^{d-1}| = |S^{d-2}| / (d-1)$.
+
+Machta and Zwanzig \cite{MachtaZwan} used a similar method to derive an escape 
+time across a non-existent boundary by treating it as a recurrence time.
+Since it is an escape time, they used velocities whose components point only 
+perpendicularly to the ``exit wall''. This
+shows the flexibility of the formula: the area  $|A|$ can represent
+any cross section in configuration space,
+or, via the appropiate canonical transformation, any
+cross section in any $d$ dimensional subspace
+of the full phase space.
+ 
+In our case, we are interested in the 
+mean return time to a codimension-$1$ cross section.
+The first of them is the ``hopping time'' 
+which is delimited by the exact moment
+in which the disks interchange their horizontal position. 
+Algebraically, this can be stated either as
+$x_1 = x_2$ or $x=0$.
+This surface is accessible from \emph{both} sides, 
+so that there is an extra factor of two in the part of the area 
+$|A|$. Thus 
+we rewrite the mean time taking this into account: 
+\begin{equation}
+ \mean{\tau} = \frac{|Q| \, |S^{d-1}|} {2 \, |A| \, |B^{d-1}|}.	
+\end{equation}
+The second cross section represents the collition
+event, that is, when $x^2+y^2=2r^2$. This has only one
+side accesible to the four dimensional
+equivalent particle in full configuration space,
+so no extra factor appears anywhere.
+
+For more general values of $E$ and $m$, 
+we are simply working on a different energy surface in phase space. 
+The particle trajectories are identical but their motion is a factor
+$\sqrt{2E/m}$ faster, so that all times are reduced by this factor.
+That should be taken into account when setting a numerical value
+for either the total energy or the magnitude of the initial momenta.
+For simplicity, we have used disks with equal mass, which numerically
+will be set to one. We devote the next section
+to obtain the exact values of $|Q|$ and $|A|$.
+
+
+\section{Calculation of Volumes and Areas}
+
+We proceed to calculate the Area and Volume quantities. 
+From the change of coordinates,
+we have a relative uncomfortable geometry to work upon. The configuration
+space is an hypercube with an hyper-cylinder substracted in a diagonal position.
+The uncomfortable part is to deal with the tips of the cylinder, which
+present the  shape of a wedge with a circular base and two 
+orthogonal ``heights''. It may be done in an indirect manner.
+
+
+\subsection{Volume of available space}
+
+
+We shall present the total four-dimensional volume as a product integral
+of all available positions. To better grasp the idea, a convenient
+diagram is shown in the next figure, \ref{diagintegra01}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{diagramintegra01.pdf}
+  \caption{The space to integrate is the product of the subspaces
+    belonging to horizontal and vertical coordinates. The colour
+    shaded area represents the ``exclusion'' set, where the condition 
+    $ (x_1-x_2)^2 + (y_1-y_2)^2 \ge d^2 $ is not fulfilled. 
+    Their width is dependent on the particular point of evaluation
+    on the \emph{other} subspace. The diagonal coordinates
+    make the expression to evaluate simpler. Due to 
+    symmetry, we only evaluate the area in stripes and
+    multiply by 16.}\label{diagintegra01}
+\end{figure}
+
+\begin{equation}
+ V = \int_{x_1 = -a}^a \rd x_1 \int_{x_2 = -a}^a \rd x_2 
+\int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge d^2 },
+\end{equation}
+where $\indicator{Z}$ indicates the indicator function of the set $Z$, given by $\mathbf{1}_Z (x) = 1$ if $x \in Z$, and $=0$ if $x \notin Z$, which restricts the integral to the desired region $Z$.
+
+We represent the excluded cylinder in the coordinates defined in 
+the set of equation \ref{cambiocoor01}. 
+
+\begin{equation}
+ V = \int_{x=-a \sqrt{2}}^{a \sqrt{2}} \rd x 
+\int_{X=-a \sqrt{2} + |x| }^{a \sqrt{2} - |x|}  \rd X
+ \int_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
+\int_{Y=-b \sqrt{2} + |y| }^{b \sqrt{2}-|y|}  \rd Y
+\, \indicator{ x^2 + y^2 \ge \frac{d^2}{2}  }.
+\end{equation}
+In these coordinates, $X$ and $Y$ do not appear 
+in the integrand, so that these integrals may be done trivially, 
+thus reducing to the following two-dimensional integral:
+\begin{align}
+ V &= \int_{x=-a \sqrt{2}}^{a \sqrt{2}} \rd x  
+\int_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
+\, 2 \left( a \sqrt{2} - |x| \right) \, 2 \left( b \sqrt{2} - |y| \right) \,  
+\indicator{ x^2 + y^2 \ge \frac{d^2}{2} } \\
+&= 16 \int_{x=0}^{a \sqrt{2}} \rd x  \int_{y=0}^{b \sqrt{2}} \rd y
+\, \left( a \sqrt{2} - x \right) \, \left( b \sqrt{2} - y \right) \,  
+\indicator{ x^2 + y^2 \ge \frac{d^2}{2} },
+\end{align}
+using the symmetry.
+
+Thus $V = 16(I_1 + I_2)$, 
+where $I_1$ and $I_2$ are the resulting integrals over the regions 
+where the available region for $y$ is affected by, and is not affected by, 
+respectively, the restriction to lie outside the disc.
+We have
+\begin{align}
+ I_1 &= \int_{x=0}^{d / \sqrt{2}} \left[ \int_{y = \sqrt{\frac{1}{2} {d^2} - x^2}}^{b \sqrt{2}} \left( b \sqrt{2} - y \right) \rd y \right]  \left( a \sqrt{2} - x \right) \rd x \\
+&= 	
+a b^{2} d + \textstyle \frac{1}{6} (a+b) d^{3} - \frac{1}{32}  d^{4} - \frac{1}{4} {\left(\pi a b + b^{2}\right)} d^{2},
+\end{align}
+and
+\begin{align}
+ I_2 &= \int_{x=d / \sqrt{2}}^{a \sqrt{2}} \left[ \int_{y = 0}^{b \sqrt{2}} \left( b \sqrt{2} - y \right) \rd y \right]  \left( a \sqrt{2} - x \right) \rd x \\
+&=	
+{\left( a^{2} - a d + \textstyle \frac{1}{4}  d^{2}\right)} b^{2}.
+\end{align}
+Thus 
+\begin{equation}\label{volumeabd}
+ V %= 16(I_1 + I_2) =     	
+= 16 a^{2} b^{2}  - 4 \pi a b d^{2} + \textstyle \frac{8}{3} (a+b) d^{3}  - \frac{1}{2} d^{4},
+\end{equation}
+as was previously obtained by Munakata and Hu \cite{Munakata02}.
+
+Note the volume available to place two discs inside the hard box but \emph{without} the 
+ hard-disc exclusion constraint is simply given by the first term, $16 a^2 b^2$; thus, the remaining terms represent the excluded volume due to this constraint.
+
+We have checked this result with simple Monte Carlo simulations, by generating random positions for the sphere centres in $[-a,a] \times [-b,b]$ uniformly and 
+counting the proportion of such initial conditions for which the two spheres do not overlap.
+
+
+%  $x$, and does not depend on $x$, respectively
+
+\subsection{Volume of cross-section $\{x_1 = x_2\}$}
+The calculation of the $3$-dimensional volume of the cross-section $\{x_1 = x_2\}$, which becomes 
+$\{ x=0 \}$ in the new coordinates, proceeds in a similar way:
+
+\begin{align}
+ A &= \int_{X=-a \sqrt{2} }^{a \sqrt{2}}  \rd X
+ \int_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
+\int_{Y=-b \sqrt{2} + |y| }^{b \sqrt{2}-|y|}  \rd Y
+\, \indicator{y^2 \ge \frac{d^2}{2} } \\
+&= 8 a \sqrt{2} \int_{y=0}^{b \sqrt{2}} \left( b \sqrt{2} - y \right)  \indicator{y \ge \frac{d}{\sqrt{2}}}  \rd y \\
+&= 8 a \sqrt{2} \int_{y= \frac{d}{\sqrt{2}}}^{b \sqrt{2}}  \left( b \sqrt{2} - y \right)  \rd y \\
+&= 2 \sqrt{2} a ( 2b - d )^2.
+% b^{2} -  b d + \frac{d^{2}}{4} \right) .
+\end{align}
+
+We have checked this result with simple Monte Carlo simulations, by counting the proportion of successful placements of hard discs for which the distance $|x_1 - x_2|$ is within a small tolerance of $0$.
+
+
+\subsubsection{I do not know if all this is worth it\ldot}
+For comparition, we shall use also other area to compare
+some propierties of the decay of time distributions. The most natural and simple
+time would be the mean time between any two collitions. This corresponds
+to the adecuate measure of the border of the four dimensional
+billiard in which the dynamics takes place. There is a nice trick
+to obtain this Area once that we know the Volume formula. The Area
+can be thought of an infinitesimal volume element, so we have to put
+all the volume from the measures as function of a single parameter
+and derivate with respect to it. 
+There are some care that we must take into account:
+Every ``face'' has to be taken twice, as  
+
+When dealing with figures
+which are not topologically spheres, this trick requires
+a grain of salt. The parameter has to take different
+signs for the \emph{negative} volume elements. A geometrical
+intuitive grasp can be obtained by appling the trick to an annulus:
+To get the border measure, we increase the outher circle and
+decrease the inner one. The infinitesimal difference between the two
+is the perimeter. 
+
+
+ We start with formula \ref{volumeabd}
+and substitute the auxiliary symbols $a,$ for their expression in
+terms of $w,h$.
+\begin{equation}\label{volumehwd}
+ V= (w-d)^2(h-d)^2-\pi(w-d)(h-d)d^2+\frac{4}{3}(h+w-2d)d^3-\frac{1}{2}d^4
+\end{equation}
+The first term is simply the rectangular hyperprism, the variation in question
+would be:
+
+We make a slight variation on all the terms which  define the geometry,
+making the substitutions
+\begin{align}
+w & \rightarrow w+\epsilon \\
+h & \rightarrow h+\epsilon \\
+d & \rightarrow d+\epsilon ,
+\end{align}
+resulting in
+\begin{equation}\label{volumeepsilon}
+ V(\epsilon) = (w-d)^2(h-d)^2-\pi(w-d)(h-d)(d+\epsilon)^2+
+\frac{4}{3}(h+w-2d)(d+\epsilon)^3-\frac{1}{2}(d+\epsilon)^4.
+\end{equation}
+
+Then, taking the derivative at $\epsilon=0$, we obtain
+
+\begin{equation}\label{Areaepsilon}
+ \frac{dV}{d\epsilon} \vert_{\epsilon=0}
+= d^2(w+h)(4+2\pi)-d^3
+\end{equation}
+
+
+\subsection{Mean hopping time}
+
+In order to simplify things, we will use $E=1/2$ and $m_i=1$.
+The system of two hard discs is equivalent to a billiard in $d=4$ dimensions, so that
+
+\begin{equation}
+ |S^{d-1}| = |S^3| = 2 \pi^2; \qquad |B^{d-1}| = 4 \pi / 3.
+\end{equation}
+
+Inserting these results into the formula for the mean hopping time gives
+\begin{equation}
+ \mean{\tau} = 	
+\frac{3 \pi}{4}
+\frac
+{16 a^{2} b^{2}  - 4 \pi a b d^{2} + \textstyle \frac{8}{3} (a+b) d^{3}  - \frac{1}{2} d^{4}}
+{ 2 \sqrt{2} a ( 2b - d )^2}.
+\end{equation}
+
+Substituting the expressions for $a$ and $b$ in terms of $w$, $h$ and $d$ gives
+the main result of this paper, the exact expression for the mean hopping time:
+\begin{equation}\label{hoptimegeneral}
+ \mean{\tau} = \frac{3 \pi}{4 \sqrt{2}}
+\frac{(w-d)^2(h-d)^2-\pi(w-d)(h-d)d^2+\frac{4}{3}(h+w-2d)d^3-\frac{1}{2}d^4}
+{(w-d)(h-2d)^2}
+\end{equation}
+
+As one can directly perceive from the denominator in the last expression, the
+time blows up quadratically as $d\rightarrow h/2$, which agrees
+with heuristic arguments. 
+
+We will use for comparison with numerics square boundaries, 
+so that $h=w$. This simplifies a bit more the above 
+formula:
+
+\begin{equation}\label{hoptimesquare}
+ \mean{\tau} =\frac{3\pi}{8\sqrt{2}} 
+\frac{(h-d)^4-\pi(h-d)^2d^2+\frac{8}{3}(h-d)d^3-\frac{1}{2}d^4}
+{(h-d)(h-2d)^2}
+\end{equation}
+
+
+
+\section{Lo que falta}
+
+\emph{Comparison with numerics: is perfect!}
+
+Well, more or less. There seems to be some issues about the convergence of the
+data, but is to be expected. First, I show you my semi manual results of
+the mean hopping time. I will put here some examples of the
+distributions, as they show why the convergence occurs better for some
+sizes than for others.
+
+The next figure, \ref{MeanHopp01} shows the theoretical curve 
+expressed in the formula \ref{hoptimesquare} and some points
+that Karel obtained from numerical experiments. The most interesting
+parts of the curve where sampled more, while the ``boring'' part
+of the curve has just a pair of points. This flatter section of
+the behaviour shows much better convergence, and I think a
+good heuristic argument can be made for this.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.56\textwidth]{Mean_Hopping_Time_manual.png}
+  \caption{The mean hopping time as function of the diameter, Energy, mass, and geometry fixed.
+The red line is theoretical, the black dots are the numerical experiments, and the error bars
+represent the standard deviation.}\label{MeanHopp01}
+\end{figure}
+
+From the figure we can see that the explosive regime falls a bit short of
+the theoretical estimate, while  the flat regime has a slightly longer
+time than expected. This has to do with the mixing and averaging scales
+of the numerical experiments, and is a consequence of some
+qualitative differences between small, medium and big disks. The numerics where done
+by limiting the number of collisions, of all types, taking into account
+that the average time between collisions is a good scale of time
+for billiard systems. This sets a lower limit for collations between
+disks in the smaller regime, as this became effectively very
+improbable in the short term. This affects the ``short term ergodicity'' and
+mixing rates of the system. For relative low sampling limits, the
+smaller disks behave effectively as if each was alone in the box, thus
+producing results which have some qualities of integrable systems. 
+
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{HoppingTimesradio01.pdf}
+                \caption{$d=0.1$}
+                \label{smallradious}
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{HoppingTimesRadius249.pdf}
+                \caption{$d=0.249$}
+                \label{bigradious}
+        \end{subfigure}       
+        \caption{Histograms for the mean hopping time
+in two extreme cases. Left is a very small diameter, while right is an almost
+closed pass. While it is not customary to compare logarhytmic and non
+logarhytmic scales, here I take that liberty for the funny features to be
+more exageratedly shown.}\label{histohopps}
+\end{figure}
+
+The figure \ref{bigradious} shows clearly an exponential decay in the
+distribution, something to be expected for a chaotic system \cite{OttLibro} , while the
+figure in \ref{smallradious} is something different. 
+
+To do: comparison of our mean hopping time with the mean *first* time to hop, which is what is studied in other papers.
+Hopefully (and presumably) they are the same asymptotically when $\epsilon \to 0$?
+
+For square box, can escape in either direction, so hopping time (including in other direction) should be half? Could be. The events are ``almost independent'', so each one
+can occur first with probability one half. If the disks are very small, then
+they are trully independent events, but if they are big, one event taking
+place hinders the other, so probably we should not think that is 
+one half. A carefull inspection for the $\|A\|$ element in formula \ref{hoptimegeneral}
+should be the answer to that.
+
+
+\textbf{ 3D?  Must be long channel. Spheres may be confined in 1 direction  and only able to exchange in other direction, or be able to exchange in two directions.
+This probably affects asymptotics.}
+
+Escape time through a hole in the wall?? (Probably leave for future.)
+Mean time between disc collisions, collisions with walls. Should be easy with the formula
+
+Distributions of all these times (numerical with histogram).
+
+
+\bibliography{../../notasmixtas/TwoDiskBiblio}
+
+
+
+\end{document}

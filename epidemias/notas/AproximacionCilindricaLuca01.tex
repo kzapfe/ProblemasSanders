@@ -1,0 +1,287 @@
+\documentclass[letterpaperr,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage[spanish]{babel}
+
+\usepackage[T1]{fontenc}  
+\usepackage{textcomp}
+
+
+%\usepackage[garamond,cmbraces]{newtxmath}
+
+\usepackage{xspace}
+\usepackage{graphicx}
+
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{anysize}
+\usepackage[margin=2cm]{geometry}
+
+%\usepackage{bm}
+
+\bibliographystyle{alpha}
+
+\newcommand{\Acase}{\textbf{A}\xspace}
+\newcommand{\Bcase}{\textbf{B}\xspace}
+\newcommand{\Ccase}{\textbf{C}\xspace}
+\newcommand{\Dcase}{\textbf{D}\xspace}
+\newcommand{\Uno}{\textbf{1}\xspace}
+\newcommand{\Dos}{\textbf{2}\xspace}
+
+\renewcommand{\rmdefault}{ugm}
+  
+
+\title{Aproximaciones Cilíndricas, Relación entre cantidades numéricas.}
+\author{W. P. K. Zapfe}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Un Cuadrado y una Linea}
+
+Primero establezcamos el caso más simple. El animal \Uno puede moverse
+en un cuadrado de lado uno, mientras que el otro sólo se mueve en una linea
+horizontal en el centro del cuadrado. Para simplificar cálculos
+pongamos el origen de coordenadas en el centro del cuadrado.
+Con esto las ecuaciones que definen el espacio disponible para
+moverse libremente sin interacción son las siguiente:
+
+\pmb{Usemos medidas generales para le retanugulo}.
+
+\begin{align}
+x_1,x_2 \in  & [ -a/2, a/2], \\
+y_1\in & [ -b/2, b/2], \\
+y_2 = & 0, \\
+(x_1-x_2)^2+(y_1-y_2)^2 & \ge (2 r_0)^2,
+\end{align}
+usando $r_0$ como el radio de interacción. 
+A pesar de la restricción de $y_2$, es más cómodo tomarla en cuenta
+desde un inicio para los cálculos.
+
+El Volumen del cilindro ``de interacción'' (es decir, el cilindro al
+interior del cubo) esta determinado por el la parte central
+del cilindro y dos cuñas. El cambio de coordendas obtenido
+mediante una rotación simple:
+
+\begin{equation}\label{rotacion}
+  \begin{pmatrix}
+    a \\
+    A
+  \end{pmatrix}
+  =\frac{1}{\sqrt{2}}
+  \begin{pmatrix}
+    1 & -1 \\
+    1 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    a_1 \\
+    a_2
+  \end{pmatrix},
+\end{equation}
+
+Esto determina el radio del cilindro:
+\begin{equation}
+2x^2+2y^2 \ge (2 r_0)^2
+\end{equation}
+
+Resultando ser, entonces, $\sqrt{2} r_0$.
+La parte sin cuñas del cilindro está delimita por la altura
+``libre'', es decir, la que no está cerca de las esquinas del cubo. 
+Esta resulta ser (un diagrama simple lo demuestra):
+
+\begin{equation}
+h_0=\sqrt{2} (a-2 r_0).
+\end{equation} 
+
+El resto del volumen es dos veces el volumen de una cuña de dos caras,
+cada uno resulta ser (ver mis notas de la red de cilindros):
+
+\begin{equation}
+V_c=r_0^3 (2\pi-2).
+\end{equation}
+
+Entonces el volumen del cilíndro interior, contando cuñas y todo, es de:
+
+\begin{align}
+V_0 &= \sqrt{2} \pi (\sqrt{2} r_0)^2 (a-2 r_0)+ 2r_0^3 (2\pi-2)\\
+&= 2  r_0^2 [\pi \sqrt{2} \pi (a - 2 r_0) + r_0 (2\pi-2) ] \\
+&= 2  r_0^2 [ \pi \sqrt{2} a  + r_0 (2\pi-2-2 \sqrt{2}) ] 
+\end{align}
+El último renglón muestra la separación entre la parte
+``cilíndrica'' y las cuñas.
+
+Por cierto, como podemos ajustar dos parámetros para obtener
+un cilindro del mismo volumen (radio y altura), tal vez podamos
+también preservar el área en nuestro sistema simplificado.
+El área de interacción del cilindro está dada por:
+
+\begin{align}
+A_0 &= 2\pi 2 r_0 (a-2 r_0)+ 2 r_0^2(\pi/2-1)\\
+&= 2 r_0 [2\pi a +  r_0 (\pi/2-2\pi\sqrt{2}-1)]\\
+\end{align}
+
+Como podemos ver, las correcciones debidas a las cuñas son
+de un orden superior siempre a la parte del cilindro convencional en
+la variable $r_0$, por ende, mientras menor sea $r_0$, la correcion 
+es menos importante. Asimismo, para $r_0 \approx 1/2$, el par de cuñas ocupan
+casi todo el interior del cubo. 
+
+Escogamos ahora un cilindro de radio $r_1$ y altura $h_1$ tales
+que preserven el volumen y área del cilindro interior con cuñas.
+
+\begin{align}
+A_0 & = 2\pi r_1 h_1, \text{ } V_0 = \pi r_1^2 h_1 \\
+\Rightarrow r_1 & = 2V_0/A_0, \text{ }h_1  =  A_0^2/(4 \pi V_0 ).  
+\end{align}
+
+Haciendo la talachita, podemos obtener una espantosa expresión adecuada:
+
+\begin{align}
+ r_1 & = \frac{2 r_0 [\sqrt{2} \pi a + r_0(2 \pi - 2 - 2 \sqrt{2})]}
+ {[2 \pi a + r_0 (\pi/2 - 1 - 2\pi \sqrt{2})] } \\
+h_1 & = \frac{1}{2\pi}
+\frac{[2\pi a + r_0 (\pi/2 -2 \sqrt{2}\pi-1)]^2 }
+{\sqrt{2} \pi a + r_0(2 \pi -2 - 2 \sqrt{2}) }
+\end{align}
+
+Uno puede ver que despreciando las contribuciones de la cuña se recupera
+la identidad, $r_1= \sqrt{2} r_0, h_1=h_0=\sqrt{2} a $. 
+Ahora, el cilindro que representará 
+al cubo tendrá la misma altura $h_1$, pero también queremos preservar
+su volumen, que es $1$, entonces el radio externo del sistema será
+$R_1=\sqrt{a ^2 b /(\pi h_1)}$. 
+
+\section{Dos animálculos en un cuadrado}
+
+La generalización es menos fea de lo que uno podría pensar.
+Establezcamos las relaciones que definen la geometría:
+
+\begin{align}
+x_1,x_2 \in  & [ -a/2, a/2], \\
+y_1, y_2\in & [ -b/2, b/2], \\
+(x_1-x_2)^2+(y_1-y_2)^2 & \ge (2 r_0)^2.
+\end{align}
+
+Como podemos ver, son casi iguales, excepto la auscencia de la
+constricción $y_2=0$. La misma transformación aplicada a 
+las coordendadas nos simplifica la última desigualdad
+y nos define un círculo en el plano $x,y$. La frontera
+absorvente se vuelve un cilindro cuadridimensiónal, con
+dos ejes rectos y una base cilíndrica. Los ejes son a lo largo de
+las coordenadas $X,Y$, y su longitud no depende una de la otra, siendo
+cada uno de ellos diagonal a una de las caras del hipercubo. Asi
+que su extensión, en ambos casos, despreciando las cuñas, es la
+diagonal del cuadrado en las $x_i$ o en las $y_i$.
+Entonces el volumen de la
+parte central del hipercilíndro será simplemente
+$V=\pi (\sqrt{2} r_0)^2 (\sqrt{2}a-2 r_0) (\sqrt{2}b-2 r_0) $.
+
+La contribución de las cuñas es sólo un poco más tediosa.
+
+\subsection{Cuñas cilíndricas en cuatro dimensiones}
+
+Escencialmente la condición geométrica que describe
+las cuñas en cuatro dimensiones es entéramente análoga
+a la que la describe en tres. Además, las condiciones
+en las $y_i$ y las $x_i$ son independenientes funcionalmente,
+lo que hace que la cuña esté limitada en sus ``alturas'' 
+de forma separada, por lo tanto, usando el mismo truco que en 
+los billares cilíndricos, calculemos primero un cuarto de cuña.
+
+\begin{equation}
+V_{4c}=\iiiint dz dw \rho d \rho d \theta
+\end{equation}
+
+La integral sobre $z$ va de 0 a $r_0-x=r_0-\rho \cos \theta$ y 
+la integral sobre $w$ de 0 a $r_0-y=r_0-\rho \cos \theta$.
+La integral sobre $\theta$ de 0 a $\pi/2$ y 
+la de $\rho$ de 0 a $r_0$.
+Nótese que los parámetros $a,b$ no aparecen en ningun lado, 
+ya que no importa dónde está la cuña, tiene el mismo volumen,
+y $a,b $ sólo controlan su localización espacial. 
+
+\begin{align}
+V_{4c} & =\iint (r_0-\rho \cos \theta)(r_0 - \rho \sin \theta)
+ \rho d \rho d \theta \\
+&=\int (r_0^2 \pi/2 -2 r_0 \rho +2 \rho^2) \rho d \rho \\
+&= r_0^4 (\pi/4-13/24).
+\end{align}
+
+Eso fue un cuarto de cuña. La cuña total nos da:
+\begin{equation}
+V_c= r_0^4 (\pi-13/6).
+\end{equation}
+
+El área se obtiene de forma análoga, obteniendo:
+
+\begin{equation}
+A_c= r_0^3 (\pi/2-3/2).
+\end{equation}
+
+Las unidades son las adecuadas, el volumen es de cuatro
+dimensiones, y el ``área'' tiene tres.
+El volumen y el área totales resultan ser entonces:
+
+\begin{align}
+ V & = r_0^2 [2 \pi  (\sqrt{2}a-2 r_0) (\sqrt{2}b-2 r_0) + r_0^2 (2\pi-13/3)] \\
+ & = r_0^2 [4 \pi ab   + r_0^2 (10\pi-13/3)-4 \sqrt{2} \pi r_0 (a+b)] \\
+A & = 4\pi r_0 (\sqrt{2}a-2 r_0) (\sqrt{2}b-2 r_0) +  r_0^3 (\pi/2-3/2) \\
+ & = 2 \sqrt{2} \pi r_0 [2 ab -2\sqrt{2} r_0 (a+b)] +  r_0^3 (\pi/2+8\sqrt{2}\pi-3/2) 
+\end{align}r
+
+\subsection{El Hipercilíndro equivalente}
+
+Ahora bien, tenemos dos ``alturas'' que ajustar, y el
+ hipercubo
+tiene una relación de aspecto de $a/b$. Quisieramos
+preservar esto, asi que sugiero corregir las dos alturas
+equivalentes del cilindro por el mismo factor $z$.
+
+
+\begin{align}
+V &= R^2 (\sqrt{2} a z)(\sqrt{2} b z) \pi \\
+A &= R (\sqrt{2} a z)(\sqrt{2} b z) 2  \pi \\
+\rightarrow & R= 2V/A, \text{ } z^2=A^2/( 8\pi V a b).  
+\end{align}
+
+Honestamente, poner esto en términos de $r_0$ está bastante feo, pero no imposible.
+El radio del cilindro interior queda así:
+
+\begin{equation}
+R_{int}=\frac{r_0 [ 4 \pi ab + r_0 ^2 (10 \pi -13/3) - 4\sqrt{2} \pi r_0 (a+b)]}
+{\sqrt{2}\pi[2 ab- 2\sqrt{2} r_0 (a+b)] +r_0^2 (8\sqrt{2} \pi + \pi/2 -3/2)}
+\end{equation}
+
+Se puede ver que usando sólo los primeros términos arriba y abajo, 
+recuperamos la expresión
+que resultaría de no haber cuñas. 
+
+El término correctivo $z$ adimensional esta dado por la expresión:
+
+\begin{equation}
+R_{int}=\frac{r_0 [ 4 \pi ab + r_0 ^2 (10 \pi -13/3) - 4 \sqrt{2}\pi r_0 (a+b)]}
+{\sqrt{2}\pi[2 ab- 2r_0 \sqrt{2} (a+b)] +r_0^2 (8\sqrt{2} \pi + \pi/2 -3/2)}
+\end{equation}
+
+\begin{equation}
+z=\sqrt{
+\frac{\big( 2\sqrt{2}\pi[ 2 ab- 2r_0 \sqrt{2}(a+b)] +r_0^2 (8\sqrt{2} \pi + \pi/2 -3/2) \big)^2}
+{8 \pi ab [4 \pi ab + r_0 ^2 (10 \pi -13/3) - 4 \sqrt{2} \pi r_0 (a+b)]}
+}
+\end{equation}
+
+Siendo con estas dos expresiones las alturas del hipercilíndro interior equivalente
+$A=\sqrt{2} a z$,  $B=\sqrt{2} b z$. Recuperamos $z=1$ si las cuñas son ignoradas.
+
+Una vez más, el cilindro exterior tendrá las mismas alturas que el interior,
+pero el radio estará determinado por el volumen total:
+
+\begin{equation}
+R_{ext}=\frac{ab}{2\pi z^2}.
+\end{equation}
+
+\end{document}

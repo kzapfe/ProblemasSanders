@@ -1,0 +1,98 @@
+\documentclass[letterpaperr,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+
+
+\usepackage[T1]{fontenc}  
+\usepackage{textcomp}
+
+
+%\usepackage[garamond,cmbraces]{newtxmath}
+
+\usepackage{xspace}
+\usepackage{graphicx}
+
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{anysize}
+\usepackage[margin=2cm]{geometry}
+
+%\usepackage{bm}
+
+\bibliographystyle{alpha}
+
+\newcommand{\Acase}{\textbf{A}\xspace}
+\newcommand{\Bcase}{\textbf{B}\xspace}
+\newcommand{\Ccase}{\textbf{C}\xspace}
+\newcommand{\Dcase}{\textbf{D}\xspace}
+\newcommand{\Uno}{\textbf{1}\xspace}
+\newcommand{\Dos}{\textbf{2}\xspace}
+
+\renewcommand{\rmdefault}{ugm}
+  
+
+\title{Territorial spreading of epidemics}
+\author{W. P. K. Zapfe}
+
+
+\begin{document}
+
+
+\maketitle
+
+\begin{abstract}
+
+
+\end{abstract}
+
+
+\section{Introduction}
+
+
+\section{The Model}
+
+For our purpose, the \emph{land} is just the euclidian plane without any
+special constructs. Every \emph{animal} shall be represented by a circle,
+which is equivalent to its radius of interaction. All the animals
+have the same radius of interaction, $\rho_0$, and animals at a distance
+less than $2 \rho_0$ from each other are prone to contagion. A animal shall have
+a square territory in which it moves randomly. The territories of the animals
+can overlap, but not to much, each animal has a \emph{private} area and 
+a \emph{shared} area. Areas shared between three or more animals should be rare,
+making extremely rare triple encounters.  
+
+Each animal shall be caracterized by its Cartesian coordinates and a boolean
+variable indicating if its \emph{sick} or not. The territories of all infected
+animals is the quarantine area. We are manly interested in the grow of
+this area as a function of time for various cases. We shall start
+thinking that the rate of recovery or death is irrelevant in the time scales
+considered for infection.
+ 
+The rate of spread of the disease, measured as change of quarantined area
+per unit time depends strongly on the \emph{first encounter time} for
+two animals which have overlapping territories. This problem is very
+difficult to solve analitically, as it results in a difusive equation
+in a very inconvenient geometry. We shall investigate numerically
+this parameter as function of the \emph{mean} overlapping area for a large
+number of animals, and then compare it with the spreading of the disease.
+
+At first, only one animal shall be sick. The centers of the territories
+shall be close to a regular cuadrangular grid, with random displacements
+from it, picked from a Gaussian distribution. The variance of such a
+distribution is responsible for the amount of average overlap. 
+
+\section{Previous results}
+
+A one dimensional  simplified version of this problem was researched 
+in \ref{SandersLuca}. There was no need for the radius of interaction,
+and a rough ``area preserving'' approximation to the dffusive equation
+which gives the first encounter times and the mean times could be solved.
+We can gain gain insight explaining the very dificult task of generalizing
+this result. 
+
+
+
+\end{document}
+

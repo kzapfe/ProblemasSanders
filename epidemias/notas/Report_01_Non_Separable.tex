@@ -1,0 +1,335 @@
+\documentclass[letterpaperr,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+
+
+\usepackage[T1]{fontenc}  
+\usepackage{textcomp}
+
+
+%\usepackage[garamond,cmbraces]{newtxmath}
+
+\usepackage{xspace}
+\usepackage{graphicx}
+
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{anysize}
+\usepackage[margin=2cm]{geometry}
+
+%\usepackage{bm}
+
+\bibliographystyle{alpha}
+
+\newcommand{\Acase}{\textbf{A}\xspace}
+\newcommand{\Bcase}{\textbf{B}\xspace}
+\newcommand{\Ccase}{\textbf{C}\xspace}
+\newcommand{\Dcase}{\textbf{D}\xspace}
+\newcommand{\Uno}{\textbf{1}\xspace}
+\newcommand{\Dos}{\textbf{2}\xspace}
+
+\renewcommand{\rmdefault}{ugm}
+  
+
+\title{Two territorial ``Animals'' encounter time.}
+\author{W. P. K. Zapfe}
+
+
+\begin{document}
+
+%r\marginsize{2cm}{2cm>}{2cm}{2cm}
+\maketitle
+
+\begin{abstract}
+
+I will pose the considerations and difficulties in extending the 
+treatment in the problem of contagious territorial animals for one dimensional 
+random walker models treated in \cite{LucaDavid} to a more
+realistic 2D random walker model. 
+
+\end{abstract}
+
+
+\section{Four apparently simple cases}
+
+We shall distinguish four variants of the problem. In all
+of them the animal labelled as \Uno has a square territory
+with sides size 2, whose coordinates in orthogonal directions
+range from -1 to 1. The second animal, labelled \Dos, has
+different territorial freedom in each case.
+Horizontal or West to East directions will have
+coordinates indicated by $x$, vertical or South to North, by
+$y$, as usual. 
+
+In the case \Acase, \Dos is shy and precautions. It only
+enters the territory of \Uno along a narrow strip of
+length $1-l$, which we can model as
+a straight line. The case \Bcase is a slight modification of 
+this case, in which \Dos is able to cross \Uno territory 
+from side to side. In the case \Ccase, \Dos is able to move
+along a two dimensional strip on the eastern side of \Uno's
+territory. Finally, \Dcase is simply a representation
+of the generic intersection of two square domains.
+The four cases are diagrammatically illustrated in the 
+ figure \ref{fig::casos}. 
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{CasoTerritorioA.pdf}
+    \caption{\Acase}
+    \label{figAcase}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{CasoTerritorioB.pdf}
+    \caption{\Bcase}
+    \label{figBcase}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{CasoTerritorioC.pdf}
+    \caption{\Ccase}
+    \label{figCcase}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{CasoTerritorioD.pdf}
+    \caption{\Dcase}
+    \label{figDcase}
+  \end{subfigure}
+  \caption{The four different variants}\label{fig::casos}
+\end{figure}
+
+\section{Random Walker considerations}
+
+It is known that a coarse grain approximation to the movement of an 
+animal inside its territory is a random walker. We start
+our reasoning by dividing the territory of both animals into equal 
+square cells. Then we will think of the two animals as a single
+random walker moving on a space whose dimension is the sum of 
+the dimensions of both territories. 
+For case \Acase and \Bcase this will be a cube, on the other
+two it will become a teseract, as the animals have one more
+degree of freedom to explore. A schematic representation
+of the \Acase is on figure \ref{CeldasA}. The sets of cells
+where encounter does occur is marked by a blue colour outline,
+and a sphere represents an occupied cell, that is, the
+animals are on the coordinates inside their territory.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=0.99\textwidth]{Celdas_7_con_encuentro.pdf}
+    \caption{7 cells by side.}
+    \label{gruesaceldas}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=0.99\textwidth]{Celdas_20_con_encuentro.pdf}
+    \caption{20 cells by side.}
+    \label{finaceldas}
+  \end{subfigure}
+  \caption{The variation \Acase of the problem with 
+    discrete random walking, represented on a single
+    3D cube.}\label{CeldasA}
+\end{figure}
+
+The conditions for encounter are as follows:
+
+\begin{align}
+x_1&=x_2+l\\
+y_1&=y_2. \text{ where  $y_2$ is a constant.}
+\end{align}
+
+Now a problem should become apparent. As we get to the
+continuous limit, the cells become smaller and smaller.
+The set of encounter cells reduces to a line, which the
+random walker has probability zero of encountering.
+In order to solve this we consider that the animals
+have a radius of interaction of size $\epsilon$, where
+they can get sickness from each other. Still in a discrete
+cell approximation this would look as in the figure \ref{celdasradio}.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=0.99\textwidth]{Celdas_15_con_radio.pdf}
+    \caption{Discrete version.}
+    \label{celdasradio}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.49\textwidth}
+    \includegraphics[width=0.99\textwidth]{CilindroDescentrado.pdf}
+    \caption{continuous version.}
+    \label{continuoradio}
+  \end{subfigure}
+    \caption{This time, we set for the encounter a radius of
+    $\epsilon$ for each animal. In the discrete cell approximation, 
+    this thickens the set of available cells, here showed as a lighter blue.
+    The limit is a cylinder.}
+    \label{conradio}
+\end{figure}
+
+The expression for the encounter, taken into account that
+the radius of interaction is different from zero, turns this way:
+
+\begin{align}\label{radii}
+ (x_1-x_2-l)^2+(y_1-y_2)^2 \leq (2\epsilon)^2 
+\end{align}
+
+In the continuous limit, this will draw a cylinder laying
+diagonally on the full phase space, as seen on the figure 
+\ref{continuoradio}. The case \Bcase is the limit for which $l=0$,
+and then the cylinder goes from one edge to the opposite. In
+such a geometry, it appears to be easy to threat the continuous limit
+in a volume preserving smooth approximation. We could
+try to maximise the symmetries by replacing the cube by a sphere or
+a cylinder. This second option turns out to be inconvenient
+as it doesn't reflect the fact that in case \Acase the
+volume of the inner cylinder decreases as the penetration of
+\Dos into \Uno territory. Still, this would be
+the only case amenable to treatment by a known
+separation of variables.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.29\textwidth}
+    \includegraphics[width=0.79\textwidth]{CilindroDiagonal01.png}
+    \caption{}
+    \label{CilDiag}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.29\textwidth}
+    \includegraphics[width=0.99\textwidth]{EsferaCilindro.png}
+    \caption{}
+    \label{EsferaCil}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.29\textwidth}
+    \includegraphics[width=0.99\textwidth]{CilindroenCilindro01.png}
+    \caption{}
+    \label{CilCil}
+  \end{subfigure}
+    \caption{In the case \Bcase is easier to approximate the 
+    cube with a symmetric solid, using the axis of the cylinder
+    as the rotation axis. In any other case this gives misleading figures.}
+    \label{smoothapprox}
+\end{figure}
+
+It is the approximation shown in figure \ref{CilCil} the one where we could
+proceed to use a continuous diffusive treatment and use separation of
+variables to solve the equation. It comes with severe limitations, though,
+as this geometry does not take into account the narrowing of the space
+in the extreme sides of the absorbing inner cylinder. 
+
+Of course the convenient cylindrical coordinates are in the scaled
+space where the equation for the inner absorbing surface reads
+
+\begin{equation}
+x^2+y^2 = 2 \epsilon^2,
+\end{equation}
+
+so that we do not have to worry about elliptical cylinders.
+That is achieved by the simple $pi/4$ rotation,  
+\begin{equation}\label{rotacion}
+  \begin{pmatrix}
+    a \\
+    A
+  \end{pmatrix}
+  =\frac{1}{\sqrt{2}}
+  \begin{pmatrix}
+    1 & -1 \\
+    1 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    a_1 \\
+    a_2
+  \end{pmatrix},
+\end{equation}
+
+where we substitute the $a$ by $x$ and $y$. The fact that we take into
+consideration the $y_2$ coordinate even when it is a constant help us
+to deal with unsavoury $\sqrt{2}$ factors and pave the way for the 
+case \Dcase.
+
+It is also easier to describe a sphere in cylindrical coordinates than the 
+other way around, so we stick with this for considering the case depicted
+in the figure \ref{EsferaCil}. The $X$ axis according to the transformation
+\ref{rotacion} will be our $z$ axis in cylindrical coordinates.
+
+\begin{align}
+x=&\rho\cos\theta \\
+y=&\rho\sin\theta \\
+X=z.
+\end{align}
+
+The diffusive equation to solve has a relative simple expression in such a system:
+\begin{equation}\label{diffcil}
+  \partial_t f = D \Big(\frac{1}{\rho} \frac{\partial}{\partial\rho}\rho\frac{\partial}{\partial\rho}f
+  +\frac{1}{\rho^2}\frac{\partial^2}{\partial \theta^2}f
+  +\frac{\partial^2}{\partial z^2}f\Big).
+\end{equation}
+
+The boundary conditions are as follows: for the outer border, the boundary reflects the
+walk, meaning that the animals who reach the limit of their territory turn around.
+The inner border is an absorbing boundary, thereby signifying that an encounter
+has occurred. The mathematical expressions for these conditions are as follows.
+
+\begin{align}
+\nabla f \cdot \hat{n} &=0 \text{ at the exterior border} \\
+f &=0 \text{ at the inner border}.
+\end{align}
+
+In the case that we approximate the available phase space with a cylinder, 
+the normal vector becomes the radial vector and the separation of variables
+looks feasible. In the case of a spherical outer border this
+condition looks a bit more complex in the set of coordinates chosen.
+
+\begin{equation}
+\frac{1}{\rho}\frac{\partial}{\partial\rho} f +
+\frac{1}{z}\frac{\partial}{\partial z} f =0 \text{ when } z^2+\rho^2 = R_0 ^2.
+\end{equation}
+
+This treatment is far from a generic case, and both approximations lead 
+to terrible expressions for the more general \Acase case. We could use an unfolding trick on
+the space shown in the figure \ref{continuoradio}. We make reflections on the 
+square side who has  contact with the cylinder, producing the toroidal inner border
+shown in figure \ref{Unfold}. The sensible approximation is to consider this
+figure as annular cylinder and use cylindrical coordinates with rotation axis parallel
+the $y_2$ coordinate axis. This is shown in \ref{ToroChato}.
+
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.29\textwidth}
+    \includegraphics[width=0.99\textwidth]{ToroFeo01.png}
+    \caption{Unfolding}
+    \label{Unfold}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.29\textwidth}
+    \includegraphics[width=0.99\textwidth]{ToroChato01.png}
+    \caption{Smoothing}
+    \label{ToroChato}
+  \end{subfigure}
+    \caption{In the case \Bcase is easier to approximate the 
+    cube with a symmetric solid, using the axis of the cylinder
+    as the rotation axis. In any other case this gives misleading figures.}
+    \label{UnfoldandSmooth}
+\end{figure}
+
+Maybe this could be amenable by a dissection of the separation of variables.
+We should first treat the distribution of passage times from the part of the
+cylinder which doesn't contain an absorbing ring to that section. Then there we should
+divide it into three different events: 
+where the particle went directly to the absorbing ring, where it went to the
+inside, and where it went to the outer section. The last two produce a further complication.
+The particle can return to the free space above and below the ring. So we can have a 
+quite complicate chain of events to calculate the first encounter time \ldots
+
+
+
+\end{document}
+
