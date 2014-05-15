@@ -17,6 +17,7 @@ const double tiempomax=6666.0;
 const int colisionesmax=100000;
 const double widthmedia=0.5, heightmedia=0.5;
 const double radiomax=(widthmedia+heightmedia)-sqrt(2*widthmedia*heightmedia);
+const double radiomaforhop=0.5;
 const double Energia=1.00;
 
 

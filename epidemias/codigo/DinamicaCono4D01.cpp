@@ -39,9 +39,10 @@ int main(){
       gsl_rng_env_setup();
       gsl_rng_set(r,238107);
 
-      double rext, rint;
+      double rext, rint, rintmax;
       rext=1.0;
-      rint=(double)n/(double)Geometrias*rext;
+      rintmax=0.25/sqrt(2.0);
+      rint=(double)n/(double)Geometrias*rintmax;
 
       cout<<"El radio es " << rint<<endl;
 
@@ -49,7 +50,7 @@ int main(){
       int numeraauxiliar=1000+n;    	 
       ostringstream escupefirst, escupeelotro, escupemas;
        
-      escupefirst<<numeraauxiliar<<"_TimeConosCel4D.dat"<<std::ends;  
+      escupefirst<<numeraauxiliar<<"_TimeConosCel4DLimite05.dat"<<std::ends;  
       std::string stringfirst;
       stringfirst=escupefirst.str();
       const char *nombrefirst=stringfirst.c_str();

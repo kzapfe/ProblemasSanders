@@ -35,7 +35,7 @@ int main(){
   T = gsl_rng_ranlxs2;    
     
   const double radioefemin=0.001;
-  const double radioefemax=radiomax-radioefemin;
+  const double radioefemax=0.25-radioefemin; //chequemos el hoptime primero
   
   cout<<"Dada la geometria, el radio maximo es "<<radiomax<<endl;
   cout<<" lo que nos interesa es el centro de la distribucion"<< endl;
@@ -65,7 +65,7 @@ int main(){
 
    
     //recicla Variables
-    escupeelotro<<numeraauxiliar<<"_AraTuta001.dat"<<std::ends;         
+    escupeelotro<<numeraauxiliar<<"_AreaHop001.dat"<<std::ends;         
     stringfirst=escupeelotro.str();
     const char *nombrecondini=stringfirst.c_str();
     
@@ -101,7 +101,8 @@ int main(){
 
       //it has to be OUTSIDE THE CILINDER, and in the hopping position
       if((dist>(uno.radio+dos.radio))
-	 &&(
+	 &&
+	 /*(
 	    (dist<(uno.radio+dos.radio+epsilon)) ||
 	    (uno.qx-(-widthmedia+radio)<epsilon) ||
 	    ((widthmedia-radio-uno.qx)<epsilon) ||
@@ -111,8 +112,12 @@ int main(){
 	    ((heightmedia-radio-uno.qy)<epsilon) ||
 	    (dos.qy-(-heightmedia+radio)<epsilon) ||
 	    ((heightmedia-radio-dos.qy)<epsilon) 
-	    ))
-	{condini<<uno.qx<<"\t"<<uno.qy<<"\t"<<
+	    )*/
+	    //Las de arriba son TODAS las areas
+	 (abs(uno.qx-dos.qx)<epsilon)//Hoping area 
+	 )
+
+	   {condini<<uno.qx<<"\t"<<uno.qy<<"\t"<<
 	    dos.qx<<"\t"<<dos.qy<<"\t"<<endl;
 	  //Contamos sobre la esfera
 	  cuentamalos++;
