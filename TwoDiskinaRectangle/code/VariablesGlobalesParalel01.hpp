@@ -13,7 +13,7 @@
 // Y deben funcionar para todos los tipos de discos.
 
 const double tolerancia=2.0e-16;
-const double tiempomax=6666.0;
+const double tiempomax=66666.0;
 const int colisionesmax=100000;
 const double widthmedia=0.5, heightmedia=0.5;
 const double radiomax=(widthmedia+heightmedia)-sqrt(2*widthmedia*heightmedia);

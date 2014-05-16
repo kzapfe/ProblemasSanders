@@ -9,7 +9,9 @@
 LIBSGEN=-larmadillo
 LIBSOPENGL=-lGL -lGLU -lglut
 FUENTESCOM=DosDiscosDinamica.hpp Disco01.hpp interaccion01.hpp tiemposchoque01.hpp 
+FUENTESCOMPARA=RandomConditions01.hpp VariablesGlobalesParalel01.hpp
 FUENTESGL=FondosyFiguras01.hpp LOpenGL.h  circuloopengl.hpp 
+
 # Recuerda que para hacer bien makefiles, 
 #las variables de fuentes generales las debes de poner al final
 # La primera fuente debe ser la fuente que le quieras pasar al compilador o equivalente
@@ -27,23 +29,28 @@ Tiempos01.x:  CalculaTiempos01.cpp VariablesGlobales01.hpp $(FUENTESCOM)
 TiemposWithRandom01.x:  CalculaTiempos02.cpp RandomConditions01.hpp VariablesGlobales01.hpp $(FUENTESCOM)
 	g++ $(LIBSGEN) -lgsl CalculaTiempos02.cpp -o TiemposWithRandom01.x
 
-CTParalel01.x:  CalculaTiemposParalel01.cpp RandomConditions01.hpp VariablesGlobalesParalel01.hpp $(FUENTESCOM)
+CTParalel01.x:  CalculaTiemposParalel01.cpp  $(FUENTESCOM) $(FUENTESCOMPARA)
 	g++ $(LIBSGEN) -lgsl -fopenmp CalculaTiemposParalel01.cpp -o CTParalel01.x
 
-Liapunov01.x:   RandomConditions01.hpp Liapunov01.cpp DinamicaTangente01.hpp VariablesGlobalesParalel01.hpp $(FUENTESCOM)
+
+CTParalel02.x:  CalculaTiemposParalel02.cpp  $(FUENTESCOM) $(FUENTESCOMPARA)
+	g++ $(LIBSGEN) -lgsl -fopenmp $< -o $@
+
+
+Liapunov01.x: Liapunov01.cpp DinamicaTangente01.hpp  $(FUENTESCOM) $(FUENTESCOMPARA)
 	g++ $(LIBSGEN) -lgsl -fopenmp Liapunov01.cpp -o Liapunov01.x
 
 
 ## Codigos Paralelizados con openmp
-PrimerChoqueParalel01.x:  CalculaTiemposParalel02.cpp RandomConditions01.hpp VariablesGlobalesParalel01.hpp $(FUENTESCOM)
+PrimerChoqueParalel01.x:  CalculaTiemposParalel02.cpp $(FUENTESCOM) $(FUENTESCOMPARA)
 	g++ $(LIBSGEN) -lgsl -fopenmp $< -o $@
 
 
-VolumenParalel01.x: FraccionVolumenProhibidaParalel01.cpp RandomPosition01.hpp VariablesGlobalesParalel01.hpp $(FUENTESCOM)
+VolumenParalel01.x: FraccionVolumenProhibidaParalel01.cpp $(FUENTESCOM) $(FUENTESCOMPARA)
 	g++ $(LIBSGEN) -lgsl -fopenmp $< -o $@	
 
 
-AreaParalel01.x: FraccionAreaParalel01.cpp RandomPosition01.hpp VariablesGlobalesParalel01.hpp $(FUENTESCOM)
+AreaParalel01.x: FraccionAreaParalel01.cpp $(FUENTESCOM) $(FUENTESCOMPARA)
 	g++ $(LIBSGEN) -lgsl -fopenmp $< -o $@	
 
 

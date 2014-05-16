@@ -24,15 +24,15 @@ using namespace std;
 
 
 int main(){
-1
-
-  const int Geometrias=50;   
-  const int ensemble=400000;
+  
+  const int Geometrias=100;   
+  const int ensemble=160000; //Small test
   const gsl_rng_type *T;
   T = gsl_rng_ranlxs2;    
-    
-  const double radioefemin=0.01;
-  const double radioefemax=radiomax-radioefemin;
+  
+  const double radioefemin=0.002;
+  //const double radioefemax=radiomax-radioefemin;
+  const double radioefemax=0.248;
   
   cout<<"Dada la geometria, el radio maximo es "<<radiomax<<endl;
   cout<<" lo que nos interesa es el centro de la distribucion"<< endl;
@@ -64,7 +64,7 @@ int main(){
     ofstream tiemposfirst, condini;
 
     std::ostringstream escupefirst, escupeelotro, escupemas;
-    escupefirst<<numeraauxiliar<<"_FirstTimeHopp.dat"<<std::ends;         
+    escupefirst<<numeraauxiliar<<"_HopTimeNew.dat"<<std::ends;         
     std::string stringfirst;
     stringfirst=escupefirst.str();
     const char *nombrefirst=stringfirst.c_str();
@@ -95,8 +95,8 @@ int main(){
       (double)n/(double)Geometrias*(radioefemax-radioefemin);
     
     cout<<"Empezamos con la geometria " << n<<endl;
-    cout<<"El radio es " << radio<<endl;
-    tiemposfirst<<"# El radio es " << radio<<endl;
+    cout<<"#Radio es " << radio<<endl;
+    tiemposfirst<<"# radio " << radio<<endl;
     tiemposfirst<<endl;
     
     //Si el ensamble es muy grande, no escribimos mas que las 
@@ -118,6 +118,7 @@ int main(){
 
       bool unoantesquedosoriginal;
       bool unoantesquedos;
+
       unoantesquedosoriginal=(uno.qx<dos.qx);
       unoantesquedos=unoantesquedosoriginal;
 
@@ -126,11 +127,13 @@ int main(){
 
       while ((!colision) && (colisiones<colisionesmax)){ 
       
-	tiempodechoque+=dinamicaunchoque(uno,dos);	
+	tiempodechoque+=dinamicaunchoqueyhopp(uno,dos);	
 	colisiones++;
 	unoantesquedos=(uno.qx<dos.qx);
 	
-	if(unoantesquedos != unoantesquedosoriginal) colision=true;	
+	//	if((unoantesquedos != unoantesquedosoriginal) || (chocador==5))
+		if((chocador==5))
+		  {colision=true;}	
 
 	/*
 	debuger<<uno.qx<<"\t"<<uno.qy<<"\t"<<
