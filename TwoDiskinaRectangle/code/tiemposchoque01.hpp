@@ -99,7 +99,8 @@ double TiempoChoqueDosDiscos(Disco &Uno, Disco &Dos){
   double vx,vy; //velocidades effectivas
   vx=Uno.px/Uno.masa-Dos.px/Dos.masa;
   vy=Uno.py/Uno.masa-Dos.py/Dos.masa;
-
+  //vx=Uno.px-Dos.px;
+  //vy=Uno.py-Dos.py;
 
   double xtilde, ytilde; //posiciones iniciales efectivas
   xtilde=(Uno.qx-Dos.qx);
@@ -110,13 +111,13 @@ double TiempoChoqueDosDiscos(Disco &Uno, Disco &Dos){
   double magqcuadrada=(xtilde*xtilde)
     +(ytilde*ytilde);
   double distcuad=magqcuadrada-rho*rho;  
-  double dprodpunto=2.0*(xtilde*vx+ytilde*vy);
+  double prodpunto=(xtilde*vx+ytilde*vy);
   
   //cout<<"magnvcuad"<<"\t"<<"magqcuadrada"<<"\t"<<"distcuad"<<"\t"<<"prodpunto"<<endl;
   //cout<<magnvcuad<<"\t"<<magqcuadrada<<"\t"<<distcuad<<"\t"<<prodpunto<<endl;
  
   double discriminat;
-  discriminat=dprodpunto*dprodpunto-magnvcuad*distcuad;
+  discriminat=prodpunto*prodpunto-magnvcuad*distcuad;
   //cout<<"discriminat="<<discriminat<<endl;  
   double t=0;
 
@@ -125,9 +126,10 @@ double TiempoChoqueDosDiscos(Disco &Uno, Disco &Dos){
   //no usarlo o usarlo para otra cosa.
 
   if(discriminat<0){
-    t=-996;
+    t=-9996;
   }else{
-    t=(-dprodpunto-sqrt(discriminat))/magnvcuad;
+    t=(-prodpunto-sqrt(discriminat))/magnvcuad;
+    //  t=-7777;
   };
  
   return t;

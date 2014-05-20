@@ -34,14 +34,14 @@ int main(){
   //bajale al ensemble, subele a las colisiones
   
   const int Geometrias=100;
-  const int ensemble=16000;
+  const int ensemble=4000;
    
   const gsl_rng_type *T;
   T = gsl_rng_ranlxs2;    
     
-  const double radioefemin=0.001;
+  const double radioefemin=0.0001;
   //  const double radioefemax=radiomax-radioefemin;
-  const double radioefemax=0.249;
+  const double radioefemax=0.2499;
   
 #pragma omp parallel num_threads(7)
   {
@@ -123,13 +123,13 @@ int main(){
         
       if(hopeado){
 	hopeado==false;
+	hoptime=-1.0;
 	for(int i=0; i<colisionesmax;i++){ 
-	  
-	  hoptime=-1.0;
+	  	  
 	  tiempodechoque=dinamicaunchoque(uno,dos);	
 	  hoptime=hopper(uno,dos);
 	
-	  if((hoptime<tiempodechoque)&&(hoptime>0.000)){	  
+	  if((hoptime<=tiempodechoque)&&(hoptime>0.0000)){	  
 	    hopeado=true;
 	    tiempoentrebrincos+=hoptime;
 	    tiemposhop<<tiempoentrebrincos<<endl;

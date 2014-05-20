@@ -106,7 +106,7 @@ double dinamicaunchoque(Disco &Uno, Disco &Dos){
     }else if(chocador==3){
     Dos.py=-Dos.py;
   }else{
-    reboteentrediscos(Uno,Dos);   
+    reboteentrediscos(Uno,Dos); 
   };
        
     return result;

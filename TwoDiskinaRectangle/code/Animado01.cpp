@@ -11,10 +11,12 @@ int chocador=-1; //armadillo indexes
 #include "VariablesGlobales01.hpp"
 #include "DosDiscosDinamica.hpp"
 // math esta incluido en Disco.
-#include "FondosyFiguras01.hpp"
 
+double tiempointegrado;
 vector<float> trazounox(1);
 vector<float> trazounoy(1);
+
+#include "FondosyFiguras01.hpp"
 
 using namespace std;
 
@@ -23,7 +25,7 @@ void runMainLoop( int val )
 {
   //Si hacemos esto, val tiene el valor de frames, no de tiempo.
   val++;
-  float time=(float)val/60.0;
+  float time=(float)val/(float)SCREEN_FPS;
   //Frame logic
   //  update();
   render();
@@ -35,7 +37,9 @@ void runMainLoop( int val )
     update(uno, dos);
     trazounox.push_back(uno.qx);
     trazounoy.push_back(uno.qy);
-    tiempodechoque=dinamicaunchoque(uno, dos);   
+    tiempodechoque=dinamicaunchoque(uno, dos);  
+    cout<<"Energia Cinetica Total final"<<endl;   
+    cout<<uno.EnergiaKinetica()+dos.EnergiaKinetica()<<endl;
     time=0.0f;
     val=0;
     glutTimerFunc( 1000 / SCREEN_FPS, runMainLoop, val );    
@@ -98,7 +102,6 @@ int main(int argc, char* args[]){
   glutMainLoop();
    
    
-
   cout<<"Energia Cinetica Total final"<<endl;   
   cout<<uno.EnergiaKinetica()+dos.EnergiaKinetica()<<endl;
 

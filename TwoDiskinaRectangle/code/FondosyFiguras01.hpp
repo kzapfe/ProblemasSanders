@@ -10,9 +10,9 @@
 // Pero para tus propositos es suficiente */
 
 //Screen Constants
-const int SCREEN_WIDTH = 600;
-const int SCREEN_HEIGHT = 600;
-const int SCREEN_FPS = 60;
+const int SCREEN_WIDTH = 800;
+const int SCREEN_HEIGHT = 800;
+const int SCREEN_FPS = 80;
 const float TimeStep=1.0f/SCREEN_FPS;
 
 //Color modes
