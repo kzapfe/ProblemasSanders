@@ -56,6 +56,7 @@ double dinamicaunchoque(Disco &Uno, Disco &Dos){
   double tauchoque=0.000;
   double t;
   uword choque;
+  
 
   tau.fill(999);
   
@@ -85,10 +86,9 @@ double dinamicaunchoque(Disco &Uno, Disco &Dos){
     //};
    
   t=tau.min(choque);
-  
+  int chocador;
   chocador=(int)choque;
   //cout<<"tiempo" <<t << " chocador " << chocador <<endl;
-
 
   double result=t;
     
@@ -114,7 +114,7 @@ double dinamicaunchoque(Disco &Uno, Disco &Dos){
 
 
 
-double dinamicaunchoqueyhopp(Disco &Uno, Disco &Dos){
+double dinamicaunchoqueyhopp(Disco &Uno, Disco &Dos, int& chocador){
   /*Programa que juega al billar con dos discos rigidos
     adentro de una caja
     Da el tiempo de choque/hopp
@@ -157,7 +157,7 @@ double dinamicaunchoqueyhopp(Disco &Uno, Disco &Dos){
 
   t=tau.min(choque);
   
-  chocador=(int)choque;
+  chocador=choque;
   
 
 

@@ -11,7 +11,7 @@
 \bibliographystyle{alpha}
 
 %opening
-\title{Exact kinetics of two hard discs in a rectangular box}
+
 \author{Rosa Rodríguez \& David P.~Sanders \& W. P. K. Zapfe}
 \affil{Departamento de Física, Facultad de Ciencias, Universidad Nacional Autónoma de México, Ciudad Universitaria, Del.~Coyoacán, México D.F. 04510, Mexico}
 
@@ -29,17 +29,32 @@
 
 \begin{document}
 
-\maketitle
+\title{Exact kinetics of two hard discs in a rectangular box}
+
+\author{Rosa Rodríguez}
+\email{sepaeldiablo@notengoidea.org}
+\affiliation{unknown to me}
+
+\author{David P. Sanders}
+\email{sanders@ciencias.unam.mx}
+\affiliation{Facultad de Ciencias, UNAM.}
+
+\author{W. P. Karel Zapfe}
+\email{karelz@fis.unam.mx}
+\affiliation{Some place in the universe}
+
 
 \begin{abstract}
   We obtain exact results for the kinetics of the inertial motion of 
 two hard discs in a rectangular two-dimensional box.
+
   In particular,  we calculate exactly the mean hopping time between exchanges
  of the horizontal positions of the discs, 
 as well as mean collision rates between the two discs and 
  between the discs and the box. We compare this with numerical experiments.
 \end{abstract}
 
+\maketitle
 
 \pmb{NOTE TO DAVID}
 I shall use only $r$, \emph{radius} of the disks. To use diameter
@@ -61,7 +76,6 @@ For the statistical physicist, \emph{mean} and \emph{first} encounter
 times are of uttermost importance, as many properties,
 such as mixing rates and the physical origin of a positive
 Liapunov exponent, depend on it. 
-
 
 The minimal realisation of this
 system consists in two disks of same mass and radius inside a 
@@ -118,46 +132,44 @@ the usual billiard rules: free flight until
 encounter with a wall, then elastic reflection.
 The outer borders are flat, so the
 hyperbolicity is due only to the inner dispersing
-boundary \cite{Sim99}, which represents the coalition of
+boundary \cite{Sim99}, which represents the collition of
 two disks in the original space.
+
+
+%There are two apparently similar but frustratingly different events.
+%If we want to calculate a \emph{Recurrence time} for the collisions 
+%between the two disks, 
+%we should depart from the subset of all outgoing trajectories from the surface of the
+%hyper-cylinder. 
+%If we want to calculate the \emph{first} encounter time, then
+%this supposition is not necessary.
+% Actually, this complicates
+%the problem, as there are no general results or 
+%techniques to describe this collision in continuous time, and derivations
+%imply \emph{continouslly nested integrals}.
+
+
+\section{Mean time between events}
 
 
 \subsection{Assumptions for the Collision Rates}
 
-This kind of systems are equivalent to Bernoulli Flows \cite{Gallavotti74}.
+A system of $N$ hard spheres confined by hard walls in a $D$ dimensional
+space may be treated as a billiard system 
+in which a single point  particle undergoes free motion between reflecting obstacles 
+in a $ D N $-dimensional configuration space \cite{Sinai70, MarkChern}. 
+If the resulting billiard is ergodic and hyperbolic, then we know that
+these systems are equivalent to Bernoulli Flows \cite{Gallavotti74}.
 For such systems is expected an exponential decay of 
 distributions \cite{AbadiGalves} with potentially
 long algebraic tails \cite{ZasTip}. 
 This includes recurrence times and
-first encounter times. 
-
-There are two apparently similar but frustratingly different events.
-If we want to calculate a \emph{Recurrence time} for the collisions 
-between the two disks, 
-we should depart from the subset of all outgoing trajectories from the surface of the
-hyper-cylinder. 
-If we want to calculate the \emph{first} encounter time, then
-this supposition is not necessary.
- Actually, this complicates
-the model, as there are no general results or 
-techniques to describe this collision in continuous time. 
-
-
- 
-
-\section{Mean time between events}
-
-A system of $N$ hard spheres confined by hard walls in a $d$ dimensional
-space may be treated as a billiard system 
-in which a single point  particle undergoes free motion between reflecting obstacles 
-in a $ d N $-dimensional configuration space \cite{Sinai70, MarkChern}. 
-
-If the resulting billiard is ergodic and hyperbolic, then we
+first encounter times. We also
 have a result for the mean free time, i.e.\ the mean time between 
 collisions of the particle with the walls \cite{MarkChern}. 
-This can be thought of as a mean return time to the $(d-1)$-dimensional 
+This can be thought of as a mean return time to the $(D-1)$-dimensional 
 (i.e. co-dimension-$1$) cross-section given by the wall boundaries.
-The formula for this is
+The general formula for that time is
 \begin{equation}\label{meanfreetime}
  \mean{\tau} = \frac{|Q|}{|A|} \frac{|S^{D-1}|}{|B^{D-1}|}.
 \end{equation}
@@ -275,7 +287,7 @@ using the symmetry.
 Thus $V = 16(I_1 + I_2)$, where $I_1$ and $I_2$ are the resulting integrals over the regions where the available region for $y$ is affected by, and is not affected by, respectively, the restriction to lie outside the disc.
 We have
 \begin{align}
- I_1 &= \int_{x=0}^{r\sqrt{2}} \left[ \int_{y = \sqrt{\frac{1}{2} {4r)^2} - x^2}}^{b \sqrt{2}} \left( b \sqrt{2} - y \right) \rd y \right]  \left( a \sqrt{2} - x \right) \rd x \\
+ I_1 &= \int_{x=0}^{r\sqrt{2}} \left[ \int_{y = \sqrt{ 2r^2 - x^2}}^{b \sqrt{2}} \left( b \sqrt{2} - y \right) \rd y \right]  \left( a \sqrt{2} - x \right) \rd x \\
 &= 	
 2 a b^{2} r  + \textstyle \frac{1}{6} (a+b) (2r)^{3} - \frac{1}{32}  (2r)^{4} - \frac{1}{4} {\left(\pi a b + b^{2}\right)} (2r)^2,
 \end{align}
@@ -300,7 +312,6 @@ thus, the remaining terms represent the excluded volume due to this constraint.
 The available space gets smaller nevertheless, as can be seen from
 the substitutions $a\rightarrow (w-d)/2$ and $b\rightarrow (h-d)/2$.
 The explicit formula for the Volume as function from the diameter only is then:
-
 \begin{equation}\label{volumewhd}
  V 
 = (w-d)^{2} (h-d)^{2}  - 
@@ -309,31 +320,31 @@ The explicit formula for the Volume as function from the diameter only is then:
 - \frac{1}{2} d^{4},
 \end{equation}
  
-For the numeric values $w=h=1$, the biggest possible diameter is 
-$d=\sqrt{2}/(1+\sqrt{2})$. Unhappily, there is a quirk in the above formula:
+For the numeric values $w=h=1$, the biggest possible radius is 
+$r=1/(2+\sqrt{2})$. Unhappily, there is a quirk in the above formula:
 it stops being valid before that. The reason is that the deduction
 of the formula doesn't include the case in which hopping is not possible. 
 We tacitly made the assumption that $h,w>2d$.  This assumption is on 
 the integration limits in the step in eq. \ref{integraltotal}. 
 A full discussion of the formula for the case in which either
-$w$ or $h$ are smaller than $2d$ but there is still space for
-the disks is discussed elsewhere \cite{notascalculokarel}. 
-We cite the  result for $h/2  <d< w/2$ for illustrative purposes.
+$w$ or $h$ are smaller than $4r$ but there is still space for
+the disks is discussed elsewhere \cite{notascalculokarel}(\pmb{Appendix?}). 
+We cite the  result for $h/4  <r< w/4$ for illustrative purposes.
 For cleanliness we define another auxiliary variable,
-$c=\sqrt{d^2-b^2}$:
+$c=\sqrt{4r^2-b^2}$:
 \begin{multline}\label{VolumenCasoFeo}
-V_{h/2<d} = 8abd^2[\arccos(b/d)-\arccos(a/d))]\\
-+\frac{8 d^3}{3 }[a((b-a)/d)-b(c/d+\sqrt{d^2-a^2}/d)]\\
--\frac{d^4}{2} [ (b^2-a^2)/d^2]\\ 
+V_{h/4<r} = 32abr^2[\arccos(b/2r)-\arccos(a/2r))]\\
++\frac{64 r^3}{3 }[a((b-a)/2r)-b(c/2r+\sqrt{4r^2-a^2}/2r)]\\
+-8r^4 [ (b^2-a^2)/4r^2]\\ 
 +16[ a b^2 c (4\sqrt{2}-1-\sqrt{2}/3)
 +c^2b^2 (\sqrt{2}/3-1) \big]
 \end{multline}
-In the case that $d$ is larger than both $h/2, w/2$, one must take
+In the case that $r$ is larger than both $h/4, w/4$, one must take
 into account a similar
 contribution which inverts the roles of $a$, and $b$.
 
 In all of our numeric examples we use $w=h=1$, setting the
-limit for hops at $d=0.5$. The fraction of the volume
+limit for hops at $r=0.25$. The fraction of the volume
 excluded is shown in
 figure  \ref{VolFRM}.
 
@@ -380,11 +391,11 @@ $\{ x=0 \}$ in the new coordinates, proceeds in a similar way:
  A &= \int_{X=-a \sqrt{2} }^{a \sqrt{2}}  \rd X
  \int_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
 \int_{Y=-b \sqrt{2} + |y| }^{b \sqrt{2}-|y|}  \rd Y
-\, \indicator{y^2 \ge \frac{d^2}{2} } \\
+\, \indicator{y^2 \ge 2r^2 } \\
 &= 8 a \sqrt{2} \int_{y=0}^{b \sqrt{2}} 
-\left( b \sqrt{2} - y \right)  \indicator{y \ge \frac{d}{\sqrt{2}}}  \rd y \\
-&= 8 a \sqrt{2} \int_{y= \frac{d}{\sqrt{2}}}^{b \sqrt{2}}  \left( b \sqrt{2} - y \right)  \rd y \\
-&= 2 \sqrt{2} a ( 2b - d )^2. \label{AreaH}
+\left( b \sqrt{2} - y \right)  \indicator{y \ge r \sqrt{2} }  \rd y \\
+&= 8 a \sqrt{2} \int_{y= r\sqrt{2}}^{b \sqrt{2}}  \left( b \sqrt{2} - y \right)  \rd y \\
+&= 8 \sqrt{2} a ( b - r )^2. \label{AreaH}
 % b^{2} -  b d + \frac{d^{2}}{4} \right) .
 \end{align}
 
@@ -408,16 +419,16 @@ all the cases for $\sqrt{2}/(1+\sqrt{2}) <d<1/2$. Results are shown in figure \r
 The area which represents collisions between the two disks is the cylinder area. 
 This can be deduced in a similar manner to the free volume, shown in the last
 section, or as the derivative of this formula, taking it as as a function evaluated at 
-$d/\sqrt{2}$. The calculation must be done taking $a,b$ as constants, so that
+$r\sqrt{2}$. The calculation must be done taking $a,b$ as constants, so that
 we do not obtain also the (negative) contribution for the flat ends of
 the wedge at the cylinder's end. The resultant area is:
 \begin{align}\label{AreaChoque}
-A_{collision} & =  16\sqrt{2}\pi a b r -32\sqrt{2} (a+b)r^2 +16\sqrt{2} r^3 \\
-& =  2 \pi (w-d)(h-d)d  -4 (w+h-2d)*d^2 +2 d^3 %WRONG
+A_{collision} & =  16\sqrt{2}\pi a b r -32\sqrt{2} (a+b)r^2 +16\sqrt{2} r^3 
 \end{align}
 
 Again, as in eq. \ref{volumewhd}, the formula stops being valid
-at $d>0.5$, when the cylinder crosses the hypercube.  
+at $r>0.25$, when the exclusion cylinder has a larger diameter than
+the widths or heights of the hypercube.  
 We proceed in the same manner as last section, chequing numerically which
 random
 conditions fall at a small tolerance of $0$ from the Collision Condition, and
@@ -429,9 +440,10 @@ figure \ref{AreaChoqueTeoyNum}.
 \includegraphics[width=0.8\textwidth]{AreaColision01.pdf}
 \caption{The numerical and theoretical calculation for the Area of the cross section
 for collision between disks. The plot shows the fraction occupied by a small volume
-of size $A_{collision}(r)\times 0.002/V(r)$. The theoretical formula 
+of size $A_{collision}(r)\times 0.002$ divided by the total
+avaible volume $V(r)$. The theoretical formula 
 \ref{AreaChoque} breaks down at
-$r=1/4$. An extra numerical point has been put there to make it clear.}
+$r=1/4$. An extra numerical point has been put there to show the deviative behaviour.}
 \label{AreaChoqueTeoyNum}.
 \end{figure}
 
@@ -455,14 +467,14 @@ evaluating the next expression in a similar way to
 the procedure carried for the expression \ref{volindic}:
 \begin{equation}\label{areaindic}
  A_{x_1+} =  \int_{x_2 = -a}^a \rd x_2 
-\int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b \rd y_2 \, \indicator{ (a-x_2)^2 + (y_1-y_2)^2 \ge d^2 }
+\int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b \rd y_2 \, \indicator{ (a-x_2)^2 + (y_1-y_2)^2 \ge 4 r^2 }
 \end{equation}
 
 The integration procedure is equally tedious, but
 straightforward, the result is 
 \begin{align}\label{areax1p}
- A_{x_1+} & = 8 a b^2-\pi b d^2 +\frac{2}{3}d^3 \\
-  & = 2(w-d)^2 (h-2)^2- \frac{\pi}{2} (h-d) d^2 +\frac{2}{3}d^3 
+ A_{x_1+} & = 8 a b^2-4  \pi b r^2 +\frac{16}{3}r^3 
+ % & = 2(w-d)^2 (h-2)^2- \frac{\pi}{2} (h-d) d^2 +\frac{2}{3}d^3 
 \end{align}
 
 Once again, a simple MonteCarlo procedure verifies this result,
@@ -486,8 +498,8 @@ the other hand, each bounce againsta the horizontal walls would
 define a similar quantity, but with the roles of $a$ and $b$ switched.
 The cross section area for any impact on the walls would then be:
 \begin{align}\label{areawalls}
- A_{walls} & = 32 a b (a+b)-4 \pi d^2 (a+b) +\frac{16}{3}d^3 \\
- &=  4 (w-d) (h-d)  (w+h-2d) -2 \pi d^2 (w + h-2 d) +\frac{16}{3}d^3. 
+ A_{walls} & = 32 a b (a+b)-16 \pi r^2 (a+b) +\frac{128}{3}r^3 
+ %&=  4 (w-d) (h-d)  (w+h-2d) -2 \pi d^2 (w + h-2 d) +\frac{16}{3}d^3. 
 \end{align}
 
 The cross section area for any impact or collition 
@@ -509,8 +521,9 @@ to this holle (assuming each of the disks can escape first) is simply:
 
 
 
-\section{Mean hopping time}
+\section{Mean times between events}
 
+\subsection{Mean hopping time}
 
 Inserting the results of the previous section 
 into the formula for the mean times for crossing
@@ -545,6 +558,7 @@ seting $r=h/4-\epsilon$ produces the limiting behaviour
 { \epsilon^2} w^3
 \end{equation} 
 
+\subsection{Mean collition time}
 
 For the collitions between disk we would have:
 \begin{equation}\label{colltau}
@@ -553,17 +567,19 @@ For the collitions between disk we would have:
 \frac {2 a^{2} b^{2}  - 2 \pi a b r^{2} + \textstyle \frac{a+b}{3}  (2r)^{3}  -  r^4}
 {2\pi a b r -4(a+b)r^2+2r^3}
 \end{equation}
-As expected, this goes to infinity with very small radious, its behaviour
+As expected, this goes to infinity with very small radius, its behaviour
 aproaching the expression
 \begin{equation}\label{colltaulim0}
 \mean{\tau}_{coll}  \xrightarrow{r\rightarrow 0} 
 \frac{3}{8\sqrt{2}}\frac{wh}{r}
 \end{equation}
 On the other side, this should go evaluate to zero when
-we use the limiting value for the radious. In the simplest
+we use the limiting value for the radius. In the simplest
 case  $w = h$ we have $r_{max}= w(\sqrt{2}+2)$. Saddly, our volume
 formula ceases to be valid after $r>w/4$, so this limit gives nonsense.
 We should go for the more general formula \cite{notascalculokarel}.
+
+\subsection{Mean impact time}
 
 Lastly, for the general impact formula we have the expression:
 \begin{equation}
@@ -580,7 +596,28 @@ for non interacting point particles,
 but, then, ergodic theory would not apply
 on such a system. 
 
+\subsection{Mean sojourn  time for small disks and entrances}
+
+We shall also test the validity of formula using the area in eq. \ref{escape}
+for a small holle in the walls. If the formula is to be valid, we have
+to make an adecuate balance of the involved parameters. The holle has to
+be only marginally larger than the disks, so that they have enough opportunity
+to interact, thus achieving \emph{ergodic statistics}. A very large holle
+on a wall with similar sized disks will result in only the disk closer to
+it escaping. The average escape time then may be calculated as
+a return time for the adecuate section and we could use the following formula:
+\begin{equation} 
+\mean{\tau}_{sojourn} = 	
+\frac{3 \pi}{4\sqrt{2}}
+\frac {16a^2b^2-16\pi a b r^2 + \frac{64}{3} r^3 - 8 r^2  }
+{wh\epsilon}.
+\end{equation}
+As can be expected, this time is proportional to the
+free Volume avaible and inversely proportional to the size of the hole, $\epsilon$.
+
 \section{Numeric Results}
+
+\subsection{Mean hopping time}
 
 We proceed to test last section formulas with
 extensive numerical simulations. There appears to have to
@@ -597,7 +634,7 @@ set.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.98\textwidth]{TresComparacionesTimeHopp01.pdf}
+  \includegraphics[width=0.98\textwidth]{CuatroComparacionesTimeHopp01.pdf}
   \caption{The mean hopping time as function of the radius, Energy, mass, 
 and geometry fixed.
 The red line is the formula \ref{hoptau}, while the green line
@@ -608,19 +645,11 @@ A logarithmic scale
 has been used so that sensibility to errors becomes obvious.}\label{MeanHopp01}
 \end{figure}
 
-From the figure we can see that the explosive regime falls a bit short of
-the theoretical estimate, while  the flat regime has a slightly longer
-time than expected. This has to do with the mixing and averaging scales
-of the numerical experiments, and is a consequence of some
-qualitative differences between small, medium and big disks. The numeric where done
-by limiting the number of collisions, of all types, taking into account
-that the average time between collisions is a good scale of time
-for billiard systems. This sets a lower limit for collations between
-disks in the smaller regime, as this became effectively very
-improbable in the short term. This affects the ``short term ergodicity'' and
-mixing rates of the system. For relative low sampling limits, the
-smaller disks behave effectively as if each was alone in the box, thus
-producing results which have some qualities of integrable systems. 
+There are many unpleasant characteristics of the figure. First, it must be
+noted that even though both numerical and teoretical curves have the
+same limit at $r\rightarrow 0$, the slope of the numeric is negative, while 
+that of the teoretical curve is positive. The numeric has this weird 
+hanged belly until $r\approx 0.125$ which is completely unexplained.
 
 \begin{figure}[h]
         \centering
@@ -628,7 +657,7 @@ producing results which have some qualities of integrable systems.
                 \centering
                 \includegraphics[width=\textwidth]{HoppingTimesradio01.pdf}
                 \caption{$d=0.1$}
-                \label{smallradious}
+                \label{smallradius}
         \end{subfigure}%
         ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
           %(or a blank line to force the subfigure onto a new line)
@@ -636,7 +665,7 @@ producing results which have some qualities of integrable systems.
                 \centering
                 \includegraphics[width=\textwidth]{HoppingTimesRadius249.pdf}
                 \caption{$d=0.249$}
-                \label{bigradious}
+                \label{bigradius}
         \end{subfigure}       
         \caption{Histograms for the mean hopping time
 in two extreme cases. Left is a very small diameter, while right is an almost
@@ -645,77 +674,21 @@ logarithmic scales, here I take that liberty for the funny features to be
 more exaggeratedly shown.}\label{histohopps}
 \end{figure}
 
-The figure \ref{bigradious} shows clearly an exponential decay in the
+The figure \ref{bigradius} shows clearly an exponential decay in the
 distribution, something to be expected for a chaotic system \cite{OttLibro} , while the
-figure in \ref{smallradious} is something different. 
+figure in \ref{smallradius} is something different. 
+
+\subsection{Mean collition time}
 
 
-\subsection{ To do : }
-To do: comparison of our mean hopping time with the mean *first* time to hop, which is what is studied in other papers.
-Hopefully (and presumably) they are the same asymptotically when $\epsilon \to 0$? 
+\subsection{Mean impact time}
 
-For square box, can escape in either direction, so hopping time (including in other direction) should be half? Could be. The events are ``almost independent'', so each one
-can occur first with probability one half. If the disks are very small, then
-they are truly independent events, but if they are big, one event taking
-place hinders the other, so probably we should not think that is 
-one half. A careful inspection for the $\|A\|$ element in formula \ref{hoptau}
-should be the answer to that.
+\subsection{Mean sojourn time}
 
 
- 3D?  Must be long channel. Spheres may be confined in 1 direction  
-and only able to exchange in other direction, or be able to exchange in two directions.
-This probably affects asymptotes.
+\section{Conclutions}
 
-Escape time through a hole in the wall?? (Probably leave for future.)
-Mean time between disc collisions, collisions with walls. Should be easy with the formula
-
-Distributions of all these times (numerical with histogram).
-
-
-
-\section{About the Hyperbolicity}
-
-The system is clearly strongly chaotic, as follows from
-the general arguments given in the references \cite{Sim99, MarkChern}.
-The hyperbolic property shall be verified with the technique described
-in \cite{Dellago96}. The tangent map given there can be considerably
-simplified for the case of two disks and flat rigid walls.
-
-The difficulty on displaying the effect of this tangent map over
-an 8 dimensional manifold
-can be overpass with a little ingenuity \cite{Tufte}. However,
-the reader must make more effort to understand high density data
-plots. A brief explanation of the figure \ref{TangentMap} would
-be in order here. 
-
-We would colour the position of the disks by the number of
-the last collision, that is, the number of iterations of
-the Birkhoff map. Notice that it suffices to have one disk collide
-with a wall in order to consider the application of the map, so
-sometimes one of the two disks is just at the middle of
-free flight. Each disk has two vectors originating at its centre,
-which represents the tangent vectors $\delta q$ and 
-$\delta p$ for each disk. 
-The vectors are distinguished by colour. The colour of the vector pairs
-also differentiates the disk 1 from disk 2. 
-
-The purpose of our plot is to have an intuitive grasp of the
-hyperbolic property of the tangent map. In this plot, which has mere 16
-iterations of the map, the tangent vectors suffer a brutal growth after
-some few collisions between the disks. Notice that collisions in
-the wall only change orientation of the tangent vectors.
-It is also visible the tendency of the vectors to align themselves
-in a preferred direction, although small fluctuations are
-expected for short times. An animated version of this plot 
-shall be available on-line if this paper gets published. 
-
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{TestQandPUnoVarios-MapeoTangente2Discos.pdf} 
-\caption{The dynamics in the configuration and tangent space. The pink-blue pair
-indicates Disk 1, the yellow-black Disk 2.}\label{TangentMap}
-\end{figure}
-
+\section{Aknowledgements}
 
 
 \bibliography{../../notasmixtas/TwoDiskBiblio}

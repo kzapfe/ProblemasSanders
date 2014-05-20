@@ -8,10 +8,15 @@ Programa que corre dos discos en una caja.
 // estos dos son los de gsl
 // Version Paralela
 
+/* Este codigo, marcado con la señal 01, corre VARIAS vez sobre el mismo
+elemento del ensamble, calculando realmente Un RETURN TIME, no un
+FIRST PASSAGE TIME. Curiosamente, este es el que da el limite correcto,
+pero el comportamiento no es tan del todo correcto. Tiene sus bemoles,
+especificamente esa Pancita caida respecto a la curva teorica.
+ */
+
 #include <gsl/gsl_rng.h>
 #include <gsl/gsl_randist.h>
-
-int chocador=-1; //armadillo indexes
 
 
 #include "VariablesGlobalesParalel01.hpp"
@@ -35,18 +40,18 @@ int main(){
   T = gsl_rng_ranlxs2;    
     
   const double radioefemin=0.001;
-  const double radioefemax=radiomax-radioefemin;
-
+  //  const double radioefemax=radiomax-radioefemin;
+  const double radioefemax=0.249;
   
 #pragma omp parallel num_threads(7)
   {
-#pragma omp  for 
+#pragma omp  for schedule(dynamic)
     //Se supone que todo lo que esta declarado dentro del for es privado.
     
     //Para HopTimes, no tiene sentido buscar arriba de r=0.25, 
     // tu programa no es robusto, revisa eso, algo falla.
     //    for(int n=85; n<Geometrias; n++){
-    for(int n=1; n<86; n++){
+    for(int n=1; n<Geometrias; n++){
           
     double hoptime=0.00;
     double tiempodechoque=0;
@@ -62,26 +67,20 @@ int main(){
     int numeraauxiliar=1000+n;
     ofstream tiemposfree, tiemposhop;
 
-    std::ostringstream escupefree;
     std::ostringstream escupehop;
+          
+    escupehop<<numeraauxiliar<<"_HopTimeErgodic01.dat"<<std::ends;
       
-    escupefree<<numeraauxiliar<<"_FreeTimeHueco.darn"<<std::ends;
-    escupehop<<numeraauxiliar<<"_HopTimeStronger.dat"<<std::ends;
-      
-    std::string stringfree;
     std::string stringhop;
 
-    stringfree=escupefree.str();
     stringhop=escupehop.str();
       
-    const char *nombrefree=stringfree.c_str();
     const char *nombrehop=stringhop.c_str();
     
     /*Fijate que todo el desmadre de arriba
       es solo para convertir un numero a char*/ 
-    streamsize prec=tiemposfree.precision(16);
+    streamsize prec=tiemposhop.precision(16);
     
-    tiemposfree.open(nombrefree);   
     tiemposhop.open(nombrehop);
 
     double radio=radioefemin+
@@ -89,15 +88,9 @@ int main(){
     double distancia;
 
 
-    cout<<"Estoy comenzando el proceso "<< n << " con radio="<<radio<<endl; 
-    
-    //Encabezados utiles porfavor zoquete
-    tiemposfree<<"radio="<<radio<<endl;
-    tiemposfree<<"Energia="<<Energia<<endl;
-    tiemposfree<<endl;
-    
-    tiemposhop<<"radio="<<radio<<endl;
-    tiemposhop<<"Energia="<<Energia<<endl;
+    cout<<"Estoy comenzando el proceso "<< n << " con radio="<<radio<<endl;           
+    tiemposhop<<"radio "<<radio<<endl;
+    tiemposhop<<"Energia "<<Energia<<endl;
     tiemposhop<<endl;
     
 
@@ -105,66 +98,57 @@ int main(){
     for(int j=0; j<ensemble; j++){
       //Random initial conditions.
 
-
       Disco uno(0.0,0.25,0.0, 0.0,radio);
       Disco dos(0.0,-0.25,0.0,0.0,radio);
       bool hopeado=false;
+      int chocador=-1; //armadillo indexes
       
       AbsolutRandomDiscos(uno,dos,Energia,r);
      
       tiempodechoque=0.0; 
       tiempoentrebrincos=0.0;
       hoptime=0;
+     
+      //Dado que estamos esperando un RETURN TIME
+      //Primero tenemos que ergodicidar Sobre condiciones EN EL HOP-Posture
+      //EXACTAMENTE
+      int cuentachoques=0;
+      int choque=-1;	
 
-    //Line Breaker
+      while((!hopeado)&&(cuentachoques<colisionesmax)){	
+	tiempodechoque=dinamicaunchoqueyhopp(uno,dos,choque);	
+	cuentachoques++;
+	if(choque==5)hopeado=true;
+      }
         
-      for(int i=0; i<colisionesmax;i++){ 
-	
-	hoptime=-1.0;
-	tiempodechoque=dinamicaunchoque(uno,dos);	
-	hoptime=hopper(uno,dos);
-	
-	if((hoptime<tiempodechoque)&&(hoptime>0.000)){	  
-	  hopeado=true;
-	  tiempoentrebrincos+=hoptime;
-	  tiemposhop<<tiempoentrebrincos<<endl;
-	  tiempoentrebrincos=0.00;
-       
-	}else{
-	  tiempoentrebrincos+=tiempodechoque;
+      if(hopeado){
+	hopeado==false;
+	for(int i=0; i<colisionesmax;i++){ 
 	  
-	}
+	  hoptime=-1.0;
+	  tiempodechoque=dinamicaunchoque(uno,dos);	
+	  hoptime=hopper(uno,dos);
+	
+	  if((hoptime<tiempodechoque)&&(hoptime>0.000)){	  
+	    hopeado=true;
+	    tiempoentrebrincos+=hoptime;
+	    tiemposhop<<tiempoentrebrincos<<endl;
+	    tiempoentrebrincos=0.00;
+	  
+	  }else{
+	    tiempoentrebrincos+=tiempodechoque;
+	    
+	  }
 
-	/* DEBUG INFO
-	distancia=sqrt((uno.qx-dos.qx)*(uno.qx-dos.qx)+
-		       (uno.qy-dos.qy)*(uno.qy-dos.qy));
-	//Numerical Mistake?
-	//if(tiempodechoque>toleranciachoques){
-		tiemposfree<<uno.qx<<"\t"<<uno.qy<<"\t"<<
-	  dos.qx<<"\t"<<dos.qy<<"\t"<<
-	  tiempodechoque<<"\t"<<chocador<<"\t"<<
-	  uno.EnergiaKinetica()+dos.EnergiaKinetica()
-		   <<"\t"<<distancia<<
-		   endl;*/
-        //}
-
-	//tiemposfree<<tiempodechoque<<endl;
+	}//Cierra las repeticiones sobre la dinamica
       
+      }else{
+	//Nunca paso nada, no escribas NADA
       };
-       
-      if(!hopeado){
-	// tiemposhop<<"# nunca brinque yo de lugar"<<endl;	
-	//     tiemposhop<<tiempomax<<endl;
-	tiemposhop<<endl;
-      };
-  
-
-      //      tiemposfree<<endl;
+     
 
     }
-    
-    
-
+       
     cout<<"He terminado con el proceso "<<n<<endl;
     } //Cierra el loop paralelizable
     

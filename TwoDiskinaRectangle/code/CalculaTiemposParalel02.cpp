@@ -4,14 +4,17 @@ Programa que corre dos discos en una caja.
 
 /* Que saca las distribuciones importantes */
 /* Dado que es muy idiota tratar de esperar a que se "ergodice todo"
-   vamos a usar un ensemble de condiciones iniciales */
+   vamos a usar un ensemble de condiciones iniciales 
+   Fijate, esta es la version marcada 02: esta es ESTRICTMAMENTE
+   un FIRST PASSAGE TIME, a diferencia del otro, que da un
+   RETURN TIME. El resultado de esta es completamente DIFERENTE 
+   al del OTRO y no da el limite correcto. Es mucho mas rapido, pero es OTRA COSA
+*/
 // estos dos son los de gsl
 // Version Paralela
 
 #include <gsl/gsl_rng.h>
 #include <gsl/gsl_randist.h>
-
-int chocador=-1; //armadillo indexes
 
 
 #include "VariablesGlobalesParalel01.hpp"
@@ -26,7 +29,7 @@ using namespace std;
 int main(){
   
   const int Geometrias=100;   
-  const int ensemble=160000; //Small test
+  const int ensemble=10000; //Small test
   const gsl_rng_type *T;
   T = gsl_rng_ranlxs2;    
   
@@ -41,7 +44,7 @@ int main(){
  
 #pragma omp parallel num_threads(7)
   {
-#pragma omp  for 
+#pragma omp  for schedule(dynamic)
     //Se supone que todo lo que esta declarado dentro del for es privado.
 
   for(int n=1; n<Geometrias; n++){
@@ -50,7 +53,7 @@ int main(){
     double hoptime=0.00;
     double tiempodechoque=0;
     double tiempoentrebrincos=0.0;
-
+    
 
     gsl_rng *r ;  
     r = gsl_rng_alloc(T);
@@ -64,7 +67,7 @@ int main(){
     ofstream tiemposfirst, condini;
 
     std::ostringstream escupefirst, escupeelotro, escupemas;
-    escupefirst<<numeraauxiliar<<"_HopTimeNew.dat"<<std::ends;         
+    escupefirst<<numeraauxiliar<<"_HopTime.dat"<<std::ends;         
     std::string stringfirst;
     stringfirst=escupefirst.str();
     const char *nombrefirst=stringfirst.c_str();
@@ -104,7 +107,9 @@ int main(){
 
     for(int j=0; j<ensemble; j++){
       //Random initial conditions.
-
+      //(Chocador dejo de ser una variable global
+      //ni pedo, good programing practices.
+      int chocador=-1; //armadillo indexes
       
       Disco uno(0.0,0.25,0.0, 0.0,radio);
       Disco dos(0.0,-0.25,0.0,0.0,radio);
@@ -127,12 +132,12 @@ int main(){
 
       while ((!colision) && (colisiones<colisionesmax)){ 
       
-	tiempodechoque+=dinamicaunchoqueyhopp(uno,dos);	
+	tiempodechoque+=dinamicaunchoque(uno,dosem);	
 	colisiones++;
 	unoantesquedos=(uno.qx<dos.qx);
 	
-	//	if((unoantesquedos != unoantesquedosoriginal) || (chocador==5))
-		if((chocador==5))
+		if((unoantesquedos != unoantesquedosoriginal))
+		  //	if((chocador==5))
 		  {colision=true;}	
 
 	/*
