@@ -423,7 +423,8 @@ $r\sqrt{2}$. The calculation must be done taking $a,b$ as constants, so that
 we do not obtain also the (negative) contribution for the flat ends of
 the wedge at the cylinder's end. The resultant area is:
 \begin{align}\label{AreaChoque}
-A_{collision} & =  16\sqrt{2}\pi a b r -32\sqrt{2} (a+b)r^2 +16\sqrt{2} r^3 
+A_{collision} & =\sqrt{2}[  
+16\pi a b r -32 (a+b)r^2 +16 r^3 ] 
 \end{align}
 
 Again, as in eq. \ref{volumewhd}, the formula stops being valid
@@ -498,17 +499,14 @@ the other hand, each bounce againsta the horizontal walls would
 define a similar quantity, but with the roles of $a$ and $b$ switched.
 The cross section area for any impact on the walls would then be:
 \begin{align}\label{areawalls}
- A_{walls} & = 32 a b (a+b)-16 \pi r^2 (a+b) +\frac{128}{3}r^3 
+ A_{walls} & = 32 a b (a+b)-16 \pi r^2 (a+b) +\frac{64\sqrt{2}}{3}r^3 
  %&=  4 (w-d) (h-d)  (w+h-2d) -2 \pi d^2 (w + h-2 d) +\frac{16}{3}d^3. 
 \end{align}
 
 The cross section area for any impact or collition 
 is then  the sum of the last expression
-and the area for collitions between disks, in eq. \ref{AreaChoque}:
-\begin{align}\label{areatotal}
- A_{walls} &= 4 a b (16(a+b) + 4\pi r)-r^2 (a+b)(16\pi+32)+r^3\frac{176}{3} \\ 
-& = (w-d)(h-d)[4(w+h-2d)+2\pi d)]-d^2(w+h-2d)(2\pi+4)+d^3 \frac{22}{3}.
-\end{align}
+and the area for collitions between disks, in eq. \ref{AreaChoque}.
+
 
 Lasty, we can consider the impact with a very small portion of any of the
 walls. If the disks are small enough, this would correspond to an escape time. 
@@ -634,15 +632,12 @@ set.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.98\textwidth]{CuatroComparacionesTimeHopp01.pdf}
+  \includegraphics[width=0.98\textwidth]{HopTimesPerfect01.pdf}
   \caption{The mean hopping time as function of the radius, Energy, mass, 
 and geometry fixed.
 The red line is the formula \ref{hoptau}, while the green line
 labeled ``Analytical Coarse'' is an approximation using
- $16a^2b^2$ as volume. It can be seen that the numerical results
-are between the two for most of the range.
-A logarithmic scale
-has been used so that sensibility to errors becomes obvious.}\label{MeanHopp01}
+ $16a^2b^2$ as volume. A logarythmic scale accentuates errors.}\label{MeanHopp01}
 \end{figure}
 
 There are many unpleasant characteristics of the figure. First, it must be
@@ -680,8 +675,27 @@ figure in \ref{smallradius} is something different.
 
 \subsection{Mean collition time}
 
+The results for the collition between the disks are very encouraging. They follow
+perfectly the Machta Zwanzig formula, which makes lends credibility to the
+strong ergodic hypothesis (figure \ref{MeanColl01}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.98\textwidth]{CollitionsTime01.pdf}
+  \caption{The mean hopping time as function of the radius, Energy, mass, 
+    and geometry fixed.
+    The red line is the formula \ref{hoptau}, while the green line
+    labeled ``Analytical Coarse'' is an approximation using
+    $16a^2b^2$ as volume. It can be seen that the numerical results
+    are between the two for most of the range.
+    A logarithmic scale
+    has been used so that sensibility to errors becomes obvious.}\label{MeanColl01}
+\end{figure}
+ 
 
 \subsection{Mean impact time}
+
+The impact against the walls for any discs should follow the expression \ref{}. 
 
 \subsection{Mean sojourn time}
 

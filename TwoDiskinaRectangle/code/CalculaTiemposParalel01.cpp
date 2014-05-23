@@ -34,7 +34,7 @@ int main(){
   //bajale al ensemble, subele a las colisiones
   
   const int Geometrias=100;
-  const int ensemble=4000;
+  const int ensemble=1000;
    
   const gsl_rng_type *T;
   T = gsl_rng_ranlxs2;    
@@ -69,7 +69,7 @@ int main(){
 
     std::ostringstream escupehop;
           
-    escupehop<<numeraauxiliar<<"_HopTimeErgodic01.dat"<<std::ends;
+    escupehop<<numeraauxiliar<<"_WallsErgodic01.dat"<<std::ends;
       
     std::string stringhop;
 
@@ -91,7 +91,7 @@ int main(){
     cout<<"Estoy comenzando el proceso "<< n << " con radio="<<radio<<endl;           
     tiemposhop<<"radio "<<radio<<endl;
     tiemposhop<<"Energia "<<Energia<<endl;
-    tiemposhop<<endl;
+    // tiemposhop<<endl; //no necesitamos blanklines
     
 
 
@@ -100,8 +100,8 @@ int main(){
 
       Disco uno(0.0,0.25,0.0, 0.0,radio);
       Disco dos(0.0,-0.25,0.0,0.0,radio);
-      bool hopeado=false;
-      int chocador=-1; //armadillo indexes
+      
+      int chocador=-1; //armadillo indexes. ^Better this one.
       
       AbsolutRandomDiscos(uno,dos,Energia,r);
      
@@ -112,44 +112,34 @@ int main(){
       //Dado que estamos esperando un RETURN TIME
       //Primero tenemos que ergodicidar Sobre condiciones EN EL HOP-Posture
       //EXACTAMENTE
-      int cuentachoques=0;
-      int choque=-1;	
+      int cuentachoques=0; 
 
-      while((!hopeado)&&(cuentachoques<colisionesmax)){	
-	tiempodechoque=dinamicaunchoqueyhopp(uno,dos,choque);	
-	cuentachoques++;
-	if(choque==5)hopeado=true;
+      chocador=4; //pretend that we are on the UNINTERESTING WALL
+      while((chocador==4)&&(cuentachoques<colisionesmax)){	
+	//Get on the starting position
+	tiempodechoque=dinamicaunchoqueyhopp(uno,dos,chocador);		
+	//	cout<<"ya colisione"<<endl;
       }
         
-      if(hopeado){
-	hopeado==false;
-	hoptime=-1.0;
-	for(int i=0; i<colisionesmax;i++){ 
-	  	  
-	  tiempodechoque=dinamicaunchoque(uno,dos);	
-	  hoptime=hopper(uno,dos);
-	
-	  if((hoptime<=tiempodechoque)&&(hoptime>0.0000)){	  
-	    hopeado=true;
-	    tiempoentrebrincos+=hoptime;
+      if(chocador!=4){
+	chocador=4;
+	tiempoentrebrincos=0.00;
+	for(int i=0; i<colisionesmax;i++){ 	  
+	  tiempodechoque=dinamicaunchoqueyhopp(uno,dos,chocador);	
+	  tiempoentrebrincos+=tiempodechoque;
+	  if(chocador!=4){	  
 	    tiemposhop<<tiempoentrebrincos<<endl;
 	    tiempoentrebrincos=0.00;
-	  
-	  }else{
-	    tiempoentrebrincos+=tiempodechoque;
-	    
 	  }
-
+	
 	}//Cierra las repeticiones sobre la dinamica
       
-      }else{
-	//Nunca paso nada, no escribas NADA
-      };
+      }
      
 
-    }
-       
+    }//cierra sobre el ensamble     
     cout<<"He terminado con el proceso "<<n<<endl;
+   
     } //Cierra el loop paralelizable
     
   } //Cierra el pragma de openmp

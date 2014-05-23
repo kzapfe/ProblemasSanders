@@ -159,11 +159,8 @@ double dinamicaunchoqueyhopp(Disco &Uno, Disco &Dos, int& chocador){
   
   chocador=choque;
   
-
-
   double result=t;
     
-  
   Uno.avanzarvacio(t);
   Dos.avanzarvacio(t);
   
