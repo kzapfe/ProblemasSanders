@@ -1,0 +1,288 @@
+\documentclass[letterpaperr,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}  
+\usepackage{textcomp}
+
+
+%\usepackage[garamond,cmbraces]{newtxmath}
+
+\usepackage{xspace}
+\usepackage{graphicx}
+
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{anysize}
+\usepackage[margin=2.54cm]{geometry}
+
+%\usepackage{bm}
+
+\bibliographystyle{alpha}
+
+\newcommand{\Acase}{\textbf{A}\xspace}
+\newcommand{\Bcase}{\textbf{B}\xspace}
+\newcommand{\Ccase}{\textbf{C}\xspace}
+\newcommand{\Dcase}{\textbf{D}\xspace}
+\newcommand{\Uno}{\textbf{1}\xspace}
+\newcommand{\Dos}{\textbf{2}\xspace}
+
+\renewcommand{\rmdefault}{ugm}
+  
+
+\title{Tiempos de Primer Encuentro en Caminantes Aleatorios en $2D$}
+\author{W. P. K. Zapfe}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Introducción}
+
+En este trabajo hemos investigado mecanísmos de primeros encuentros
+para caminantes aleatorios que se encuentran inmersos en espacios
+planos bidimensionales. La motivación original del proyecto es encontrar
+un modelo de primeros principios que simule la propagación de enfermedades
+en animales altamente territoriales, aunque el modelo puede servir
+para otros problemas donde se requiere estudiar la velocidad
+de algun frente de propagación de una cualidad en un medio con ciertas
+restricciones a la movilidad de los agentes. Actualmente existen
+modelos de campo medio que dan buenos resultados sobre el número
+de individuos afectados por la enfermedad o la cualidad, sin embargo
+hay pocos resultados rigurosos sobre el área infectada, notablemente
+aquí destaca el trabajo previo del Dr. Sanders y colaboradores 
+en espacios unidimensionales \cite{SandersLuca}.
+El propósito del presente trabajo es poder extender dichos resultados
+a dos (y eventualmente más) dimensiones. En este reporte de investigación
+describo primordialmente mi contribución al proyecto, excepto
+donde se indique lo contrario. 
+
+\section{Consideraciones sobre la dimensión}
+
+La primera contribución que realicé al proyecto fue el mero señalamiento
+de la imposibilidad de extender \emph{directamente} el modelo anterior
+basado en caminantes en celdas discretas sin tomar en cuenta
+un parámetro más que no existiá en el caso anterior. Este
+razonamiento proviene de la \emph{dimensionalidad} de los objetos, 
+relativa al espacio donde se encuentran.
+Una mera división en celdas de territorios bidimensionales con
+caminantes que ocupen una celda a la vez, llevado al  límite continuo,
+produce dos objetos puntuales que no tienen posibilidad alguna 
+de encontrarse. Así 
+que se añadió un parámetro extra a los caminantes: un radio de interacción.
+Esto hace que la sección del espacio de configuraciones que
+representa un encuentro entre los dos caminantes tenga codimensión
+uno. Para aclarar eso tomamos una versión reducida del problema,
+donde uno de los caminantes sólo se moviera a lo largo de una
+linea horizontal. Le llamaremos la versión $3D$ del problema. Construí
+unas imágenes del espacio de configuraciones del espacio de configuración
+total para que se pueda apreciar la dificultad de la dimensión de los
+objetivos, que muestro en la figura \ref{celdas3d}. 
+
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=0.99\textwidth]{Celdas_7_con_encuentro.pdf}
+    \caption{7 celdas por lado.}
+    \label{gruesaceldas}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=0.99\textwidth]{Celdas_20_con_encuentro.pdf}
+    \caption{20 celdas por lado}
+    \label{finaceldas}
+  \end{subfigure}
+  \caption{La versión $3D$ del problema, con celdas finitas. 
+La condición de encuentro es el conjunto de celdas azules, cuyo
+número crece linealmente inversamente proporcional al lado de la celda pero
+cuyo volumen tiende a cero como el cubo de esta razón. Eventualmente 
+su límite es un conjunto de medida cero.}\label{celdas3d}
+\end{figure}
+
+
+\begin{figure}[h]
+  \centering
+   \includegraphics[width=0.45\textwidth]{Celdas_15_con_radio.pdf}
+   \caption{La versión $3D$ del problema, con celdas finitas, pero
+con un radio de interacción mayor a cero. 
+La condición de encuentro es el conjunto de celdas azules, }\label{celdas3dconradio}
+\end{figure}
+
+
+\section{La Geometría del Problema}
+
+Nuestra intención original era verificar la posible aplicabilidad de la
+fórmula de Szabo \cite{Szabo80} y los resultados de Sanders \cite{SandersLuca}
+a este mayor número de dimensiones. La fórmula es adecuada si la sección
+relevante del problema se puede aproximar por un anillo, 
+siendo el resto de las dimensiones del espacio efectivamente 
+irrelevantas. Para eso habría primero que considerar cual es 
+la geometría real del espacio del problema y como podríamos simplificarlo
+hasta que tuvieramos algo parecido a una sección anular.
+
+La verdadera geometría del problema en $4D$ es un prisma rectangular
+atravezado diagonalmente por un cilindro con dos ejes rectos,
+lo cual daba la esperanza de que las aproximaciones mencionadas
+funcionaran. La condición de encuentro es que los caminantes aleatorios
+se encuentren a menos distancia que la distancia de interacción. Esto
+produce una sóla condición sobre las coordenadas libres del sistema, 
+expresable por una simple desigualdad:
+\begin{equation}
+(x_1-x_2)^2+(y_1-y_2)\ge (2r)^2
+\end{equation}
+Un simple cambio lineal de coordenadas hace ver que
+esto excluye un corte circular. Esto nos dió esperanzas para
+intentar aplicar los resultados mencionados. El caso más general
+(territorios diferentes para los ``animales'') resulta,
+infelizmente, en condiciones de frontera para el primero
+impacto demasiado complicadas, así que concentramos los primeros
+esfuerzos analíticos sobre el caso en que los
+dos animales compartieran el mismo territorio. 
+Esto resulta en un espacio de configuración total cuya espacio
+libre es un prisma rectangular atravezado diagonalmente
+por un cilindro, tanto en $3D$ como en $4D$. Los parámetros
+que suponemos adecuados para aproximar todo por dos
+cilindros coaxiales (el \emph{objetivo} y el \emph{espacio libre})
+son los volúmenes y las áreas. Heurísticamente suponemos que el 
+volumen libre es el parámetro fundamental para aplicar 
+las fórmulas conocidas. Hemos recalculado entonces
+los volúmenes y áreas de estos objetos geométricos y verificado
+contra resultados anteriores en caso de existir \cite{Munakata02},
+y en caso contrario comparado contra nuestras propias 
+simulaciones numéricas.
+
+
+El resultado de este esfuerzo es un conocimiento muy extenso
+de las caracterísitcas geométricas y topológicas del sistema. Sabemos
+que efectivamente podemos hacer cortes transversales sobre el espacio
+de configuración total, de forma que el espacio libre sea topologicamente un
+anillo. Sin embargo esto no ha sido suficiente para garantizar
+el funcionamiento de las fórmulas que pretendiamos usar.
+En el caso de que hubieramos tenido sólamente un anillo bidimensional
+efectivo como espacio del problema, las fórmulas de tiempo medio
+de Szabo, Schultz y Schultz dependerían sólamente de la proporción
+entre el radio interior y exterior del anillo, de la forma siguiente:
+\begin{equation}\label{Szabo01}
+\langle t \rangle \frac{D}{R^2}=
+\bigl((r/R)^2-3\bigr)/8 -\frac{\ln (r/R)}{2(1-(r/R)^2)},
+\end{equation}
+donde $D$ sería una constante difusiva efectiva.
+El problema es encontrar un buen valor para dichos radios, que no corresponden
+a los radios de interacción de los caminantes, sino dependen de la aproximación
+que hayamos usado para reducir el problema. Dados los resultados anteriores,
+suponemos confiadamente que la mejor aproximación que podemos llevar a cabo
+resulta de preservar el volumen libre y el área de \emph{de contacto},
+es decir, el área del cilindro que representa la condición de encuentro.
+Sin embargo, como se muestra en las figuras de la siguiente
+sección, esto parece no haber sido suficiente para dar un buen resultados. 
+Los resultados numéricos fueron el detonador de una busqueda más extensa.
+
+
+\section{El Esfuerzo numérico}
+
+La parte primordial de la investigación está fundamentada en las 
+simulaciones computacionales, que de ser correctamente llevadas a cabo,
+validarían nuestras conjeturas sobre los tiempos de primer encuentro.
+Para ello tuve que escribir, probar, corregir y paralelizar
+los códigos que llevaron a cabo las simulaciones. Esto fue enriquecido
+por programas realizados para producir animaciones en tiempo real
+y poder visualizar tanto los problemas fundamentales como el problema
+de motivación original. Parte de la numérica también fue resuelta
+con técnicas de álgebra lineal por el Dr. Sanders, produciendo
+lo que llamamos ``resultados numéricos exactos'', contra los
+cuales es posible verificar las simulaciones. También llevamos a cabo
+simulaciones con dinámicas distintas, para excluir la posibilidad de
+que los detalles exactos de la mecánica influyeran sobre los resultados numéricos.
+Los resultados se muestran resumidos en la figura \ref{Resultados01}.
+
+\begin{figure}[h]
+  \centering
+   \includegraphics[width=0.95\textwidth]{KarelDavidSzabo01.pdf}
+   \caption{Resultados numéricos contra la formula de Szabo, obtenida
+a partir de la preservación del volumen. Es claro que esta
+aproximación resulta muy pobre, excepto para el rango de valores
+de rango de interacción muy pequeños. }\label{Resultados01}
+\end{figure}
+
+Otro argumento heurístico consiste en tomar en cuenta el decrecimiento 
+del volumen libre disponible a lo largo del eje o los ejes del
+cilindro. En ese caso la aproximación trabajada resultaría muy pobre.
+Para poner aprueba esta conjetura me dediqué a simular un sistema
+difusivo en cuatro dimensiones, cuyo espacio libre fuera cónico y 
+su objetivo absorvente un cilindro coaxial. Los resultados se
+muestran en la figura \ref{Conos01}.
+
+\begin{figure}[h]
+  \centering
+   \includegraphics[width=0.95\textwidth]{KarelDavidSzaboConos02.pdf}
+   \caption{Resultados numéricos del sistema $4D$ contra la 
+simulación de un sistema difusivo en 4 dimensiones con espacio
+libre cónico y un absorvente cilíndrico coaxial. Se puede
+apreciar que el comportamiento es el mismo en esta primera prueba.
+ }\label{Conos01}
+\end{figure}
+
+La última figura soporta el argumento de que la geometría
+exacta del espacio de configuración no es aproximable por cilindros,
+y que el decrecimiento del espacio libre a lo largo de los ejes
+de simetría no resulta despreciable. Por ende, nuestro esfuerzo
+por aplicar la fórmula de Szabo directamente debe ser modificado para
+tomar en cuenta la geometría del problema.
+
+\section{La Fórmula de Fick-Jacobs}
+
+Finalmente, dada la difucultad que hemos enfrentado para encontrar la
+solución de los primeros encuentros del problema, hemos decidido buscar
+otra posible ruta, que es la llamada fórmula Fick-Jacobs, usada
+exitosamente en otros problemas de difusión para encontrar primeros
+tiempos de encuentro en sistemas con absorventes dispuestos a lo largo
+de un eje \cite{Jacobs}. La fórmula fue desarrollada para cubrir casos
+unidimensionales, pero ha sido ya aplicada a casos de mayor dimensión, 
+considerando el espacio extra como un efecto de concentración \cite{Dagdug}
+ Aún no sabemos
+si el grado de aplicabilidad de ésta funcionará para las geometrías que nosotros
+estamos considerando, pero ya contamos con un camino delineado para
+provar su posible aplicación.
+Siguiendo el trabajo de Vazquéz y Dagdug, tenemos que representar
+nuestro sistema por un canal unidimensional efectivo. Dados los resultados presentados
+en la figura, \ref{Conos01}, tomamos la aproximación cónica de la geometría como
+un buen modelo para el espacio libre. Entonces podremos
+considerar la dirección radial como la dirección efectiva del problema
+unidimensional segun la fórmula Fick-Jacobs. De esta forma el 
+objetivo absorvente quedaría ``en un extremo'' de la dirección efectiva,
+el radio de interaccíon provería un final abrupto de esta curva
+de concentración (véase la figura \ref{VolRadial}).
+
+\begin{figure}[h]
+  \centering
+   \includegraphics[width=0.75\textwidth]{DiffVolPorRadio01.pdf}
+   \caption{La diferencial de volumen (4D) como función del radio. Nuestra
+concentración efectiva a lo largo de 
+una sóla dimensión radial 
+será proporcional a esta cantidad. 
+El absorvente se encontrará en algun lugar del eje radial, dependiendo
+del radio de interacción; estando
+el espacio libre a la derecha. Las unidades son arbitrarias,
+ }\label{VolRadial}
+\end{figure}
+
+
+Dicha fórmula fue desarrollada con la intención de resolver tiempos
+de pasaje en sistemas difusivos cuyos objetivos (absorventes) estuvieran
+en los extremos de una dirección dada. Nosotros tenemos una geometría donde
+el absorvente esta a lo largo de un eje de simetría rotacional. 
+Podríamos considerar el cambio de coordenadas polar como una
+afectación propia de un campo de concentraciones no homogeneo. 
+Tendremos que ver si la formula resultante de esta transformación funciona
+al menos en una aproximación burda.
+
+\bibliography{../../notasmixtas/General}
+
+
+\end{document}
