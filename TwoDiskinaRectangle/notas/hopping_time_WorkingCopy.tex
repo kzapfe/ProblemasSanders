@@ -514,7 +514,7 @@ Let us assume a holle of size $\epsilon+2r$ for suitable values of $r$ in
 the right side of the wall. Then the Area in phase space corresponding
 to this holle (assuming each of the disks can escape first) is simply:
 \begin{align}\label{escape}
- A_{escape} &= 2 w h \epsilon.
+ A_{escape} &= 2 (w-2r) (h-2r) \epsilon.
 \end{align}
 
 
@@ -580,7 +580,7 @@ We should go for the more general formula \cite{notascalculokarel}.
 \subsection{Mean impact time}
 
 Lastly, for the general impact formula we have the expression:
-\begin{equation}
+\begin{equation}\label{impactwall}
  \mean{\tau}_{coll} = 	
 \frac{3 \pi}{2\sqrt{2}}
 \frac { 2a^{2} b^{2}  -  2\pi a b r^{2} + \frac{a+b}{3}(2r)^3 - r^4}
@@ -594,7 +594,7 @@ for non interacting point particles,
 but, then, ergodic theory would not apply
 on such a system. 
 
-\subsection{Mean sojourn  time for small disks and entrances}
+\subsection{Mean Sojourn  time for small disks and entrances}
 
 We shall also test the validity of formula using the area in eq. \ref{escape}
 for a small holle in the walls. If the formula is to be valid, we have
@@ -612,6 +612,11 @@ a return time for the adecuate section and we could use the following formula:
 \end{equation}
 As can be expected, this time is proportional to the
 free Volume avaible and inversely proportional to the size of the hole, $\epsilon$.
+The formula should be adeccuatelly interpreted. This time would represent
+the interval that the box, with the afforementioned holle, contains two disks,
+starting to count at the moment that the second disks enters the box, and
+stoping at the moment any of the disks leaves. 
+
 
 \section{Numeric Results}
 
@@ -695,7 +700,22 @@ strong ergodic hypothesis (figure \ref{MeanColl01}.
 
 \subsection{Mean impact time}
 
-The impact against the walls for any discs should follow the expression \ref{}. 
+The impact against the walls for any discs should follow the expression 
+\ref{impactwall}. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.98\textwidth]{ImpactWallsPerfect01.pdf}
+  \caption{The mean hopping time as function of the radius, Energy, mass, 
+    and geometry fixed.
+    The red line is the formula \ref{hoptau}, while the green line
+    labeled ``Analytical Coarse'' is an approximation using
+    $16a^2b^2$ as volume. It can be seen that the numerical results
+    are between the two for most of the range.
+    A logarithmic scale
+    has been used so that sensibility to errors becomes obvious.}\label{MeanColl01}
+\end{figure}
+ 
 
 \subsection{Mean sojourn time}
 

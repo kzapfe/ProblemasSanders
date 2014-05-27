@@ -34,16 +34,19 @@ int main(){
   //bajale al ensemble, subele a las colisiones
   
   const int Geometrias=100;
-  const int ensemble=1000;
+  const int ensemble=4000;
    
   const gsl_rng_type *T;
   T = gsl_rng_ranlxs2;    
-    
+  
+  const double epsilonagujero=0.001; //para el Sojourn Time
+  
   const double radioefemin=0.0001;
   //  const double radioefemax=radiomax-radioefemin;
-  const double radioefemax=0.2499;
+  const double radioefemax=epsilonagujero/2.0-0.0001;
   
 #pragma omp parallel num_threads(7)
+
   {
 #pragma omp  for schedule(dynamic)
     //Se supone que todo lo que esta declarado dentro del for es privado.
@@ -69,7 +72,7 @@ int main(){
 
     std::ostringstream escupehop;
           
-    escupehop<<numeraauxiliar<<"_WallsErgodic01.dat"<<std::ends;
+    escupehop<<numeraauxiliar<<"_SojournErgodic0001-4.dat"<<std::ends;
       
     std::string stringhop;
 
@@ -94,7 +97,6 @@ int main(){
     // tiemposhop<<endl; //no necesitamos blanklines
     
 
-
     for(int j=0; j<ensemble; j++){
       //Random initial conditions.
 
@@ -102,7 +104,9 @@ int main(){
       Disco dos(0.0,-0.25,0.0,0.0,radio);
       
       int chocador=-1; //armadillo indexes. ^Better this one.
+      bool condicionagujero=false;
       
+
       AbsolutRandomDiscos(uno,dos,Energia,r);
      
       tiempodechoque=0.0; 
@@ -115,21 +119,39 @@ int main(){
       int cuentachoques=0; 
 
       chocador=4; //pretend that we are on the UNINTERESTING WALL
-      while((chocador==4)&&(cuentachoques<colisionesmax)){	
+      while((!condicionagujero)&&(cuentachoques<colisionesmax)){	
 	//Get on the starting position
-	tiempodechoque=dinamicaunchoqueyhopp(uno,dos,chocador);		
-	//	cout<<"ya colisione"<<endl;
+	tiempodechoque=dinamicaunchoqueyhopp(uno,dos,chocador);
+	cuentachoques++;
+	condicionagujero=(((chocador==0)&&(uno.qx>0)&&
+			   (-epsilonagujero/2.0<uno.qy<epsilonagujero/2.0))
+			   ||
+			  ((chocador==2)&&(dos.qx>0)&&
+			   (-epsilonagujero/2.0<dos.qy<epsilonagujero/2.0))
+			  );
+	  //lo que dice arriba es lo siguiente: Cualquiera de 
+	//los diskos puede salir
       }
         
-      if(chocador!=4){
-	chocador=4;
+      if(condicionagujero){
 	tiempoentrebrincos=0.00;
+	condicionagujero=false;
 	for(int i=0; i<colisionesmax;i++){ 	  
 	  tiempodechoque=dinamicaunchoqueyhopp(uno,dos,chocador);	
 	  tiempoentrebrincos+=tiempodechoque;
-	  if(chocador!=4){	  
+	
+	  condicionagujero=(((chocador==0)&&(uno.qx>0)&&
+			   (-epsilonagujero/2.0<uno.qy<epsilonagujero/2.0))
+			   ||
+			  ((chocador==2)&&(dos.qx>0)&&
+			   (-epsilonagujero/2.0<dos.qy<epsilonagujero/2.0))
+			    );
+	
+
+	  if(condicionagujero){	  
 	    tiemposhop<<tiempoentrebrincos<<endl;
 	    tiempoentrebrincos=0.00;
+
 	  }
 	
 	}//Cierra las repeticiones sobre la dinamica
