@@ -29,6 +29,7 @@
 \newcommand{\Dcase}{\textbf{D}\xspace}
 \newcommand{\Uno}{\textbf{1}\xspace}
 \newcommand{\Dos}{\textbf{2}\xspace}
+\newcommand{\rd}{\, \mathrm{d}}
 
 \renewcommand{\rmdefault}{ugm}
   
@@ -43,13 +44,13 @@
 
 \section{Introducción}
 
-En este trabajo hemos investigado mecanísmos de primeros encuentros
+En este trabajo hemos investigado mecanismos de primeros encuentros
 para caminantes aleatorios que se encuentran inmersos en espacios
 planos bidimensionales. La motivación original del proyecto es encontrar
 un modelo de primeros principios que simule la propagación de enfermedades
 en animales altamente territoriales, aunque el modelo puede servir
 para otros problemas donde se requiere estudiar la velocidad
-de algun frente de propagación de una cualidad en un medio con ciertas
+de algún frente de propagación de una cualidad en un medio con ciertas
 restricciones a la movilidad de los agentes. Actualmente existen
 modelos de campo medio que dan buenos resultados sobre el número
 de individuos afectados por la enfermedad o la cualidad, sin embargo
@@ -66,13 +67,12 @@ donde se indique lo contrario.
 La primera contribución que realicé al proyecto fue el mero señalamiento
 de la imposibilidad de extender \emph{directamente} el modelo anterior
 basado en caminantes en celdas discretas sin tomar en cuenta
-un parámetro más que no existiá en el caso anterior. Este
-razonamiento proviene de la \emph{dimensionalidad} de los objetos, 
-relativa al espacio donde se encuentran.
+la mayor dimensión del espacio de configuraciones total.
 Una mera división en celdas de territorios bidimensionales con
 caminantes que ocupen una celda a la vez, llevado al  límite continuo,
 produce dos objetos puntuales que no tienen posibilidad alguna 
-de encontrarse. Así 
+de encontrarse (o un límite unidimensional encajado en tres o cuatro
+dimensiones). Así 
 que se añadió un parámetro extra a los caminantes: un radio de interacción.
 Esto hace que la sección del espacio de configuraciones que
 representa un encuentro entre los dos caminantes tenga codimensión
@@ -118,26 +118,27 @@ La condición de encuentro es el conjunto de celdas azules, }\label{celdas3dconr
 \section{La Geometría del Problema}
 
 Nuestra intención original era verificar la posible aplicabilidad de la
-fórmula de Szabo \cite{Szabo80} y los resultados de Sanders \cite{SandersLuca}
+fórmula de Szabo, Schultz y Schultz \cite{Szabo80},
+ y los resultados de Sanders, Giuggoli y Pérez-Becker  \cite{SandersLuca}
 a este mayor número de dimensiones. La fórmula es adecuada si la sección
 relevante del problema se puede aproximar por un anillo, 
-siendo el resto de las dimensiones del espacio efectivamente 
-irrelevantas. Para eso habría primero que considerar cual es 
+siendo el resto de las dimensiones del espacio  
+irrelevantes. Para eso habría primero que considerar cual es 
 la geometría real del espacio del problema y como podríamos simplificarlo
-hasta que tuvieramos algo parecido a una sección anular.
+hasta que tuviéramos algo parecido a una sección anular.
 
 La verdadera geometría del problema en $4D$ es un prisma rectangular
-atravezado diagonalmente por un cilindro con dos ejes rectos,
+atravesada diagonalmente por un cilindro con dos ejes rectos,
 lo cual daba la esperanza de que las aproximaciones mencionadas
 funcionaran. La condición de encuentro es que los caminantes aleatorios
 se encuentren a menos distancia que la distancia de interacción. Esto
-produce una sóla condición sobre las coordenadas libres del sistema, 
+produce una sola condición sobre las coordenadas libres del sistema, 
 expresable por una simple desigualdad:
 \begin{equation}
 (x_1-x_2)^2+(y_1-y_2)\ge (2r)^2
 \end{equation}
 Un simple cambio lineal de coordenadas hace ver que
-esto excluye un corte circular. Esto nos dió esperanzas para
+esto excluye un corte circular. Esto nos dio esperanzas para
 intentar aplicar los resultados mencionados. El caso más general
 (territorios diferentes para los ``animales'') resulta,
 infelizmente, en condiciones de frontera para el primero
@@ -145,7 +146,7 @@ impacto demasiado complicadas, así que concentramos los primeros
 esfuerzos analíticos sobre el caso en que los
 dos animales compartieran el mismo territorio. 
 Esto resulta en un espacio de configuración total cuya espacio
-libre es un prisma rectangular atravezado diagonalmente
+libre es un prisma rectangular atravesado diagonalmente
 por un cilindro, tanto en $3D$ como en $4D$. Los parámetros
 que suponemos adecuados para aproximar todo por dos
 cilindros coaxiales (el \emph{objetivo} y el \emph{espacio libre})
@@ -159,14 +160,14 @@ simulaciones numéricas.
 
 
 El resultado de este esfuerzo es un conocimiento muy extenso
-de las caracterísitcas geométricas y topológicas del sistema. Sabemos
+de las características geométricas y topológicas del sistema. Sabemos
 que efectivamente podemos hacer cortes transversales sobre el espacio
 de configuración total, de forma que el espacio libre sea topologicamente un
 anillo. Sin embargo esto no ha sido suficiente para garantizar
-el funcionamiento de las fórmulas que pretendiamos usar.
-En el caso de que hubieramos tenido sólamente un anillo bidimensional
+el funcionamiento de las fórmulas que pretendíamos usar.
+En el caso de que hubiéramos tenido solamente un anillo bidimensional
 efectivo como espacio del problema, las fórmulas de tiempo medio
-de Szabo, Schultz y Schultz dependerían sólamente de la proporción
+de Szabo, Schultz y Schultz dependerían solamente de la proporción
 entre el radio interior y exterior del anillo, de la forma siguiente:
 \begin{equation}\label{Szabo01}
 \langle t \rangle \frac{D}{R^2}=
@@ -181,7 +182,7 @@ resulta de preservar el volumen libre y el área de \emph{de contacto},
 es decir, el área del cilindro que representa la condición de encuentro.
 Sin embargo, como se muestra en las figuras de la siguiente
 sección, esto parece no haber sido suficiente para dar un buen resultados. 
-Los resultados numéricos fueron el detonador de una busqueda más extensa.
+Los resultados numéricos fueron el detonador de una búsqueda más extensa.
 
 
 \section{El Esfuerzo numérico}
@@ -215,7 +216,7 @@ del volumen libre disponible a lo largo del eje o los ejes del
 cilindro. En ese caso la aproximación trabajada resultaría muy pobre.
 Para poner aprueba esta conjetura me dediqué a simular un sistema
 difusivo en cuatro dimensiones, cuyo espacio libre fuera cónico y 
-su objetivo absorvente un cilindro coaxial. Los resultados se
+su objetivo absorbente un cilindro coaxial. Los resultados se
 muestran en la figura \ref{Conos01}.
 
 \begin{figure}[h]
@@ -223,13 +224,13 @@ muestran en la figura \ref{Conos01}.
    \includegraphics[width=0.95\textwidth]{KarelDavidSzaboConos02.pdf}
    \caption{Resultados numéricos del sistema $4D$ contra la 
 simulación de un sistema difusivo en 4 dimensiones con espacio
-libre cónico y un absorvente cilíndrico coaxial. Se puede
+libre cónico y un absorbente cilíndrico coaxial. Se puede
 apreciar que el comportamiento es el mismo en esta primera prueba.
  }\label{Conos01}
 \end{figure}
 
 La última figura soporta el argumento de que la geometría
-exacta del espacio de configuración no es aproximable por cilindros,
+exacta del espacio de configuración no se puede aproximar por cilindros,
 y que el decrecimiento del espacio libre a lo largo de los ejes
 de simetría no resulta despreciable. Por ende, nuestro esfuerzo
 por aplicar la fórmula de Szabo directamente debe ser modificado para
@@ -237,50 +238,72 @@ tomar en cuenta la geometría del problema.
 
 \section{La Fórmula de Fick-Jacobs}
 
-Finalmente, dada la difucultad que hemos enfrentado para encontrar la
+Finalmente, dada la dificultad que hemos enfrentado para encontrar la
 solución de los primeros encuentros del problema, hemos decidido buscar
 otra posible ruta, que es la llamada fórmula Fick-Jacobs, usada
 exitosamente en otros problemas de difusión para encontrar primeros
-tiempos de encuentro en sistemas con absorventes dispuestos a lo largo
+tiempos de encuentro en sistemas con absorbentes dispuestos a lo largo
 de un eje \cite{Jacobs}. La fórmula fue desarrollada para cubrir casos
 unidimensionales, pero ha sido ya aplicada a casos de mayor dimensión, 
-considerando el espacio extra como un efecto de concentración \cite{Dagdug}
- Aún no sabemos
-si el grado de aplicabilidad de ésta funcionará para las geometrías que nosotros
-estamos considerando, pero ya contamos con un camino delineado para
-provar su posible aplicación.
-Siguiendo el trabajo de Vazquéz y Dagdug, tenemos que representar
+considerando el espacio extra como un efecto sobre el parámetro
+de difusión efectivo. \cite{Dagdug}
+
+Siguiendo el trabajo de Vázquez y Dagdug, tenemos que representar
 nuestro sistema por un canal unidimensional efectivo. Dados los resultados presentados
 en la figura, \ref{Conos01}, tomamos la aproximación cónica de la geometría como
 un buen modelo para el espacio libre. Entonces podremos
 considerar la dirección radial como la dirección efectiva del problema
-unidimensional segun la fórmula Fick-Jacobs. De esta forma el 
-objetivo absorvente quedaría ``en un extremo'' de la dirección efectiva,
-el radio de interaccíon provería un final abrupto de esta curva
-de concentración (véase la figura \ref{VolRadial}).
+unidimensional según la fórmula Fick-Jacobs. De esta forma el 
+objetivo absorbente quedaría  \emph{en un extremo} de la dirección efectiva,
+y el radio de interacción proveería un final abrupto de esta curva
+de espacio difusivo libre efectivo (véase la figura \ref{VolRadial}).
 
 \begin{figure}[h]
   \centering
    \includegraphics[width=0.75\textwidth]{DiffVolPorRadio01.pdf}
    \caption{La diferencial de volumen (4D) como función del radio. Nuestra
 concentración efectiva a lo largo de 
-una sóla dimensión radial 
+una sola dimensión radial 
 será proporcional a esta cantidad. 
-El absorvente se encontrará en algun lugar del eje radial, dependiendo
+El absorbente se encontrará en algún lugar del eje radial, dependiendo
 del radio de interacción; estando
 el espacio libre a la derecha. Las unidades son arbitrarias,
  }\label{VolRadial}
 \end{figure}
 
+La propuesta de Vázquez y Dagdug corresponde a la siguiente versión
+de la fórmula de Fick-Jacobs:
+\begin{equation}
+\exp(\beta U(x))=
+\frac{\rd}{\rd x}\biggl( 
+\exp(-\beta U(x) D(x) \frac{\rd \tau}{\rd x}
+\biggr)
+\end{equation}
+El potencial $U(x)$ dependería del volumen libre en cada sección
+a lo largo del eje relevante de la forma:
+\begin{equation}
+U(x)=-kT \ln \frac{V(x)}{V_0}.
+\end{equation}
+Reguera y Rubí \cite{RR} proponen para aproximar el parámetro difusivo 
+efectivo:
+\begin{equation}
+D(x)\approx \frac{D_0}{\sqrt{1+(r'(x))^2}},
+\end{equation}
+donde $r(x)$ sería el radio de la sección transversal a $x$.
 
-Dicha fórmula fue desarrollada con la intención de resolver tiempos
-de pasaje en sistemas difusivos cuyos objetivos (absorventes) estuvieran
-en los extremos de una dirección dada. Nosotros tenemos una geometría donde
-el absorvente esta a lo largo de un eje de simetría rotacional. 
-Podríamos considerar el cambio de coordenadas polar como una
-afectación propia de un campo de concentraciones no homogeneo. 
-Tendremos que ver si la formula resultante de esta transformación funciona
-al menos en una aproximación burda.
+Encuentro en dicho procedimiento para obtener un valor de $\tau(x)$
+algunas dificultades. Primeramente habrá que considerar una vez más las
+dimensiones, es claro por la apariencia de las funciones mostradas
+que los trabajos estaban basados en secciones bidimensionales. Es
+probable que la generalización de la formula de Reguera y Rub sea
+diferente en casos de mayor dimensión. También es claro 
+que usan la simetría rotacional del problema, cosa que nosotros
+estamos forzando con una transformación que no respeta ni siquiera
+la topología del problema. Tendrémos que revisar el camino deductivo
+que les llevo a dicha expresión. Si los argumentos no descansan
+primordialmente sobre estas propiedades, es posible que
+pudiéramos obtener una buena forma de la curva de tiempos de
+primer encuentro que se parezca más a la que hemos usado hasta ahora.
 
 \bibliography{../../notasmixtas/General}
 
