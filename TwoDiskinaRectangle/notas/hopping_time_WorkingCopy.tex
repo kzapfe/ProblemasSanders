@@ -655,18 +655,18 @@ stoping at the moment any of the disks leaves.
 
 \section{Numeric Results}
 
-\subsection{Mean hopping time}
+\subsection{Mean times for events}
 
 We proceed to test last section formulas with
 extensive numerical simulations.
-The next figure, \ref{MeanHopp01} shows the theoretical curve 
-expressed in the formula \ref{hoptau} and some points
-that Karel obtained from numerical experiments. A strange unexplained
-systematic
-deviation has been found. A second analytical curve
-has been used for comparition, which uses the volume of the
-whole hypercube without taking into account the exluded
-set. 
+The next three figures, \ref{MeanHopp01}, \ref{MeanCol01}, and \ref{MeanImp01}  
+we compare the
+numerical and analytical curves for the mean times of different events.
+Out of curiosity, we decided to check a ``coarse'' approximation
+using the whole volume of the fourdimensional box as ``free volume''. 
+We observe an allmost perfect agreement between the ``Analytical'' and ``Numerical''
+values, and a very good agreement between the ``Coarse'' curve for the
+data in the small radius regime ($r<0.05)$.
 
 \begin{figure}[h]
   \centering
@@ -678,11 +678,21 @@ labeled ``Analytical Coarse'' is an approximation using
  $16a^2b^2$ as volume. A logarythmic scale accentuates errors.}\label{MeanHopp01}
 \end{figure}
 
-There are many unpleasant characteristics of the figure. First, it must be
-noted that even though both numerical and teoretical curves have the
-same limit at $r\rightarrow 0$, the slope of the numeric is negative, while 
-that of the teoretical curve is positive. The numeric has this weird 
-hanged belly until $r\approx 0.125$ which is completely unexplained.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.98\textwidth]{CollitionsTime01.pdf}
+  \caption{The mean collition time as function of the radius. Same
+    specifications as the last figure. }\label{MeanCol01}
+\end{figure}
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.98\textwidth]{ImpactWallsPerfect01.pdf}
+  \caption{The mean impact-on-walls time as function of the radius. Again, same
+    notes as the figure \ref{MeanHopp01}}\label{MeanImp01}.
+\end{figure}
+
 
 \begin{figure}[h]
         \centering
@@ -717,18 +727,6 @@ The results for the collition between the disks are very encouraging. They follo
 perfectly the Machta Zwanzig formula, which makes lends credibility to the
 strong ergodic hypothesis (figure \ref{MeanHop01}.
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.98\textwidth]{CollitionsTime01.pdf}
-  \caption{The mean hopping time as function of the radius, Energy, mass, 
-    and geometry fixed.
-    The red line is the formula \ref{hoptau}, while the green line
-    labeled ``Analytical Coarse'' is an approximation using
-    $16a^2b^2$ as volume. It can be seen that the numerical results
-    are between the two for most of the range.
-    A logarithmic scale
-    has been used so that sensibility to errors becomes obvious.}\label{MeanHop01}
-\end{figure}
  
 
 \subsection{Mean impact time}
@@ -736,18 +734,7 @@ strong ergodic hypothesis (figure \ref{MeanHop01}.
 The impact against the walls for any discs should follow the expression 
 \ref{impactwall}. 
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.98\textwidth]{ImpactWallsPerfect01.pdf}
-  \caption{The mean hopping time as function of the radius, Energy, mass, 
-    and geometry fixed.
-    The red line is the formula \ref{hoptau}, while the green line
-    labeled ``Analytical Coarse'' is an approximation using
-    $16a^2b^2$ as volume. It can be seen that the numerical results
-    are between the two for most of the range.
-    A logarithmic scale
-    has been used so that sensibility to errors becomes obvious.}\label{MeanColl01}
-\end{figure}
+
  
 
 \subsection{Mean sojourn time}
