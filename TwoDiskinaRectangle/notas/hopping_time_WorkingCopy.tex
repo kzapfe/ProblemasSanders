@@ -16,6 +16,7 @@
 \affil{Departamento de Física, Facultad de Ciencias, Universidad Nacional Autónoma de México, Ciudad Universitaria, Del.~Coyoacán, México D.F. 04510, Mexico}
 
 \usepackage{mathptmx}
+% I dont know if that package is compatible with revtex.
 
 \newcommand{\defeq}{:=}
 \newcommand{\mean}[1]{\left \langle #1 \right \rangle}
@@ -41,7 +42,7 @@
 
 \author{W. P. Karel Zapfe}
 \email{karelz@fis.unam.mx}
-\affiliation{Some place in the universe}
+\affiliation{Some Cat's Craddle}
 
 
 \begin{abstract}
@@ -66,22 +67,24 @@ Capital $D$ is for ``dimension''.
 Hard sphere billiards are one of the most recurred models in
 statistical physics and non linear dynamics.  Some of the simplest models
  provide us with a deep mathematical understanding
-about the qualitative aspects of their evolution, such as 
-the properties under the moniker \emph{Hard Chaos} (
-hyperbolicity, ergodicity and mixing qualities). One such system is the
+about  the properties under the moniker \emph{Hard Chaos} 
+(hyperbolicity, ergodicity and mixing qualities). One such system is the
 gas of disks in a rectangular box, a two dimensional realisation of a
 hard sphere gas. It is known that such a system is chaotic in the
-strong sense \cite{Sinai70}. 
+strong sense \cite{Sinai70}. An even simpler realization
+is when we take only two disks inside the box, which 
+has allready enough degrees of freedom as to make simple representations
+of the dynamical system unfeasible. Simplifying it further,
+we choose disk of the same radius and mass. The simple
+is amenable to analytic treatment of its global qualities,
+and rigorous results have been obtain from ergodic theory
+\cite{Sinai70, Gallavotti74, SzaszBook00}. 
+
 For the statistical physicist, \emph{mean} and \emph{first} encounter
 times are of uttermost importance, as many properties,
-such as mixing rates and the physical origin of a positive
+such as mixing rates and an interpretative origin of a positive
 Liapunov exponent, depend on it. 
 
-The minimal realisation of this
-system consists in two disks of same mass and radius inside a 
-rectangular box. This system displays hard chaos and 
-is amenable to treatment using
-results from ergodic theory \cite{Sinai70, Gallavotti74, SzaszBook00}. 
 
 
 \section{Model}
@@ -93,13 +96,17 @@ The discs move inertially in the absence of forces,
 following straight line trajectories,
 and undergo elastic collisions with each 
 other and with the walls of the box.
+We take the mass of each disk as $1$, so that the energy
+is the value of the Hamiltonian function inside the billiard table:
+\begin{equation}
+H(q,p)=\frac{1}{2}(\|p_1\|^2+\|p_2\|^2)=1.
+\end{equation}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.56\textwidth]{DiscosenCajaCuadrada01.pdf}
   \caption{The Billiard}\label{billar01}
 \end{figure}
-
 
 We denote the position of the centre of the $i$th disc by 
 $(x_{i}, y_{i})$ for $i=1,2$. Since the discs are hard, 
@@ -218,7 +225,7 @@ the mean time between events the general formula:
 \end{equation}
 In our particular case, the efective dimension is four,
 and $E=m=1$, so that the general factor of the formula appear as:
-\begin{equation} \label{meantimegeneral}
+\begin{equation} \label{meantimegeneralredux}
    \frac{1}{\sqrt{2E / m}} 
 \frac{|S^3|}{|B^3|}=\frac{3\pi}{2\sqrt{2}}.	 
 \end{equation}
@@ -243,27 +250,31 @@ available space or for the  prohibited space.
 
 We shall present the total four-dimensional volume as a product integral
 of all available positions. To better grasp the idea, a convenient
-diagram is shown in the next figure, (\ref{diagintegra01}).
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.75\textwidth]{diagramintegra01.pdf}
-  \caption{The space to integrate is the product of the subspaces
-    belonging to horizontal and vertical coordinates. The colour
-    shaded area represents the ``exclusion'' set, where the condition 
-    $ (x_1-x_2)^2 + (y_1-y_2)^2 \ge d^2 $ is not fulfilled. 
-    Their width is dependent on the particular point of evaluation
-    on the \emph{other} subspace. The diagonal coordinates
-    make the expression to evaluate simpler. Due to 
-    symmetry, we only evaluate the area in stripes and
-    multiply the result by 16.}\label{diagintegra01}
-\end{figure}
-
+diagram is shown in the figure (\ref{diagintegra01}). Our
+principal integral is the avaible free $4D$ volume, which 
+we shall denote $V$:
 \begin{equation}\label{volindic}
  V = \int_{x_1 = -a}^a \rd x_1 \int_{x_2 = -a}^a \rd x_2 
 \int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 },
 \end{equation}
-where $\indicator{Z}$ indicates the indicator function of the set $Z$, given by $\mathbf{1}_Z (x) = 1$ if $x \in Z$, and $=0$ if $x \notin Z$, which restricts the integral to the desired region $Z$.
+where $\indicator{Z}$ indicates the indicator function of the set $Z$, 
+given by $\mathbf{1}_Z (x) = 1$ if $x \in Z$, and $=0$ if $x \notin Z$, 
+which restricts the integral to the desired region $Z$.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.75\textwidth]{diagramintegra01.pdf}
+    \caption{The space to integrate is the product of the subspaces
+      belonging to horizontal and vertical coordinates. The colour
+      shaded area represents the ``exclusion'' set, where the condition 
+      $ (x_1-x_2)^2 + (y_1-y_2)^2 \ge d^2 $ is not fulfilled. 
+      Their width is dependent on the particular point of evaluation
+      on the \emph{other} subspace. The diagonal coordinates
+      make the expression to evaluate simpler. Due to 
+      symmetry, we only evaluate the area in stripes and
+      multiply the result by 16.}\label{diagintegra01}
+  \end{center}
+\end{figure}
 
 We represent the excluded cylinder in the coordinates defined in 
 the set of equation \ref{cambiocoor01}. 
@@ -275,7 +286,9 @@ the set of equation \ref{cambiocoor01}.
 \int_{Y=-b \sqrt{2} + |y| }^{b \sqrt{2}-|y|}  \rd Y
 \, \indicator{ x^2 + y^2 \ge 2r^2  }.
 \end{equation}
-In these coordinates, $X$ and $Y$ do not appear in the integrating part, so that these integrals may be done trivially, thus reducing to the following two-dimensional integral:
+In these coordinates, $X$ and $Y$ do not appear in the integrating part, 
+so that these integrals may be done trivially, 
+thus reducing to the following two-dimensional integral:
 \begin{align}
  V &= \int_{x=-a \sqrt{2}}^{a \sqrt{2}} \rd x  \int_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
 \, 2 \left( a \sqrt{2} - |x| \right) \, 2 \left( b \sqrt{2} - |y| \right) \,  \indicator{ x^2 + y^2 \ge 2r^2 } \\
@@ -283,8 +296,10 @@ In these coordinates, $X$ and $Y$ do not appear in the integrating part, so that
 \, \left( a \sqrt{2} - x \right) \, \left( b \sqrt{2} - y \right) \,  \indicator{ x^2 + y^2 \ge 2r^2 },
 \end{align}
 using the symmetry.
-
-Thus $V = 16(I_1 + I_2)$, where $I_1$ and $I_2$ are the resulting integrals over the regions where the available region for $y$ is affected by, and is not affected by, respectively, the restriction to lie outside the disc.
+Thus $V = 16(I_1 + I_2)$, where $I_1$ and $I_2$ are the 
+resulting integrals over the regions where the available region 
+for $y$ is affected by, and is not affected by, respectively, 
+the restriction to lie outside the disc.
 We have
 \begin{align}
  I_1 &= \int_{x=0}^{r\sqrt{2}} \left[ \int_{y = \sqrt{ 2r^2 - x^2}}^{b \sqrt{2}} \left( b \sqrt{2} - y \right) \rd y \right]  \left( a \sqrt{2} - x \right) \rd x \\
@@ -293,14 +308,14 @@ We have
 \end{align}
 and
 \begin{align}
- I_2 &= \int_{x=d / \sqrt{2}}^{a \sqrt{2}} \left[ \int_{y = 0}^{b \sqrt{2}} \left( b \sqrt{2} - y \right) \rd y \right]  \left( a \sqrt{2} - x \right) \rd x \\
+ I_2 &= \int_{x=r  \sqrt{2}}^{a \sqrt{2}} \left[ \int_{y = 0}^{b \sqrt{2}} \left( b \sqrt{2} - y \right) \rd y \right]  \left( a \sqrt{2} - x \right) \rd x \\
 &=	
-{\left( a^{2} - a d + \textstyle \frac{1}{4}  d^{2}\right)} b^{2}.
+{\left( a^{2} - 2ar +   r^{2}\right)} b^{2}.
 \end{align}
 Thus 
 \begin{equation}\label{volumeabd}
  V %= 16(I_1 + I_2) =     	
-= 16 a^{2} b^{2}  - 4 \pi a b d^{2} + \textstyle \frac{8}{3} (a+b) d^{3}  - \frac{1}{2} d^{4},
+= 16 a^{2} b^{2}  - 16 \pi a b r^{2} + \textstyle \frac{64}{3} (a+b) r^{3}  - 8 r^{4},
 \end{equation}
 as was previously obtained by Munakata and Hu \cite{Munakata02}.
 
@@ -328,7 +343,8 @@ We tacitly made the assumption that $h,w>2d$.  This assumption is on
 the integration limits in the step in eq. \ref{integraltotal}. 
 A full discussion of the formula for the case in which either
 $w$ or $h$ are smaller than $4r$ but there is still space for
-the disks is discussed elsewhere \cite{notascalculokarel}(\pmb{Appendix?}). 
+the disks is discussed in supplementary material \cite{notascalculokarel}
+(\pmb{Appendix?}). 
 We cite the  result for $h/4  <r< w/4$ for illustrative purposes.
 For cleanliness we define another auxiliary variable,
 $c=\sqrt{4r^2-b^2}$:
@@ -341,22 +357,10 @@ V_{h/4<r} = 32abr^2[\arccos(b/2r)-\arccos(a/2r))]\\
 \end{multline}
 In the case that $r$ is larger than both $h/4, w/4$, one must take
 into account a similar
-contribution which inverts the roles of $a$, and $b$.
+contribution which inverts the roles of $a$ and $b$.
 
 In all of our numeric examples we use $w=h=1$, setting the
-limit for hops at $r=0.25$. The fraction of the volume
-excluded is shown in
-figure  \ref{VolFRM}.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{VolumenFormulaRosaMakataHu01.pdf}
-\caption{Free Volume in phase space avaible as in formula \ref{volumewhd} 
-with  $w=h=1$. After $r>0.25$, hopping is not possible, and this
-formula stops being valid.}
-\label{VolFRM}
-\end{figure}
-
+limit for hops at $r=0.25$. %quite figura redundante del Volumen libre.
 We have checked this result with simple Monte Carlo simulations, 
 by generating random positions for the disks centres in 
 $[-a,a] \times [-b,b]$ uniformly and 
@@ -371,8 +375,8 @@ volume. The results are shown in the figure \ref{VolMonteC}.
 \caption{Fraction of occupied volume by the 
 Four Dimensional Prohibition Cylinder for the configuration space of the 
 Two Disks problems. The red continuous line is formula \ref{volumewhd}, 
-which fails after $d>0.5\Leftrightarrow r>0.25$. The numeric,
-of course, are forced to follow the adequate behaviour, which is given
+which fails after $d>0.5\Leftrightarrow r>0.25$. The numerics
+ are forced to follow the adequate behaviour, which is given
 by a generalization of the expression \ref{VolumenCasoFeo}. 
  }\label{VolMonteC}
 \end{figure}
@@ -384,11 +388,13 @@ it is only the possition interchange that gets excluded.
 \subsection{Area of cross-section for horizontal interchange (hops), 
 $\{x_1 = x_2\}$}
 
-The calculation of the $3$-dimensional area of the cross-section 
-$\{x_1 = x_2\}$, which becomes 
-$\{ x=0 \}$ in the new coordinates, proceeds in a similar way:
+The calculation of the $3$-dimensional area  ( all areas shall be 
+denoted by $A$)
+of the cross-section 
+$\{x_1 = x_2\}$ becomes 
+$\{ x=0 \}$ in the new coordinates, proceeds as follows:
 \begin{align}
- A &= \int_{X=-a \sqrt{2} }^{a \sqrt{2}}  \rd X
+ A_{hopp} &= \int_{X=-a \sqrt{2} }^{a \sqrt{2}}  \rd X
  \int_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
 \int_{Y=-b \sqrt{2} + |y| }^{b \sqrt{2}-|y|}  \rd Y
 \, \indicator{y^2 \ge 2r^2 } \\
@@ -400,16 +406,22 @@ $\{ x=0 \}$ in the new coordinates, proceeds in a similar way:
 \end{align}
 
 We have checked this result with simple Monte Carlo simulations, 
-by counting the proportion of successful placements of hard discs for which the distance 
-$|x_1 - x_2|$ is within a small tolerance of $0$. In this case, the possibility to fulfil
+by counting the proportion of successful placements of hard discs 
+for which the distance 
+$|x_1 - x_2|$ is within a small tolerance of $0$. 
+In this case, the possibility to fulfil
 the hopping and the non overlapping conditions simultaneously exclude 
-all the cases for $\sqrt{2}/(1+\sqrt{2}) <d<1/2$. Results are shown in figure \ref{AreaHopp01}.
+all the cases for $\sqrt{2}/(1+\sqrt{2}) <d<1/2$. 
+Results are shown in figure \ref{AreaHopp01}.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\textwidth]{AreaHoppChingona02.pdf}
 \caption{Here we represent the Volume of a narrow strip around the area
-  indicated in the formula in eq. \ref{AreaH}.} 
+  indicated in the formula in eq. \ref{AreaH}. An $\epsilon$ value acts as
+tolerance parameter and produces thus a small volume around the 
+hopping condition. By multipling formula \ref{AreaH} by this $\epsilon$
+we obtain the teoretical curve shown as a continous line.} 
 \label{AreaHopp01}
 \end{figure}
 
@@ -444,13 +456,13 @@ for collision between disks. The plot shows the fraction occupied by a small vol
 of size $A_{collision}(r)\times 0.002$ divided by the total
 avaible volume $V(r)$. The theoretical formula 
 \ref{AreaChoque} breaks down at
-$r=1/4$. An extra numerical point has been put there to show the deviative behaviour.}
+$r=1/4$. 
+An extra numerical point has been put there to show the deviative behaviour.}
 \label{AreaChoqueTeoyNum}.
 \end{figure}
 
 
-
-\subsection{Area of cross section for other impacts}
+\subsection{Area of cross section for  impacts on walls}
 
 For comparison, we shall use also other area to compare
 some properties of the decay of time distributions. The most natural choice
@@ -470,17 +482,14 @@ the procedure carried for the expression \ref{volindic}:
  A_{x_1+} =  \int_{x_2 = -a}^a \rd x_2 
 \int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b \rd y_2 \, \indicator{ (a-x_2)^2 + (y_1-y_2)^2 \ge 4 r^2 }
 \end{equation}
-
 The integration procedure is equally tedious, but
 straightforward, the result is 
 \begin{align}\label{areax1p}
  A_{x_1+} & = 8 a b^2-4  \pi b r^2 +\frac{16}{3}r^3 
  % & = 2(w-d)^2 (h-2)^2- \frac{\pi}{2} (h-d) d^2 +\frac{2}{3}d^3 
 \end{align}
-
 Once again, a simple MonteCarlo procedure verifies this result,
 shown in fig \ref{area1derecha}. 
-
 
 \begin{figure}
 \centering
@@ -490,7 +499,6 @@ for the impact of a determined disk with the right wall, as in eq. \ref{areaindi
 Again, the formula stops being valid at $r>0.25$. }
 \label{area1derecha}.
 \end{figure}
-
 
 Given into account the simmetry of the expression for either of 
 the disk bouncing in each of the vertical walls, the
@@ -507,16 +515,43 @@ The cross section area for any impact or collition
 is then  the sum of the last expression
 and the area for collitions between disks, in eq. \ref{AreaChoque}.
 
+\subsection{Area of small hole in a wall}
 
-Lasty, we can consider the impact with a very small portion of any of the
+We can also consider the impact with a very small portion of any of the
 walls. If the disks are small enough, this would correspond to an escape time. 
 Let us assume a holle of size $\epsilon+2r$ for suitable values of $r$ in
-the right side of the wall. Then the Area in phase space corresponding
-to this holle (assuming each of the disks can escape first) is simply:
+the right side of the wall. Let us assume that the hole is
+centered, then the expression to evaluate is
+\begin{equation}\label{areaindicagujero}
+ A_{x_1+} =  \int_{x_2 = -a}^a \rd x_2 
+\int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b \rd y_2 \, \indicator{ (a-x_2)^2 + (y_1-y_2)^2 \ge 4 r^2 }\indicator{ -\epsilon/2<y_1< \epsilon/2}.
+\end{equation}
+This would mean that the first disk is hitting the hole. By interchanging the
+indexes we would get an equal contribution from the other disk. There is a caveat: 
+if the hole or the interaction radius is too large, we have to consider many
+more cases for the calculation of the cross section area. The geometry of
+the area for integration changes itself according to certain ranges.
+We will consider then only small holes. We show a diagram 
+in the figure \ref{diagintagu}.
+\begin{figure}
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.4\textwidth]{diagramintegraagujero01.pdf} &
+\includegraphics[width=0.4\textwidth]{diagramintegraagujero02.pdf}
+\end{tabular}
+\caption{Area of consideration for the integration of expression
+ \ref{areaindicagujero}. The left side shows a hole small enough
+so that the radius of interacion does not change the geometry of the
+indicatrix set, the right side shows the other possibility.}\label{diagintagu}
+\end{figure}
+The integration is more tedious than in previous examples, as we cannot
+take full advantage of the symmetries and we have to split it into
+more cases, but still is elemental, and after a good day at the blackboard
+it yields
 \begin{align}\label{escape}
  A_{escape} &= 2 (w-2r) (h-2r) \epsilon.
 \end{align}
-
+\pmb{This is probably wrong.}
 
 
 \section{Mean times between events}
@@ -608,7 +643,7 @@ a return time for the adecuate section and we could use the following formula:
 \mean{\tau}_{sojourn} = 	
 \frac{3 \pi}{4\sqrt{2}}
 \frac {16a^2b^2-16\pi a b r^2 + \frac{64}{3} r^3 - 8 r^2  }
-{wh\epsilon}.
+{4 a b \epsilon}.
 \end{equation}
 As can be expected, this time is proportional to the
 free Volume avaible and inversely proportional to the size of the hole, $\epsilon$.
@@ -623,9 +658,7 @@ stoping at the moment any of the disks leaves.
 \subsection{Mean hopping time}
 
 We proceed to test last section formulas with
-extensive numerical simulations. There appears to have to
-sources for slow convergence to ideal results.
-
+extensive numerical simulations.
 The next figure, \ref{MeanHopp01} shows the theoretical curve 
 expressed in the formula \ref{hoptau} and some points
 that Karel obtained from numerical experiments. A strange unexplained
@@ -682,7 +715,7 @@ figure in \ref{smallradius} is something different.
 
 The results for the collition between the disks are very encouraging. They follow
 perfectly the Machta Zwanzig formula, which makes lends credibility to the
-strong ergodic hypothesis (figure \ref{MeanColl01}.
+strong ergodic hypothesis (figure \ref{MeanHop01}.
 
 \begin{figure}[h]
   \centering
@@ -694,7 +727,7 @@ strong ergodic hypothesis (figure \ref{MeanColl01}.
     $16a^2b^2$ as volume. It can be seen that the numerical results
     are between the two for most of the range.
     A logarithmic scale
-    has been used so that sensibility to errors becomes obvious.}\label{MeanColl01}
+    has been used so that sensibility to errors becomes obvious.}\label{MeanHop01}
 \end{figure}
  
 

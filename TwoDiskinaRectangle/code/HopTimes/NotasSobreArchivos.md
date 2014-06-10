@@ -18,6 +18,5 @@ HopTimePromediosStrongernumeris.dat y los que dicen `*Codigo01`) dan
 el limete EXACTO para r->0, mientras que los otros tienen un comportamiento "rarito"
 por encima de eso, es decir, que esta su limite una o dos unidades por encima.
  
-
 Hasta ahora el mejor es HopTimeErgo05.dat, donde corregiste el error
 idiota del doble producto punto.

@@ -29,7 +29,7 @@ using namespace std;
 int main(){
   
   const int Geometrias=100;   
-  const int ensemble=10000; //Small test
+  const int ensemble=50000; //Small test
   const gsl_rng_type *T;
   T = gsl_rng_ranlxs2;    
   
@@ -67,7 +67,7 @@ int main(){
     ofstream tiemposfirst, condini;
 
     std::ostringstream escupefirst, escupeelotro, escupemas;
-    escupefirst<<numeraauxiliar<<"_HopTime.dat"<<std::ends;         
+    escupefirst<<numeraauxiliar<<"_FirstImpactTime.dat"<<std::ends;         
     std::string stringfirst;
     stringfirst=escupefirst.str();
     const char *nombrefirst=stringfirst.c_str();
@@ -121,37 +121,30 @@ int main(){
       condini<<uno.qx<<"\t"<<uno.qy<<"\t"<<
 	dos.qx<<"\t"<<dos.qy<<"\t"<<endl;
 
-      bool unoantesquedosoriginal;
+      /*      bool unoantesquedosoriginal;
       bool unoantesquedos;
 
       unoantesquedosoriginal=(uno.qx<dos.qx);
       unoantesquedos=unoantesquedosoriginal;
+      Es probable que no necesitemos nada de esto
+      */      
+      //bool colision=false;
 
-      bool colision=false;
+      int colision=4;
       int colisiones=0;
 
-      while ((!colision) && (colisiones<colisionesmax)){ 
+      while((colision==5)||(colision==4)){ 
       
-	tiempodechoque+=dinamicaunchoque(uno,dosem);	
-	colisiones++;
-	unoantesquedos=(uno.qx<dos.qx);
+	tiempodechoque+=dinamicaunchoqueyhopp(uno,dos, colision);	
+	colisiones++;	
 	
-		if((unoantesquedos != unoantesquedosoriginal))
-		  //	if((chocador==5))
-		  {colision=true;}	
-
-	/*
-	debuger<<uno.qx<<"\t"<<uno.qy<<"\t"<<
-	  dos.qx<<"\t"<<dos.qy<<"\t"
-	       <<uno.px<<"\t"<<uno.py<<"\t"<<
-	  dos.px<<"\t"<<dos.py<<"\t"<<endl;
-	*/
-
+		
       }
 
-       
-      tiemposfirst<<tiempodechoque<<endl;
-      // debuger<<endl;      
+      if(colisiones<colisionesmax){
+	tiemposfirst<<tiempodechoque<<endl;}
+      tiempodechoque=0.00;
+     // debuger<<endl;      
       
     };
         
