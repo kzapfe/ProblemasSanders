@@ -34,14 +34,14 @@ int main(){
   //bajale al ensemble, subele a las colisiones
   
   const int Geometrias=100;
-  const int ensemble=4000;
+  const int ensemble=500000;
    
   const gsl_rng_type *T;
   T = gsl_rng_ranlxs2;    
   
-  const double epsilonagujero=0.001; //para el Sojourn Time
+  const double epsilonagujero=0.05; //para el Sojourn Time
   
-  const double radioefemin=0.0001;
+  const double radioefemin=0.001;
   //  const double radioefemax=radiomax-radioefemin;
   const double radioefemax=epsilonagujero/2.0-0.0001;
   
@@ -59,7 +59,7 @@ int main(){
     double hoptime=0.00;
     double tiempodechoque=0;
     double tiempoentrebrincos=0.0;
-    const double toleranciachoques=0.000000001;
+    //    const double toleranciachoques=0.000000001;
 
     gsl_rng *r ;  
     r = gsl_rng_alloc(T);
@@ -72,7 +72,8 @@ int main(){
 
     std::ostringstream escupehop;
           
-    escupehop<<numeraauxiliar<<"_SojournErgodic0001-4.dat"<<std::ends;
+    //solo el disco UNO puede escapar
+    escupehop<<numeraauxiliar<<"_SojournUno05-1.dat"<<std::ends;
       
     std::string stringhop;
 
@@ -107,7 +108,7 @@ int main(){
       bool condicionagujero=false;
       
 
-      AbsolutRandomDiscos(uno,dos,Energia,r);
+      RandomAtEntrance(uno,dos,Energia,epsilonagujero, r);
      
       tiempodechoque=0.0; 
       tiempoentrebrincos=0.0;
@@ -117,47 +118,19 @@ int main(){
       //Primero tenemos que ergodicidar Sobre condiciones EN EL HOP-Posture
       //EXACTAMENTE
       int cuentachoques=0; 
-
-      chocador=4; //pretend that we are on the UNINTERESTING WALL
-      while((!condicionagujero)&&(cuentachoques<colisionesmax)){	
-	//Get on the starting position
-	tiempodechoque=dinamicaunchoqueyhopp(uno,dos,chocador);
-	cuentachoques++;
-	condicionagujero=(((chocador==0)&&(uno.qx>0)&&
-			   (-epsilonagujero/2.0<uno.qy<epsilonagujero/2.0))
-			   ||
-			  ((chocador==2)&&(dos.qx>0)&&
-			   (-epsilonagujero/2.0<dos.qy<epsilonagujero/2.0))
-			  );
-	  //lo que dice arriba es lo siguiente: Cualquiera de 
-	//los diskos puede salir
-      }
-        
-      if(condicionagujero){
-	tiempoentrebrincos=0.00;
-	condicionagujero=false;
-	for(int i=0; i<colisionesmax;i++){ 	  
-	  tiempodechoque=dinamicaunchoqueyhopp(uno,dos,chocador);	
-	  tiempoentrebrincos+=tiempodechoque;
-	
-	  condicionagujero=(((chocador==0)&&(uno.qx>0)&&
-			   (-epsilonagujero/2.0<uno.qy<epsilonagujero/2.0))
-			   ||
-			  ((chocador==2)&&(dos.qx>0)&&
-			   (-epsilonagujero/2.0<dos.qy<epsilonagujero/2.0))
-			    );
-	
-
-	  if(condicionagujero){	  
-	    tiemposhop<<tiempoentrebrincos<<endl;
-	    tiempoentrebrincos=0.00;
-
-	  }
-	
-	}//Cierra las repeticiones sobre la dinamica
+      chocador=-1; //pretend that we are on the UNINTERESTING WALL
+           
+      tiempoentrebrincos=0.00;
       
+      while((chocador!=0)&&(uno.qx>0.0)&&
+	    (uno.qy<epsilonagujero/2.)&&(uno.qy>-epsilonagujero/2.)){
+	tiempodechoque=dinamicaunchoqueyhopp(uno,dos,chocador);	
+	tiempoentrebrincos+=tiempodechoque;
+	cuentachoques++;
+	  		 
       }
-     
+	
+      tiemposhop<<tiempoentrebrincos<<endl;
 
     }//cierra sobre el ensamble     
     cout<<"He terminado con el proceso "<<n<<endl;
