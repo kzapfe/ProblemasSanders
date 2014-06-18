@@ -75,23 +75,31 @@ strong sense \cite{Sinai70}. An even simpler realisation
 is when we take only two disks inside the box, which 
 has already enough degrees of freedom as to make simple representations
 of the dynamical system unfeasible. Simplifying it further,
-we choose disk of the same radius and mass. The simple
-is amenable to analytic treatment of its global qualities,
+we choose disk of the same radius and mass. This model is amenable
+to analytic treatments
 and rigorous results have been obtain from ergodic theory
 \cite{Sinai70, Gallavotti74, SzaszBook00}. 
 
 For the statistical physicist, \emph{mean} and \emph{first} encounter
 times are of uttermost importance, as many properties,
-such as mixing rates and an interpretative origin of a positive
-Liapunov exponent, depend on it. 
-
+such as mixing and reaction rates depend on it. Our intention is
+to find primarly the first encounter time of the two disk under 
+inertial motion, as a closes analytical expression dependant only
+on the geometric parametrs of the system and the energy. Previous work
+by Bowles et all shows general quantitative results for the general times for both
+inertial and Brownian dynamics. We extend  their results on
+inertial dynamics by giving
+exact expressions for the mean times obtained through application of 
+Machta and Zwanzig formula for residence times \cite{MacthaZwan}. 
+We shall also  compare \emph{mean event times} with \emph{mean first event times},
+and show heuristic arguments to explain the agreement between the two. 
+Brownian dynamics shall be discused elsewhere \cite{WorkInProgress}.
 
 
 \section{Model}
 
 We consider two discs of radius $r$ (and diameter $d=2r$) 
-in a box of width $w$ and height $h$ (figure
-\ref{billar01}). 
+in a box of width $w$ and height $h$ (figure\ref{billar01}). 
 The discs move inertially in the absence of forces, 
 following straight line trajectories,
 and undergo elastic collisions with each 
@@ -141,19 +149,6 @@ The outer borders are flat, so the
 hyperbolicity is due only to the inner dispersing
 boundary \cite{Sim99}, which represents the collision of
 two disks in the original space.
-
-
-%There are two apparently similar but frustratingly different events.
-%If we want to calculate a \emph{Recurrence time} for the collisions 
-%between the two disks, 
-%we should depart from the subset of all outgoing trajectories from the surface of the
-%hyper-cylinder. 
-%If we want to calculate the \emph{first} encounter time, then
-%this supposition is not necessary.
-% Actually, this complicates
-%the problem, as there are no general results or 
-%techniques to describe this collision in continuous time, and derivations
-%imply \emph{continouslly nested integrals}.
 
 
 \section{Mean time between events}
@@ -313,17 +308,22 @@ and
 {\left( a^{2} - 2ar +   r^{2}\right)} b^{2}.
 \end{align}
 Thus 
-\begin{equation}\label{volumeabd}
+\begin{align}\label{volumeabd}
  V %= 16(I_1 + I_2) =     	
-= 16 a^{2} b^{2}  - 16 \pi a b r^{2} + \textstyle \frac{64}{3} (a+b) r^{3}  - 8 r^{4},
-\end{equation}
+ & =  16 a^{2} b^{2}  - 16 \pi a b r^{2} + \textstyle \frac{64}{3} (a+b) r^{3}  - 8 r^{4} \\
+&= V_{prism} - V_{cyl},
+\end{align}
 as was previously obtained by Munakata and Hu \cite{Munakata02}.
 
 Note that the volume available to place two discs inside 
 the hard box but \emph{without} the 
  hard-disc exclusion constraint is simply 
-given by the first term, $16 a^2 b^2$; 
+given by the first term, $V_{prism}=16 a^2 b^2$; 
 thus, the remaining terms represent the excluded volume due to this constraint.
+We shall call them $V_{cyl}=  16 \pi a b r^{2} - \textstyle \frac{64}{3} (a+b) r^{3}  + 8 r^{4}$.
+This corresponds to the Volume of the exclussion cylinder (the overlapping conditions),
+so we simply state that $V=V_1 - V_2$-.
+
 The available space gets smaller nevertheless, as can be seen from
 the substitutions $a\rightarrow (w-d)/2$ and $b\rightarrow (h-d)/2$.
 The explicit formula for the Volume as function from the diameter only is then:
@@ -372,10 +372,10 @@ volume. The results are shown in the figure \ref{VolMonteC}.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\textwidth]{VolumenOccupiedByCilinder01.pdf}
-\caption{Fraction of occupied volume by the 
-Four Dimensional Prohibition Cylinder for the configuration space of the 
-Two Disks problems. The red continuous line is formula \ref{volumewhd}, 
-which fails after $d>0.5\Leftrightarrow r>0.25$. The numerics
+\caption{Fraction of occupied volume by the excluded conditions
+corresponding to the term $V_{cyl}$ in expression \ref{volumeabd}.
+ The red continuous line represents the formula \ref{volumeabd} 
+ fails after $d>0.5\Leftrightarrow r>0.25$. The numerics
  are forced to follow the adequate behaviour, which is given
 by a generalisation of the expression \ref{VolumenCasoFeo}. 
  }\label{VolMonteC}
@@ -416,7 +416,7 @@ Results are shown in figure \ref{AreaHopp01}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{AreaHoppChingona02.pdf}
+\includegraphics[width=0.8\textwidth]{}
 \caption{Here we represent the Volume of a narrow strip around the area
   indicated in the formula in eq. \ref{AreaH}. An $\epsilon$ value acts as
 tolerance parameter and produces thus a small volume around the 
@@ -670,7 +670,7 @@ data in the small radius regime ($r<0.05)$.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.98\textwidth]{HopTimesPerfect01.pdf}
+  \includegraphics[width=0.98\textwidth]{./FigurasPerfectas/HopTimesAgain01-ForPaper.pdf}
   \caption{The mean hopping time as function of the radius, Energy, mass, 
 and geometry fixed.
 The red line is the formula \ref{hoptau}, while the green line
@@ -680,7 +680,7 @@ labelled ``Analytically Coarse'' is an approximation using
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.98\textwidth]{CollitionsTime01.pdf}
+  \includegraphics[width=0.98\textwidth]{./FigurasPerfectas/CollitionsErgodic02-ForPaper.pdf}
   \caption{The mean collision time as function of the radius. Same
     specifications as the last figure. }\label{MeanCol01}
 \end{figure}
@@ -688,7 +688,7 @@ labelled ``Analytically Coarse'' is an approximation using
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.98\textwidth]{ImpactWallsPerfect01.pdf}
+  \includegraphics[width=0.98\textwidth]{./FigurasPerfectas/WallImpacts05-ForPaper.pdf}
   \caption{The mean impact-on-walls time as function of the radius. Again, same
     notes as the figure \ref{MeanHopp01}}\label{MeanImp01}.
 \end{figure}
@@ -697,7 +697,6 @@ labelled ``Analytically Coarse'' is an approximation using
 
 We check also some samples about the distribution of these times
 in the next set of figures (\ref{histohopps}). 
-
 
 \begin{figure}[h]
         \centering
@@ -739,7 +738,7 @@ although systematically, from the \emph{mean return times}.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.98\textwidth]{ComparaHop01.pdf}
+  \includegraphics[width=0.98\textwidth]{./FigurasPerfectas/FistHopTime01-ForPaper.pdf}
   \caption{The mean first time for the hopping event.
     We compare against the \emph{mean return time}, theoretical
 and numerical. We observe how it is conterintuitivelly slightly longer,
@@ -748,7 +747,7 @@ but the qualitative behaviour is almost equal. }\label{FirstHopp01}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.98\textwidth]{ComparaColicion01.pdf}
+  \includegraphics[width=0.98\textwidth]{./FigurasPerfectas/FistCollTime02-ForPaper.pdf}
   \caption{The mean first collision time as function of the radius.
     Here we have  a slighter shorter time as the radius increases. 
  }\label{FirstCol01}
@@ -756,7 +755,7 @@ but the qualitative behaviour is almost equal. }\label{FirstHopp01}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.98\textwidth]{ComparaWallTime01.pdf}
+  \includegraphics[width=0.98\textwidth]{./FigurasPerfectas/FistImpactTime01-ForPaper.pdf}
   \caption{The mean first impact-on-walls time as function of the radius. Again, 
     we observe the same qualitative behaviour but now the whole range is below
     the mean return time.}\label{FirstImp01}.

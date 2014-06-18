@@ -73,7 +73,7 @@ int main(){
     std::ostringstream escupehop;
           
     //solo el disco UNO puede escapar
-    escupehop<<numeraauxiliar<<"_SojournUno05-1.dat"<<std::ends;
+    escupehop<<numeraauxiliar<<"_SojournDavid05-1.dat"<<std::ends;
       
     std::string stringhop;
 
@@ -108,8 +108,9 @@ int main(){
       bool condicionagujero=false;
       
 
-      RandomAtEntrance(uno,dos,Energia,epsilonagujero, r);
-     
+      //RandomAtEntrance(uno,dos,Energia,epsilonagujero, r);
+      AbsolutRandomDiscos(uno,dos,Energia,r);
+
       tiempodechoque=0.0; 
       tiempoentrebrincos=0.0;
       hoptime=0;
@@ -121,9 +122,11 @@ int main(){
       chocador=-1; //pretend that we are on the UNINTERESTING WALL
            
       tiempoentrebrincos=0.00;
+
+      //cabexota, mano cabexota.
       
-      while((chocador!=0)&&(uno.qx>0.0)&&
-	    (uno.qy<epsilonagujero/2.)&&(uno.qy>-epsilonagujero/2.)){
+      while(!((chocador==0)&&(uno.qx>0.0)&&
+	     (uno.qy<epsilonagujero/2.)&&(uno.qy>-epsilonagujero/2.))){
 	tiempodechoque=dinamicaunchoqueyhopp(uno,dos,chocador);	
 	tiempoentrebrincos+=tiempodechoque;
 	cuentachoques++;
