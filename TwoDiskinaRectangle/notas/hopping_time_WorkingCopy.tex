@@ -3,17 +3,17 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amsfonts}
 \usepackage{graphicx}
-\usepackage{natbib}
+%\usepackage{natbib}
 \usepackage{caption}
 \usepackage{subcaption}
-\usepackage{authblk}
+%\usepackage{authblk} parece ser que ya esta metido cuando usas preprint
 
-\bibliographystyle{alpha}
+%\bibliographystyle{alpha}
 
 %opening
 
-\author{Rosa Rodríguez \& David P.~Sanders \& W. P. K. Zapfe}
-\affil{Departamento de Física, Facultad de Ciencias, Universidad Nacional Autónoma de México, Ciudad Universitaria, Del.~Coyoacán, México D.F. 04510, Mexico}
+%\author{Rosa Rodríguez \& David P.~Sanders \& W. P. K. Zapfe}
+%\affil{Departamento de Física, Facultad de Ciencias, Universidad Nacional Autónoma de México, Ciudad Universitaria, Del.~Coyoacán, México D.F. 04510, Mexico}
 
 \usepackage{mathptmx}
 % I dont know if that package is compatible with revtex.
@@ -24,6 +24,7 @@
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\vv}{\mathbf{v}}
 \newcommand{\indicator}[1]{\mathbf{1}_{ \{   #1 \} } } 
+\newcommand{\etal}{\emph{et al.\ }} 
 
 \setlength{\parskip}{10pt}
 \setlength{\parindent}{0pt}
@@ -46,13 +47,21 @@
 
 
 \begin{abstract}
-  We obtain exact results for the kinetics of the inertial motion of 
+  
+  Mean First Event Times play important roles in reaction and
+diffuision dynamics. 
+Numeric simulations and Heuristic arguments
+have previously shown  that these times follow 
+simple rules dependant on geometric 
+parameters.
+ Using ergodic theory formulas for recurence times we obtain exact 
+results for the kinetics of the inertial motion of 
 two hard discs in a rectangular two-dimensional box.
-
   In particular,  we calculate exactly the mean hopping time between exchanges
  of the horizontal positions of the discs, 
 as well as mean collision rates between the two discs and 
- between the discs and the box. We compare this with numerical experiments.
+ between the discs and the box. We compare this with numerical experiments and
+against mean first event times.
 \end{abstract}
 
 \maketitle
@@ -64,36 +73,57 @@ Capital $D$ is for ``dimension''.
 
 \section{Introduction}
 
-Hard sphere billiards are one of the most recurred models in
-statistical physics and non linear dynamics.  Some of the simplest models
- provide us with a deep mathematical understanding
-about  the properties under the moniker \emph{Hard Chaos} 
-(hyperbolicity, ergodicity and mixing qualities). One such system is the
-gas of disks in a rectangular box, a two dimensional realisation of a
-hard sphere gas. It is known that such a system is chaotic in the
-strong sense \cite{Sinai70}. An even simpler realisation
-is when we take only two disks inside the box, which 
-has already enough degrees of freedom as to make simple representations
-of the dynamical system unfeasible. Simplifying it further,
-we choose disk of the same radius and mass. This model is amenable
-to analytic treatments
-and rigorous results have been obtain from ergodic theory
-\cite{Sinai70, Gallavotti74, SzaszBook00}. 
-
-For the statistical physicist, \emph{mean} and \emph{first} encounter
+For the statistical physicist and theoretical
+chemist, \emph{mean} and \emph{first} event
 times are of uttermost importance, as many properties,
-such as mixing and reaction rates depend on it. Our intention is
-to find primarly the first encounter time of the two disk under 
-inertial motion, as a closes analytical expression dependant only
-on the geometric parametrs of the system and the energy. Previous work
-by Bowles et all shows general quantitative results for the general times for both
-inertial and Brownian dynamics. We extend  their results on
+such as mixing, reaction and diffusion rates depend on it. 
+Two events can model the fundamental ocurrences of
+these kind of problems. One is the \emph{hopping},
+in which two particles interchange position, and the other
+is the \emph{collition} of said particles. 
+A highly simplified model which has been succesfully  used for
+this research consist in two disks inside a rectangular
+box \cite{Awazu01, Munakata02, Suh05}.
+
+Previous work
+by Bowles \etal shows general quantitative results for the hopping 
+mean time for inertial and Brownian dynamics \cite{Bowles04}. 
+They use heuristic arguments to provide expressions for the
+general behaviour of these quantities, as functions of the
+radius of the disks. Their results show the adecuate algebraic behaviour. 
+Our intention is
+to find primarly the first hopping and collition times of the two disks under 
+inertial motion, as a closed analytical expression dependant only
+on the geometric parameters of the system.
+This turns out to be feasible because  
+the reduced model proposed in \cite{Bowles04}
+is a hard sphere billiard. 
+Such systems  are one of the most recurred models in
+statistical physics and non linear dynamics.  
+
+Some of the simplest models
+ provide us with a deep mathematical understanding
+about  the properties collectivelly called  \emph{Hard Chaos} 
+(hyperbolicity, ergodicity and mixing qualities \cite{Sinai70, Gallavotti74}). 
+One such system is the
+gas of disks in a rectangular box \cite{SzaszBook00}, 
+for which the simplest non trivial
+realization is the case of only two disks inside the box, which
+is exactly our model.
+This billiard is chaotic in
+strong sense \cite{Sim99}. This model is amenable
+to analytic treatment
+and rigorous results have been obtained from ergodic theory \cite{MarkChern}.
+
+We extend  the previous  results on
 inertial dynamics by giving
 exact expressions for the mean times obtained through application of 
-Machta and Zwanzig formula for residence times \cite{MacthaZwan}. 
+Machta and Zwanzig formula for residence times \cite{MachtaZwan}. 
 We shall also  compare \emph{mean event times} with \emph{mean first event times},
 and show heuristic arguments to explain the agreement between the two. 
 Brownian dynamics shall be discused elsewhere \cite{WorkInProgress}.
+
+
 
 
 \section{Model}
@@ -140,13 +170,15 @@ $X \in [-a \sqrt{2} + |x|, a \sqrt{2} - |x|]$, respectively
  $y \in [-b \sqrt{2}, b \sqrt{2}]$ and $Y \in [-b \sqrt{2} + |y|, +b \sqrt{2} - |y|]$,  
 with the constraint $x^2 + y^2 \ge 2 r^2$.
 
-The exclusions define a hypercube with a hyperlink inside, placed diagonally 
-from one hyperarista to its opposite. 
+The constrains define a four dimensional
+rectangular prism  and a four dimensional cylinder placed inside.
+This cylinder has radius $r\sqrt{2}$ and lies
+in  a diagonal position along the axes $X, Y$. 
 The dynamics in such a space follow
 the usual billiard rules: free flight until
 encounter with a wall, then elastic reflection.
 The outer borders are flat, so the
-hyperbolicity is due only to the inner dispersing
+hyperbolicity is due to the inner dispersing
 boundary \cite{Sim99}, which represents the collision of
 two disks in the original space.
 
@@ -159,7 +191,7 @@ two disks in the original space.
 A system of $N$ hard spheres confined by hard walls in a $D$ dimensional
 space may be treated as a billiard system 
 in which a single point  particle undergoes free motion between reflecting obstacles 
-in a $ D N $-dimensional configuration space \cite{Sinai70, MarkChern}. 
+in a $ D N $-dimensional configuration space \cite{Sinai70, Sim99, MarkChern}. 
 If the resulting billiard is ergodic and hyperbolic, then we know that
 these systems are equivalent to Bernoulli Flows \cite{Gallavotti74}.
 For such systems is expected an exponential decay of 
@@ -210,8 +242,8 @@ The above result, as derived by Chernov,
 was for the case $\sum_i \vv_i^2 = 1$, or $m=1$ and $E=\frac{1}{2}$.  
 For more general values of $E$ and $m$, 
 we are simply working on a different energy surface in phase space. 
-The particle trajectories are identical but their motion is a factor
-$\sqrt{2E/m}$ faster, so that all times are divided by this value, 
+The particle trajectories are identical but the motion is a factor
+$\sqrt{2E/m}$ faster. Then all times must divided by this value, 
 giving for
 the mean time between events the general formula:
 \begin{equation} \label{meantimegeneral}
@@ -234,17 +266,16 @@ detail the procedure.
 \section{Calculation of Volumes and Areas}
 
 The configuration
-space is an hypercube with an hyper-cylinder subtracted in a diagonal position.
-The uncomfortable part is to deal with the tips of the cylinder, which
-present the  shape of a wedge with a circular base and two 
-orthogonal ``heights''. 
-The calculation can be carried out indirectly, using indicator functions for the
-available space or for the  prohibited space.
+space is an four dimensinal prism with a four dimensional
+cylinder subtracted.
+The calculation can be carried out indirectly,
+ using indicator functions for the
+available space or for the prohibited space.
 
 \subsection{Volume of available space}
 
 We shall present the total four-dimensional volume as a product integral
-of all available positions. To better grasp the idea, a convenient
+of all available positions. To grasp the idea, a 
 diagram is shown in the figure (\ref{diagintegra01}). Our
 principal integral is the available free $4D$ volume, which 
 we shall denote $V$:
@@ -386,13 +417,19 @@ Bear in mind that some of the dynamics are possible above this limit,
 it is only the position interchange that gets excluded. 
 
 \subsection{Area of cross-section for horizontal interchange (hops), 
-$\{x_1 = x_2\}$}
-
+$\{x_1 = x_2\}$}\label{areahop}
 The calculation of the $3$-dimensional area  ( all areas shall be 
 denoted by $A$)
 of the cross-section 
 $\{x_1 = x_2\}$ becomes 
 $\{ x=0 \}$ in the new coordinates, proceeds as follows:
+First we concentrate the measure indicated on the eq. \ref{volindic}
+multiplying a Dirac Delta $\delta(x)$ on the integrand:
+\begin{equation}
+ A_{hopp} = \int_{x_1 = -a}^a \rd x_1 \int_{x_2 = -a}^a \rd x_2 
+\int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \delta(x).
+\end{equation}
+Then we continue exactly as before:
 \begin{align}
  A_{hopp} &= \int_{X=-a \sqrt{2} }^{a \sqrt{2}}  \rd X
  \int_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
@@ -416,15 +453,18 @@ Results are shown in figure \ref{AreaHopp01}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{}
+\includegraphics[width=0.8\textwidth]{AreaHopp002.pdf}
 \caption{Here we represent the Volume of a narrow strip around the area
   indicated in the formula in eq. \ref{AreaH}. An $\epsilon$ value acts as
 tolerance parameter and produces thus a small volume around the 
 hopping condition. By multiplying formula \ref{AreaH} by this $\epsilon$
-we obtain the theoretical curve shown as a continuous line.} 
+we obtain the theoretical curve shown as a continuous line. As explained
+in the text, it gives nonsense for $r>1/4$, but numerical values stay
+exactly at zero, the correct value. } 
 \label{AreaHopp01}
 \end{figure}
-
+As before, the formula stops being valid for $r>h/4$, but this time it has
+no generalisation, as hopping becomes imposible for these values. 
 
 \subsection{Area of cross section for collisions}
 
@@ -433,21 +473,19 @@ This can be deduced in a similar manner to the free volume, shown in the last
 section, or as the derivative of this formula, taking it as as a function evaluated at 
 $r\sqrt{2}$. The calculation must be done taking $a,b$ as constants, so that
 we do not obtain also the (negative) contribution for the flat ends of
-the wedge at the cylinder's end. The resultant area is:
+the wedge at the cylinder's end. The resulting area is:
 \begin{align}\label{AreaChoque}
 A_{collision} & =\sqrt{2}[  
 16\pi a b r -32 (a+b)r^2 +16 r^3 ] 
 \end{align}
-
 Again, as in eq. \ref{volumewhd}, the formula stops being valid
 at $r>0.25$, when the exclusion cylinder has a larger diameter than
-the widths or heights of the hypercube.  
+the widths or heights of the prism.  
 We proceed in the same manner as last section, checking numerically which
 random
 conditions fall at a small tolerance of $0$ from the Collision Condition, and
 plotting this as a fraction of the total volume. The result is shown in the
 figure \ref{AreaChoqueTeoyNum}. 
-
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{AreaColision01.pdf}
@@ -456,7 +494,7 @@ for collision between disks. The plot shows the fraction occupied by a small vol
 of size $A_{collision}(r)\times 0.002$ divided by the total
 available volume $V(r)$. The theoretical formula 
 \ref{AreaChoque} breaks down at
-$r=1/4$. 
+$r>1/4$. 
 An extra numerical point has been put there to show the deviating behaviour.}
 \label{AreaChoqueTeoyNum}.
 \end{figure}
@@ -466,18 +504,18 @@ An extra numerical point has been put there to show the deviating behaviour.}
 
 For comparison, we shall use also other area to compare
 some properties of the decay of time distributions. The most natural choice
-would be the mean time between any two collisions. This corresponds
+would be the mean time between any impact on the walls. This corresponds
 to the adequate measure of the border of the four dimensional
 billiard in which the dynamics takes place. This area is
-the sum of the area of the hypercilinder and of the border of the
-hypercube, taking into consideration the excluded volume. 
+the sum of the areas of the border of the
+prism, taking into consideration the excluded tips of the cylinder. 
 It shall be enough to calculate the cross section area for
 the impact of one specific disk unto one specific wall and,
 by means of the symmetry of the expressions, obtaining the whole
 area. We proceed then to calculate the cross section corresponding to 
 the disk $1$ hitting the right wall. We accomplish that by
 evaluating the next expression in a similar way to
-the procedure carried for the expression \ref{volindic}:
+the procedure carried out in section \ref{areahop}:
 \begin{equation}\label{areaindic}
  A_{x_1+} =  \int_{x_2 = -a}^a \rd x_2 
 \int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b \rd y_2 \, \indicator{ (a-x_2)^2 + (y_1-y_2)^2 \ge 4 r^2 }
@@ -516,6 +554,7 @@ is then  the sum of the last expression
 and the area for collisions between disks, in eq. \ref{AreaChoque}.
 
 \subsection{Area of small hole in a wall}
+\pmb{Check this with David, maybe sent it to the freezer}
 
 We can also consider the impact with a very small portion of any of the
 walls. If the disks are small enough, this would correspond to an escape time. 
@@ -556,6 +595,8 @@ it yields
 
 \section{Mean times between events}
 
+
+
 \subsection{Mean hopping time}
 
 Inserting the results of the previous section 
@@ -590,6 +631,10 @@ sting $r=h/4-\epsilon$ produces the limiting behaviour
 \frac{(1-\frac{2\pi+1}{32})}
 { \epsilon^2} w^3
 \end{equation} 
+This last expression coincides with  derivation by Bowles \etal \cite{Bowles04}, in
+their equation 12,  which
+predicts the same exponent for the behaviour of this hopping time. The figures
+2 and 4 of the reference correspond to that regimen. 
 
 \subsection{Mean collision time}
 
@@ -606,11 +651,12 @@ approaching the expression
 \mean{\tau}_{coll}  \xrightarrow{r\rightarrow 0} 
 \frac{3}{8\sqrt{2}}\frac{wh}{r}
 \end{equation}
-On the other side, this should go evaluate to zero when
-we use the limiting value for the radius. In the simplest
-case  $w = h$ we have $r_{max}= w(\sqrt{2}+2)$. Sadly, our volume
-formula ceases to be valid after $r>w/4$, so this limit gives nonsense.
-We should go for the more general formula \cite{notascalculokarel}.
+
+%On the other side, this should go evaluate to zero when
+%we use the limiting value for the radius. In the simplest
+%case  $w = h$ we have $r_{max}= w(\sqrt{2}+2)$. Sadly, our volume
+%formula ceases to be valid after $r>w/4$, so this limit gives nonsense.
+%We should go for the more general formula \cite{notascalculokarel}.
 
 \subsection{Mean impact time}
 
@@ -673,9 +719,9 @@ data in the small radius regime ($r<0.05)$.
   \includegraphics[width=0.98\textwidth]{./FigurasPerfectas/HopTimesAgain01-ForPaper.pdf}
   \caption{The mean hopping time as function of the radius, Energy, mass, 
 and geometry fixed.
-The red line is the formula \ref{hoptau}, while the green line
-labelled ``Analytically Coarse'' is an approximation using
- $16a^2b^2$ as volume. A logarithmic scale accentuates errors.}\label{MeanHopp01}
+The blue continious line is the formula \ref{hoptau}, the red dot numerical data.
+ A logarithmic ordinate scale accentuates agreement across
+scales (inset).}\label{MeanHopp01}
 \end{figure}
 
 \begin{figure}[h]
@@ -734,6 +780,15 @@ we have for the mean return times, we can, with a slight modification
 of our code, investigate the behaviour for these quantities. We have 
 an interesting result: most \emph{first event times} deviate very slightly,
 although systematically, from the \emph{mean return times}.
+This could be explained as follows:
+In an ergodic regimen we could simply average over a sufficiently large
+sample of initial conditions instead of following each trayectory
+and sampling events along it. This means that the mean return time
+coincides with the mean first return time for large enough samples.
+A \emph{mean first event time} could be though of a \emph{mean
+first return time} with erroneous initial conditions, as if the
+trayectories had started, so there would be an \emph{average offset}
+for the times. As we show numerically, this is indeed the case. 
 
 
 \begin{figure}[h]
@@ -749,7 +804,8 @@ but the qualitative behaviour is almost equal. }\label{FirstHopp01}
   \centering
   \includegraphics[width=0.98\textwidth]{./FigurasPerfectas/FistCollTime02-ForPaper.pdf}
   \caption{The mean first collision time as function of the radius.
-    Here we have  a slighter shorter time as the radius increases. 
+    Here we have  a slighter shorter time as the radius increases. The difference
+is more notorious on the semi-log plot in the inset. 
  }\label{FirstCol01}
 \end{figure}
 
@@ -758,7 +814,9 @@ but the qualitative behaviour is almost equal. }\label{FirstHopp01}
   \includegraphics[width=0.98\textwidth]{./FigurasPerfectas/FistImpactTime01-ForPaper.pdf}
   \caption{The mean first impact-on-walls time as function of the radius. Again, 
     we observe the same qualitative behaviour but now the whole range is below
-    the mean return time.}\label{FirstImp01}.
+    the mean return time. This is to be expected, as for any initial condition
+    we would have a past condition on the wall. For very
+large radius the step away from the wall is allmost negligible.}\label{FirstImp01}.
 \end{figure}
 
 
