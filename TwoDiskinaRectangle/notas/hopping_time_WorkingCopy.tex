@@ -55,13 +55,14 @@ have previously shown  that these times follow
 simple rules dependant on geometric 
 parameters.
  Using ergodic theory formulas for recurence times we obtain exact 
-results for the kinetics of the inertial motion of 
+results for Mean Event Times in a paradigmatic system: 
 two hard discs in a rectangular two-dimensional box.
   In particular,  we calculate exactly the mean hopping time between exchanges
  of the horizontal positions of the discs, 
 as well as mean collision rates between the two discs and 
  between the discs and the box. We compare this with numerical experiments and
-against mean first event times.
+against mean first event times and show that they share the same
+general behaviour.
 \end{abstract}
 
 \maketitle
@@ -79,7 +80,8 @@ times are of uttermost importance, as many properties,
 such as mixing, reaction and diffusion rates depend on it. 
 Two events can model the fundamental ocurrences of
 these kind of problems. One is the \emph{hopping},
-in which two particles interchange position, and the other
+in which two particles interchange position along some
+axis of interest, and the other
 is the \emph{collition} of said particles. 
 A highly simplified model which has been succesfully  used for
 this research consist in two disks inside a rectangular
@@ -88,20 +90,27 @@ box \cite{Awazu01, Munakata02, Suh05}.
 Previous work
 by Bowles \etal shows general quantitative results for the hopping 
 mean time for inertial and Brownian dynamics \cite{Bowles04}. 
-They use heuristic arguments to provide expressions for the
+They use arguments derived from Transition State Theory 
+to provide expressions for the
 general behaviour of these quantities, as functions of the
-radius of the disks. Their results show the adecuate algebraic behaviour. 
-Our intention is
-to find primarly the first hopping and collition times of the two disks under 
-inertial motion, as a closed analytical expression dependant only
-on the geometric parameters of the system.
-This turns out to be feasible because  
-the reduced model proposed in \cite{Bowles04}
-is a hard sphere billiard. 
-Such systems  are one of the most recurred models in
-statistical physics and non linear dynamics.  
+radius of the disks. Their results show the adecuate algebraic behaviour, 
+and very interesting work has expanded from that line \cite{Suh05, Ball09}.
+There is also a statistical termodynamic treatment by Munakata \etal 
+which deals very comprehensively with partition functions, pressure,
+and temperatures \cite{Munakata02, Munakata06}. 
+Our  primary intention is
+to find  the first hopping and collition times of the two disks under 
+inertial motion. We show that this can 
+be obtained  as a closed analytical expression dependant only
+on the geometric parameters of the system, which turns 
+out to be a rational function whose limiting form
+has the algebraic exponent predicted in the aforementioned literature. 
 
-Some of the simplest models
+The exact treatment  turns is feasible because  
+the reduced model is a hard sphere billiard. 
+Such systems  are one of the most recurred models in
+statistical physics and  traditionaly, in non linear dynamics.  
+Some of these simple models
  provide us with a deep mathematical understanding
 about  the properties collectivelly called  \emph{Hard Chaos} 
 (hyperbolicity, ergodicity and mixing qualities \cite{Sinai70, Gallavotti74}). 
@@ -109,20 +118,19 @@ One such system is the
 gas of disks in a rectangular box \cite{SzaszBook00}, 
 for which the simplest non trivial
 realization is the case of only two disks inside the box, which
-is exactly our model.
+is exactly the model in question.
 This billiard is chaotic in
-strong sense \cite{Sim99}. This model is amenable
+strong sense \cite{Sim99}. The system then  is amenable
 to analytic treatment
 and rigorous results have been obtained from ergodic theory \cite{MarkChern}.
 
-We extend  the previous  results on
-inertial dynamics by giving
-exact expressions for the mean times obtained through application of 
+The previous  results on
+inertial dynamics can be extended  by giving
+exact expressions for the mean times. We shall  obtain them through application of 
 Machta and Zwanzig formula for residence times \cite{MachtaZwan}. 
 We shall also  compare \emph{mean event times} with \emph{mean first event times},
-and show heuristic arguments to explain the agreement between the two. 
+and give some arguments to explain the agreement between the two. 
 Brownian dynamics shall be discused elsewhere \cite{WorkInProgress}.
-
 
 
 
@@ -402,7 +410,7 @@ volume. The results are shown in the figure \ref{VolMonteC}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{VolumenOccupiedByCilinder01.pdf}
+\includegraphics[width=0.98\textwidth]{./FigurasPerfectas/VolCyl01.pdf}
 \caption{Fraction of occupied volume by the excluded conditions
 corresponding to the term $V_{cyl}$ in expression \ref{volumeabd}.
  The red continuous line represents the formula \ref{volumeabd} 
@@ -453,7 +461,7 @@ Results are shown in figure \ref{AreaHopp01}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{AreaHopp002.pdf}
+\includegraphics[width=0.98\textwidth]{./FigurasPerfectas/AreHopPerfect01.pdf}
 \caption{Here we represent the Volume of a narrow strip around the area
   indicated in the formula in eq. \ref{AreaH}. An $\epsilon$ value acts as
 tolerance parameter and produces thus a small volume around the 
@@ -488,7 +496,7 @@ plotting this as a fraction of the total volume. The result is shown in the
 figure \ref{AreaChoqueTeoyNum}. 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{AreaColision01.pdf}
+\includegraphics[width=0.98\textwidth]{./FigurasPerfectas/AreaCol01.pdf}
 \caption{The numerical and theoretical calculation for the Area of the cross section
 for collision between disks. The plot shows the fraction occupied by a small volume
 of size $A_{collision}(r)\times 0.002$ divided by the total
@@ -531,7 +539,7 @@ shown in fig \ref{area1derecha}.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{AreaColisionpx1p01.pdf}
+\includegraphics[width=0.98\textwidth]{./FigurasPerfectas/AreaPx1PositivaPerfec01.pdf}
 \caption{The numerical and theoretical calculation for the cross section area
 for the impact of a determined disk with the right wall, as in eq. \ref{areaindic}.
 Again, the formula stops being valid at $r>0.25$. }
@@ -816,7 +824,7 @@ is more notorious on the semi-log plot in the inset.
     we observe the same qualitative behaviour but now the whole range is below
     the mean return time. This is to be expected, as for any initial condition
     we would have a past condition on the wall. For very
-large radius the step away from the wall is allmost negligible.}\label{FirstImp01}.
+    large radius the step away from the wall is allmost negligible.}\label{FirstImp01}.
 \end{figure}
 
 

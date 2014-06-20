@@ -24,7 +24,7 @@ using namespace std;
 
 
 int main(){
-  const int Geometrias=50;   
+  const int Geometrias=100;   
   const int ensemble=4000000;
   const gsl_rng_type *T;
   T = gsl_rng_ranlxs2;    
@@ -97,11 +97,11 @@ int main(){
 		    (uno.qy-dos.qy)*(uno.qy-dos.qy));
 
       if(distcuad>(uno.radio+dos.radio)){	
+	//do nutin
+      }else{
 	condini<<uno.qx<<"\t"<<uno.qy<<"\t"<<
 	  dos.qx<<"\t"<<dos.qy<<"\t"<<endl;
-      }else{
 	cuentamalos++;}
-
            
     };
         

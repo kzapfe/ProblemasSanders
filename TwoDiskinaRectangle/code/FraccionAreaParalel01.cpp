@@ -27,7 +27,7 @@ int main(){
 
   //parametros geometricos y  numericos
   const int Geometrias=100;   
-  const int ensemble=32000000;
+  const int ensemble=4000000;
   const double epsilon=0.001;
 
   //parametros del 
@@ -65,7 +65,7 @@ int main(){
 
    
     //recicla Variables
-    escupeelotro<<numeraauxiliar<<"_AreaHop001.dat"<<std::ends;         
+    escupeelotro<<numeraauxiliar<<"_AreaColl01.dat"<<std::ends;         
     stringfirst=escupeelotro.str();
     const char *nombrecondini=stringfirst.c_str();
     
@@ -114,7 +114,7 @@ int main(){
 	    ((heightmedia-radio-dos.qy)<epsilon) 
 	    )*/
 	    //Las de arriba son TODAS las areas
-	 (abs(uno.qx-dos.qx)<epsilon)//Hoping area 
+	 (dist)<(uno.radio+dos.radio+epsilon)//Collition Time
 	 )
 
 	   {condini<<uno.qx<<"\t"<<uno.qy<<"\t"<<
