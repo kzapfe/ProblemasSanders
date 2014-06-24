@@ -1,0 +1,63 @@
+\subsection{Area of small hole in a wall}
+\pmb{Check this with David, maybe sent it to the freezer}
+
+We can also consider the impact with a very small portion of any of the
+walls. If the disks are small enough, this would correspond to an escape time. 
+Let us assume a hole of size $\epsilon+2r$ for suitable values of $r$ in
+the right side of the wall. Let us assume that the hole is
+centred, then the expression to evaluate is
+\begin{equation}\label{areaindicagujero}
+ A_{x_1+} =  \int_{x_2 = -a}^a \rd x_2 
+\int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b \rd y_2 \, \indicator{ (a-x_2)^2 + (y_1-y_2)^2 \ge 4 r^2 }\indicator{ -\epsilon/2<y_1< \epsilon/2}.
+\end{equation}
+This would mean that the first disk is hitting the hole. By interchanging the
+indexes we would get an equal contribution from the other disk. There is a caveat: 
+if the hole or the interaction radius is too large, we have to consider many
+more cases for the calculation of the cross section area. The geometry of
+the area for integration changes itself according to certain ranges.
+We will consider then only small holes. We show a diagram 
+in the figure \ref{diagintagu}.
+\begin{figure}
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=0.4\textwidth]{diagramintegraagujero01.pdf} &
+\includegraphics[width=0.4\textwidth]{diagramintegraagujero02.pdf}
+\end{tabular}
+\caption{Area of consideration for the integration of expression
+ \ref{areaindicagujero}. The left side shows a hole small enough
+so that the radius of interaction does not change the geometry of the
+indicatrix set, the right side shows the other possibility.}\label{diagintagu}
+\end{figure}
+The integration is more tedious than in previous examples, as we cannot
+take full advantage of the symmetries and we have to split it into
+more cases, but still is elemental, and after a good day at the blackboard
+it yields
+\begin{align}\label{escape}
+ A_{escape} &= 2 (w-2r) (h-2r) \epsilon.
+\end{align}
+\pmb{This is probably wrong.}
+
+
+\subsection{Mean Sojourn  time for small disks and entrances}
+
+We shall also test the validity of formula using the area in eq. \ref{escape}
+for a small hole in the walls. If the formula is to be valid, we have
+to make an adequate balance of the involved parameters. The hole has to
+be only marginally larger than the disks, so that they have enough opportunity
+to interact, thus achieving \emph{ergodic statistics}. A very large hole
+on a wall with similar sized disks will result in only the disk closer to
+it escaping. The average escape time then may be calculated as
+a return time for the adequate section and we could use the following formula:
+\begin{equation} 
+\mean{\tau}_{sojourn} = 	
+\frac{3 \pi}{4\sqrt{2}}
+\frac {16a^2b^2-16\pi a b r^2 + \frac{64}{3} r^3 - 8 r^2  }
+{4 a b \epsilon}.
+\end{equation}
+As can be expected, this time is proportional to the
+free Volume available and inversely proportional to the size of the hole, $\epsilon$.
+The formula should be adequately interpreted. This time would represent
+the interval that the box, with the aforementioned hole, contains two disks,
+starting to count at the moment that the second disks enters the box, and
+stopping at the moment any of the disks leaves. 
+

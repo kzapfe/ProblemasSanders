@@ -1,9 +1,9 @@
-\documentclass[a4paper,10pt, jcp, aps, preprint]{revtex4-1}
+\documentclass[letterpaper,10pt, jcp, aps, reprint]{revtex4-1}
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amsfonts}
 \usepackage{graphicx}
-%\usepackage{natbib}
+\usepackage{natbib}
 \usepackage{caption}
 \usepackage{subcaption}
 %\usepackage{authblk} parece ser que ya esta metido cuando usas preprint
@@ -47,30 +47,27 @@
 
 
 \begin{abstract}
-  
-  Mean First Event Times play important roles in reaction and
-diffuision dynamics. 
-Numeric simulations and Heuristic arguments
-have previously shown  that these times follow 
+  Mean First Event Times (MFET) play important roles in
+Statistical Mechanics. They underlie at the bottom
+of observable macroscopic quantities, such as transport and
+reaction rates.  
+Numeric simulations and heuristic arguments
+have previously shown  that the MFET  follow 
 simple rules dependant on geometric 
 parameters.
- Using ergodic theory formulas for recurence times we obtain exact 
+ Using ergodic theory formulas for recurrence times we obtain exact 
 results for Mean Event Times in a paradigmatic system: 
 two hard discs in a rectangular two-dimensional box.
   In particular,  we calculate exactly the mean hopping time between exchanges
  of the horizontal positions of the discs, 
 as well as mean collision rates between the two discs and 
  between the discs and the box. We compare this with numerical experiments and
-against mean first event times and show that they share the same
+against MFET  and show that they share the same
 general behaviour.
 \end{abstract}
 
 \maketitle
 
-\pmb{NOTE TO DAVID}
-I shall use only $r$, \emph{radius} of the disks. To use diameter
-means to change all graphics and I am NOT in the mood. Easier to change the notes.
-Capital $D$ is for ``dimension''.
 
 \section{Introduction}
 
@@ -78,12 +75,12 @@ For the statistical physicist and theoretical
 chemist, \emph{mean} and \emph{first} event
 times are of uttermost importance, as many properties,
 such as mixing, reaction and diffusion rates depend on it. 
-Two events can model the fundamental ocurrences of
+Two events can model the fundamental occurrences of
 these kind of problems. One is the \emph{hopping},
 in which two particles interchange position along some
 axis of interest, and the other
-is the \emph{collition} of said particles. 
-A highly simplified model which has been succesfully  used for
+is the \emph{collision} of said particles. 
+A highly simplified model which has been successfully  used for
 this research consist in two disks inside a rectangular
 box \cite{Awazu01, Munakata02, Suh05}.
 
@@ -93,26 +90,26 @@ mean time for inertial and Brownian dynamics \cite{Bowles04}.
 They use arguments derived from Transition State Theory 
 to provide expressions for the
 general behaviour of these quantities, as functions of the
-radius of the disks. Their results show the adecuate algebraic behaviour, 
+radius of the disks. Their results show the adequate algebraic behaviour, 
 and very interesting work has expanded from that line \cite{Suh05, Ball09}.
-There is also a statistical termodynamic treatment by Munakata \etal 
+There is also a statistical thermodynamic treatment by Munakata \etal 
 which deals very comprehensively with partition functions, pressure,
 and temperatures \cite{Munakata02, Munakata06}. 
 Our  primary intention is
-to find  the first hopping and collition times of the two disks under 
+to find  the first hopping and collision times of the two disks under 
 inertial motion. We show that this can 
-be obtained  as a closed analytical expression dependant only
+be obtained  as a closed analytic expression dependant only
 on the geometric parameters of the system, which turns 
 out to be a rational function whose limiting form
 has the algebraic exponent predicted in the aforementioned literature. 
 
-The exact treatment  turns is feasible because  
+The exact treatment  turns to be  feasible because  
 the reduced model is a hard sphere billiard. 
-Such systems  are one of the most recurred models in
-statistical physics and  traditionaly, in non linear dynamics.  
+Such systems  are one of the most recurred models for
+statistical physics and  traditionally, for non linear dynamics.  
 Some of these simple models
  provide us with a deep mathematical understanding
-about  the properties collectivelly called  \emph{Hard Chaos} 
+about  the properties collectively called  \emph{Hard Chaos} 
 (hyperbolicity, ergodicity and mixing qualities \cite{Sinai70, Gallavotti74}). 
 One such system is the
 gas of disks in a rectangular box \cite{SzaszBook00}, 
@@ -120,8 +117,8 @@ for which the simplest non trivial
 realization is the case of only two disks inside the box, which
 is exactly the model in question.
 This billiard is chaotic in
-strong sense \cite{Sim99}. The system then  is amenable
-to analytic treatment
+strong sense \cite{Sim99}. The system  is thus amenable
+to analytic treatment0
 and rigorous results have been obtained from ergodic theory \cite{MarkChern}.
 
 The previous  results on
@@ -130,7 +127,7 @@ exact expressions for the mean times. We shall  obtain them through application 
 Machta and Zwanzig formula for residence times \cite{MachtaZwan}. 
 We shall also  compare \emph{mean event times} with \emph{mean first event times},
 and give some arguments to explain the agreement between the two. 
-Brownian dynamics shall be discused elsewhere \cite{WorkInProgress}.
+Brownian dynamics shall be discussed elsewhere \cite{WorkInProgress}.
 
 
 
@@ -142,15 +139,16 @@ The discs move inertially in the absence of forces,
 following straight line trajectories,
 and undergo elastic collisions with each 
 other and with the walls of the box.
-We take the mass of each disk as $1$, so that the energy
+We take the mass of each disk as unitary, so that the energy
 is the value of the Hamiltonian function inside the billiard table:
 \begin{equation}
 H(q,p)=\frac{1}{2}(\|p_1\|^2+\|p_2\|^2)=1.
 \end{equation}
 
 \begin{figure}[h]
-  \centering
-  \includegraphics[width=0.56\textwidth]{DiscosenCajaCuadrada01.pdf}
+  \begin{center}
+  \includegraphics[width=0.40\textwidth]{DiscosenCajaCuadrada01.pdf}
+  \end{center}
   \caption{The Billiard}\label{billar01}
 \end{figure}
 
@@ -274,7 +272,7 @@ detail the procedure.
 \section{Calculation of Volumes and Areas}
 
 The configuration
-space is an four dimensinal prism with a four dimensional
+space is an four dimensional prism with a four dimensional
 cylinder subtracted.
 The calculation can be carried out indirectly,
  using indicator functions for the
@@ -287,17 +285,18 @@ of all available positions. To grasp the idea, a
 diagram is shown in the figure (\ref{diagintegra01}). Our
 principal integral is the available free $4D$ volume, which 
 we shall denote $V$:
-\begin{equation}\label{volindic}
- V = \int_{x_1 = -a}^a \rd x_1 \int_{x_2 = -a}^a \rd x_2 
-\int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 },
-\end{equation}
+\begin{multline}\label{volindic}
+ V = \\ \int\limits_{x_1 = -a}^a \rd x_1 \int\limits_{x_2 = -a}^a \rd x_2 
+\int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 },
+\end{multline}
 where $\indicator{Z}$ indicates the indicator function of the set $Z$, 
 given by $\mathbf{1}_Z (x) = 1$ if $x \in Z$, and $=0$ if $x \notin Z$, 
 which restricts the integral to the desired region $Z$.
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[width=0.75\textwidth]{diagramintegra01.pdf}
+    \includegraphics[width=0.45\textwidth]{diagramintegra01.pdf}
+  \end{center}
     \caption{The space to integrate is the product of the subspaces
       belonging to horizontal and vertical coordinates. The colour
       shaded area represents the ``exclusion'' set, where the condition 
@@ -306,29 +305,28 @@ which restricts the integral to the desired region $Z$.
       on the \emph{other} subspace. The diagonal coordinates
       make the expression to evaluate simpler. Due to 
       symmetry, we only evaluate the area in stripes and
-      multiply the result by 16.}\label{diagintegra01}
-  \end{center}
+      multiply the result by 16.}\label{diagintegra01}  
 \end{figure}
 
 We represent the excluded cylinder in the coordinates defined in 
 the set of equation \ref{cambiocoor01}. 
 
-\begin{equation}\label{integraltotal}
- V = \int_{x=-a \sqrt{2}}^{a \sqrt{2}} \rd x 
-\int_{X=-a \sqrt{2} + |x| }^{a \sqrt{2} - |x|}  \rd X
- \int_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
-\int_{Y=-b \sqrt{2} + |y| }^{b \sqrt{2}-|y|}  \rd Y
+\begin{multline}\label{integraltotal}
+ V = \\ \int\limits_{x=-a \sqrt{2}}^{a \sqrt{2}} \rd x 
+\int\limits_{X=-a \sqrt{2} + |x| }^{a \sqrt{2} - |x|}  \rd X
+ \int\limits_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
+\int\limits_{Y=-b \sqrt{2} + |y| }^{b \sqrt{2}-|y|}  \rd Y
 \, \indicator{ x^2 + y^2 \ge 2r^2  }.
-\end{equation}
+\end{multline}
 In these coordinates, $X$ and $Y$ do not appear in the integrating part, 
 so that these integrals may be done trivially, 
 thus reducing to the following two-dimensional integral:
-\begin{align}
- V &= \int_{x=-a \sqrt{2}}^{a \sqrt{2}} \rd x  \int_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
+\begin{multline}
+ V  = \\ \int_{x=-a \sqrt{2}}^{a \sqrt{2}} \rd x  \int_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
 \, 2 \left( a \sqrt{2} - |x| \right) \, 2 \left( b \sqrt{2} - |y| \right) \,  \indicator{ x^2 + y^2 \ge 2r^2 } \\
-&= 16 \int_{x=0}^{a \sqrt{2}} \rd x  \int_{y=0}^{b \sqrt{2}} \rd y
+ = 16 \int_{x=0}^{a \sqrt{2}} \rd x  \int_{y=0}^{b \sqrt{2}} \rd y
 \, \left( a \sqrt{2} - x \right) \, \left( b \sqrt{2} - y \right) \,  \indicator{ x^2 + y^2 \ge 2r^2 },
-\end{align}
+\end{multline}
 using the symmetry.
 Thus $V = 16(I_1 + I_2)$, where $I_1$ and $I_2$ are the 
 resulting integrals over the regions where the available region 
@@ -350,29 +348,29 @@ Thus
 \begin{align}\label{volumeabd}
  V %= 16(I_1 + I_2) =     	
  & =  16 a^{2} b^{2}  - 16 \pi a b r^{2} + \textstyle \frac{64}{3} (a+b) r^{3}  - 8 r^{4} \\
-&= V_{prism} - V_{cyl},
+&= V_\text{prism} - V_\text{cyl},
 \end{align}
 as was previously obtained by Munakata and Hu \cite{Munakata02}.
 
 Note that the volume available to place two discs inside 
 the hard box but \emph{without} the 
  hard-disc exclusion constraint is simply 
-given by the first term, $V_{prism}=16 a^2 b^2$; 
+given by the first term, $V_\text{prism}=16 a^2 b^2$; 
 thus, the remaining terms represent the excluded volume due to this constraint.
-We shall call them $V_{cyl}=  16 \pi a b r^{2} - \textstyle \frac{64}{3} (a+b) r^{3}  + 8 r^{4}$.
+We shall call them $V_\text{cyl}=  16 \pi a b r^{2} - \textstyle \frac{64}{3} (a+b) r^{3}  + 8 r^{4}$.
 This corresponds to the Volume of the exclussion cylinder (the overlapping conditions),
-so we simply state that $V=V_1 - V_2$-.
+so we simply state that $V=V_\text{prism} - V_\text{cyl}$.
 
 The available space gets smaller nevertheless, as can be seen from
 the substitutions $a\rightarrow (w-d)/2$ and $b\rightarrow (h-d)/2$.
 The explicit formula for the Volume as function from the diameter only is then:
-\begin{equation}\label{volumewhd}
+\begin{multline}\label{volumewhd}
  V 
-= (w-d)^{2} (h-d)^{2}  - 
+= (w-d)^{2} (h-d)^{2}  - \\ 
  \pi (w-d)(h-d) d^{2} + 
 \textstyle \frac{4}{3} (w+h-2d) d^{3}  
 - \frac{1}{2} d^{4},
-\end{equation}
+\end{multline}
  
 For the numeric values $w=h=1$, the biggest possible radius is 
 $r=1/(2+\sqrt{2})$. Unhappily, there is a quirk in the above formula:
@@ -382,8 +380,7 @@ We tacitly made the assumption that $h,w>2d$.  This assumption is on
 the integration limits in the step in eq. \ref{integraltotal}. 
 A full discussion of the formula for the case in which either
 $w$ or $h$ are smaller than $4r$ but there is still space for
-the disks is discussed in supplementary material \cite{notascalculokarel}
-(\pmb{Appendix?}). 
+the disks is discussed in supplementary material \cite{notascalculokarel}). 
 We cite the  result for $h/4  <r< w/4$ for illustrative purposes.
 For cleanliness we define another auxiliary variable,
 $c=\sqrt{4r^2-b^2}$:
@@ -410,17 +407,17 @@ volume. The results are shown in the figure \ref{VolMonteC}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.98\textwidth]{./FigurasPerfectas/VolCyl01.pdf}
+\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/VolCyl01.pdf}
 \caption{Fraction of occupied volume by the excluded conditions
 corresponding to the term $V_{cyl}$ in expression \ref{volumeabd}.
  The red continuous line represents the formula \ref{volumeabd} 
- fails after $d>0.5\Leftrightarrow r>0.25$. The numerics
+ fails after $ r>0.25$. The numerics
  are forced to follow the adequate behaviour, which is given
-by a generalisation of the expression \ref{VolumenCasoFeo}. 
+by a generalization of the expression \ref{VolumenCasoFeo}. 
  }\label{VolMonteC}
 \end{figure}
 
-The following subsections shall only show the formulas for $d<w/2, h/2$.
+The following subsections shall only show the formulas for $r<w/4, h/4$.
 Bear in mind that some of the dynamics are possible above this limit,
 it is only the position interchange that gets excluded. 
 
@@ -433,13 +430,15 @@ $\{x_1 = x_2\}$ becomes
 $\{ x=0 \}$ in the new coordinates, proceeds as follows:
 First we concentrate the measure indicated on the eq. \ref{volindic}
 multiplying a Dirac Delta $\delta(x)$ on the integrand:
+\begin{widetext}
 \begin{equation}
- A_{hopp} = \int_{x_1 = -a}^a \rd x_1 \int_{x_2 = -a}^a \rd x_2 
+ A_\text{hopp} = \int_{x_1 = -a}^a \rd x_1 \int_{x_2 = -a}^a \rd x_2 
 \int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \delta(x).
 \end{equation}
+\end{widetext}
 Then we continue exactly as before:
 \begin{align}
- A_{hopp} &= \int_{X=-a \sqrt{2} }^{a \sqrt{2}}  \rd X
+ A_\text{hopp} &= \int_{X=-a \sqrt{2} }^{a \sqrt{2}}  \rd X
  \int_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
 \int_{Y=-b \sqrt{2} + |y| }^{b \sqrt{2}-|y|}  \rd Y
 \, \indicator{y^2 \ge 2r^2 } \\
@@ -449,30 +448,28 @@ Then we continue exactly as before:
 &= 8 \sqrt{2} a ( b - r )^2. \label{AreaH}
 % b^{2} -  b d + \frac{d^{2}}{4} \right) .
 \end{align}
+As before, the formula stops being valid for $r>h/4$, but this time it has
+no generalization, as hopping becomes impossible for these values. 
 
 We have checked this result with simple Monte Carlo simulations, 
 by counting the proportion of successful placements of hard discs 
 for which the distance 
 $|x_1 - x_2|$ is within a small tolerance of $0$. 
-In this case, the possibility to fulfil
+In this case, the possibility to fulfill
 the hopping and the non overlapping conditions simultaneously exclude 
 all the cases for $\sqrt{2}/(1+\sqrt{2}) <d<1/2$. 
 Results are shown in figure \ref{AreaHopp01}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.98\textwidth]{./FigurasPerfectas/AreHopPerfect01.pdf}
-\caption{Here we represent the Volume of a narrow strip around the area
-  indicated in the formula in eq. \ref{AreaH}. An $\epsilon$ value acts as
-tolerance parameter and produces thus a small volume around the 
-hopping condition. By multiplying formula \ref{AreaH} by this $\epsilon$
-we obtain the theoretical curve shown as a continuous line. As explained
+\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/AreHopPerfect01.pdf}
+\caption{The hopping area, $A_\text{hopp}$, 
+  indicated in the formula in eq. \ref{AreaH}. As explained
 in the text, it gives nonsense for $r>1/4$, but numerical values stay
 exactly at zero, the correct value. } 
 \label{AreaHopp01}
 \end{figure}
-As before, the formula stops being valid for $r>h/4$, but this time it has
-no generalisation, as hopping becomes imposible for these values. 
+
 
 \subsection{Area of cross section for collisions}
 
@@ -483,7 +480,7 @@ $r\sqrt{2}$. The calculation must be done taking $a,b$ as constants, so that
 we do not obtain also the (negative) contribution for the flat ends of
 the wedge at the cylinder's end. The resulting area is:
 \begin{align}\label{AreaChoque}
-A_{collision} & =\sqrt{2}[  
+A_\text{collision} & =\sqrt{2}[  
 16\pi a b r -32 (a+b)r^2 +16 r^3 ] 
 \end{align}
 Again, as in eq. \ref{volumewhd}, the formula stops being valid
@@ -496,11 +493,9 @@ plotting this as a fraction of the total volume. The result is shown in the
 figure \ref{AreaChoqueTeoyNum}. 
 \begin{figure}
 \centering
-\includegraphics[width=0.98\textwidth]{./FigurasPerfectas/AreaCol01.pdf}
+\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/AreaCol01.pdf}
 \caption{The numerical and theoretical calculation for the Area of the cross section
-for collision between disks. The plot shows the fraction occupied by a small volume
-of size $A_{collision}(r)\times 0.002$ divided by the total
-available volume $V(r)$. The theoretical formula 
+for collision between the disks.  The theoretical formula 
 \ref{AreaChoque} breaks down at
 $r>1/4$. 
 An extra numerical point has been put there to show the deviating behaviour.}
@@ -539,10 +534,10 @@ shown in fig \ref{area1derecha}.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.98\textwidth]{./FigurasPerfectas/AreaPx1PositivaPerfec01.pdf}
+\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/AreaPx1PositivaPerfec01.pdf}
 \caption{The numerical and theoretical calculation for the cross section area
 for the impact of a determined disk with the right wall, as in eq. \ref{areaindic}.
-Again, the formula stops being valid at $r>0.25$. }
+Again, the formula stops being valid at $r>1/4$. }
 \label{area1derecha}.
 \end{figure}
 
@@ -553,57 +548,15 @@ the other hand, each bounce against the horizontal walls would
 define a similar quantity, but with the roles of $a$ and $b$ switched.
 The cross section area for any impact on the walls would then be:
 \begin{align}\label{areawalls}
- A_{walls} & = 32 a b (a+b)-16 \pi r^2 (a+b) +\frac{64\sqrt{2}}{3}r^3 
+ A_\text{walls} & = 32 a b (a+b)-16 \pi r^2 (a+b) +\frac{64\sqrt{2}}{3}r^3 
  %&=  4 (w-d) (h-d)  (w+h-2d) -2 \pi d^2 (w + h-2 d) +\frac{16}{3}d^3. 
 \end{align}
-
 The cross section area for any impact or collision 
 is then  the sum of the last expression
 and the area for collisions between disks, in eq. \ref{AreaChoque}.
 
-\subsection{Area of small hole in a wall}
-\pmb{Check this with David, maybe sent it to the freezer}
-
-We can also consider the impact with a very small portion of any of the
-walls. If the disks are small enough, this would correspond to an escape time. 
-Let us assume a hole of size $\epsilon+2r$ for suitable values of $r$ in
-the right side of the wall. Let us assume that the hole is
-centred, then the expression to evaluate is
-\begin{equation}\label{areaindicagujero}
- A_{x_1+} =  \int_{x_2 = -a}^a \rd x_2 
-\int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b \rd y_2 \, \indicator{ (a-x_2)^2 + (y_1-y_2)^2 \ge 4 r^2 }\indicator{ -\epsilon/2<y_1< \epsilon/2}.
-\end{equation}
-This would mean that the first disk is hitting the hole. By interchanging the
-indexes we would get an equal contribution from the other disk. There is a caveat: 
-if the hole or the interaction radius is too large, we have to consider many
-more cases for the calculation of the cross section area. The geometry of
-the area for integration changes itself according to certain ranges.
-We will consider then only small holes. We show a diagram 
-in the figure \ref{diagintagu}.
-\begin{figure}
-\centering
-\begin{tabular}{cc}
-\includegraphics[width=0.4\textwidth]{diagramintegraagujero01.pdf} &
-\includegraphics[width=0.4\textwidth]{diagramintegraagujero02.pdf}
-\end{tabular}
-\caption{Area of consideration for the integration of expression
- \ref{areaindicagujero}. The left side shows a hole small enough
-so that the radius of interaction does not change the geometry of the
-indicatrix set, the right side shows the other possibility.}\label{diagintagu}
-\end{figure}
-The integration is more tedious than in previous examples, as we cannot
-take full advantage of the symmetries and we have to split it into
-more cases, but still is elemental, and after a good day at the blackboard
-it yields
-\begin{align}\label{escape}
- A_{escape} &= 2 (w-2r) (h-2r) \epsilon.
-\end{align}
-\pmb{This is probably wrong.}
-
 
 \section{Mean times between events}
-
-
 
 \subsection{Mean hopping time}
 
@@ -611,11 +564,10 @@ Inserting the results of the previous section
 into the formula for the mean times for crossing
 surfaces of section, eq. \ref{meantimegeneral}, gives the times for 
 horizontal hopping, 
-collision between disks and impacts in general. We use the auxiliary
-variables $a,b$ and put everything in terms of $r$. For horizontal
+collision between disks and impacts in general. For horizontal
 hops we have:
 \begin{equation}\label{hoptau}
- \mean{\tau}_{hopp} = 	
+ \mean{\tau}_\text{hopp} = 	
 \frac{3 \pi}{2\sqrt{2}}
 \frac{2 a^{2} b^{2}  - 2 \pi a b r^{2} + \textstyle \frac{a+b}{3}  (2r)^{3}  -  r^4}
 { a \sqrt{2}  ( b - r )^2}.
@@ -625,16 +577,16 @@ to transverse the distance between two parallel lines at distance $w$ from
 a random position, and is related to the Buffon's Needle distribution 
 \cite{EScheinerman}:
 \begin{equation}\label{hoptaulimit}
- \mean{\tau}_{hopp} \xrightarrow{r\rightarrow 0} 	
+ \mean{\tau}_\text{hopp} \xrightarrow{r\sim 0} 	
 \frac{3 \pi}{4}w.
 \end{equation}
-Also of interest is the limit $r\rightarrow h/4$, where hoping becomes
+Also of interest is the limit $r\sim h/4$, where hoping becomes
 impossible. The lower term goes to zero as $r^2$ become approximately constant.
 This agrees with heuristic arguments. 
 In the particular case $w=h$ as in our examples,
 sting $r=h/4-\epsilon$ produces the limiting behaviour 
 \begin{equation}
- \mean{\tau}_{hopp}(\epsilon) \xrightarrow{\epsilon\rightarrow 0} 	
+ \mean{\tau}_\text{hopp}(\epsilon) \xrightarrow{\epsilon\sim 0} 	
 \frac{3 \pi}{8}
 \frac{(1-\frac{2\pi+1}{32})}
 { \epsilon^2} w^3
@@ -648,7 +600,7 @@ predicts the same exponent for the behaviour of this hopping time. The figures
 
 For the collisions between disk we would have:
 \begin{equation}\label{colltau}
- \mean{\tau}_{coll} = 	
+ \mean{\tau}_\text{coll} = 	
 \frac{3 \pi}{2\sqrt{2}}
 \frac {2 a^{2} b^{2}  - 2 \pi a b r^{2} + \textstyle \frac{a+b}{3}  (2r)^{3}  -  r^4}
 {2\pi a b r -4(a+b)r^2+2r^3}
@@ -656,55 +608,27 @@ For the collisions between disk we would have:
 As expected, this goes to infinity with very small radius, its behaviour
 approaching the expression
 \begin{equation}\label{colltaulim0}
-\mean{\tau}_{coll}  \xrightarrow{r\rightarrow 0} 
+\mean{\tau}_{coll}  \xrightarrow{r\sim 0} 
 \frac{3}{8\sqrt{2}}\frac{wh}{r}
 \end{equation}
 
-%On the other side, this should go evaluate to zero when
-%we use the limiting value for the radius. In the simplest
-%case  $w = h$ we have $r_{max}= w(\sqrt{2}+2)$. Sadly, our volume
-%formula ceases to be valid after $r>w/4$, so this limit gives nonsense.
-%We should go for the more general formula \cite{notascalculokarel}.
 
 \subsection{Mean impact time}
 
 Lastly, for the general impact formula we have the expression:
 \begin{equation}\label{impactwall}
- \mean{\tau}_{coll} = 	
+ \mean{\tau}_\text{walls} = 	
 \frac{3 \pi}{2\sqrt{2}}
 \frac { 2a^{2} b^{2}  -  2\pi a b r^{2} + \frac{a+b}{3}(2r)^3 - r^4}
 {ab[8(a+b)+2\pi r]- (4+2\pi)(a+b)r^2+\frac{22}{3} r^3},
 \end{equation}
-where we have abused from factorisation to make the limits clear.
+where we have abused from factorization to make the limits clear.
 
 In the limit $r\rightarrow 0$ this goes to $3 \pi (hw)/(8\sqrt{2}(h+w))$.
 This should correspond to the average impact time in the walls
 for non interacting point particles, 
 but, then, ergodic theory would not apply
 on such a system. 
-
-\subsection{Mean Sojourn  time for small disks and entrances}
-
-We shall also test the validity of formula using the area in eq. \ref{escape}
-for a small hole in the walls. If the formula is to be valid, we have
-to make an adequate balance of the involved parameters. The hole has to
-be only marginally larger than the disks, so that they have enough opportunity
-to interact, thus achieving \emph{ergodic statistics}. A very large hole
-on a wall with similar sized disks will result in only the disk closer to
-it escaping. The average escape time then may be calculated as
-a return time for the adequate section and we could use the following formula:
-\begin{equation} 
-\mean{\tau}_{sojourn} = 	
-\frac{3 \pi}{4\sqrt{2}}
-\frac {16a^2b^2-16\pi a b r^2 + \frac{64}{3} r^3 - 8 r^2  }
-{4 a b \epsilon}.
-\end{equation}
-As can be expected, this time is proportional to the
-free Volume available and inversely proportional to the size of the hole, $\epsilon$.
-The formula should be adequately interpreted. This time would represent
-the interval that the box, with the aforementioned hole, contains two disks,
-starting to count at the moment that the second disks enters the box, and
-stopping at the moment any of the disks leaves. 
 
 
 \section{Numeric Results}
@@ -716,15 +640,10 @@ extensive numerical simulations.
 The next three figures, \ref{MeanHopp01}, \ref{MeanCol01}, and \ref{MeanImp01},  
 we compare the
 numerical and analytically curves for the mean times of different events.
-Out of curiosity, we decided to check a ``coarse'' approximation
-using the whole volume of the four-dimensional box as ``free volume''. 
-We observe an almost perfect agreement between the ``Analytic'' and ``Numerical''
-values, and a very good agreement between the ``Coarse'' curve for the
-data in the small radius regime ($r<0.05)$.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.98\textwidth]{./FigurasPerfectas/HopTimesAgain01-ForPaper.pdf}
+  \includegraphics[width=0.45\textwidth]{./FigurasPerfectas/HopTimesAgain01-ForPaper.pdf}
   \caption{The mean hopping time as function of the radius, Energy, mass, 
 and geometry fixed.
 The blue continious line is the formula \ref{hoptau}, the red dot numerical data.
@@ -734,7 +653,7 @@ scales (inset).}\label{MeanHopp01}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.98\textwidth]{./FigurasPerfectas/CollitionsErgodic02-ForPaper.pdf}
+  \includegraphics[width=0.45\textwidth]{./FigurasPerfectas/CollitionsErgodic02-ForPaper.pdf}
   \caption{The mean collision time as function of the radius. Same
     specifications as the last figure. }\label{MeanCol01}
 \end{figure}
@@ -742,19 +661,17 @@ scales (inset).}\label{MeanHopp01}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.98\textwidth]{./FigurasPerfectas/WallImpacts05-ForPaper.pdf}
+  \includegraphics[width=0.45\textwidth]{./FigurasPerfectas/WallImpacts05-ForPaper.pdf}
   \caption{The mean impact-on-walls time as function of the radius. Again, same
     notes as the figure \ref{MeanHopp01}}\label{MeanImp01}.
 \end{figure}
-
-\pmb{Still missing: mean sojourn time }
 
 We check also some samples about the distribution of these times
 in the next set of figures (\ref{histohopps}). 
 
 \begin{figure}[h]
         \centering
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.22\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{HoppingTimesradio01.pdf}
                 \caption{$d=0.1$}
@@ -762,7 +679,7 @@ in the next set of figures (\ref{histohopps}).
         \end{subfigure}%
         ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
           %(or a blank line to force the subfigure onto a new line)
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.22\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{HoppingTimesRadius249.pdf}
                 \caption{$d=0.249$}
@@ -777,7 +694,7 @@ more exaggeratedly shown.}\label{histohopps}
 \end{figure}
 
 The figure \ref{bigradius} shows clearly an exponential decay in the
-distribution, something to be expected for a chaotic system \cite{OttLibro} , 
+distribution, something to be expected for a chaotic system \cite{OttLibro}, 
 while the
 figure in \ref{smallradius} is something different. 
 
@@ -790,18 +707,18 @@ an interesting result: most \emph{first event times} deviate very slightly,
 although systematically, from the \emph{mean return times}.
 This could be explained as follows:
 In an ergodic regimen we could simply average over a sufficiently large
-sample of initial conditions instead of following each trayectory
+sample of initial conditions instead of following each trajectory
 and sampling events along it. This means that the mean return time
 coincides with the mean first return time for large enough samples.
 A \emph{mean first event time} could be though of a \emph{mean
 first return time} with erroneous initial conditions, as if the
-trayectories had started, so there would be an \emph{average offset}
+trajectories had started, so there would be an \emph{average offset}
 for the times. As we show numerically, this is indeed the case. 
 
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.98\textwidth]{./FigurasPerfectas/FistHopTime01-ForPaper.pdf}
+  \includegraphics[width=0.45\textwidth]{./FigurasPerfectas/FistHopTime01-ForPaper.pdf}
   \caption{The mean first time for the hopping event.
     We compare against the \emph{mean return time}, theoretical
 and numerical. We observe how it is conterintuitivelly slightly longer,
@@ -810,7 +727,7 @@ but the qualitative behaviour is almost equal. }\label{FirstHopp01}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.98\textwidth]{./FigurasPerfectas/FistCollTime02-ForPaper.pdf}
+  \includegraphics[width=0.45\textwidth]{./FigurasPerfectas/FistCollTime02-ForPaper.pdf}
   \caption{The mean first collision time as function of the radius.
     Here we have  a slighter shorter time as the radius increases. The difference
 is more notorious on the semi-log plot in the inset. 
@@ -819,20 +736,59 @@ is more notorious on the semi-log plot in the inset.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.98\textwidth]{./FigurasPerfectas/FistImpactTime01-ForPaper.pdf}
+  \includegraphics[width=0.45\textwidth]{./FigurasPerfectas/FistImpactTime01-ForPaper.pdf}
   \caption{The mean first impact-on-walls time as function of the radius. Again, 
     we observe the same qualitative behaviour but now the whole range is below
     the mean return time. This is to be expected, as for any initial condition
     we would have a past condition on the wall. For very
-    large radius the step away from the wall is allmost negligible.}\label{FirstImp01}.
+    large radius the step away from the wall is almost negligible.}\label{FirstImp01}.
 \end{figure}
 
 
 \section{Conclusions}
 
 
+The Two Disks in a Box model has been extensively studied before, and
+very interesting results have been obtained which could help
+to derive reaction
+and diffusion times from basic underlying phenomena.  Here
+we show for first time exact analytic expressions for the mean event
+times which lie behind this question. Most
+significantly, we obtain formulas for the hopping and
+collision mean times. The 
+results which have helped us to do this came from the
+extensive theory of chaotic billiards. The subjacent theory
+of ergodic systems already contains strong theorems and formulas
+that only need judiciously application to show their 
+elucidating power. The step done by Machta and Zwanzig in
+that direction is a clear example of grounding that
+theory in applicable research. We have expanded
+that line by showing that other phenomena can be modeled
+as return times to appropriately chosen surfaces of section. 
+In particular, the analytic formulas derived by these means
+confirm the algebraic limiting behaviour obtained
+by Bowle \etal by different path of reasoning. 
+All numeric experiments support very nicely the results. 
+A very reassuring fruition is that, even when we do not have
+an exact expression for first event times, these follow
+the general qualitative behaviour as the mean return times,
+which give the latter a wider predictive power. The diffusive
+or transport constants can now be obtained by adequate
+interpretation of our results. 
+
+The same technique can be further exploited for some other
+qualities simply by solving the adequate measures
+of volumes and areas. For Transport and Reaction problems
+the results that we have shown here could be made to serve
+the purpose of deriving the corresponding constants from first
+principles.  
+
 
 \section{Acknowledgements}
+
+
+This work was financed by CONACYT-PAPIIT project number CB-101997.
+
 
 
 \bibliography{../../notasmixtas/TwoDiskBiblio}
