@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2014.1.21)  20 JUN 2014 11:30
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2014.1.21)  7 AUG 2014 17:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -10,8 +10,8 @@ english, usenglishmax, german-x-2012-05-30, ngerman-x-2012-05-30, german, ngerm
 an, swissgerman, portuguese, catalan, galician, spanish, loaded.
 (/usr/share/texmf-dist/tex/latex/base/minimal.cls
 Document Class: minimal 2001/05/25 Standard LaTeX minimal class
-) (/usr/share/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+) (/usr/share/texmf-dist/tex/latex/extsizes/size14.clo
+File: size14.clo 1999/11/11 v1.4a NON-Standard LaTeX file (size option)
 )
 (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
@@ -88,8 +88,7 @@ Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 (/usr/share/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
-)))
-No file AreaCol01.aux.
+))) (./AreaCol01.aux)
 \openout1 = `AreaCol01.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
@@ -104,6 +103,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
 LaTeX Font Info:    ... okay on input line 58.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
 LaTeX Font Info:    ... okay on input line 58.
+
 (/usr/share/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count83
@@ -176,15 +176,15 @@ e
 * \textheight=397.48499pt
 * \oddsidemargin=-72.26999pt
 * \evensidemargin=-72.26999pt
-* \topmargin=-109.26999pt
-* \headheight=12.0pt
+* \topmargin=-111.26999pt
+* \headheight=14.0pt
 * \headsep=25.0pt
-* \topskip=11.0pt
+* \topskip=14.0pt
 * \footskip=30.0pt
 * \marginparwidth=4.0pt
 * \marginparsep=10.0pt
 * \columnsep=0.0pt
-* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=12.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -203,16 +203,16 @@ Package pdftex.def Info: AreaCol01-inc.pdf used on input line 184.
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./AreaCol01-inc.pdf>]
 (./AreaCol01.aux) ) 
 Here is how much of TeX's memory you used:
- 2051 strings out of 494900
- 28485 string characters out of 3177505
- 86835 words of memory out of 3000000
+ 2055 strings out of 494900
+ 28565 string characters out of 3177505
+ 86852 words of memory out of 3000000
  5264 multiletter control sequences out of 15000+200000
- 4709 words of font info for 16 fonts, out of 3000000 for 9000
+ 4706 words of font info for 16 fonts, out of 3000000 for 9000
  64 hyphenation exceptions out of 8191
  38i,6n,31p,239b,183s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.
-enc}</usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on AreaCol01.pdf (1 page, 24247 bytes).
+enc}</usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb>
+Output written on AreaCol01.pdf (1 page, 19611 bytes).
 PDF statistics:
  16 PDF objects out of 1000 (max. 8388607)
  10 compressed objects within 1 object stream

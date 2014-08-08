@@ -20,7 +20,7 @@
 
 \newcommand{\defeq}{:=}
 \newcommand{\mean}[1]{\left \langle #1 \right \rangle}
-\newcommand{\rd}{\, \mathrm{d}}
+\newcommand{\rd}{\!\!\!\!\mathrm{d}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\vv}{\mathbf{v}}
 \newcommand{\indicator}[1]{\mathbf{1}_{ \{   #1 \} } } 
@@ -35,7 +35,7 @@
 
 \author{Rosa Rodríguez}
 \email{sepaeldiablo@notengoidea.org}
-\affiliation{unknown to me}
+\affiliation{ Also Facultad de Ciencias? Current afiliation?}
 
 \author{David P. Sanders}
 \email{sanders@ciencias.unam.mx}
@@ -43,27 +43,19 @@
 
 \author{W. P. Karel Zapfe}
 \email{karelz@fis.unam.mx}
-\affiliation{Some Cat's Cradle}
+\affiliation{Facultad de Ciencias, UNAM}
 
 
 \begin{abstract}
-  Mean First Event Times (MFET) play important roles in
-Statistical Mechanics. They underlie at the bottom
-of observable macroscopic quantities, such as transport and
-reaction rates.  
-Numeric simulations and heuristic arguments
-have previously shown  that the MFET  follow 
-simple rules dependant on geometric 
-parameters.
- Using ergodic theory formulas for recurrence times we obtain exact 
-results for Mean Event Times in a paradigmatic system: 
-two hard discs in a rectangular two-dimensional box.
-  In particular,  we calculate exactly the mean hopping time between exchanges
- of the horizontal positions of the discs, 
-as well as mean collision rates between the two discs and 
- between the discs and the box. We compare this with numerical experiments and
-against MFET  and show that they share the same
-general behaviour.
+Using Ergodic Theory formulae, we have obtained 
+exact expressions for various  mean event times in the Two Disks in a Box
+billiard.  We have shown that the gneral formula is appliable in a very broad range
+of situations and the only dificulty is establishing the adecuate surface
+of section and its measure, so that it represents  the event in question. 
+We have compared this results against
+numerical simulations and we have compared them also agains first event times.
+The second case has no closed expresion that we are aware of, but shows
+very similar behavior, altough it has clear deviations.   
 \end{abstract}
 
 \maketitle
@@ -90,18 +82,21 @@ mean time for inertial and Brownian dynamics \cite{Bowles04}.
 They use arguments derived from Transition State Theory 
 to provide expressions for the
 general behaviour of these quantities, as functions of the
-radius of the disks. Their results show the adequate algebraic behaviour, 
-and very interesting work has expanded from that line \cite{Suh05, Ball09}.
+radius of the disks. Their results show the adequate algebraic behaviour.
+A great deal of work has expanded along that line  \cite{Suh05, Ball09}.
 There is also a statistical thermodynamic treatment by Munakata \etal 
 which deals very comprehensively with partition functions, pressure,
 and temperatures \cite{Munakata02, Munakata06}. 
 Our  primary intention is
-to find  the first hopping and collision times of the two disks under 
-inertial motion. We show that this can 
+to find  the mean hopping and collision times of the two disks under 
+inertial motion and compare them with first hopping and collition times.
+We show that the former can 
 be obtained  as a closed analytic expression dependant only
 on the geometric parameters of the system, which turns 
 out to be a rational function whose limiting form
-has the algebraic exponent predicted in the aforementioned literature. 
+has the algebraic exponent predicted in the aforementioned literature, while
+the later follows closely the first, but with apreciable
+cualitative diferences. 
 
 The exact treatment  turns to be  feasible because  
 the reduced model is a hard sphere billiard. 
@@ -114,20 +109,24 @@ about  the properties collectively called  \emph{Hard Chaos}
 One such system is the
 gas of disks in a rectangular box \cite{SzaszBook00}, 
 for which the simplest non trivial
-realization is the case of only two disks inside the box, which
-is exactly the model in question.
+realization is the case of  two disks inside the box, our
+present model.
 This billiard is chaotic in
 strong sense \cite{Sim99}. The system  is thus amenable
-to analytic treatment0
+to analytic treatment
 and rigorous results have been obtained from ergodic theory \cite{MarkChern}.
 
 The previous  results on
-inertial dynamics can be extended  by giving
-exact expressions for the mean times. We shall  obtain them through application of 
+inertial dynamics can be extended  by particularizing 
+exact expressions for the mean return times (MRT). 
+We shall  obtain them through application of 
 Machta and Zwanzig formula for residence times \cite{MachtaZwan}. 
-We shall also  compare \emph{mean event times} with \emph{mean first event times},
+We shall also  compare \emph{mean event times} with 
+\emph{mean first event times} (MFET),
 and give some arguments to explain the agreement between the two. 
 Brownian dynamics shall be discussed elsewhere \cite{WorkInProgress}.
+We shall also provide this paper with supplementary material 
+detailing the calculations. 
 
 
 
@@ -149,7 +148,9 @@ H(q,p)=\frac{1}{2}(\|p_1\|^2+\|p_2\|^2)=1.
   \begin{center}
   \includegraphics[width=0.40\textwidth]{DiscosenCajaCuadrada01.pdf}
   \end{center}
-  \caption{The Billiard}\label{billar01}
+  \caption{The billiard and its parameters. Coordinates
+    have their origin at the geometrical centre of the 
+    billiard table.}\label{billar01}
 \end{figure}
 
 We denote the position of the centre of the $i$th disc by 
@@ -157,7 +158,7 @@ $(x_{i}, y_{i})$ for $i=1,2$. Since the discs are hard,
 the disc centres are restricted to the region 
 $(x_i, y_i) \in [-a,a] \times [-b, b]$, where 
 $a \defeq a(r) \defeq \frac{w}{2} - r = \frac{w-d}{2}$ and
- $b \defeq b(r) \defeq \frac{h}{2} - r = \frac{h-d}{2}$.
+$b \defeq b(r) \defeq \frac{h}{2} - r = \frac{h-d}{2}$.
 
 
 The exclusion condition is $(x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 = d^2$.
@@ -175,9 +176,12 @@ $x \in [-a \sqrt{2}, +a \sqrt{2}]$ with
 $X \in [-a \sqrt{2} + |x|, a \sqrt{2} - |x|]$, respectively 
  $y \in [-b \sqrt{2}, b \sqrt{2}]$ and $Y \in [-b \sqrt{2} + |y|, +b \sqrt{2} - |y|]$,  
 with the constraint $x^2 + y^2 \ge 2 r^2$.
+The horizontal and vertical coordinates transform independently
+from each other, and the Jacobian is in each case equal to $1$.
 
 The constrains define a four dimensional
-rectangular prism  and a four dimensional cylinder placed inside.
+rectangular prism, called the prism henceforth,   
+and a four dimensional cylinder placed inside.
 This cylinder has radius $r\sqrt{2}$ and lies
 in  a diagonal position along the axes $X, Y$. 
 The dynamics in such a space follow
@@ -208,7 +212,7 @@ first encounter times. We also
 have a result for the mean free time, i.e.\ the mean time between 
 collisions of the particle with the walls \cite{MarkChern}. 
 This can be thought of as a mean return time to the $(D-1)$-dimensional 
-(i.e. co-dimension-$1$) cross-section given by the wall boundaries.
+(i.e. co-dimension $1$) cross-section given by the wall boundaries.
 The general formula for that time is
 \begin{equation}\label{meanfreetime}
  \mean{\tau} = \frac{|Q|}{|A|} \frac{|S^{D-1}|}{|B^{D-1}|}.
@@ -248,8 +252,9 @@ The above result, as derived by Chernov,
 was for the case $\sum_i \vv_i^2 = 1$, or $m=1$ and $E=\frac{1}{2}$.  
 For more general values of $E$ and $m$, 
 we are simply working on a different energy surface in phase space. 
-The particle trajectories are identical but the motion is a factor
-$\sqrt{2E/m}$ faster. Then all times must divided by this value, 
+The particle trajectories are identical but the motion is different
+by a factor of
+$\sqrt{2E/m}$. All times must divided by this value, 
 giving for
 the mean time between events the general formula:
 \begin{equation} \label{meantimegeneral}
@@ -284,88 +289,86 @@ We shall present the total four-dimensional volume as a product integral
 of all available positions. To grasp the idea, a 
 diagram is shown in the figure (\ref{diagintegra01}). Our
 principal integral is the available free $4D$ volume, which 
-we shall denote $V$:
+we shall denote $V_\text{free}$:
 \begin{multline}\label{volindic}
- V = \\ \int\limits_{x_1 = -a}^a \rd x_1 \int\limits_{x_2 = -a}^a \rd x_2 
+ V_\text{free} = \\ \int\limits_{x_1 = -a}^a \rd x_1 \int\limits_{x_2 = -a}^a \rd x_2 
 \int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 },
 \end{multline}
 where $\indicator{Z}$ indicates the indicator function of the set $Z$, 
 given by $\mathbf{1}_Z (x) = 1$ if $x \in Z$, and $=0$ if $x \notin Z$, 
 which restricts the integral to the desired region $Z$.
-
 \begin{figure}[h]
   \begin{center}
     \includegraphics[width=0.45\textwidth]{diagramintegra01.pdf}
   \end{center}
-    \caption{The space to integrate is the product of the subspaces
-      belonging to horizontal and vertical coordinates. The colour
-      shaded area represents the ``exclusion'' set, where the condition 
-      $ (x_1-x_2)^2 + (y_1-y_2)^2 \ge d^2 $ is not fulfilled. 
-      Their width is dependent on the particular point of evaluation
-      on the \emph{other} subspace. The diagonal coordinates
-      make the expression to evaluate simpler. Due to 
-      symmetry, we only evaluate the area in stripes and
-      multiply the result by 16.}\label{diagintegra01}  
+  \caption{The space to integrate is the product of the subspaces
+    belonging to horizontal and vertical coordinates. The colour
+    bands represents the ``exclusion'' set, where the condition 
+    $ (x_1-x_2)^2 + (y_1-y_2)^2 \ge d^2 $ is not met. 
+    The width of each band is dependent on the particular 
+    point of evaluation
+    on the \emph{other} subspace. The diagonal coordinates
+    make the expression to evaluate simpler. Due to 
+    symmetry, we only evaluate the area in stripes and
+    multiply the result by 16.}\label{diagintegra01}  
 \end{figure}
 
-We represent the excluded cylinder in the coordinates defined in 
-the set of equation \ref{cambiocoor01}. 
-
+It is easier to represent the  
+excluded cylinder in the coordinates defined in 
+the set of equation \ref{cambiocoor01}. Then the exlusion condition
+is orthogonal to the coordinates $X,Y$ and they do not appear
+on the indicator function. 
 \begin{multline}\label{integraltotal}
- V = \\ \int\limits_{x=-a \sqrt{2}}^{a \sqrt{2}} \rd x 
+ V_\text{free} = \\ \int\limits_{x=-a \sqrt{2}}^{a \sqrt{2}} \rd x 
 \int\limits_{X=-a \sqrt{2} + |x| }^{a \sqrt{2} - |x|}  \rd X
  \int\limits_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
 \int\limits_{Y=-b \sqrt{2} + |y| }^{b \sqrt{2}-|y|}  \rd Y
 \, \indicator{ x^2 + y^2 \ge 2r^2  }.
 \end{multline}
-In these coordinates, $X$ and $Y$ do not appear in the integrating part, 
-so that these integrals may be done trivially, 
-thus reducing to the following two-dimensional integral:
+In these coordinates, $X$ and $Y$ do not appear in the function to be
+integrated, 
+so that these integrals may be done trivially. After that we are left 
+with the  following two-dimensional integral:
 \begin{multline}
- V  = \\ \int_{x=-a \sqrt{2}}^{a \sqrt{2}} \rd x  \int_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
-\, 2 \left( a \sqrt{2} - |x| \right) \, 2 \left( b \sqrt{2} - |y| \right) \,  \indicator{ x^2 + y^2 \ge 2r^2 } \\
- = 16 \int_{x=0}^{a \sqrt{2}} \rd x  \int_{y=0}^{b \sqrt{2}} \rd y
-\, \left( a \sqrt{2} - x \right) \, \left( b \sqrt{2} - y \right) \,  \indicator{ x^2 + y^2 \ge 2r^2 },
+ V_\text{free}  = \\ \int\limits_{x=-a \sqrt{2}}^{a \sqrt{2}} \rd x  \int\limits_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
+2 \left( a \sqrt{2} - |x| \right) \, 2 \left( b \sqrt{2} - |y| \right) \indicator{ x^2 + y^2 \ge 2r^2 } \\
+ = 16 \int\limits_{x=0}^{a \sqrt{2}} \rd x  \int\limits_{y=0}^{b \sqrt{2}} \rd y 
+\left( a \sqrt{2} - x \right) \left( b \sqrt{2} - y \right) \indicator{ x^2 + y^2 \ge 2r^2 },
 \end{multline}
-using the symmetry.
-Thus $V = 16(I_1 + I_2)$, where $I_1$ and $I_2$ are the 
-resulting integrals over the regions where the available region 
-for $y$ is affected by, and is not affected by, respectively, 
-the restriction to lie outside the disc.
+where we used the symmetry indicated in the figure \ref{diagintegra01}.
+Thus $V_\text{free} = 16(I_1 + I_2)$, where $I_1$ is the region where the value of $y$
+is affected by the exclusion condition and $I_2$ is where it is not affected
+by it. 
 We have
 \begin{align}
- I_1 &= \int_{x=0}^{r\sqrt{2}} \left[ \int_{y = \sqrt{ 2r^2 - x^2}}^{b \sqrt{2}} \left( b \sqrt{2} - y \right) \rd y \right]  \left( a \sqrt{2} - x \right) \rd x \\
+ I_1 &= \int\limits_{x=0}^{r\sqrt{2}} \rd x \int\limits_{y = \sqrt{ 2r^2 - x^2}}^{b \sqrt{2}} \rd y
+\left( b \sqrt{2} - y \right)  \left( a \sqrt{2} - x \right) \\
 &= 	
 2 a b^{2} r  + \textstyle \frac{1}{6} (a+b) (2r)^{3} - \frac{1}{32}  (2r)^{4} - \frac{1}{4} {\left(\pi a b + b^{2}\right)} (2r)^2,
 \end{align}
 and
 \begin{align}
- I_2 &= \int_{x=r  \sqrt{2}}^{a \sqrt{2}} \left[ \int_{y = 0}^{b \sqrt{2}} \left( b \sqrt{2} - y \right) \rd y \right]  \left( a \sqrt{2} - x \right) \rd x \\
+ I_2 &= \int\limits_{x=r  \sqrt{2}}^{a \sqrt{2}} \rd x  \int\limits_{y = 0}^{b \sqrt{2}} \rd y
+ \left( b \sqrt{2} - y \right)  \left( a \sqrt{2} - x \right)  \\
 &=	
 {\left( a^{2} - 2ar +   r^{2}\right)} b^{2}.
 \end{align}
 Thus 
 \begin{align}\label{volumeabd}
- V %= 16(I_1 + I_2) =     	
+ V_\text{free}
  & =  16 a^{2} b^{2}  - 16 \pi a b r^{2} + \textstyle \frac{64}{3} (a+b) r^{3}  - 8 r^{4} \\
 &= V_\text{prism} - V_\text{cyl},
 \end{align}
 as was previously obtained by Munakata and Hu \cite{Munakata02}.
+For clarity we have divided this expression in the volume of the prism 
+$V_\text{prism}=16 a^2 b^2$, and  the volume excluded by the overlapping
+condition, denoted here by 
+$V_\text{cyl}=  16 \pi a b r^{2} - \textstyle \frac{64}{3} (a+b) r^{3}  + 8 r^{4}$.
 
-Note that the volume available to place two discs inside 
-the hard box but \emph{without} the 
- hard-disc exclusion constraint is simply 
-given by the first term, $V_\text{prism}=16 a^2 b^2$; 
-thus, the remaining terms represent the excluded volume due to this constraint.
-We shall call them $V_\text{cyl}=  16 \pi a b r^{2} - \textstyle \frac{64}{3} (a+b) r^{3}  + 8 r^{4}$.
-This corresponds to the Volume of the exclussion cylinder (the overlapping conditions),
-so we simply state that $V=V_\text{prism} - V_\text{cyl}$.
-
-The available space gets smaller nevertheless, as can be seen from
-the substitutions $a\rightarrow (w-d)/2$ and $b\rightarrow (h-d)/2$.
-The explicit formula for the Volume as function from the diameter only is then:
+The substitutions $a\rightarrow (w-d)/2$ and $b\rightarrow (h-d)/2$ give us
+ the Volume as function from the diameter only:
 \begin{multline}\label{volumewhd}
- V 
+ V_\text{free} 
 = (w-d)^{2} (h-d)^{2}  - \\ 
  \pi (w-d)(h-d) d^{2} + 
 \textstyle \frac{4}{3} (w+h-2d) d^{3}  
@@ -380,9 +383,10 @@ We tacitly made the assumption that $h,w>2d$.  This assumption is on
 the integration limits in the step in eq. \ref{integraltotal}. 
 A full discussion of the formula for the case in which either
 $w$ or $h$ are smaller than $4r$ but there is still space for
-the disks is discussed in supplementary material \cite{notascalculokarel}). 
+the disks is discussed in supplementary material \footnote{Appendix A can be 
+found on blablabla.}. 
 We cite the  result for $h/4  <r< w/4$ for illustrative purposes.
-For cleanliness we define another auxiliary variable,
+For readability we define another auxiliary variable,
 $c=\sqrt{4r^2-b^2}$:
 \begin{multline}\label{VolumenCasoFeo}
 V_{h/4<r} = 32abr^2[\arccos(b/2r)-\arccos(a/2r))]\\

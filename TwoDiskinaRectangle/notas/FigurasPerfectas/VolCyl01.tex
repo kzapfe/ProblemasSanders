@@ -3,14 +3,14 @@
 % Set font size
 \makeatletter
 \def\@ptsize{1}
-\InputIfFileExists{size11.clo}{}{%
+\InputIfFileExists{size14.clo}{}{%
    \GenericError{(gnuplot) \space\space\space\@spaces}{%
-      Gnuplot Error: File `size11.clo' not found! Could not set font size%
+      Gnuplot Error: File `size14.clo' not found! Could not set font size%
    }{See the gnuplot documentation for explanation.%
    }{For using a font size a file `size<fontsize>.clo' has to exist.
         Falling back ^^Jto default fontsize 10pt.}%
   \def\@ptsize{0}
-  \input{size10.clo}%
+  \input{size14.clo}%
 }%
 \makeatother
 % Load packages
@@ -166,11 +166,11 @@
       \csname LTb\endcsname%
       \put(12060,409){\makebox(0,0){\strut{} 0.25}}%
       \csname LTb\endcsname%
-      \put(144,3969){\rotatebox{-270}{\makebox(0,0){\strut{}Volumen}}}%
+      \put(100,3969){\rotatebox{-270}{\makebox(0,0){\strut{}\Large{$V_{cyl}$}}}}%
       \csname LTb\endcsname%
       \put(12245,3969){\rotatebox{-270}{\makebox(0,0){\strut{}}}}%
       \csname LTb\endcsname%
-      \put(6505,130){\makebox(0,0){\strut{}Radius}}%
+      \put(6505,130){\makebox(0,0){\strut{}\Large{$r$}}}%
       \put(6505,7250){\makebox(0,0){\strut{}}}%
       \csname LTb\endcsname%
       \put(6505,7249){\makebox(0,0){\strut{}}}%
@@ -178,9 +178,9 @@
     }%
     \gplgaddtomacro\gplfronttext{%
       \csname LTb\endcsname%
-      \put(5856,7753){\makebox(0,0)[r]{\strut{}Numerics}}%
+      \put(5850,7753){\makebox(0,0)[r]{\strut{}Numerics}}%
       \csname LTb\endcsname%
-      \put(7525,7753){\makebox(0,0)[r]{\strut{}Analytical}}%
+      \put(7530,7753){\makebox(0,0)[r]{\strut{}Analytical}}%
     }%
     \gplbacktext
     \put(0,0){\includegraphics{VolCyl01-inc}}%

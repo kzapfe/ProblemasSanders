@@ -3,14 +3,14 @@
 % Set font size
 \makeatletter
 \def\@ptsize{1}
-\InputIfFileExists{size11.clo}{}{%
+\InputIfFileExists{size14.clo}{}{%
    \GenericError{(gnuplot) \space\space\space\@spaces}{%
       Gnuplot Error: File `size11.clo' not found! Could not set font size%
    }{See the gnuplot documentation for explanation.%
    }{For using a font size a file `size<fontsize>.clo' has to exist.
         Falling back ^^Jto default fontsize 10pt.}%
   \def\@ptsize{0}
-  \input{size10.clo}%
+  \input{size14.clo}%
 }%
 \makeatother
 % Load packages
