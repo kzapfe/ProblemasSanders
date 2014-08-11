@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2014.1.21)  7 AUG 2014 17:26
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2014.1.21)  8 AUG 2014 20:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -10,8 +10,8 @@ english, usenglishmax, german-x-2012-05-30, ngerman-x-2012-05-30, german, ngerm
 an, swissgerman, portuguese, catalan, galician, spanish, loaded.
 (/usr/share/texmf-dist/tex/latex/base/minimal.cls
 Document Class: minimal 2001/05/25 Standard LaTeX minimal class
-) (/usr/share/texmf-dist/tex/latex/extsizes/size14.clo
-File: size14.clo 1999/11/11 v1.4a NON-Standard LaTeX file (size option)
+) (/usr/share/texmf-dist/tex/latex/extsizes/size17.clo
+File: size17.clo 1999/11/11 NON-Standard LaTeX file (size option)
 )
 (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
@@ -177,15 +177,15 @@ e
 * \textheight=397.48499pt
 * \oddsidemargin=-72.26999pt
 * \evensidemargin=-72.26999pt
-* \topmargin=-111.26999pt
-* \headheight=14.0pt
-* \headsep=25.0pt
-* \topskip=14.0pt
-* \footskip=30.0pt
-* \marginparwidth=4.0pt
-* \marginparsep=10.0pt
+* \topmargin=-119.26999pt
+* \headheight=17.0pt
+* \headsep=30.0pt
+* \topskip=17.0pt
+* \footskip=35.0pt
+* \marginparwidth=2.0pt
+* \marginparsep=12.0pt
 * \columnsep=0.0pt
-* \skip\footins=12.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=14.0pt plus 5.0pt minus 3.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -195,6 +195,10 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <17.28> on input line 201.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 201.
 <FistHopTime01-ForPaper-inc.pdf, id=1, 625.33624pt x 397.485pt>
 File: FistHopTime01-ForPaper-inc.pdf Graphic file (type pdf)
 
@@ -205,20 +209,21 @@ Package pdftex.def Info: FistHopTime01-ForPaper-inc.pdf used on input line 202.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./FistHopTime01-ForPape
 r-inc.pdf>] (./FistHopTime01-ForPaper.aux) ) 
 Here is how much of TeX's memory you used:
- 2055 strings out of 494900
- 28747 string characters out of 3177505
- 86852 words of memory out of 3000000
- 5264 multiletter control sequences out of 15000+200000
- 4706 words of font info for 16 fonts, out of 3000000 for 9000
+ 2064 strings out of 494900
+ 28873 string characters out of 3177505
+ 86858 words of memory out of 3000000
+ 5271 multiletter control sequences out of 15000+200000
+ 6235 words of font info for 21 fonts, out of 3000000 for 9000
  64 hyphenation exceptions out of 8191
  38i,6n,31p,252b,183s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-dist/fonts/enc/dv
-ips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/cm-super
-/sfrm1440.pfb>
-Output written on FistHopTime01-ForPaper.pdf (1 page, 30728 bytes).
+ips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
+
+Output written on FistHopTime01-ForPaper.pdf (1 page, 38098 bytes).
 PDF statistics:
- 16 PDF objects out of 1000 (max. 8388607)
- 10 compressed objects within 1 object stream
+ 20 PDF objects out of 1000 (max. 8388607)
+ 13 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

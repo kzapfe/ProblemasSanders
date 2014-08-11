@@ -3,14 +3,14 @@
 % Set font size
 \makeatletter
 \def\@ptsize{1}
-\InputIfFileExists{size14.clo}{}{%
+\InputIfFileExists{size17.clo}{}{%
    \GenericError{(gnuplot) \space\space\space\@spaces}{%
-      Gnuplot Error: File `size14.clo' not found! Could not set font size%
+      Gnuplot Error: File `size17.clo' not found! Could not set font size%
    }{See the gnuplot documentation for explanation.%
    }{For using a font size a file `size<fontsize>.clo' has to exist.
         Falling back ^^Jto default fontsize 10pt.}%
   \def\@ptsize{0}
-  \input{size14.clo}%
+  \input{size17.clo}%
 }%
 \makeatother
 % Load packages
@@ -162,9 +162,9 @@
       \csname LTb\endcsname%
       \put(12153,409){\makebox(0,0){\strut{} 0.25}}%
       \csname LTb\endcsname%
-      \put(144,3969){\rotatebox{-270}{\makebox(0,0){\strut{}Time}}}%
+      \put(144,3969){\rotatebox{-270}{\makebox(0,0){\strut{}time}}}%
       \csname LTb\endcsname%
-      \put(6450,130){\makebox(0,0){\strut{}Radius}}%
+      \put(6450,130){\makebox(0,0){\strut{}$r$}}%
     }%
     \gplgaddtomacro\gplfronttext{%
       \csname LTb\endcsname%
@@ -172,7 +172,7 @@
       \csname LTb\endcsname%
       \put(6627,7753){\makebox(0,0)[r]{\strut{}MFET}}%
       \csname LTb\endcsname%
-      \put(8314,7753){\makebox(0,0)[r]{\strut{}MT}}%
+      \put(8314,7753){\makebox(0,0)[r]{\strut{}MRT}}%
     }%
     \gplgaddtomacro\gplbacktext{%
       \csname LTb\endcsname%
@@ -182,7 +182,7 @@
       \csname LTb\endcsname%
       \put(1246,6191){\makebox(0,0)[r]{\strut{} 10}}%
       \csname LTb\endcsname%
-      \put(1246,7319){\makebox(0,0)[r]{\strut{} 100}}%
+      \put(1226,7100){\makebox(0,0)[r]{\strut{} 100}}%
       \csname LTb\endcsname%
       \put(1348,3750){\makebox(0,0){\strut{} 0}}%
       \csname LTb\endcsname%

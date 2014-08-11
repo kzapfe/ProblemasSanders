@@ -8,6 +8,8 @@
 \usepackage{subcaption}
 %\usepackage{authblk} parece ser que ya esta metido cuando usas preprint
 
+
+
 %\bibliographystyle{alpha}
 
 %opening
@@ -29,13 +31,14 @@
 \setlength{\parskip}{10pt}
 \setlength{\parindent}{0pt}
 
+
 \begin{document}
 
-\title{Exact kinetics of two hard discs in a rectangular box}
+\title{Exact Mean Event Times for the Two Disks in a Box Billiard Model}
 
 \author{Rosa Rodríguez}
 \email{sepaeldiablo@notengoidea.org}
-\affiliation{ Also Facultad de Ciencias? Current afiliation?}
+\affiliation{ Also Facultad de Ciencias? Current affiliation?}
 
 \author{David P. Sanders}
 \email{sanders@ciencias.unam.mx}
@@ -49,19 +52,22 @@
 \begin{abstract}
 Using Ergodic Theory formulae, we have obtained 
 exact expressions for various  mean event times in the Two Disks in a Box
-billiard.  We have shown that the gneral formula is appliable in a very broad range
-of situations and the only dificulty is establishing the adecuate surface
+billiard.  We have shown that the general formula is applicable in a very broad range
+of situations and the only difficulty is establishing the adequate surface
 of section and its measure, so that it represents  the event in question. 
 We have compared this results against
-numerical simulations and we have compared them also agains first event times.
-The second case has no closed expresion that we are aware of, but shows
-very similar behavior, altough it has clear deviations.   
+numerical simulations and we have compared them also against first event times.
+The second case has no closed expression that we are aware of, but shows
+very similar behavior, although it has clear deviations.   
 \end{abstract}
 
 \maketitle
 
 
+
 \section{Introduction}
+
+\typeout{`` this is ``  \the\columnwidth }
 
 For the statistical physicist and theoretical
 chemist, \emph{mean} and \emph{first} event
@@ -89,14 +95,14 @@ which deals very comprehensively with partition functions, pressure,
 and temperatures \cite{Munakata02, Munakata06}. 
 Our  primary intention is
 to find  the mean hopping and collision times of the two disks under 
-inertial motion and compare them with first hopping and collition times.
+inertial motion and compare them with first hopping and collision times.
 We show that the former can 
 be obtained  as a closed analytic expression dependant only
 on the geometric parameters of the system, which turns 
 out to be a rational function whose limiting form
 has the algebraic exponent predicted in the aforementioned literature, while
-the later follows closely the first, but with apreciable
-cualitative diferences. 
+the later follows closely the first, but with appreciable
+qualitative differences. 
 
 The exact treatment  turns to be  feasible because  
 the reduced model is a hard sphere billiard. 
@@ -315,7 +321,7 @@ which restricts the integral to the desired region $Z$.
 
 It is easier to represent the  
 excluded cylinder in the coordinates defined in 
-the set of equation \ref{cambiocoor01}. Then the exlusion condition
+the set of equation \ref{cambiocoor01}. Then the exclusion condition
 is orthogonal to the coordinates $X,Y$ and they do not appear
 on the indicator function. 
 \begin{multline}\label{integraltotal}
@@ -383,8 +389,8 @@ We tacitly made the assumption that $h,w>2d$.  This assumption is on
 the integration limits in the step in eq. \ref{integraltotal}. 
 A full discussion of the formula for the case in which either
 $w$ or $h$ are smaller than $4r$ but there is still space for
-the disks is discussed in supplementary material \footnote{Appendix A can be 
-found on blablabla.}. 
+the disks is discussed in supplementary material 
+\footnote{Appendix A: Detailed Calculus for Volume and Area.}. 
 We cite the  result for $h/4  <r< w/4$ for illustrative purposes.
 For readability we define another auxiliary variable,
 $c=\sqrt{4r^2-b^2}$:
@@ -400,7 +406,7 @@ into account a similar
 contribution which inverts the roles of $a$ and $b$.
 
 In all of our numeric examples we use $w=h=1$, setting the
-limit for hops at $r=0.25$. %quite figura redundante del Volumen libre.
+limit for hops at $r=0.25$. 
 We have checked this result with simple Monte Carlo simulations, 
 by generating random positions for the disks centres in 
 $[-a,a] \times [-b,b]$ uniformly and 
@@ -411,45 +417,48 @@ volume. The results are shown in the figure \ref{VolMonteC}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/VolCyl01.pdf}
-\caption{Fraction of occupied volume by the excluded conditions
-corresponding to the term $V_{cyl}$ in expression \ref{volumeabd}.
- The red continuous line represents the formula \ref{volumeabd} 
- fails after $ r>0.25$. The numerics
- are forced to follow the adequate behaviour, which is given
-by a generalization of the expression \ref{VolumenCasoFeo}. 
+\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/VolCyl02.pdf}
+\caption{Formula for $V_\text{cyl}$, the area of the exclusion cylinder, compared
+against the numerics, from eq. \ref{volumeabd}.
  }\label{VolMonteC}
 \end{figure}
 
 The following subsections shall only show the formulas for $r<w/4, h/4$.
 Bear in mind that some of the dynamics are possible above this limit,
-it is only the position interchange that gets excluded. 
+it is only the position interchange that gets excluded. \\
 
-\subsection{Area of cross-section for horizontal interchange (hops), 
-$\{x_1 = x_2\}$}\label{areahop}
+
+
+\subsection{Area of cross-section for
+ horizontal interchange (hops)}\label{areahop}
+
 The calculation of the $3$-dimensional area  ( all areas shall be 
 denoted by $A$)
 of the cross-section 
 $\{x_1 = x_2\}$ becomes 
 $\{ x=0 \}$ in the new coordinates, proceeds as follows:
 First we concentrate the measure indicated on the eq. \ref{volindic}
-multiplying a Dirac Delta $\delta(x)$ on the integrand:
+multiplying by a Dirac Delta $\delta(x_1-x_2)$ on the integrating part
+(for the adequate treatment of this Dirac Delta see the supplementary 
+material \footnote{Appendix B: On the change of coordinates with Dirac Delta 
+Operators. If your name happens to be David Sanders, then read it VERY slowly.}):
 \begin{widetext}
 \begin{equation}
- A_\text{hopp} = \int_{x_1 = -a}^a \rd x_1 \int_{x_2 = -a}^a \rd x_2 
-\int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \delta(x).
+ A_\text{hopp} = \int\limits_{x_1 = -a}^a \rd x_1 \int\limits_{x_2 = -a}^a \rd x_2 
+\int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \delta(x_1-x_2).
 \end{equation}
 \end{widetext}
-Then we continue exactly as before:
+Except for a factor $\sqrt{2}$ due to the change of variables
+with the Dirac Delta, everything procedes as before:
 \begin{align}
- A_\text{hopp} &= \int_{X=-a \sqrt{2} }^{a \sqrt{2}}  \rd X
- \int_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
-\int_{Y=-b \sqrt{2} + |y| }^{b \sqrt{2}-|y|}  \rd Y
+ A_\text{hopp} &= \sqrt{2} \int\limits_{X=-a \sqrt{2} }^{a \sqrt{2}}  \rd X
+ \int\limits_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
+\int\limits_{Y=-b \sqrt{2} + |y| }^{b \sqrt{2}-|y|}  \rd Y
 \, \indicator{y^2 \ge 2r^2 } \\
-&= 8 a \sqrt{2} \int_{y=0}^{b \sqrt{2}} 
-\left( b \sqrt{2} - y \right)  \indicator{y \ge r \sqrt{2} }  \rd y \\
-&= 8 a \sqrt{2} \int_{y= r\sqrt{2}}^{b \sqrt{2}}  \left( b \sqrt{2} - y \right)  \rd y \\
-&= 8 \sqrt{2} a ( b - r )^2. \label{AreaH}
+&= 16 a  \int\limits_{y=0}^{b \sqrt{2}} \rd y
+\left( b \sqrt{2} - y \right)  \indicator{y \ge r \sqrt{2} }   \\
+&= 16 a \int\limits_{y= r\sqrt{2}}^{b \sqrt{2}} \rd y \left( b \sqrt{2} - y \right)   \\
+&= 16 a ( b - r )^2. \label{AreaH}
 % b^{2} -  b d + \frac{d^{2}}{4} \right) .
 \end{align}
 As before, the formula stops being valid for $r>h/4$, but this time it has
@@ -466,7 +475,7 @@ Results are shown in figure \ref{AreaHopp01}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/AreHopPerfect01.pdf}
+\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/AreaHop02.pdf}
 \caption{The hopping area, $A_\text{hopp}$, 
   indicated in the formula in eq. \ref{AreaH}. As explained
 in the text, it gives nonsense for $r>1/4$, but numerical values stay
@@ -497,12 +506,11 @@ plotting this as a fraction of the total volume. The result is shown in the
 figure \ref{AreaChoqueTeoyNum}. 
 \begin{figure}
 \centering
-\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/AreaCol01.pdf}
+\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/AreaCol02.pdf}
 \caption{The numerical and theoretical calculation for the Area of the cross section
 for collision between the disks.  The theoretical formula 
 \ref{AreaChoque} breaks down at
-$r>1/4$. 
-An extra numerical point has been put there to show the deviating behaviour.}
+$r>1/4$.}
 \label{AreaChoqueTeoyNum}.
 \end{figure}
 
@@ -538,7 +546,7 @@ shown in fig \ref{area1derecha}.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/AreaPx1PositivaPerfec01.pdf}
+\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/AreaParedx1Positiva02.pdf}
 \caption{The numerical and theoretical calculation for the cross section area
 for the impact of a determined disk with the right wall, as in eq. \ref{areaindic}.
 Again, the formula stops being valid at $r>1/4$. }
@@ -643,21 +651,18 @@ We proceed to test last section formulas with
 extensive numerical simulations.
 The next three figures, \ref{MeanHopp01}, \ref{MeanCol01}, and \ref{MeanImp01},  
 we compare the
-numerical and analytically curves for the mean times of different events.
+numerical and analytically curves for the mean return times of different events.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.45\textwidth]{./FigurasPerfectas/HopTimesAgain01-ForPaper.pdf}
+  \includegraphics[width=0.45\textwidth]{./FigurasPerfectas/HopTimes02.pdf}
   \caption{The mean hopping time as function of the radius, Energy, mass, 
-and geometry fixed.
-The blue continious line is the formula \ref{hoptau}, the red dot numerical data.
- A logarithmic ordinate scale accentuates agreement across
-scales (inset).}\label{MeanHopp01}
+and geometry fixed, numeric and Analytic results.}\label{MeanHopp01}
 \end{figure}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.45\textwidth]{./FigurasPerfectas/CollitionsErgodic02-ForPaper.pdf}
+  \includegraphics[width=0.45\textwidth]{./FigurasPerfectas/CollitionTimes02.pdf}
   \caption{The mean collision time as function of the radius. Same
     specifications as the last figure. }\label{MeanCol01}
 \end{figure}
@@ -665,42 +670,12 @@ scales (inset).}\label{MeanHopp01}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.45\textwidth]{./FigurasPerfectas/WallImpacts05-ForPaper.pdf}
+  \includegraphics[width=0.45\textwidth]{./FigurasPerfectas/ImpactWall02.pdf}
   \caption{The mean impact-on-walls time as function of the radius. Again, same
     notes as the figure \ref{MeanHopp01}}\label{MeanImp01}.
 \end{figure}
 
-We check also some samples about the distribution of these times
-in the next set of figures (\ref{histohopps}). 
-
-\begin{figure}[h]
-        \centering
-        \begin{subfigure}[b]{0.22\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{HoppingTimesradio01.pdf}
-                \caption{$d=0.1$}
-                \label{smallradius}
-        \end{subfigure}%
-        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
-          %(or a blank line to force the subfigure onto a new line)
-        \begin{subfigure}[b]{0.22\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{HoppingTimesRadius249.pdf}
-                \caption{$d=0.249$}
-                \label{bigradius}
-        \end{subfigure}       
-        \caption{\pmb{I still have to repeat these graphics}.
-Histograms for the mean hopping time
-in two extreme cases. Left is a very small diameter, while right is an almost
-closed pass. While it is not customary to compare logarithmic and non
-logarithmic scales, here I take that liberty for the funny features to be
-more exaggeratedly shown.}\label{histohopps}
-\end{figure}
-
-The figure \ref{bigradius} shows clearly an exponential decay in the
-distribution, something to be expected for a chaotic system \cite{OttLibro}, 
-while the
-figure in \ref{smallradius} is something different. 
+\pmb{Shall we use the distributions?}
 
 \section{Mean First Event Times}
 
@@ -723,11 +698,12 @@ for the times. As we show numerically, this is indeed the case.
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.45\textwidth]{./FigurasPerfectas/FistHopTime01-ForPaper.pdf}
-  \caption{The mean first time for the hopping event.
-    We compare against the \emph{mean return time}, theoretical
+  \caption{The mean first event time for the hopping event (MFET).
+    We compare against the \emph{mean return time} (MRT), theoretical
 and numerical. We observe how it is conterintuitivelly slightly longer,
-but the qualitative behaviour is almost equal. }\label{FirstHopp01}
-\end{figure}
+but the qualitative behaviour is almost equal. A logarithmic inset
+shows the behaviour across a wider range of scales. }\label{FirstHopp01}
+\end{figure}cd
 
 \begin{figure}[h]
   \centering
