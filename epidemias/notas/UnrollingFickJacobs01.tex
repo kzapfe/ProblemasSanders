@@ -6,10 +6,10 @@
 %\usepackage[spanish]{babel}
 
 \usepackage[T1]{fontenc}  
-\usepackage{textcomp}
+%\usepackage{textcomp} Hey David, this is obsolete
 
 
-%\usepackage[garamond,cmbraces]{newtxmath}
+\usepackage[cmbraces]{newtxmath}
 
 \usepackage{xspace}
 \usepackage{graphicx}
@@ -31,17 +31,28 @@
 \newcommand{\Uno}{\textbf{1}\xspace}
 \newcommand{\Dos}{\textbf{2}\xspace}
 
-\renewcommand{\rmdefault}{ugm}
+
+\newcommand{\defeq}{:=}
+\newcommand{\mean}[1]{\left \langle #1 \right \rangle}
+\newcommand{\rd}{\!\mathrm{d}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\indicator}[1]{\mathbf{1}_{ \{   #1 \} } } 
+\newcommand{\etal}{\emph{et al.\ }} 
+
+
+%\renewcommand{\rmdefault}{ugm}
   
 
 \title{Unrolling Fick-Jacobs}
 \author{W. P. K. Zapfe}
 
-\abstract{ Due to the apparent impossibility to explain with
-  Szabos's Formula the 
- first encounter times in the problem of the two Brownian 
- disks inside a rectangular container, we proceed to adapt the 
- develpment of Vazques and Dagdug for Fick-Jacobs' Formula.}
+
+
+
+\begin{document}
+
+\maketitle
 
 
 \section{The Story so far}
@@ -81,13 +92,16 @@ for the application of Szabo's is wrong, or is simply not
 applicable.
 
 The effective inner radius of the annulus is given in the formula below,
-an the figure following shows our simulations (David, Karel) 
-against Szabo's Formula
-with this expression used. 
+an the figure \ref{KDS01} shows our simulations (David, Karel) 
+against Szabo's Formula. 
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{KarelDavidSzabo01.pdf}
+  \caption{``Celdas Discretas'' is Karel's simulation, ``Vuelo Browniano'' is
+    David's simulation.}\label{KDS01}
+\end{figure}
 
-\section{ Conjecture about the geometry}.
- 
 We could make an intermediary approximation to the problem.
 In this approximation we still shall use the rotational symetry, that
 is, we shall still have sections with anular free space. But we shall preserve
@@ -99,15 +113,134 @@ geometry. In this case Szabo's approximation would not be valid as it is,
 due to the narrowing of the free space. In order to test our conjecture
 first we present simulations in this geometry and compare it to 
 the ``animals in a territory'' simulations. 
-If these are aceptably close, we may try to use a Fick-Jacobs approach here.
+Numerical simulations with the 4D conical approach seem to work well,
+as the next figure (\ref{KDS02}) shows.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{KarelDavidSzaboConos02.pdf}
+  \caption{``Celdas Discretas'' is Karel's simulation, ``Vuelo Browniano'' is
+    David's simulation.}\label{KDS02}
+\end{figure}
+
+We may try to use a Fick-Jacobs-Zwanzig-Rub-Reguera approach here.
+
+\section{Backwards Formula for a Tube}
+
+We have the backwards formula for the mean time encounter
+with some \emph{exit}:
+\begin{equation}\label{backwarde}
+\exp(\beta U(x))
+\frac{\rd}{\rd x}
+\biggr[\exp (-\beta U(x)) \tilde{D}(x) \frac{\rd \tau}{\rd x} \biggr]=-1 
+\end{equation}
+The \emph{entropic potential} $U(x)$ is equal to  $-kT \ln (A(x)/A_0)$,
+where we choose $A_0$ to make it zero at a convenient place. 
+$A(x)$ is the cross section area orthogonal to the direction of the $x$ axis.
+
+Then we also have an \emph{effective diffusion constant} $\tilde{D}(x)$,
+that accorfing to Zwanzig can be approached by this expression:
+\begin{equation}\label{DZ}
+D_Z(x)=\frac{D}{1+[r'(x)]^2/2},
+\end{equation}
+and according to Rub and Reguera
+can be approached by this expression:
+\begin{equation}\label{DZ}
+D_{RR}(x)=D(1-[r'(x)]^2/2).
+\end{equation}
+Now, $r(x)$ is the radius of a circle which has area $A(x)$, because they
+made the approach on a tube with cilindrical symmetry and the targets at the
+extremes of such tube. $r(x)$ has to be a smooth enough function.
 
 
+\section{Testing the applicability}
 
+First, we are going to \emph{``unroll''} the cylinder, a geometry
+in which we allready known the formula for the mean first encounter 
+with an inner cylindrical core. If the approach of unrolling the formula
+is adecuate, then we could do something about it. It is important
+to notice that we make no assumption about details on
+the reflexion at the borders, and these could be a source of discrepancy.
 
+Our ``tube'' goes along the radial direction, and its cross section
+would be then the area of a perimetral sheet of the cone. We are disregarding
+all symmetry in favour of preserving the cross section areas, see
+figure \ref{diagramacil01}.
 
-\begin{document}
+\begin{figure}
+\centering
+\includegraphics[width=0.25\textwidth]{CilindroConCilindroFJ.pdf}
+\caption{The testing geometry.}\label{diagramacil01}
+\end{figure}
+So, we shall ``unroll'' the cylinder and consider the radial axis $\rho$
+as the axis of our conceptual tube. The cross section area would be then
+a sheet of the cylinder:
+\begin{equation}
+A(\rho)=2 \pi h \rho.
+\end{equation}
+As the absorving target is another cylinder with radius $\rho_0$, I 
+shall use the entropìc potential in this manner:
+\begin{equation}
+U(\rho)=-kT \ln(\rho/\rho_0)
+\end{equation}
+The virtual radius of the cross section and its derivative are:
+\begin{equation}
+r(\rho)=\sqrt{2h\rho}, \;\; r'(\rho)=\sqrt{\frac{h}{r\rho}}.
+\end{equation}
+Putting these on the backwards equation yields
+\begin{equation}\label{backwardeval}
+\frac{\rho_0}{\rho}
+\frac{\rd}{\rd \rho}
+\biggr[\frac{\rho}{\rho_0} \tilde{D}(\rho) \frac{\rd \tau}{\rd \rho} \biggr]=-1 
+\end{equation}
+A first integration then gives:
+\begin{equation}
+\biggr[\frac{\rho}{\rho_0} \tilde{D}(\rho) \frac{\rd \tau}{\rd \rho} \biggr]=
+-\frac{\rho^2}{2\rho_0}+\rho_0/2 
+\end{equation}
+or better
+\begin{equation}
+\int_0^{\tau_f} \rd \tau= 
+\int_{\rho_0}^{\rho_f} \rd \rho 
+\frac{1}{2 \tilde{D}(\rho)} \biggr( \frac{\rho_0^2}{\rho}-\rho \biggl)
+\end{equation}
 
-\maketitle
+Now we choose either the Zwanzig or the Rub-Reguera forms for the 
+effective difussion constant. 
 
+\subsection{Using Zwanzig}
+
+\begin{equation}
+D \tau(\rho_f)= 
+\int_{\rho_0}^{\rho_f} \rd \rho \biggl[ 
+\frac{\rho_0^2}{2\rho}-\frac{\rho}{2}
++\frac{ h \rho_0^2}{8\rho^2}-\frac{h}{8}\biggr]
+\end{equation}
+yields
+\begin{equation}
+D \tau(\rho)=
+\rho_0^2\ln(\rho/\rho_0)-1/4(\rho^2-\rho_0^2)
+-h/8(\frac{\rho_0}{\rho}+\rho-2\rho_0)
+\end{equation}
+Which giveth zero when it should.
+
+\subsection{Using Rub-Reguera}
+
+\begin{equation}
+D \tau(\rho_f)= 
+\int_{\rho_0}^{\rho_f} \rd \rho \biggl[ 
+\frac{2(\rho_0^2 -\rho^2)}{4\rho-h} \biggr]
+\end{equation}
+According to Wolfram Research this is:
+\begin{equation}
+D \tau(\rho)=
+\frac{1}{64}\biggl[
+(16\rho_0^2-h^2) \ln \biggl(\frac{4\rho-h}{4\rho_0-h}\biggr)
+-4(2\rho^2+\rho h -2 \rho \rho_0 -\rho_0 h) 
+\biggr]
+\end{equation}
+
+Now lets check this out...
 
 \end{document}
+
