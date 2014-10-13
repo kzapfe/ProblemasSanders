@@ -560,7 +560,7 @@ the other hand, each bounce against the horizontal walls would
 define a similar quantity, but with the roles of $a$ and $b$ switched.
 The cross section area for any impact on the walls would then be:
 \begin{align}\label{areawalls}
- A_\text{walls} & = 32 a b (a+b)-16 \pi r^2 (a+b) +\frac{64\sqrt{2}}{3}r^3 
+ A_\text{walls} & = 32 a b (a+b)-16 \pi r^2 (a+b) +\frac{128}{3}r^3 
  %&=  4 (w-d) (h-d)  (w+h-2d) -2 \pi d^2 (w + h-2 d) +\frac{16}{3}d^3. 
 \end{align}
 The cross section area for any impact or collision 
@@ -570,6 +570,8 @@ and the area for collisions between disks, in eq. \ref{AreaChoque}.
 
 \section{Mean times between events}
 
+%The three formulas have been checadas entre ellas y con gnuplot
+% y la numerica: no aparecen factores espurios de raiz de dos
 \subsection{Mean hopping time}
 
 Inserting the results of the previous section 
@@ -586,11 +588,12 @@ hops we have:
 \end{equation}
 The limiting form for very small disk is quite revealing: it is the time
 to transverse the distance between two parallel lines at distance $w$ from
-a random position, and is related to the Buffon's Needle distribution 
-\cite{EScheinerman}:
+a random position, and is somewhat related to the Buffon's Needle distribution:
 \begin{equation}\label{hoptaulimit}
  \mean{\tau}_\text{hopp} \xrightarrow{r\sim 0} 	
 \frac{3 \pi}{4}w.
+%%Esta ya la cheque con la numerica y esta PERFECTA, segun gnuplot y todos los 
+%%Scripts
 \end{equation}
 Also of interest is the limit $r\sim h/4$, where hoping becomes
 impossible. The lower term goes to zero as $r^2$ become approximately constant.
@@ -627,14 +630,24 @@ approaching the expression
 
 \subsection{Mean impact time}
 
-Lastly, for the general impact formula we have the expression:
+Lastly, for impacts on any of the walls we have obtained: 
 \begin{equation}\label{impactwall}
  \mean{\tau}_\text{walls} = 	
 \frac{3 \pi}{2\sqrt{2}}
 \frac { 2a^{2} b^{2}  -  2\pi a b r^{2} + \frac{a+b}{3}(2r)^3 - r^4}
-{ab[8(a+b)+2\pi r]- (4+2\pi)(a+b)r^2+\frac{22}{3} r^3},
+{4ab(a+b)-2\pi(a+b) r^2 + \frac{16}{3} r^3 }.
 \end{equation}
-where we have abused from factorization to make the limits clear.
+
+Adding the areas representing the impact on the walls and
+the collisions on the disks, we could also obtain
+straightforwardly the expression for \emph{any} 
+collition in the system:
+\begin{equation}\label{impactwall}
+ \mean{\tau}_\text{walls} = 	
+\frac{3 \pi}{2\sqrt{2}}
+\frac { 2a^{2} b^{2}  -  2\pi a b r^{2} + \frac{a+b}{3}(2r)^3 - r^4}
+{4ab(a+b)+2 \pi \sqrt{2} abr-(2\pi+4\sqrt{2})(a+b)r^2+(\frac{16}{3}+2\sqrt{2})r^3}.
+\end{equation}
 
 In the limit $r\rightarrow 0$ this goes to $3 \pi (hw)/(8\sqrt{2}(h+w))$.
 This should correspond to the average impact time in the walls

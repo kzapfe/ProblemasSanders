@@ -150,6 +150,7 @@ set loadpath
 set fontpath 
 set psdir
 set fit noerrorvariables
+#These are perfect acording to paper
 a(x)=0.5-x
 b(x)=0.5-x
 numer(x)=(a(x)*b(x))**2-pi*a(x)*b(x)*x*x+4./3.*(a(x)+b(x))*x**3-(x**4)/2.
@@ -167,5 +168,5 @@ GPFUN_denomhop = "denomhop(x)=a(x)*sqrt(2.)*2.*(2.*b(x)-2*x)**2"
 normalizador = 3162.27766016838
 normh = 200.0
 GPFUN_numerator = "numerator(x)=16.0*(a(x)*b(x))**2-4.*pi*a(x)*b(x)*(2.*x)**2+8./3.*(a(x)+b(x))*(2.*x)**3-(2.*x)**4/2."
-plot "HopTimePromediosStrongerNumerics.dat" t "Massive Numerics", "HopTimePromedios01.dat" t "Numerics", numerator(x)/denomhop(x)*3.*pi/(4.*sqrt(2))*2  t "Machta-Zwanzig"
+plot "HopTimePromediosStrongerNumerics.dat" t "Massive Numerics", "HopTimePromedios01.dat" t "Numerics", numerator(x)/denomhop(x)*3.*pi/(2.*sqrt(2))  t "Machta-Zwanzig"
 #    EOF
