@@ -1,4 +1,4 @@
-\documentclass[letterpaper,10pt, jcp, aps, preprint]{revtex4-1}
+&\documentclass[letterpaper,10pt, jcp, aps]{revtex4-1}
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amsfonts}
@@ -7,6 +7,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 %\usepackage{authblk} parece ser que ya esta metido cuando usas preprint
+Tralala
 
 
 
@@ -131,20 +132,24 @@ We shall also  compare \emph{mean event times} with
 \emph{mean first event times} (MFET),
 and give some arguments to explain the agreement between the two. 
 Brownian dynamics shall be discussed elsewhere \cite{WorkInProgress}.
-We shall also provide this paper with supplementary material 
-detailing the calculations. 
+%We shall also provide this paper with supplementary material 
+%detailing the calculations. 
 
 
 
 \section{Model}
 
-We consider two discs of radius $r$ (and diameter $d=2r$) 
+
+% Voy a quitar todas las referenacias a la variable $d$ y el díametro
+% nadamas nos están estorbando en las formulas y fastidiar al lector
+% con una caracterización redundante del disco es mala onda.
+We consider two discs of radius $r$  %(and diameter $d=2r$) 
 in a box of width $w$ and height $h$ (figure\ref{billar01}). 
 The discs move inertially in the absence of forces, 
 following straight line trajectories,
 and undergo elastic collisions with each 
 other and with the walls of the box.
-We take the mass of each disk as unitary, so that the energy
+We take the mass of each disk as unitary; the kinetik energy
 is the value of the Hamiltonian function inside the billiard table:
 \begin{equation}
 H(q,p)=\frac{1}{2}(\|p_1\|^2+\|p_2\|^2)=1.
@@ -163,8 +168,8 @@ We denote the position of the centre of the $i$th disc by
 $(x_{i}, y_{i})$ for $i=1,2$. Since the discs are hard, 
 the disc centres are restricted to the region 
 $(x_i, y_i) \in [-a,a] \times [-b, b]$, where 
-$a \defeq a(r) \defeq \frac{w}{2} - r = \frac{w-d}{2}$ and
-$b \defeq b(r) \defeq \frac{h}{2} - r = \frac{h-d}{2}$.
+$a \defeq a(r) \defeq \frac{w}{2} - r $ and
+$b \defeq b(r) \defeq \frac{h}{2} - r $.
 
 
 The exclusion condition is $(x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 = d^2$.
@@ -176,12 +181,14 @@ It is thus useful to work in terms of the new coordinates
 \quad Y \defeq \frac{y_1 + y_2}{\sqrt{2}}.
 \end{equation}
 
-
-In these coordinates the conditions are rewritten as
+%%This is WRONG, or better, is not precise enough.
+In these coordinates the configuration space is given by the following
+intervals:
 $x \in [-a \sqrt{2}, +a \sqrt{2}]$ with 
 $X \in [-a \sqrt{2} + |x|, a \sqrt{2} - |x|]$, respectively 
- $y \in [-b \sqrt{2}, b \sqrt{2}]$ and $Y \in [-b \sqrt{2} + |y|, +b \sqrt{2} - |y|]$,  
-with the constraint $x^2 + y^2 \ge 2 r^2$.
+ $y \in [-b \sqrt{2}, b \sqrt{2}]$ with $Y \in [-b \sqrt{2} + |y|, +b \sqrt{2} - |y|]$,  
+and the constraint $x^2 + y^2 \ge 2 r^2$ that precludes the overlaping of
+the discs.
 The horizontal and vertical coordinates transform independently
 from each other, and the Jacobian is in each case equal to $1$.
 
@@ -189,8 +196,11 @@ The constrains define a four dimensional
 rectangular prism, called the prism henceforth,   
 and a four dimensional cylinder placed inside.
 This cylinder has radius $r\sqrt{2}$ and lies
-in  a diagonal position along the axes $X, Y$. 
-The dynamics in such a space follow
+in  a diagonal position along the axes $X, Y$.
+The prism surface is the outer boundary of the configuration space,
+while the cylinder is the excluded volume, and its surface
+acts as a reflecting inner boundary.
+The dynamics in this space follow
 the usual billiard rules: free flight until
 encounter with a wall, then elastic reflection.
 The outer borders are flat, so the
@@ -202,7 +212,7 @@ two disks in the original space.
 \section{Mean time between events}
 
 
-\subsection{Assumptions for the Collision Rates}
+\subsection{Known Facts of the Collision Rates}
 
 A system of $N$ hard spheres confined by hard walls in a $D$ dimensional
 space may be treated as a billiard system 
@@ -238,20 +248,21 @@ its velocity scaled to unity.
 
 Machta and Zwanzig \cite{MachtaZwan} used a similar method to derive an escape 
 time across a non-existent boundary by treating it as a recurrence time.
-Since it is an escape time, they used velocities whose components point only 
-perpendicularly to the ``exit wall''.
-
-In our case, we are interested in the mean return time to 
+%Since it is an escape time, they used velocities whose components point only 
+%perpendicularly to the ``exit wall''.
+In our case, we are mainly interested in the mean return time to 
 a co-dimension-$1$ cross section, 
 which is defined by the exact moment
 in which the disk interchange their horizontal position. This is simply
 \begin{equation} \label{condchoque}
 x_1 = x_2.
 \end{equation}
+We call such an event a ``hopp''. Other first events shall also be studied
+to test the robustness of the methods followed here.
 
 Given that each disk has different momentum, but
 they can interchange it without affecting the
-total energy, we must take into account the mass $m$ of each disk 
+total energy, we take into account the mass $m$ of each disk 
 and the total kinetic energy $E$.
 If both discs have the same mass then $\sum_i \vv_i^2 = 2E / m$.
 The above result, as derived by Chernov, 
@@ -293,7 +304,7 @@ available space or for the prohibited space.
 
 We shall present the total four-dimensional volume as a product integral
 of all available positions. To grasp the idea, a 
-diagram is shown in the figure (\ref{diagintegra01}). Our
+diagram is shown in Figure \ref{diagintegra01}. Our
 principal integral is the available free $4D$ volume, which 
 we shall denote $V_\text{free}$:
 \begin{multline}\label{volindic}
@@ -371,42 +382,57 @@ $V_\text{prism}=16 a^2 b^2$, and  the volume excluded by the overlapping
 condition, denoted here by 
 $V_\text{cyl}=  16 \pi a b r^{2} - \textstyle \frac{64}{3} (a+b) r^{3}  + 8 r^{4}$.
 
-The substitutions $a\rightarrow (w-d)/2$ and $b\rightarrow (h-d)/2$ give us
- the Volume as function from the diameter only:
+The substitutions $a\rightarrow (w-2r)/2$ and $b\rightarrow (h-2r)/2$ give us
+ the Volume as function from the radius only, with the sizes of the table fixed:
 \begin{multline}\label{volumewhd}
  V_\text{free} 
-= (w-d)^{2} (h-d)^{2}  - \\ 
- \pi (w-d)(h-d) d^{2} + 
-\textstyle \frac{4}{3} (w+h-2d) d^{3}  
-- \frac{1}{2} d^{4},
+= (w-2r)^{2} (h-2r)^{2}  - \\ 
+ \pi (w-2r)(h-2r) 4 r^{2} + 
+\textstyle \frac{32}{3} (w+h-2r) r^{3}  
+- 8^{4},
 \end{multline}
- 
-For the numeric values $w=h=1$, the biggest possible radius is 
-$r=1/(2+\sqrt{2})$. Unhappily, there is a quirk in the above formula:
+
+
+%%Okey, tal vez esto no viene aqui al caso
+Unhappily, there is a quirk in the above formula:
 it stops being valid before that. The reason is that the deduction
-of the formula doesn't include the case in which hopping is not possible. 
-We tacitly made the assumption that $h,w>2d$.  This assumption is on 
-the integration limits in the step in eq. \ref{integraltotal}. 
+of the formula doesn't include the case in which hopping ina one or both
+directions is not longer possible. 
+We tacitly made the assumption that $h,w>4r$.  This assumption is on 
+the integration limits for the $X,Y$ variables in the step in eq. \ref{integraltotal}. 
 A full discussion of the formula for the case in which either
 $w$ or $h$ are smaller than $4r$ but there is still space for
-the disks is discussed in supplementary material 
-\footnote{Appendix A: Detailed Calculus for Volume and Area.}. 
-We cite the  result for $h/4  <r< w/4$ for illustrative purposes.
+the disks is discussed in the appendix
+\footnote{Appendix A: Detailed Calculus for Volume and Area.}.
+We notice that there are cases which depend on the geometry
+of the table. Without loss of generality, we assume that $w\leq h$,
+so that horizontal hopping can occur even when vertical hopping
+is excluded. That case is divided also in two more cases: if
+$ w \leq  h < 2 w $ there is a value for $r$ in which no more hopping is possible,
+but the discs still fit inside. For $ 2 w \leq h $, horizontal hopping is
+possible until $ 2 r= w$.
+
+We cite the  result for $w/4  <r< h/4$ for illustrative purposes.
 For readability we define another auxiliary variable,
-$c=\sqrt{4r^2-b^2}$:
+$c=\sqrt{4r^2-a^2}$:
 \begin{multline}\label{VolumenCasoFeo}
-V_{h/4<r} = 32abr^2[\arccos(b/2r)-\arccos(a/2r))]\\
-+\frac{64 r^3}{3 }[a((b-a)/2r)-b(c/2r+\sqrt{4r^2-a^2}/2r)]\\
--8r^4 [ (b^2-a^2)/4r^2]\\ 
-+16[ a b^2 c (4\sqrt{2}-1-\sqrt{2}/3)
-+c^2b^2 (\sqrt{2}/3-1) \big]
+V_{w/4<r<h/4} = 32abr^2[\arccos(a/2r)-\arccos(b/2r))]\\
++\frac{64 r^3}{3 }[b((a-b)/2r)-a(c/2r+\sqrt{4r^2-b^2}/2r)]\\
+-8r^4 [ (a^2-b^2)/4r^2]\\ 
++16[ b a^2 c (4\sqrt{2}-1-\sqrt{2}/3)
++c^2a^2 (\sqrt{2}/3-1) \big]
 \end{multline}
 In the case that $r$ is larger than both $h/4, w/4$, one must take
 into account a similar
-contribution which inverts the roles of $a$ and $b$.
+contribution which inverts the roles of $a$ and $b$. This is only
+possible in the case that $h\leq 2 w$.  
+
+
+%% Estoy pensando en cambiar esto por el caso mas feo y más general, h=1.5w
+%% que te parece?
 
 In all of our numeric examples we use $w=h=1$, setting the
-limit for hops at $r=0.25$. 
+limit for any hops at $r=0.25$. 
 We have checked this result with simple Monte Carlo simulations, 
 by generating random positions for the disks centres in 
 $[-a,a] \times [-b,b]$ uniformly and 
@@ -427,16 +453,22 @@ The following subsections shall only show the formulas for $r<w/4, h/4$.
 Bear in mind that some of the dynamics are possible above this limit,
 it is only the position interchange that gets excluded. \\
 
+%%
+%% ¿Que ondas David, hacemos las simulaciones para el caso espantoso tambien?
+%% 
 
 
 \subsection{Area of cross-section for
  horizontal interchange (hops)}\label{areahop}
 
-The calculation of the $3$-dimensional area  ( all areas shall be 
-denoted by $A$)
-of the cross-section 
-$\{x_1 = x_2\}$ becomes 
-$\{ x=0 \}$ in the new coordinates, proceeds as follows:
+Our cross section ``areas'' are three dimensional manifolds
+defined by relative simple equations. We shall denote their
+measure by $A$.
+The hopping cross-section 
+$ \{x_1 = x_2\}$ becomes 
+$\{ x=0 \}$ in the new coordinates.
+For obtaining the measure,
+we proceeded as follows:
 First we concentrate the measure indicated on the eq. \ref{volindic}
 multiplying by a Dirac Delta $\delta(x_1-x_2)$ on the integrating part
 (for the adequate treatment of this Dirac Delta see the supplementary 
@@ -461,16 +493,14 @@ with the Dirac Delta, everything procedes as before:
 &= 16 a ( b - r )^2. \label{AreaH}
 % b^{2} -  b d + \frac{d^{2}}{4} \right) .
 \end{align}
-As before, the formula stops being valid for $r>h/4$, but this time it has
-no generalization, as hopping becomes impossible for these values. 
+As before, the formula stops being valid for $r>h/4$. This time it has
+no extention, as hopping becomes impossible for a larger radius.  
 
-We have checked this result with simple Monte Carlo simulations, 
-by counting the proportion of successful placements of hard discs 
+We made numericall simulations of the initial conditions for
+veryfying these results. In this case we 
+by counted the proportion of successful placements of hard discs 
 for which the distance 
-$|x_1 - x_2|$ is within a small tolerance of $0$. 
-In this case, the possibility to fulfill
-the hopping and the non overlapping conditions simultaneously exclude 
-all the cases for $\sqrt{2}/(1+\sqrt{2}) <d<1/2$. 
+$|x_1 - x_2|$ was within a small tolerance of $0$. 
 Results are shown in figure \ref{AreaHopp01}.
 
 \begin{figure}[h]
@@ -491,14 +521,12 @@ This can be deduced in a similar manner to the free volume, shown in the last
 section, or as the derivative of this formula, taking it as as a function evaluated at 
 $r\sqrt{2}$. The calculation must be done taking $a,b$ as constants, so that
 we do not obtain also the (negative) contribution for the flat ends of
-the wedge at the cylinder's end. The resulting area is:
+the wedge at the cylinder's end. For the case $r<w/4$ the resulting area is:
 \begin{align}\label{AreaChoque}
 A_\text{collision} & =\sqrt{2}[  
 16\pi a b r -32 (a+b)r^2 +16 r^3 ] 
 \end{align}
-Again, as in eq. \ref{volumewhd}, the formula stops being valid
-at $r>0.25$, when the exclusion cylinder has a larger diameter than
-the widths or heights of the prism.  
+
 We proceed in the same manner as last section, checking numerically which
 random
 conditions fall at a small tolerance of $0$ from the Collision Condition, and
@@ -528,7 +556,7 @@ It shall be enough to calculate the cross section area for
 the impact of one specific disk unto one specific wall and,
 by means of the symmetry of the expressions, obtaining the whole
 area. We proceed then to calculate the cross section corresponding to 
-the disk $1$ hitting the right wall. We accomplish that by
+the disk labeled $1$ hitting the right wall. We accomplish that by
 evaluating the next expression in a similar way to
 the procedure carried out in section \ref{areahop}:
 \begin{equation}\label{areaindic}
@@ -564,7 +592,7 @@ The cross section area for any impact on the walls would then be:
  %&=  4 (w-d) (h-d)  (w+h-2d) -2 \pi d^2 (w + h-2 d) +\frac{16}{3}d^3. 
 \end{align}
 The cross section area for any impact or collision 
-is then  the sum of the last expression
+would be  the sum of the last expression
 and the area for collisions between disks, in eq. \ref{AreaChoque}.
 
 
@@ -586,9 +614,9 @@ hops we have:
 \frac{2 a^{2} b^{2}  - 2 \pi a b r^{2} + \textstyle \frac{a+b}{3}  (2r)^{3}  -  r^4}
 { a \sqrt{2}  ( b - r )^2}.
 \end{equation}
-The limiting form for very small disk is quite revealing: it is the time
-to transverse the distance between two parallel lines at distance $w$ from
-a random position, and is somewhat related to the Buffon's Needle distribution:
+The limiting form for very small disk is quite revealing: a constant
+that only depends on the width of the table, as the disks allmost have no interaction
+by then.
 \begin{equation}\label{hoptaulimit}
  \mean{\tau}_\text{hopp} \xrightarrow{r\sim 0} 	
 \frac{3 \pi}{4}w.
@@ -609,11 +637,11 @@ sting $r=h/4-\epsilon$ produces the limiting behaviour
 This last expression coincides with  derivation by Bowles \etal \cite{Bowles04}, in
 their equation 12,  which
 predicts the same exponent for the behaviour of this hopping time. The figures
-2 and 4 of the reference correspond to that regimen. 
+2 and 4 of their article correspond to that regimen. 
 
 \subsection{Mean collision time}
 
-For the collisions between disk we would have:
+For the collisions between disk we would have, for the case $r<w/4$:
 \begin{equation}\label{colltau}
  \mean{\tau}_\text{coll} = 	
 \frac{3 \pi}{2\sqrt{2}}
@@ -626,6 +654,9 @@ approaching the expression
 \mean{\tau}_{coll}  \xrightarrow{r\sim 0} 
 \frac{3}{8\sqrt{2}}\frac{wh}{r}
 \end{equation}
+For the case in which the disks narrowly fit inside the table we need to
+use the more cumbersome expression in eq. \ref{VolumenCasoFeo} and
+the corresponding area. The time between collitions should go to zero.
 
 
 \subsection{Mean impact time}
@@ -652,8 +683,9 @@ collition in the system:
 In the limit $r\rightarrow 0$ this goes to $3 \pi (hw)/(8\sqrt{2}(h+w))$.
 This should correspond to the average impact time in the walls
 for non interacting point particles, 
-but, then, ergodic theory would not apply
-on such a system. 
+but, then, such as system would not be chaotic and the limit is senseless.
+On the other hand, for the limit of radius as large as possible, we shall
+again use the extended expressions in the formula for volume and area.
 
 
 \section{Numeric Results}
@@ -688,7 +720,7 @@ and geometry fixed, numeric and Analytic results.}\label{MeanHopp01}
     notes as the figure \ref{MeanHopp01}}\label{MeanImp01}.
 \end{figure}
 
-\pmb{Shall we use the distributions?}
+\pmb{Shall we plot the distributions for fixed interesting r? }
 
 \section{Mean First Event Times}
 
@@ -782,6 +814,17 @@ principles.
 
 This work was financed by CONACYT-PAPIIT project number CB-101997.
 
+
+\section*{Appendix A: Detailed calculations of Volume and Area}
+
+Okey, here things get nasty.
+The first thing we need to recognize is that there is freely avaible
+volume on the configuration space beyond at least one hoping possibility, and
+we must take into consideration two cases. Again, whithout loss
+of generality, we can assume that $w \leq h$ always.
+Then, we extend the volume formula in eq. \ref{volumewhd}. As
+we will see, this results in a continous (as expected) expression,
+but without continous second derivative. 
 
 
 \bibliography{../../notasmixtas/TwoDiskBiblio}

@@ -6,5 +6,5 @@ BIBLO=../../notasmixtas/TwoDiskBiblo.bib
 	bibtex $<
 	pdflatex $<
 	pdflatex $< 
-	mupdf $@
+	evince $@
 
