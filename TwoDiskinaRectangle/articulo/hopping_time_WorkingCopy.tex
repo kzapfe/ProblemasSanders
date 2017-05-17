@@ -7,7 +7,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 %\usepackage{authblk} parece ser que ya esta metido cuando usas preprint
-Tralala
+
 
 
 
@@ -392,47 +392,54 @@ The substitutions $a\rightarrow (w-2r)/2$ and $b\rightarrow (h-2r)/2$ give us
 - 8^{4},
 \end{multline}
 
-
 %%Okey, tal vez esto no viene aqui al caso
-Unhappily, there is a quirk in the above formula:
-it stops being valid before that. The reason is that the deduction
-of the formula doesn't include the case in which hopping ina one or both
-directions is not longer possible. 
-We tacitly made the assumption that $h,w>4r$.  This assumption is on 
-the integration limits for the $X,Y$ variables in the step in eq. \ref{integraltotal}. 
+There is a quirk in the above formula:
+this is the avaible volume for the case when both
+vertical and horizontal hopping are posible.
+If we want to obtain the volume for all posible configurations
+given $w,h,r$ ,
+we also have to take into account the cases in which hopping is no
+longer possible. 
+We tacitly made the assumption that $h,w>4r$.  This affected our 
+integration limits for the $X,Y$ variables in the step in eq. \ref{integraltotal}. 
 A full discussion of the formula for the case in which either
 $w$ or $h$ are smaller than $4r$ but there is still space for
 the disks is discussed in the appendix
 \footnote{Appendix A: Detailed Calculus for Volume and Area.}.
-We notice that there are cases which depend on the geometry
-of the table. Without loss of generality, we assume that $w\leq h$,
-so that horizontal hopping can occur even when vertical hopping
-is excluded. That case is divided also in two more cases: if
-$ w \leq  h < 2 w $ there is a value for $r$ in which no more hopping is possible,
-but the discs still fit inside. For $ 2 w \leq h $, horizontal hopping is
-possible until $ 2 r= w$.
+We cite here the case where vertical hopping is possible
+and horizontal is excluded.Therefore, we assume that $w \geq h$.
+That case is divided also in two more cases: if
+$ h \leq  w < 2 h $ there is a value for $r$ in which no more hopping is possible,
+but the discs still fit inside. For $ 2 h \leq w $, vertical hopping is
+possible until $ 2 r= h$ (where vertical movement is imposible).
 
-We cite the  result for $w/4  <r< h/4$ for illustrative purposes.
+We cite the  result for $h/4  <r< w/4$ for illustrative purposes.
 For readability we define another auxiliary variable,
-$c=\sqrt{4r^2-a^2}$:
+$c=\sqrt{4r^2-b^2}$:
 \begin{multline}\label{VolumenCasoFeo}
-V_{w/4<r<h/4} = 32abr^2[\arccos(a/2r)-\arccos(b/2r))]\\
-+\frac{64 r^3}{3 }[b((a-b)/2r)-a(c/2r+\sqrt{4r^2-b^2}/2r)]\\
--8r^4 [ (a^2-b^2)/4r^2]\\ 
-+16[ b a^2 c (4\sqrt{2}-1-\sqrt{2}/3)
-+c^2a^2 (\sqrt{2}/3-1) \big]
+V_{h/4<r<w/4} = 32abr^2[\arccos(b/2r)-\arccos(a/2r))]\\
++\frac{64 r^3}{3 }[a((b-a)/2r)-b(c/2r+\sqrt{4r^2-a^2}/2r)]\\
+-2r^2 (b^2-a^2)\\ 
++16[ a b^2 c (4\sqrt{2}-1-\sqrt{2}/3)
++c^2b^2 (\sqrt{2}/3-1) \big]
 \end{multline}
 In the case that $r$ is larger than both $h/4, w/4$, one must take
 into account a similar
-contribution which inverts the roles of $a$ and $b$. This is only
-possible in the case that $h\leq 2 w$.  
+contribution which inverts the roles of $a$ and $b$. Then there is
+a case where hopping is impossible. 
+
+
+In order to not to pick a degenerate case for our numerical simulations,
+we have set $w=1.5, h=1$. This covers all of the uses of the general volume formulas.
 
 
 %% Estoy pensando en cambiar esto por el caso mas feo y más general, h=1.5w
 %% que te parece?
 
-In all of our numeric examples we use $w=h=1$, setting the
-limit for any hops at $r=0.25$. 
+%In all of our numeric examples we use $w=h=1$, setting the
+%limit for any hops at $r=0.25$. 
+
+
 We have checked this result with simple Monte Carlo simulations, 
 by generating random positions for the disks centres in 
 $[-a,a] \times [-b,b]$ uniformly and 
@@ -455,7 +462,7 @@ it is only the position interchange that gets excluded. \\
 
 %%
 %% ¿Que ondas David, hacemos las simulaciones para el caso espantoso tambien?
-%% 
+%% Ok. Ya las voy haciendo
 
 
 \subsection{Area of cross-section for
