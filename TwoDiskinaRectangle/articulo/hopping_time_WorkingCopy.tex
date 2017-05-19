@@ -813,7 +813,91 @@ qualities simply by solving the adequate measures
 of volumes and areas. For Transport and Reaction problems
 the results that we have shown here could be made to serve
 the purpose of deriving the corresponding constants from first
-principles.  
+principles.
+
+
+\section{Appendix A: detailed calculations of Area and Volume}
+
+We use the same notation as in the rest of the paper.
+The implicit assumption made on the limits of integration on
+the eq. \ref{integraltotal}. If $w,h>4r$ the limits of integration
+are unafected by the radius of the circles.
+In order to avoid cluttering in the formulas, we are going to integrate
+the excluded volume, instead of the avaible one.
+Our general integral is then
+\begin{equation}\label{VolumenGeneral}
+\begin{split}
+V/16 &=\iint \rd x \rd y (a\sqrt{2}-x)(b\sqrt{2}-y)
+\indicator{(x)^2+(y)^2<d^2/2 }\\
+&=\iint \rd x \rd y (2ab-\sqrt{2}(ay+bx)+x y)
+\indicator{(x)^2+(y)^2<2r^2 }.
+\end{split}
+\end{equation}
+A diagram help us to set right the limits of integration.
+In the figure \ref{diaglimites} we show the tree posible cases:
+\begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.32\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{DiagramaIntegracionxy01-Bien.pdf}
+          \caption{$a,b>r$}
+          \label{smallradious}
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+        % (or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.32\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{DiagramaIntegracionxy02-Bien.pdf}
+          \caption{$b<r$}
+          \label{mediumradius}
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.32\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{DiagramaIntegracionxy03-Bien.pdf}
+          \caption{$a,b<r$}
+          \label{bigradious}
+        \end{subfigure}%
+        \caption{The three posible cases. The shaded area is where the integral
+          must be evaluated. In the first case all hopping is possible, the middle case
+          only allows for vertical hopping and the last case excludes hopping but there
+        is still posibility for the disks to fit inside the table.}
+\label{CasosIntegra}
+\end{figure}
+In the first case (fig. \label{smallradius})  we may use polar coordinates in the
+integral on eq. \ref{VolumenGeneral}. As such the indicatrix function becomes
+the limits of integration:
+
+\begin{equation}
+\begin{split}
+V/16 &=\iint \rd x \rd y (2ab-\sqrt{2}(ay+bx)+x y)
+\indicator{(x)^2+(y)^2<2r^2 }\\
+&=\iint \rd \rho \rd \theta \rho (2ab
+-\sqrt{2}(a\rho\sin\theta+b\rho\cos\theta)
++\rho^2 \cos\theta\sin\theta)
+\indicator{\rho^2<2r^2 }\\
+&=\iint\limits_{0,0}^{\pi/2,r\sqrt{2}} \rd \rho \rd \theta \rho (2ab
+-\sqrt{2}(a\rho\sin\theta+b\rho\cos\theta)
++\rho^2 \cos\theta\sin\theta).
+\end{split}
+\end{equation}
+
+We shall give the definite value for the $\rho$ (radial integration variable),
+while leaving the $\theta$ indefinite. This gives us expressions that we can use afterwards:
+\begin{equation}\label{volftheta}
+\begin{split}
+V/16 &=\int\limits_0^{\pi/2}  \rd \theta  
+(4abr^2 - r^3 4/3 (a\sin\theta+b*\cos\theta)+r^4 (\cos\theta\sin\theta))\\
+&=2abr^2\theta
++\frac{r^34}{3}(a\cos\theta-b\sin\theta)
+-\frac{r^4}{4}\cos (2\theta) \bigg\vert_0^{\pi/2} \\
+& =abr^2 \pi 
+-\frac{4r^3}{3}(a+b)
++\frac{r^4}{2}.
+\end{split}
+\end{equation}
+
 
 
 \section{Acknowledgements}
@@ -822,16 +906,7 @@ principles.
 This work was financed by CONACYT-PAPIIT project number CB-101997.
 
 
-\section*{Appendix A: Detailed calculations of Volume and Area}
 
-Okey, here things get nasty.
-The first thing we need to recognize is that there is freely avaible
-volume on the configuration space beyond at least one hoping possibility, and
-we must take into consideration two cases. Again, whithout loss
-of generality, we can assume that $w \leq h$ always.
-Then, we extend the volume formula in eq. \ref{volumewhd}. As
-we will see, this results in a continous (as expected) expression,
-but without continous second derivative. 
 
 
 \bibliography{../../notasmixtas/TwoDiskBiblio}

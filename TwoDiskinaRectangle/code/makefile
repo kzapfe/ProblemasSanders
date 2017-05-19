@@ -19,15 +19,20 @@ FUENTESGL=FondosyFiguras01.hpp LOpenGL.h  circuloopengl.hpp
 
 Test01.x:  Prueba01.cpp VariablesGlobales01.hpp $(FUENTESCOM)
 	g++ $(LIBSGEN) Prueba01.cpp -o Test01.x
+#No compila, no variables y  *.dat's
 
 Animacion01.x:  Animado01.cpp VariablesGlobales01.hpp $(FUENTESCOM) $(FUENTESGL)
 	g++ $(LIBSGEN) $(LIBSOPENGL) Animado01.cpp -o Animacion01.x
+#falta freeglut al parecer
 
 Tiempos01.x:  CalculaTiempos01.cpp VariablesGlobales01.hpp $(FUENTESCOM)
-	g++ $(LIBSGEN) CalculaTiempos01.cpp -o Tiempos01.x
+	g++ $(LIBSGEN) -lgsl  CalculaTiempos01.cpp -o Tiempos01.x
+# no compila. Hay algo mal con gsl_rnd
 
 TiemposWithRandom01.x:  CalculaTiempos02.cpp RandomConditions01.hpp VariablesGlobales01.hpp $(FUENTESCOM)
 	g++ $(LIBSGEN) -lgsl CalculaTiempos02.cpp -o TiemposWithRandom01.x
+#compila bien
+
 
 CTParalel01.x:  CalculaTiemposParalel01.cpp  $(FUENTESCOM) $(FUENTESCOMPARA)
 	g++ $(LIBSGEN) -lgsl -fopenmp CalculaTiemposParalel01.cpp -o CTParalel01.x
@@ -35,16 +40,16 @@ CTParalel01.x:  CalculaTiemposParalel01.cpp  $(FUENTESCOM) $(FUENTESCOMPARA)
 
 CTParalel02.x:  CalculaTiemposParalel02.cpp  $(FUENTESCOM) $(FUENTESCOMPARA)
 	g++ $(LIBSGEN) -lgsl -fopenmp $< -o $@
-
+#compila bien
 
 Liapunov01.x: Liapunov01.cpp DinamicaTangente01.hpp  $(FUENTESCOM) $(FUENTESCOMPARA)
 	g++ $(LIBSGEN) -lgsl -fopenmp Liapunov01.cpp -o Liapunov01.x
-
+#compila bien
 
 ## Codigos Paralelizados con openmp
 PrimerChoqueParalel01.x:  CalculaTiemposParalel02.cpp $(FUENTESCOM) $(FUENTESCOMPARA)
 	g++ $(LIBSGEN) -lgsl -fopenmp $< -o $@
-
+#Compila
 
 VolumenParalel01.x: FraccionVolumenProhibidaParalel01.cpp $(FUENTESCOM) $(FUENTESCOMPARA)
 	g++ $(LIBSGEN) -lgsl -fopenmp $< -o $@	
