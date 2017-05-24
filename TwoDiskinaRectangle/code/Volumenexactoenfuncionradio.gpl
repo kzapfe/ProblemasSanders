@@ -1,15 +1,38 @@
 #!/usr/bin/gnuplot -persist
 set xr[0:0.5]
 set yr[0:1]
+#usemos variables auxiliares, esto va a quedar espantoso
+
+
 w = 1.5
 l = 1.0
-Vtot=w*w*l*l
-Vol(r)=(16.0*pi*(w/2.-r)*(l/2.-r)*(r**2)-64.*(r**3)/3.*(w/2.+l/2.-2.0*r)+8.0*r**4)/Vtot
-VolFree(r)=(w-2*r)**2*(l-2*r)**2
+Vcaja=w*w*l*l
+a(r)=w/2.0-r
+b(r)=l/2.0-r
+cb(r)=sqrt(4.*r**2-(l/2.-r)**2)
+ca(r)=sqrt(4.*r**2-(w/2.-r)**2)
+
+
+Volhopfree(r)=(16.0*pi*(a(r)*(b(r)))*(r**2)-64.*(r**3)/3.*(a(r)+b(r))+8.0*r**4)
+#--------------Hasta aqui todo en orden -------------------------
+
+
+Vrojohopvert(r)=16.0*a(r)*b(r)*r**2*(acos(b(r)/(2.*r)))+64./3.*(r**3)*(a(r)*(b(r)/(2.*r)-1.)-b(r)*cb(r)/(2.*r))-4*r**4*(2.*(b(r)/(2.*r))**2-1)
+Vverdehopvert(r)=16.0*(a(r)*b(r)**2*cb(r)*(4.*sqrt(2.)-1.-sqrt(2.)/3.)+(cb(r)*b(r))**2*(sqrt(2.)/3.-1))
+Volhopvert(r)=Vrojohopvert(r)+ Vverdehopvert(r)
+
+
+Vrojononhop(r)=16.0*a(r)*b(r)*r**2*(acos(b(r)/(2.*r))-acos(b(r)/(2.*r)))+64./3.*(r**3)*(a(r)*((b(r)-a(r))/(2.*r)-1.))-b(r)*(cb(r)+ca(r))/(2.*r)-4*r**4*(2.*(b(r)/(2.*r))**2-(a(r)/(2.*r))**2)
+
+Vverdenonhop(r)=1
+Volnonhop(r)=1
+
+
+VolFreeEfectivo(r)=(w-2*r)**2*(l-2*r)**2
 #checa guey, lo que te interesa
 # el programa obtiene la proporcion de volumen prohibido del volumen libre efectivo 
 # asi que la funcion que se ajusta es
-V(r)=Vtot*Vol(r)/VolFree(r)
+V(r)=Volhopfree(r)/VolFreeEfectivo(r)
 GPFUN_Vol = "Vol(r)=4.0*pi*(w/2-r)*(l/2-r)*(2*r)**2-8*(r**3)/3*(w/2+l/2-2*r)+(2*r)**4/2"
 GPFUN_VolFree = "VolFree(r)=(w-2*r)**2*(l-2*r)**2"
 plot VolFree(x),Vol(x), V(x)

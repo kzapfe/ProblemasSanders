@@ -1,4 +1,4 @@
-&\documentclass[letterpaper,10pt, jcp, aps]{revtex4-1}
+\documentclass[letterpaper,10pt, jcp, aps]{revtex4-1}
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amsfonts}
@@ -23,7 +23,7 @@
 
 \newcommand{\defeq}{:=}
 \newcommand{\mean}[1]{\left \langle #1 \right \rangle}
-\newcommand{\rd}{\!\!\!\!\mathrm{d}}
+\newcommand{\rd}{\!\mathrm{d}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\vv}{\mathbf{v}}
 \newcommand{\indicator}[1]{\mathbf{1}_{ \{   #1 \} } } 
@@ -47,7 +47,7 @@
 
 \author{W. P. Karel Zapfe}
 \email{karelz@fis.unam.mx}
-\affiliation{Facultad de Ciencias, UNAM}
+\affiliation{CINVESTAV IPN}
 
 
 \begin{abstract}
@@ -818,28 +818,49 @@ principles.
 
 \section{Appendix A: detailed calculations of Area and Volume}
 
+\subsection{Volume}
+
 We use the same notation as in the rest of the paper.
 The implicit assumption made on the limits of integration on
 the eq. \ref{integraltotal}. If $w,h>4r$ the limits of integration
 are unafected by the radius of the circles.
 In order to avoid cluttering in the formulas, we are going to integrate
-the excluded volume, instead of the avaible one.
-Our general integral is then
+the excluded volume, instead of the avaible one. We can start
+our derivation after the integration on the $X,Y$ variables:
 \begin{equation}\label{VolumenGeneral}
-\begin{split}
-V/16 &=\iint \rd x \rd y (a\sqrt{2}-x)(b\sqrt{2}-y)
-\indicator{(x)^2+(y)^2<d^2/2 }\\
-&=\iint \rd x \rd y (2ab-\sqrt{2}(ay+bx)+x y)
+V/16 =\iint \rd x \rd y (2ab-\sqrt{2}(ay+bx)+x y)
 \indicator{(x)^2+(y)^2<2r^2 }.
-\end{split}
 \end{equation}
-A diagram help us to set right the limits of integration.
-In the figure \ref{diaglimites} we show the tree posible cases:
+A diagram help us to visualize the limits of integration. The most general
+case is (without loss of generality) $h<w<2h$, so that, as the radius of the
+disks increases, we can pass from the regime where vertical and horizontal
+hopping occurs, to the one where where only vertical hopping
+is posible to the one where no hoppping is posible but a certain amount of movement
+can still ocurr. The three regimes are characterized by the next inequalities.
+\begin{itemize}
+\item All hopping possible: $0<r \leq h/4$
+\item Only vertical hoping possible: $h/4< r \leq w/4$
+\item No hopping possible: $w/4<r<(h+w-\sqrt{2hw})/2$
+\end{itemize}
+The largest posible radius size  is ilustrated in figure \ref{radiomaximo}.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{DiagramaRadioMaximo.pdf}
+  \caption{The largest possible radius for $h<w<2h$. From the diagram
+    one can see that $t^2+v^2=(2r)^2$, $h=t+2r$ and $w=v+2r$, from which
+    one can deduce the value for $r$.}
+  \label{radiomaximo}
+\end{figure}
+We shall look at these regimens on the integration space. The first one is solved
+on the main text, but we shall repeat it here with other coordinate system as to
+make some points. In figure \ref{diaglimites} we present the three regimens as
+the shaded area where we perform the integration. 
+  
 \begin{figure}[h]
         \centering
         \begin{subfigure}[b]{0.32\textwidth}
           \centering
-          \includegraphics[width=\textwidth]{DiagramaIntegracionxy01-Bien.pdf}
+          \includegraphics[width=\textwidth]{DiagramaIntegraCaso1.pdf}
           \caption{$a,b>r$}
           \label{smallradious}
         \end{subfigure}%
@@ -847,7 +868,7 @@ In the figure \ref{diaglimites} we show the tree posible cases:
         % (or a blank line to force the subfigure onto a new line)
         \begin{subfigure}[b]{0.32\textwidth}
           \centering
-          \includegraphics[width=\textwidth]{DiagramaIntegracionxy02-Bien.pdf}
+          \includegraphics[width=\textwidth]{DiagramaIntegraCaso2.pdf}
           \caption{$b<r$}
           \label{mediumradius}
         \end{subfigure}%
@@ -855,7 +876,7 @@ In the figure \ref{diaglimites} we show the tree posible cases:
           %(or a blank line to force the subfigure onto a new line)
         \begin{subfigure}[b]{0.32\textwidth}
           \centering
-          \includegraphics[width=\textwidth]{DiagramaIntegracionxy03-Bien.pdf}
+          \includegraphics[width=\textwidth]{DiagramaIntegraCaso3.pdf}
           \caption{$a,b<r$}
           \label{bigradious}
         \end{subfigure}%
