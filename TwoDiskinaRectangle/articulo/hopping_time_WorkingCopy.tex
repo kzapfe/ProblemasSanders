@@ -861,16 +861,16 @@ the shaded area where we perform the integration.
         \begin{subfigure}[b]{0.32\textwidth}
           \centering
           \includegraphics[width=\textwidth]{DiagramaIntegraCaso1.pdf}
-          \caption{$a,b>r$}
-          \label{smallradious}
+          \caption{$r<b$}
+          \label{Caso1}
         \end{subfigure}%
         ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
         % (or a blank line to force the subfigure onto a new line)
         \begin{subfigure}[b]{0.32\textwidth}
           \centering
           \includegraphics[width=\textwidth]{DiagramaIntegraCaso2.pdf}
-          \caption{$b<r$}
-          \label{mediumradius}
+          \caption{$b<r<a$}
+          \label{Caso2}
         \end{subfigure}%
         ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
           %(or a blank line to force the subfigure onto a new line)
@@ -878,7 +878,7 @@ the shaded area where we perform the integration.
           \centering
           \includegraphics[width=\textwidth]{DiagramaIntegraCaso3.pdf}
           \caption{$a,b<r$}
-          \label{bigradious}
+          \label{Caso3}
         \end{subfigure}%
         \caption{The three posible cases. The shaded area is where the integral
           must be evaluated. In the first case all hopping is possible, the middle case
@@ -886,38 +886,58 @@ the shaded area where we perform the integration.
         is still posibility for the disks to fit inside the table.}
 \label{CasosIntegra}
 \end{figure}
-In the first case (fig. \label{smallradius})  we may use polar coordinates in the
-integral on eq. \ref{VolumenGeneral}. As such the indicatrix function becomes
-the limits of integration:
-
-\begin{equation}
+The shadded area in figure \ref{CasosIntegra} represents where the indicator function
+has value 1. We can translate that to well choosen limits of integration. Notice
+how the hatched area in the first three cases may be integrated in polar coordinates
+simplifing the three cases to three cases of evaluation. We shall call the
+indefinite integral $V_h(r,\alpha,\beta)$ (h is for ``hatched'').
+As can be seen from figure \ref{CasosIntegra}, the all hoping posible regime
+means that $\alpha=\pi/2, \beta=0$, the vertical hopping regime is where
+$\alpha<pi/2, \beta=0$, and the no hopping regime is where $\pi/2>\alpha>\beta>0$.
+\begin{equation}\label{Vhatch1}
 \begin{split}
-V/16 &=\iint \rd x \rd y (2ab-\sqrt{2}(ay+bx)+x y)
+V_h(r,\alpha,\beta)/16 &=\iint \rd x \rd y (2ab-\sqrt{2}(ay+bx)+x y)
 \indicator{(x)^2+(y)^2<2r^2 }\\
 &=\iint \rd \rho \rd \theta \rho (2ab
 -\sqrt{2}(a\rho\sin\theta+b\rho\cos\theta)
 +\rho^2 \cos\theta\sin\theta)
-\indicator{\rho^2<2r^2 }\\
-&=\iint\limits_{0,0}^{\pi/2,r\sqrt{2}} \rd \rho \rd \theta \rho (2ab
+\indicator{\rho^2<2r^2 }
+\end{split}
+\end{equation}
+The integrator function becomes the limits over the $\rho$ integrating variable.
+We set the $\alpha, \beta$ as the other two limits. The perform the
+integral over the $\rho$ which doesn't change in the three regimes.
+\begin{equation}
+  \begin{split}
+ V_h(r,\alpha,\beta)/16 &=\iint\limits_{\beta,0}^{\alpha,r\sqrt{2}} \rd \rho \rd \theta \rho (2ab
 -\sqrt{2}(a\rho\sin\theta+b\rho\cos\theta)
-+\rho^2 \cos\theta\sin\theta).
++\rho^2 \cos\theta\sin\theta)\\
+ &=\int\limits_\beta^{\alpha}  \rd \theta  
+(2abr^2 - r^3 4/3 (a\sin\theta+b\cos\theta)+r^4 (\cos\theta\sin\theta))\\
 \end{split}
+  \end{equation}
+Now we integrate over the $\theta$ variable:
+\begin{equation}\label{Volrtheta}
+  V_h(r,\alpha,\beta)/16 = 2r^2ab\theta+4/3*r^3(a\cos\theta-b\sin\theta)
+  -\frac{r^4 \sin^2\theta}{2} \Bigg\vert_\beta^\alpha
 \end{equation}
+For the case that all hoping is posible, the expresion in eq. \ref{Volrtheta}
+takes the values $\alpha=\pi/2, \beta=0$ and after multiplying by 16 both sides,
+we recuperate the Munakata and Hu formula. For the other two cases, we can use the following
+facts:
+\begin{align}
+  \sin\alpha&=b/r & \cos\beta&=a/r 
+\end{align}
+and the corresponding inverse relations and Pythagoric identities.
+Then, in the case that all hoping is excluded, we end with the following beautiful
+formula for excluded volume.
+\begin{multline}\label{VolCaso3}
+  V(r \vert r>w/4 )=32abr^2(\arcsin(b/r)-\arccos(a/r))\\
+  +\frac{64r^3}{3}\biggl((a\sqrt{1-b^2/r^2}+b\sqrt{1-a^2/r^2})-(a^2+b^2)/r\biggr)\\
+  -r^2/2(a^2+b^2-r^2)
+\end{multline}
 
-We shall give the definite value for the $\rho$ (radial integration variable),
-while leaving the $\theta$ indefinite. This gives us expressions that we can use afterwards:
-\begin{equation}\label{volftheta}
-\begin{split}
-V/16 &=\int\limits_0^{\pi/2}  \rd \theta  
-(4abr^2 - r^3 4/3 (a\sin\theta+b*\cos\theta)+r^4 (\cos\theta\sin\theta))\\
-&=2abr^2\theta
-+\frac{r^34}{3}(a\cos\theta-b\sin\theta)
--\frac{r^4}{4}\cos (2\theta) \bigg\vert_0^{\pi/2} \\
-& =abr^2 \pi 
--\frac{4r^3}{3}(a+b)
-+\frac{r^4}{2}.
-\end{split}
-\end{equation}
+\subsection{Area}
 
 
 
