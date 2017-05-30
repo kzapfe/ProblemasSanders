@@ -1,39 +1,80 @@
 #!/usr/bin/gnuplot -persist
-set xr[0:0.5]
-set yr[0:1]
 #usemos variables auxiliares, esto va a quedar espantoso
-
-
 w = 1.5
 l = 1.0
 Vcaja=w*w*l*l
+dmax=l+w-sqrt(2*l*w)
+rmax=dmax/2.0
+print rmax
 a(r)=w/2.0-r
 b(r)=l/2.0-r
 cb(r)=sqrt(4.*r**2-(l/2.-r)**2)
 ca(r)=sqrt(4.*r**2-(w/2.-r)**2)
 
+rh=l/4.
+rhv=w/4.
 
-Volhopfree(r)=(16.0*pi*(a(r)*(b(r)))*(r**2)-64.*(r**3)/3.*(a(r)+b(r))+8.0*r**4)
+set xr[0:rmax]
+set yr[0:1]
+
+#volumen prohibido por la exclusion en el caso ambos hops validos
+#Volhop(r)=(16.0*pi*(a(r)*(b(r)))*(r**2)-64.*(r**3)/3.*(a(r)+b(r))+8.0*r**4)
 #--------------Hasta aqui todo en orden -------------------------
 
 
-Vrojohopvert(r)=16.0*a(r)*b(r)*r**2*(acos(b(r)/(2.*r)))+64./3.*(r**3)*(a(r)*(b(r)/(2.*r)-1.)-b(r)*cb(r)/(2.*r))-4*r**4*(2.*(b(r)/(2.*r))**2-1)
-Vverdehopvert(r)=16.0*(a(r)*b(r)**2*cb(r)*(4.*sqrt(2.)-1.-sqrt(2.)/3.)+(cb(r)*b(r))**2*(sqrt(2.)/3.-1))
-Volhopvert(r)=Vrojohopvert(r)+ Vverdehopvert(r)
+#Vrojohopvert(r)=16.0*a(r)*b(r)*r**2*(acos(b(r)/(2.*r)))+64./3.*(r**3)*(a(r)*(b(r)/(2.*r)-1.)-b(r)*cb(r)/(2.*r))-4*r**4*(2.*(b(r)/(2.*r))**2-1)
+#Vverdehopvert(r)=16.0*(a(r)*b(r)**2*cb(r)*(4.*sqrt(2.)-1.-sqrt(2.)/3.)+(cb(r)*b(r))**2*(sqrt(2.)/3.-1))
+#Volhopvert(r)=Vrojohopvert(r)+ Vverdehopvert(r)
 
 
-Vrojononhop(r)=16.0*a(r)*b(r)*r**2*(acos(b(r)/(2.*r))-acos(b(r)/(2.*r)))+64./3.*(r**3)*(a(r)*((b(r)-a(r))/(2.*r)-1.))-b(r)*(cb(r)+ca(r))/(2.*r)-4*r**4*(2.*(b(r)/(2.*r))**2-(a(r)/(2.*r))**2)
+Cachorojosi1(r)=32.*a(r)*b(r)*r**2*(asin(b(r)/r))
+ Cachorojosi2(r)=64./3.*r**3*(a(r)*(sqrt(1.-(b(r)/r)**2)-1.0)-b(r)**2/r)
+Cachorojosi3(r)=+8.*r**2*(b(r)**2)
 
-Vverdenonhop(r)=1
-Volnonhop(r)=1
+Vrojosihop(r)=Cachorojosi1(r)+Cachorojosi2(r)+Cachorojosi3(r)
 
 
-VolFreeEfectivo(r)=(w-2*r)**2*(l-2*r)**2
+Cachorojono1(r)=32.*a(r)*b(r)*r**2*(asin(b(r)/r)-acos(a(r)/r))
+Cachorojono2(r)=64./3.*r**3*(a(r)*sqrt(1.-(b(r)/r)**2)+b(r)*sqrt(1.-(a(r)/r)**2)\
+                -(a(r)**2+b(r)**2)/r)
+Cachorojono3(r)=+8*r**2*(a(r)**2+b(r)**2-r**2)
+Vrojononhop(r)=Cachorojono1(r)+Cachorojono2(r)+Cachorojono3(r)
+
+Vverdesup(r)=32.*a(r)*b(r)**2*sqrt(r**2-b(r)**2)\
+	 -32./3.*b(r)**2*(r**2-b(r)**2+2.*a(r)*sqrt(r**2-b(r)**2))\
+	+8.*b(r)**2*(r**2-b(r)**2)		      
+
+Vverdeinf(r)=32.*b(r)*a(r)**2*sqrt(r**2-a(r)**2)\
+	 -32./3.*a(r)**2*(r**2-a(r)**2+2.*b(r)*sqrt(r**2-a(r)**2))\
+	+8.*a(r)**2*(r**2-a(r)**2)		      
+
+Volhopvert(r)=Vrojosihop(r)+Vverdesup(r)
+
+Volnohop(r)=Vrojononhop(r)+Vverdesup(r)+Vverdeinf(r)
+
+Volexcluded(r)= r<l/4.0? Volhop(r) : r<w/4.0? Volhopvert(r) : Volnohop(r)
+
+VolCajaEfectivo(r)=(w-2*r)**2*(l-2*r)**2
 #checa guey, lo que te interesa
 # el programa obtiene la proporcion de volumen prohibido del volumen libre efectivo 
 # asi que la funcion que se ajusta es
-V(r)=Volhopfree(r)/VolFreeEfectivo(r)
-GPFUN_Vol = "Vol(r)=4.0*pi*(w/2-r)*(l/2-r)*(2*r)**2-8*(r**3)/3*(w/2+l/2-2*r)+(2*r)**4/2"
-GPFUN_VolFree = "VolFree(r)=(w-2*r)**2*(l-2*r)**2"
-plot VolFree(x),Vol(x), V(x)
+V(r)=Volexcluded(r)/VolCajaEfectivo(r)
+
+
+set arrow from rh,0 to rh,1 nohead  ls 4 lw 2
+set arrow from rhv,0 to rhv,1 nohead  ls 3 lw 2
+
+set label 1 "Only Vertical Hopping" at rh+0.01,0.2 rotate by 90 textcolor "goldenrod"
+set label 2 "No Hopping" at rhv-0.01,0.2 rotate by 90 textcolor "cyan"
+
+set xlabel "radius"
+set ylabel "Fraccion of effective excluded space"
+
+#plot Volhop(x), Volhopvert(x), Volnohop(x)
+set term svg size 6,5 solid font "Times New Roman",12
+plot V(x) title "Analytic", "VolumenLimpiow075h05.dat" title "Numeric" pt 30 ps 0.75
+ 
+
+
+
 #    EOF

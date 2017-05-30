@@ -466,48 +466,42 @@ it is only the position interchange that gets excluded. \\
 
 
 \subsection{Area of cross-section for
- horizontal interchange (hops)}\label{areahop}
+ vertical interchange (hops)}\label{areahop}
 
 Our cross section ``areas'' are three dimensional manifolds
 defined by relative simple equations. We shall denote their
 measure by $A$.
 The hopping cross-section 
-$ \{x_1 = x_2\}$ becomes 
-$\{ x=0 \}$ in the new coordinates.
+$ \{y_1 = y_2\}$ becomes 
+$\{ \sqrt{2}y=0 \}$ in the new coordinates.
 For obtaining the measure,
 we proceeded as follows:
 First we concentrate the measure indicated on the eq. \ref{volindic}
-multiplying by a Dirac Delta $\delta(x_1-x_2)$ on the integrating part
+multiplying by a Dirac Delta $\delta(y_1-y_2)$ on the integrating part
 (for the adequate treatment of this Dirac Delta see the supplementary 
 material \footnote{Appendix B: On the change of coordinates with Dirac Delta 
 Operators. If your name happens to be David Sanders, then read it VERY slowly.}):
 \begin{widetext}
 \begin{equation}
  A_\text{hopp} = \int\limits_{x_1 = -a}^a \rd x_1 \int\limits_{x_2 = -a}^a \rd x_2 
-\int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \delta(x_1-x_2).
+\int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \delta(y_1-y_2).
 \end{equation}
 \end{widetext}
-Except for a factor $\sqrt{2}$ due to the change of variables
-with the Dirac Delta, everything procedes as before:
-\begin{align}
- A_\text{hopp} &= \sqrt{2} \int\limits_{X=-a \sqrt{2} }^{a \sqrt{2}}  \rd X
- \int\limits_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
-\int\limits_{Y=-b \sqrt{2} + |y| }^{b \sqrt{2}-|y|}  \rd Y
-\, \indicator{y^2 \ge 2r^2 } \\
-&= 16 a  \int\limits_{y=0}^{b \sqrt{2}} \rd y
-\left( b \sqrt{2} - y \right)  \indicator{y \ge r \sqrt{2} }   \\
-&= 16 a \int\limits_{y= r\sqrt{2}}^{b \sqrt{2}} \rd y \left( b \sqrt{2} - y \right)   \\
-&= 16 a ( b - r )^2. \label{AreaH}
-% b^{2} -  b d + \frac{d^{2}}{4} \right) .
-\end{align}
-As before, the formula stops being valid for $r>h/4$. This time it has
-no extention, as hopping becomes impossible for a larger radius.  
+Except for a factor $1/\sqrt{2}$ due to the change of variables
+with the Dirac Delta, everything procedes as before. The integration is
+simpler than in the other cases and results in 
+\begin{equation}
+ A_\text{hopp}  =  16 b(a-r)^2
+\end{equation}
+As before, the formula stops being valid for $r>w/4$. This time it has
+no extention, as vertical hopping becomes impossible for a larger radius,
+but it needs no correction for the exclusion of horizontal hopping. 
 
 We made numericall simulations of the initial conditions for
 veryfying these results. In this case we 
 by counted the proportion of successful placements of hard discs 
 for which the distance 
-$|x_1 - x_2|$ was within a small tolerance of $0$. 
+$|y_1 - y_2|$ was within a small tolerance of $0$. 
 Results are shown in figure \ref{AreaHopp01}.
 
 \begin{figure}[h]
@@ -821,10 +815,14 @@ principles.
 \subsection{Volume}
 
 We use the same notation as in the rest of the paper.
-The implicit assumption made on the limits of integration on
+We aknowledge that $a,b$ are functions of $r$, but we do not write
+it explicitly in order to avoid cluttering.
+
+The implicit assumption was made on the limits of integration on
 the eq. \ref{integraltotal}. If $w,h>4r$ the limits of integration
 are unafected by the radius of the circles.
-In order to avoid cluttering in the formulas, we are going to integrate
+In order to avoid uninteresting constant terms
+in the formulas, we are going to integrate
 the excluded volume, instead of the avaible one. We can start
 our derivation after the integration on the $X,Y$ variables:
 \begin{equation}\label{VolumenGeneral}
@@ -919,7 +917,7 @@ integral over the $\rho$ which doesn't change in the three regimes.
 Now we integrate over the $\theta$ variable:
 \begin{equation}\label{Volrtheta}
   V_h(r,\alpha,\beta)/16 = 2r^2ab\theta+4/3*r^3(a\cos\theta-b\sin\theta)
-  -\frac{r^4 \sin^2\theta}{2} \Bigg\vert_\beta^\alpha
+  +\frac{r^4 \sin^2\theta}{2} \Bigg\vert_\beta^\alpha
 \end{equation}
 For the case that all hoping is posible, the expresion in eq. \ref{Volrtheta}
 takes the values $\alpha=\pi/2, \beta=0$ and after multiplying by 16 both sides,
@@ -934,10 +932,78 @@ formula for excluded volume.
 \begin{multline}\label{VolCaso3}
   V(r \vert r>w/4 )=32abr^2(\arcsin(b/r)-\arccos(a/r))\\
   +\frac{64r^3}{3}\biggl((a\sqrt{1-b^2/r^2}+b\sqrt{1-a^2/r^2})-(a^2+b^2)/r\biggr)\\
-  -r^2/2(a^2+b^2-r^2)
+  +r^2/2(a^2+b^2-r^2)
 \end{multline}
 
+Now for the doted areas in the figures \ref{Caso2} and \ref{Caso3}. Those are triangular
+and are more easily treated in Cartesian coordinates. We start with the upper
+triangular region, the subscript $ds$ indicating ``doted superior'',
+and show the procedure, and then we cite the result for the
+other triangle.
+First, we realize that as we are inside the triangle, the Characteristic function
+translates so a simple integration limit:
+
+\begin{equation}
+  \begin{split}
+    V_{ds}(r) /16 &=\iint \rd y \rd x [2ab-\sqrt{2}(ay+bx)+xy] \indicator{(x)^2+(y)^2<2r^2 }\\
+    &=\int_0^{b\sqrt{2}}\rd y \int_{0}^{y\sqrt{r^2-b^2}/b} \rd x [2ab-\sqrt{2}(ay+bx)+xy] \\
+   &=\int_0^{b\sqrt{2}}\rd y \bigl[2abx-\sqrt{2}(ayx+bx^2/2)+x^2y/2\bigr]_{0}^{y\sqrt{r^2-b^2}/b} \\
+      &=\int_0^{b\sqrt{2}}\rd y
+        \bigr[
+          2aby\frac{\sqrt{r^2-b^2}}{b}
+          -\sqrt{2}
+          \bigr(
+          \frac{ay^2\sqrt{r^2-b^2}}{b}
+            +\frac{y^2(r^2-b^2)}{2b}
+            \bigl)
+           +\frac{y^3(r^2-b^2)}{2b^2}
+           \bigl]\\
+        &= \Bigr[ay^2\sqrt{r^2-b^2}-
+          \frac{\sqrt{2}y^3}{3}
+          \bigr(
+          \frac{r^2-b^2+2a\sqrt{r^2-b^2}}{2b}
+            \bigl)
+            +\frac{y^4(r^2-b^2)}{8b^2}
+            \Bigl]_0^{b\sqrt{2}}\\
+          &=2ab^2\sqrt{r^2-b^2}
+          -\frac{2b^2(r^2-b^2+2a\sqrt{r^2-b^2}}{3}+\frac{b^2(r^2-b^2)}{2}\\
+          V_{ds}(r)&=32ab^2\sqrt{r^2-b^2} -\frac{32
+            b^2}{3}(r^2-b^2+2a\sqrt{r^2-b^2}) +8b^2(r^2-b^2).
+  \end{split}
+  \end{equation}
+The procedure is similar for the doted inferior region on fig. \ref{Caso3},
+and gives a simmetric expression:
+\begin{equation}
+          V_{ds}(r)=32^2b\sqrt{r^2-a^2} -\frac{32
+            a^2}{3}(r^2-a^2+2b\sqrt{r^2-a^2}) +8a^2(r^2-a^2).
+\end{equation}
+
+
+
+
 \subsection{Area}
+
+The area requires careful treatment of Dirac Delta operators. In our first example
+we integrate over the set $y_1-y_2=0$ which happens to be different to the set
+$y=0$ by a factor of $\sqrt{2}$ this is not obvious until one does the detailed calculations:
+\begin{widetext}
+\begin{equation}
+ A_\text{hopp} = \int\limits_{x_1 = -a}^a \rd x_1 \int\limits_{x_2 = -a}^a \rd x_2 
+\int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \delta(y_1-y_2).
+\end{equation}
+\end{widetext}
+We have to aknowledge this: using Dirac Delta Operators does not grant us permission
+to ignore multiplicative factors. As a simple example consider the following
+development:
+%\begin{equation}
+  \begin{align*}
+    \int f(x) \delta(a x) \rd x \\
+    \text{ Let } y=ax \text{, then } \rd y = a \rd x\\
+    \int f(y/a) \frac{\delta(y)}{a} \rd y 
+  \end{align*}
+ % \end{equation}
+
+
 
 
 

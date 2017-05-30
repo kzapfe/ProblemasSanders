@@ -26,4 +26,4 @@ const double Energia=1.00;
 
 
 
-a
+

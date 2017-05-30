@@ -24,12 +24,12 @@ using namespace std;
 
 
 int main(){
-  const int Geometrias=100;   
-  const int ensemble=4000000;
+  const int Geometrias=200;   
+  const int ensemble=1000000;
   const gsl_rng_type *T;
   T = gsl_rng_ranlxs2;    
     
-  const double radioefemin=0.01;
+  const double radioefemin=0.001;
   const double radioefemax=radiomax-radioefemin;
   
   cout<<"Dada la geometria, el radio maximo es "<<radiomax<<endl;
