@@ -974,16 +974,59 @@ translates so a simple integration limit:
 The procedure is similar for the doted inferior region on fig. \ref{Caso3},
 and gives a simmetric expression:
 \begin{equation}
-          V_{ds}(r)=32^2b\sqrt{r^2-a^2} -\frac{32
+          V_{di}(r)=32a^2b\sqrt{r^2-a^2} -\frac{32
             a^2}{3}(r^2-a^2+2b\sqrt{r^2-a^2}) +8a^2(r^2-a^2).
 \end{equation}
 
+This expressions would account for all volume avaible in the configuration space, but
+cannot be used for calculation of all event times that interest us. We need also
+expressions that take into account that this space is divided in disjoint components,
+as some events become imposible in each of these subsistems. As an example,
+that will be detailed in the next section, disc 1 cannot hit the left wall if
+it started on the right and horizontal hopping is excluded. So we have to
+take into account that only half of the posistions are avaible (due to simetry)
+and then take into account that in the formula in eq. \ref{meanfreetime}.
+
+Due to the simmetry of the problem we can state that the avaible volume
+for each disjoint component of the dinamical system is an equal fraction
+of the total. For example, if horizontal hopping is no longer posible
+($w/4<r<h/4$), there are two simmetric disjoint components: the dynamical system
+that starts with disc 1 on the left and the one that starts with the disc 1 on
+the righ side. Both have to occupy the same phase space volume, as they are
+simmetric under interchange of labels. If $(h<4\leq r$), then the system gets further
+divided into four disjoint components. 
 
 
 
 \subsection{Area}
 
-The area requires careful treatment of Dirac Delta operators. In our first example
+The pattern of work presented above shall be repeated for the different
+area calculations. We take a Dirac Delta operator that represents certain
+event. We multiply the characteristic function of avaible space by it, and
+then we divide it into the three cases, namely, all hopping, only vertical hopping
+and no hopping possible. We refer again to the figure \ref{CasosIntegra} and notice
+that it is always simpler to procede in the manner detailed above. Sometimes is
+easier to obtain 
+the integral  over all configuration space and then exclude the part that
+corresponds to the overlapping condition. Again, the hatched area of the exclusion
+condition has simpler representation in polar coordinates, and the triangular
+(dotted) regions can be treated in rectangular coordinates.
+
+
+
+Area that represents events  requires careful treatment of Dirac Delta operators.
+In general an event would be represented by certain constrain of the form
+$f(x_1, x_2 , y_1,y_2) =0 $ and then the measure of the subspace in configuration
+space would be:
+\begin{equation}
+  A_f=\iiiint \rd x_1  \rd x_2  \rd y_1  \rd y_2 \delta(f(x_1, x_2 , y_1,y_2))
+  \indicator{(x_1-x_2)^2+(y_1-y_2)^2>4r^2 }
+\end{equation}
+We must remember that any change of coordinates which turns the argument
+of the Dirac Delta into a form $\delta(w)$ has to be taken into account by
+a Jacobian factor for the Volume element. 
+
+In our first example
 we integrate over the set $y_1-y_2=0$ which happens to be different to the set
 $y=0$ by a factor of $\sqrt{2}$ this is not obvious until one does the detailed calculations:
 \begin{widetext}\label{ahopcart}
@@ -1006,7 +1049,7 @@ development:
   derivation:
   \begin{align}
     A_\text{hopp}/16 & = \int_0^{a\sqrt{2}} \rd x  \int_0^{b \sqrt{2}} \rd y
-    \int_0^{a\sqrt{2}-x} \rd X  \int_0^{b \sqrt{2}-y} \rd y
+    \int_0^{a\sqrt{2}-x} \rd X  \int_0^{b \sqrt{2}-y} \rd Y
     \indicator{x^2+y^2 \geq 2 r^2} \delta (y\sqrt{2})\\
     &= \frac{1}{\sqrt{2}} \int_0^{a\sqrt{2}} \rd x  \int_0^{b \sqrt{2}} \rd y
     (a\sqrt{2}-x)(b\sqrt{2}-y)
@@ -1036,33 +1079,68 @@ development:
    \bigl[ 2ab-\sqrt{2}(ay+bx)+xy \bigr]
     \delta (\sqrt{2x^2+2y^2}-2r).
     \end{align}
-  Now the tricky part, we change to polar coordinates as we did in \ref{VolApen},
-  and then we perform a second change of variable:
+  We change to polar coordinates as we did in \ref{VolApen}:
   \begin{align}
     x^2+y^2 =: \rho   \Rightarrow &  \delta(\sqrt{2x^2+2y^2}-2r) \rightarrow
-    \delta(\sqrt{2}\rho-2r)\\
-    \sqrt{2}\rho-2r =: \xi   \Rightarrow &
-    \delta(\sqrt{2}\rho-2r)\rho\rd \rho \rightarrow \delta(\xi)\frac{\rd \xi (\xi+2r)}{2}
+    \delta(\sqrt{2}\rho-2r)   
     \end{align}
-  Then we can perform the integration over $\xi$ and then over the angular $\theta$.
+  Then we continue straightforwardly:
     \begin{align}
     A_\text{col}/4 & =\iint 
-    \rd \theta \rd \xi  
-   \bigl[ 2ab-\sqrt{\xi+2r}(a\sin\theta+b\cos\theta)+\frac{(\xi+2r)^2}{2}\cos\theta\sin\theta \bigr]
-   \delta(\xi)\frac{\rd \xi (\xi+2r)}{2}\\
-     & =\int 
-    \rd \theta   
-   \bigl[ 2abr-2r^2(a\sin\theta+b\cos\theta)+2r^3\cos\theta\sin\theta \bigr]
-   \delta (\xi)\\
-   A_\text{col} &= 32ab\theta+32r(a\cos\theta-b\sin\theta)+16r^3\sin^2\theta \Big|_\beta^\alpha
+    \rd \theta \rd \rho \rho
+    \bigl[2ab-\sqrt{2}\rho(a\sin\theta+b\cos\theta)+\rho^2\cos\theta\sin\theta
+      \bigr]
+    \delta(\sqrt{2}\rho-2r) \\
+    &=\int_\beta^\alpha \rd \theta r
+    \bigl[
+      2ab-2r(a\sin\theta+b\cos\theta)+2r^2\cos\theta\sin\theta)
+      \bigr] \\
+    & = 2abr(\alpha-\beta) + 2r^2 [a (\cos \alpha-\cos\beta) -b (\sin\alpha -\sin\beta)]
+    +r^3(\sin^2 \alpha -\sin^2\beta)
     \end{align}
     We have used the same trick as in previous subsection to obtain a general expression
     that works even when hopping is not posible. In the case of $r<w/4$ (all hopping posible)
     we have the substitution $\alpha=\pi/2$ and $b=0$, obtaining the result stated previously
-    in eq. \ref{AreaChoque}.
+    in eq. \ref{AreaChoque}. It is practicall to leave here the expression for 1/4 of the
+    total area. The symmetry of the cases makes it so that when the phase space splits
+    into disjoint components, the volume accesible and the area accesible scale in
+    the same manner.
+    
 
-  
- 
+    For the collision with the wall we apply again a Dirac Delta, and then a change
+    of variables on the three surviving integrating coordinates. Once again, we
+    have to be carefull with the multiplicative factors that appear due to change
+    of variables. Let us suppose that we want the area that represents hits of
+    the disc 2 against the right wall. That means that $x_2-a=0$. 
+    \begin{align}
+      A_{x_2=a} & =\iiiint_{-a,-a,-b,-b}^{a,a,b,b} \rd x_1 \rd x_2 \rd y_1 \rd y_2 
+      \indicator{(x_1-x_2)^2+(y_1-y_2)^2 \geq (2 r)^2} \delta (x_2-a)\\
+      &=\iiint _{-a,-a,-b,-b}^{a,a,b,b} \rd x_1 \rd x_2 \rd y_1 \rd y_2 
+    \end{align}
+
+    In the case that all hoping is possible there are no problems with the above derivations,
+    but if vertical hopping is excluded, then there are differences.
+    We must aknoledge some imposibilites. If $r>h/4$, and the disc 2 starts
+    on the left, it will never be able to hit the right wall. So, actually, this
+    is a subsystem of the whole dinamic system in which our general formula needs
+    to be adjusted. We can trace this problem to the original purpose of formula \ref{meanfreetime}
+    was to find mean escape times. A particle cannot escape a volume if the exit is
+    not in contact with that volume. So after hopping in one or both direction
+    becomes imposible, the dynamical system gets split into disjoint components
+    that never mix under the dynamics (ergodic components). So we have to take that
+    into account. When $h/4<r<w/4$, a disk cannot interchange left-right positions,
+    but can still move acroos all vertical avaible space.  After $r\geq w/4$,
+    the system gets split again into more disjoint components and the
+    area representing ``hitting the right wall'' is smaller (altough the probabilty is
+    higher). So, when we calculate the ``avaible'' volume, we shall only use the
+    part of the volume that belongs to the specific set that has a possibility of
+    generating an event. We shall take into account what is written in the last
+    paragraphs of the previous subsection.
+    
+
+    
+
+    
 \section{Acknowledgements}
 
 
