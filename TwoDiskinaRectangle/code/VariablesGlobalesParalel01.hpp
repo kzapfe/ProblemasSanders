@@ -18,7 +18,7 @@ const int colisionesmax=4000; //asi es suficiente
 //const int colisionesmax=16000; //rayando en demasidoconst double widthmedia=0.5, heightmedia=0.5;
 const double widthmedia=0.75, heightmedia=0.5;
 const double radiomax=(widthmedia+heightmedia)-sqrt(2*widthmedia*heightmedia);
-const double radiomaforhop=0.5;
+const double radiomaxforhop=0.375;
 const double Energia=1.00;
 
 

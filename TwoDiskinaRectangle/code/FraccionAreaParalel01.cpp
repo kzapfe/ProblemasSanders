@@ -27,7 +27,7 @@ int main(){
 
   //parametros geometricos y  numericos
   const int Geometrias=100;   
-  const int ensemble=4000000;
+  const int ensemble=256000000; //despues de 256E6 no parece haber mejoria
   const double epsilon=0.001;
 
   //parametros del 
@@ -35,7 +35,7 @@ int main(){
   T = gsl_rng_ranlxs2;    
     
   const double radioefemin=0.001;
-  const double radioefemax=0.25-radioefemin; //chequemos el hoptime primero
+  const double radioefemax=radiomax-radioefemin; //chequemos el hoptime primero
   
   cout<<"Dada la geometria, el radio maximo es "<<radiomax<<endl;
   cout<<" lo que nos interesa es el centro de la distribucion"<< endl;
@@ -65,7 +65,7 @@ int main(){
 
    
     //recicla Variables
-    escupeelotro<<numeraauxiliar<<"_AreaColl01.dat"<<std::ends;         
+    escupeelotro<<numeraauxiliar<<"_AreaParedes.dat"<<std::ends;         
     stringfirst=escupeelotro.str();
     const char *nombrecondini=stringfirst.c_str();
     
@@ -78,6 +78,7 @@ int main(){
    
     double radio=radioefemin+
       (double)n/(double)Geometrias*(radioefemax-radioefemin);
+ 
     
     cout<<"Empezamos con la geometria " << n<<endl;
     cout<<"El radio es " << radio<<endl;
@@ -102,8 +103,7 @@ int main(){
       //it has to be OUTSIDE THE CILINDER, and in the hopping position
       if((dist>(uno.radio+dos.radio))
 	 &&
-	 /*(
-	    (dist<(uno.radio+dos.radio+epsilon)) ||
+	 // (dist<(uno.radio+dos.radio+epsilon)) ||
 	    (uno.qx-(-widthmedia+radio)<epsilon) ||
 	    ((widthmedia-radio-uno.qx)<epsilon) ||
 	    (dos.qx-(-widthmedia+radio)<epsilon) ||
@@ -112,13 +112,15 @@ int main(){
 	    ((heightmedia-radio-uno.qy)<epsilon) ||
 	    (dos.qy-(-heightmedia+radio)<epsilon) ||
 	    ((heightmedia-radio-dos.qy)<epsilon) 
-	    )*/
+	    )
 	    //Las de arriba son TODAS las areas
-	 (dist)<(uno.radio+dos.radio+epsilon)//Collition Time
-	 )
+	 // (dist)<(uno.radio+dos.radio+epsilon)//Collition Area
+	 //((widthmedia-radio-dos.qx)<epsilon) //pared derecha 
+	//)
 
-	   {condini<<uno.qx<<"\t"<<uno.qy<<"\t"<<
-	    dos.qx<<"\t"<<dos.qy<<"\t"<<endl;
+	{
+	  //condini<<uno.qx<<"\t"<<uno.qy<<"\t"<<
+	  //dos.qx<<"\t"<<dos.qy<<"\t"<<endl;
 	  //Contamos sobre la esfera
 	  cuentamalos++;
 	  //cout<<" Ya aparecio uno donde querias!"<<endl;
@@ -129,11 +131,20 @@ int main(){
         
     cout<<"Ya hicimos el " <<n<<endl;
     //debuger.close();
-    double proporcionvolumenmalo;
+    double a=widthmedia-radio;
+    double b=heightmedia-radio;
+    double volcajavacia=16.0*a*a*b*b;
+    double proporcionvolumenmalo, volumenmalo,areainteres;
     proporcionvolumenmalo=(double)cuentamalos/(double)ensemble;
+    volumenmalo=proporcionvolumenmalo*volcajavacia;
+    areainteres=volumenmalo/epsilon;
+    
     condini<<endl;
-    condini<<"radio: "<< radio<<"\t"<<
-      "Proporcion de Volumen alrededor De todas las fronteras: "<<proporcionvolumenmalo<<endl;
+    // condini<<"radio: "<< radio<<"\t"<<
+    //  "Proporcion de Volumen alrededor De todas las fronteras: "<<proporcionvolumenmalo<<endl;
+    // mejoremos el formato para menos parsing despues.
+    condini<<"radio \t Fraccion Volumen Relativo \t Volumen \t Area"<<endl;
+    condini<<radio<<"\t"<<proporcionvolumenmalo<<"\t"<<volumenmalo<<"\t"<<areainteres<<endl;
     condini.close();
       
   };
