@@ -18,7 +18,7 @@ set xr[0:rmax]
 set yr[0:1]
 
 #volumen prohibido por la exclusion en el caso ambos hops validos
-#Volhop(r)=(16.0*pi*(a(r)*(b(r)))*(r**2)-64.*(r**3)/3.*(a(r)+b(r))+8.0*r**4)
+Volhop(r)=(16.0*pi*(a(r)*(b(r)))*(r**2)-64.*(r**3)/3.*(a(r)+b(r))+8.0*r**4)
 #--------------Hasta aqui todo en orden -------------------------
 
 
@@ -71,9 +71,12 @@ set xlabel "radius"
 set ylabel "Fraccion of effective excluded space"
 
 #plot Volhop(x), Volhopvert(x), Volnohop(x)
-set term svg size 6,5 solid font "Times New Roman",12
-plot V(x) title "Analytic", "VolumenLimpiow075h05.dat" title "Numeric" pt 30 ps 0.75
- 
+set term svg size 800,600 solid  font "Times New Roman,12"
+set pointsize 0.5
+set out "VolumenExacto01.svg"
+set key top left
+plot  "VolumenLimpiow075h05.dat" title "Numeric" pt 4 ps 0.5 lc rgb "red", V(x) title "Analyc" 
+set out 
 
 
 

@@ -52,10 +52,10 @@
 
 \begin{abstract}
 Using Ergodic Theory formulae, we have obtained 
-exact expressions for various  mean event times in the Two Disks in a Box
+exact expressions for various  mean event times in the Two Disks in a Rectangle
 billiard.  We have shown that the general formula is applicable in a very broad range
 of situations and the only difficulty is establishing the adequate surface
-of section and its measure, so that it represents  the event in question. 
+of section and its measure.  
 We have compared this results against
 numerical simulations and we have compared them also against first event times.
 The second case has no closed expression that we are aware of, but shows
@@ -71,7 +71,7 @@ very similar behavior, although it has clear deviations.
 \typeout{`` this is ``  \the\columnwidth }
 
 For the statistical physicist and theoretical
-chemist, \emph{mean} and \emph{first} event
+chemist, \emph{mean} and \emph{first} events
 times are of uttermost importance, as many properties,
 such as mixing, reaction and diffusion rates depend on it. 
 Two events can model the fundamental occurrences of
@@ -144,7 +144,7 @@ Brownian dynamics shall be discussed elsewhere \cite{WorkInProgress}.
 % nadamas nos están estorbando en las formulas y fastidiar al lector
 % con una caracterización redundante del disco es mala onda.
 We consider two discs of radius $r$  %(and diameter $d=2r$) 
-in a box of width $w$ and height $h$ (figure\ref{billar01}). 
+in a box of width $w$ and height $h$ (see figure \ref{billar01}). 
 The discs move inertially in the absence of forces, 
 following straight line trajectories,
 and undergo elastic collisions with each 
@@ -220,7 +220,7 @@ in which a single point  particle undergoes free motion between reflecting obsta
 in a $ D N $-dimensional configuration space \cite{Sinai70, Sim99, MarkChern}. 
 If the resulting billiard is ergodic and hyperbolic, then we know that
 these systems are equivalent to Bernoulli Flows \cite{Gallavotti74}.
-For such systems is expected an exponential decay of 
+-For such systems is expected an exponential decay of 
 distributions \cite{AbadiGalves} with potentially
 long algebraic tails \cite{ZasTip}. 
 This includes recurrence times and
@@ -288,7 +288,7 @@ and $E=m=1$, so that the general factor of the formula appear as:
 The next step is obtaining the Volume (4 dimensional measure) of
 the available space and the Area (3 dimensional induced measure) of
 the collision conditions. We devote the next section to
-detail the procedure.
+show the procedure, details can be found in the Appendix.
 
 
 \section{Calculation of Volumes and Areas}
@@ -332,7 +332,7 @@ which restricts the integral to the desired region $Z$.
 
 It is easier to represent the  
 excluded cylinder in the coordinates defined in 
-the set of equation \ref{cambiocoor01}. Then the exclusion condition
+the set of equations \ref{cambiocoor01}. Then the exclusion condition
 is orthogonal to the coordinates $X,Y$ and they do not appear
 on the indicator function. 
 \begin{multline}\label{integraltotal}
@@ -411,7 +411,12 @@ and horizontal is excluded.Therefore, we assume that $w \geq h$.
 That case is divided also in two more cases: if
 $ h \leq  w < 2 h $ there is a value for $r$ in which no more hopping is possible,
 but the discs still fit inside. For $ 2 h \leq w $, vertical hopping is
-possible until $ 2 r= h$ (where vertical movement is impossible).
+possible until $ 2 r= h$ (where vertical movement is impossible). This cases
+can be thought of as the configuration space becoming disjoint, and
+some of the cross section areas staying outside it. Thanks to the simmetry of
+the problem, in many of the cases the cross section areas and the
+volumes become disjoint components sharing the same fraction of
+the total volume, making the transition smooth.
 
 We cite the  result for $h/4  <r< w/4$ for illustrative purposes.
 For readability we define another auxiliary variable,
@@ -428,16 +433,8 @@ into account a similar
 contribution which inverts the roles of $a$ and $b$. Then there is
 a case where hopping is impossible. 
 
-
 In order to not to pick a degenerate case for our numerical simulations,
 we have set $w=1.5, h=1$. This covers all of the uses of the general volume formulas.
-
-
-%% Estoy pensando en cambiar esto por el caso mas feo y más general, h=1.5w
-%% que te parece?
-
-%In all of our numeric examples we use $w=h=1$, setting the
-%limit for any hops at $r=0.25$. 
 
 
 We have checked this result with simple Monte Carlo simulations, 
@@ -452,9 +449,21 @@ volume. The results are shown in the figure \ref{VolMonteC}.
 \centering
 \includegraphics[width=0.45\textwidth]{./FigurasPerfectas/VolCyl02.pdf}
 \caption{Formula for $V_\text{cyl}$, the area of the exclusion cylinder, compared
-against the numerics, from eq. \ref{volumeabd}.
- }\label{VolMonteC}
+  against the numerics, from eq. \ref{volumeabd}.
+  \pmb{esta es la grafica antigua, no el caso mas general}
+}%\label{VolMonteC}%% 
 \end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/VolumenExacto01.pdf}
+\caption{Formula for $V_\text{cyl}/V_\text{prism}$, the fraction of volume excluded from
+  the avaible free volume.
+  against the numerics, from eq. \ref{volumeabd}.
+  \pmb{esta es el caso general. Esto también hay que hacerlo con las areas y así. }
+}\label{VolMonteC}%% 
+\end{figure}
+
 
 The following subsections shall only show the formulas for $r<w/4, h/4$.
 Bear in mind that some of the dynamics are possible above this limit,
