@@ -1,5 +1,6 @@
 #!/usr/bin/gnuplot -persist
 #usemos variables auxiliares, esto va a quedar espantoso
+datosvol='../../code/Volumenes/VolumenLimpiow075h05.dat'
 w = 1.5
 l = 1.0
 Vcaja=w*w*l*l
@@ -75,7 +76,7 @@ set term svg size 800,600 solid  font "Times New Roman,12"
 set pointsize 0.5
 set out "VolumenExacto01.svg"
 set key top left
-plot  "VolumenLimpiow075h05.dat" title "Numeric" pt 4 ps 0.5 lc rgb "red", V(x) title "Analyc" 
+plot  datosvol title "Numeric" pt 4 ps 0.5 lc rgb "red", V(x) title "Analyc" 
 set out 
 
 
