@@ -3,23 +3,13 @@
 ## funciones de todas las areas representantes de todas las colisiones.
 
 datoshop='../../code/Areas/AreaHopLimpia01.dat'
-fg='FormulasGenerales.gpl'
+fa='FormulasArea.gpl'
 
 load fg
 
 set xr[0:rmax]
 set yr[0:4.5]
 
-
-# Area Hopp vertical
-Ahop(r)=16.*b(r)*(a(r)-r)**2
-#A colision
-# caso 1: r<h/4
-Acol1(r)=16*pi*a(r)*b(r)+32*(a(r)+b(r))*r*r+16*r**3
-##caso2 h/4<r<w/4
-alpha(r)=asin(b(r)/r)
-cosalfa(r)=sqrt(r**2-b)
-#Acol2(r)=8*a(r)*b(r)*r*alpha+8*r**2*(a(r)*
 
 
 
