@@ -1,0 +1,19 @@
+
+## mz quiere decir Formula Machta Zwanzig
+
+load 'Volumenexactoenfuncionradio.gpl'
+load 'Areaexactafradio.gpl'
+
+meanhoptimesdata='../../code/HopNuevos03.dat'
+
+ctemz=3.0*pi/(2.0*sqrt(2.))
+
+mzhop(x)=ctemz*Vfree(x)/Ahop(x)
+
+set xr[0:rhv]
+set yr[0:2.1]
+
+
+#plot mzhop(x), meanhoptimesdata
+
+

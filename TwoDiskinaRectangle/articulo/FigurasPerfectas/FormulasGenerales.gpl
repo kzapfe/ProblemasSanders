@@ -1,0 +1,13 @@
+w = 2.0
+l = 1.0
+Vcaja=w*w*l*l
+dmax=l+w-sqrt(2*l*w)
+rmax=dmax/2.0
+print rmax
+a(r)=w/2.0-r
+b(r)=l/2.0-r
+cb(r)=sqrt(4.*r**2-(l/2.-r)**2)
+ca(r)=sqrt(4.*r**2-(w/2.-r)**2)
+
+rh=l/4.
+rhv=w/4.

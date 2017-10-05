@@ -33,19 +33,21 @@ int main(){
   //FreeTime escribe TODOS los chocques, no tenemos tanto disco duro...
   //bajale al ensemble, subele a las colisiones
   
-  const int Geometrias=100;
-  const int ensemble=500000;
-   
+  const int Geometrias=128;
+  const int ensemble=1000;
+
+  const int Ntotal=ensemble*colisionesmax;
+  
   const gsl_rng_type *T;
   T = gsl_rng_ranlxs2;    
   
   const double epsilonagujero=0.05; //para el Sojourn Time
   
   const double radioefemin=0.001;
-  //  const double radioefemax=radiomax-radioefemin;
-  const double radioefemax=epsilonagujero/2.0-0.0001;
+  const double radioefemax=radiomaxforhop;
+  //const double radioefemax=epsilonagujero/2.0-0.0001;
   
-#pragma omp parallel num_threads(7)
+#pragma omp parallel num_threads(8)
 
   {
 #pragma omp  for schedule(dynamic)
@@ -57,9 +59,12 @@ int main(){
     for(int n=1; n<Geometrias; n++){
           
     double hoptime=0.00;
+    double acumtimes=0.00;
+    double acumtimescuad=0.0;
+    double meantime,meansquare,stddev,stderr; 
     double tiempodechoque=0;
     double tiempoentrebrincos=0.0;
-    //    const double toleranciachoques=0.000000001;
+    //    const double toleranciacahoques=0.000000001;
 
     gsl_rng *r ;  
     r = gsl_rng_alloc(T);
@@ -73,7 +78,7 @@ int main(){
     std::ostringstream escupehop;
           
     //solo el disco UNO puede escapar
-    escupehop<<numeraauxiliar<<"_SojournDavid05-1.dat"<<std::ends;
+    escupehop<<numeraauxiliar<<"_MeanHop01.dat"<<std::ends;
       
     std::string stringhop;
 
@@ -96,6 +101,7 @@ int main(){
     tiemposhop<<"radio "<<radio<<endl;
     tiemposhop<<"Energia "<<Energia<<endl;
     // tiemposhop<<endl; //no necesitamos blanklines
+    double energiapromedio=0.000;
     
 
     for(int j=0; j<ensemble; j++){
@@ -107,7 +113,8 @@ int main(){
       int chocador=-1; //armadillo indexes. ^Better this one.
       bool condicionagujero=false;
       
-
+      double energianumerica;
+      
       //RandomAtEntrance(uno,dos,Energia,epsilonagujero, r);
       AbsolutRandomDiscos(uno,dos,Energia,r);
 
@@ -119,25 +126,59 @@ int main(){
       //Primero tenemos que ergodicidar Sobre condiciones EN EL HOP-Posture
       //EXACTAMENTE
       int cuentachoques=0; 
-      chocador=-1; //pretend that we are on the UNINTERESTING WALL
-           
+      chocador=-1; //pretend that we are on the UNINTERESTING WALL      
       tiempoentrebrincos=0.00;
 
       //cabexota, mano cabexota.
-      
-      while(!((chocador==0)&&(uno.qx>0.0)&&
-	     (uno.qy<epsilonagujero/2.)&&(uno.qy>-epsilonagujero/2.))){
-	tiempodechoque=dinamicaunchoqueyhopp(uno,dos,chocador);	
-	tiempoentrebrincos+=tiempodechoque;
-	cuentachoques++;
-	  		 
-      }
-	
-      tiemposhop<<tiempoentrebrincos<<endl;
 
-    }//cierra sobre el ensamble     
+      while(cuentachoques<colisionesmax){
+	tiempoentrebrincos=0.00;
+	chocador=-1; //pretend that we are on the UNINTERESTING WALL      
+	/* -1 -> nada
+	   0 uno choca con pared vertical
+	   1 uno choca con pared horizontal
+	   2 dos choca con pared vertical
+	   3 dos choca con pared horizontal
+	   4 uno y dos colisionan
+	   5 hop vertical.
+	*/
+	
+	while(/* Tiempo de escape por agujero
+	      //!((chocador==0)&&(uno.qx>0.0)&&
+	      //(uno.qy<epsilonagujero/2.)&&(uno.qy>-epsilonagujero/2.)) */
+	      (chocador!=5)) //hopingtime
+	  {
+	    tiempodechoque=dinamicaunchoqueyhopp(uno,dos,chocador);	
+	    tiempoentrebrincos+=tiempodechoque;
+	  }
+	
+	acumtimes+=tiempoentrebrincos;
+	acumtimescuad+=tiempoentrebrincos*tiempoentrebrincos;
+	cuentachoques++;
+	/* Karel, creo que ya es momento de que no escribas todos
+	   los datos, basta las medias y la desviacion y el N de pruebas */
+	//tiemposhop<<tiempoentrebrincos<<endl;
+
+    } //cierra sobre los choques/eventos
+      energianumerica=uno.EnergiaKinetica()+dos.EnergiaKinetica();
+      energiapromedio+=energianumerica;
+      // solo vamos a escribir el total de ahora en adelante.
+      //tiemposhop<<tiempoentrebrincos<<endl;
+      // cout<<" vamos en el disco "<<j+1<<endl;
+      //cout<<" tuvo tantos choques "<<cuentachoques<<endl;
+      
+    }//cierra sobre el ensamble
+
+    meantime=acumtimes/(double)Ntotal;
+    meansquare=acumtimescuad/(double)Ntotal;
+    stddev=sqrt(meansquare-meantime*meantime);
+    stderr=stddev/sqrt((double)Ntotal);
+    energiapromedio/=ensemble;
+    tiemposhop<<"# radio \t tiempopromedio \t tcuadpromedio \t stdev \t sterr \t Ntot"<<endl;
+    tiemposhop<<radio<<"\t"<<meantime<<"\t"<<meansquare<<"\t"<<stddev<<"\t"<<stderr<<"\t"<<Ntotal<<endl;
     cout<<"He terminado con el proceso "<<n<<endl;
-   
+    cout<<"La energia promedio final fue "<<energiapromedio<<endl;
+    
     } //Cierra el loop paralelizable
     
   } //Cierra el pragma de openmp

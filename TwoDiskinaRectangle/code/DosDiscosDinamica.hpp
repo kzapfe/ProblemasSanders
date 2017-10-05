@@ -23,16 +23,16 @@ using namespace arma;
 
 double hopper(Disco &Uno, Disco &Dos){
   //Calcula el tiempo de "pasaje" entre las
-  //cordenadas x, si eso acontece. En caso contrario, devuelve
+  //cordenadas y, si eso acontece. En caso contrario, devuelve
   //un 77777.
   double result;
-  double difposx;
+  double difposy;
   double veloefectiva;
   
-  if( (Uno.px!=0.000) || (Dos.px!=0.000) ){
-    difposx=Uno.qx-Dos.qx;
-    veloefectiva=Dos.px/Dos.masa-Uno.px/Uno.masa;
-    result=difposx/veloefectiva;
+  if( (Uno.py!=0.000) || (Dos.py!=0.000) ){
+    difposy=Uno.qy-Dos.qy;
+    veloefectiva=Dos.py/Dos.masa-Uno.py/Uno.masa;
+    result=difposy/veloefectiva;
   }else{
     result=777777;
   }

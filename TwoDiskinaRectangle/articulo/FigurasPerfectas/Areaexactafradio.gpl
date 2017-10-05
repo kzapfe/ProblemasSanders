@@ -3,19 +3,9 @@
 ## funciones de todas las areas representantes de todas las colisiones.
 
 datoshop='../../code/Areas/AreaHopLimpia01.dat'
-w = 1.5
-l = 1.0
-Vcaja=w*w*l*l
-dmax=l+w-sqrt(2*l*w)
-rmax=dmax/2.0
-print rmax
-a(r)=w/2.0-r
-b(r)=l/2.0-r
-cb(r)=sqrt(4.*r**2-(l/2.-r)**2)
-ca(r)=sqrt(4.*r**2-(w/2.-r)**2)
+fg='FormulasGenerales.gpl'
 
-rh=l/4.
-rhv=w/4.
+load fg
 
 set xr[0:rmax]
 set yr[0:4.5]
@@ -33,11 +23,11 @@ cosalfa(r)=sqrt(r**2-b)
 
 
 
-set arrow from rh,0 to rh,1 nohead  ls 4 lw 2
-set arrow from rhv,0 to rhv,1 nohead  ls 3 lw 2
+#set arrow from rh,0 to rh,1 nohead  ls 4 lw 2
+#set arrow from rhv,0 to rhv,1 nohead  ls 3 lw 2
 
-set label 1 "Only Vertical Hopping" at rh+0.01,0.2 rotate by 90 textcolor "goldenrod"
-set label 2 "No Hopping" at rhv-0.01,0.2 rotate by 90 textcolor "cyan"
+#set label 1 "Only Vertical Hopping" at rh+0.01,0.2 rotate by 90 textcolor "goldenrod"
+#set label 2 "No Hopping" at rhv-0.01,0.2 rotate by 90 textcolor "cyan"
 
 plot datoshop usi 1:($4), Ahop(x)
 

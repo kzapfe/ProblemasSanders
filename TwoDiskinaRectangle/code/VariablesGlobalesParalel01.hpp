@@ -14,11 +14,12 @@
 
 const double tolerancia=2.0e-16;
 const double tiempomax=66666.0;
-const int colisionesmax=4000; //asi es suficiente
+//const int colisionesmax=4000; //asi es suficiente
+const int colisionesmax=1000; //asi es suficiente
 //const int colisionesmax=16000; //rayando en demasidoconst double widthmedia=0.5, heightmedia=0.5;
-const double widthmedia=0.75, heightmedia=0.5;
+const double widthmedia=1.0, heightmedia=0.5;
 const double radiomax=(widthmedia+heightmedia)-sqrt(2*widthmedia*heightmedia);
-const double radiomaxforhop=0.375;
+const double radiomaxforhop=widthmedia/2.0;
 const double Energia=1.00;
 
 
