@@ -3,21 +3,23 @@
 ## funciones de todas las areas representantes de todas las colisiones.
 
 datoshop='../../code/Areas/AreaHopLimpia01.dat'
+datospd='../../code/Areas/AreaParedDerechaUnow75h50.dat'
 fa='FormulasArea.gpl'
 
-load fg
+load fa
 
+ymax=1.6
 set xr[0:rmax]
-set yr[0:4.5]
+set yr[0:ymax]
 
 
 
 
-#set arrow from rh,0 to rh,1 nohead  ls 4 lw 2
-#set arrow from rhv,0 to rhv,1 nohead  ls 3 lw 2
+set arrow from rh,0 to rh,ymax nohead  ls 4 lw 2
+set arrow from rhv,ymax to rhv,ymax nohead  ls 3 lw 2
 
-#set label 1 "Only Vertical Hopping" at rh+0.01,0.2 rotate by 90 textcolor "goldenrod"
-#set label 2 "No Hopping" at rhv-0.01,0.2 rotate by 90 textcolor "cyan"
+set label 1 "Only Vertical Hopping" at rh+0.01,0.2 rotate by 90 textcolor "goldenrod"
+set label 2 "No Hopping" at rhv-0.01,0.2 rotate by 90 textcolor "cyan"
 
 plot datoshop usi 1:($4), Ahop(x)
 

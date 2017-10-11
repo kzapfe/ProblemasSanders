@@ -26,7 +26,7 @@ using namespace std;
 int main(){
 
   //parametros geometricos y  numericos
-  const int Geometrias=100;   
+  const int Geometrias=128;   
   const int ensemble=256000000; //despues de 256E6 no parece haber mejoria
   const double epsilon=0.001;
 
@@ -65,7 +65,7 @@ int main(){
 
    
     //recicla Variables
-    escupeelotro<<numeraauxiliar<<"_AreaParedes.dat"<<std::ends;         
+    escupeelotro<<numeraauxiliar<<"_AreaPDerUnDisco.dat"<<std::ends;         
     stringfirst=escupeelotro.str();
     const char *nombrecondini=stringfirst.c_str();
     
@@ -104,6 +104,7 @@ int main(){
       if((dist>(uno.radio+dos.radio))
 	 &&
 	 // (dist<(uno.radio+dos.radio+epsilon)) ||
+	 /*
 	    (uno.qx-(-widthmedia+radio)<epsilon) ||
 	    ((widthmedia-radio-uno.qx)<epsilon) ||
 	    (dos.qx-(-widthmedia+radio)<epsilon) ||
@@ -113,10 +114,11 @@ int main(){
 	    (dos.qy-(-heightmedia+radio)<epsilon) ||
 	    ((heightmedia-radio-dos.qy)<epsilon) 
 	    )
+	 */
 	    //Las de arriba son TODAS las areas
 	 // (dist)<(uno.radio+dos.radio+epsilon)//Collition Area
-	 //((widthmedia-radio-dos.qx)<epsilon) //pared derecha 
-	//)
+	 ((widthmedia-radio-dos.qx)<epsilon) //pared derecha 
+	 )
 
 	{
 	  //condini<<uno.qx<<"\t"<<uno.qy<<"\t"<<
@@ -137,9 +139,9 @@ int main(){
     double proporcionvolumenmalo, volumenmalo,areainteres;
     proporcionvolumenmalo=(double)cuentamalos/(double)ensemble;
     volumenmalo=proporcionvolumenmalo*volcajavacia;
-    areainteres=volumenmalo/epsilon;
-    
+    areainteres=volumenmalo/epsilon;    
     condini<<endl;
+    
     // condini<<"radio: "<< radio<<"\t"<<
     //  "Proporcion de Volumen alrededor De todas las fronteras: "<<proporcionvolumenmalo<<endl;
     // mejoremos el formato para menos parsing despues.

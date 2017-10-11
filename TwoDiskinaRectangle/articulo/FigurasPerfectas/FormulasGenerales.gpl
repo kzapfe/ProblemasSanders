@@ -1,4 +1,4 @@
-w = 2.0
+w = 1.5
 l = 1.0
 Vcaja=w*w*l*l
 dmax=l+w-sqrt(2*l*w)
@@ -8,6 +8,12 @@ a(r)=w/2.0-r
 b(r)=l/2.0-r
 cb(r)=sqrt(4.*r**2-(l/2.-r)**2)
 ca(r)=sqrt(4.*r**2-(w/2.-r)**2)
+
+# variables auxiliares para cuando hopp no es posible 
+alfa(r)=asin(b(r)/r)
+cosalfa(r)=sqrt(r**2-b(r)**2)/r
+beta(r)=acos(a(r)/r)
+sinbeta(r)=sqrt(r**2-a(r)**2)/r
 
 rh=l/4.
 rhv=w/4.

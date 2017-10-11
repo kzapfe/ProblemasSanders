@@ -78,7 +78,7 @@ int main(){
     std::ostringstream escupehop;
           
     //solo el disco UNO puede escapar
-    escupehop<<numeraauxiliar<<"_MeanHop01.dat"<<std::ends;
+    escupehop<<numeraauxiliar<<"_MeanChoqueVert01.dat"<<std::ends;
       
     std::string stringhop;
 
@@ -146,7 +146,7 @@ int main(){
 	while(/* Tiempo de escape por agujero
 	      //!((chocador==0)&&(uno.qx>0.0)&&
 	      //(uno.qy<epsilonagujero/2.)&&(uno.qy>-epsilonagujero/2.)) */
-	      (chocador!=5)) //hopingtime
+	      (chocador!=0)) //hopingtime
 	  {
 	    tiempodechoque=dinamicaunchoqueyhopp(uno,dos,chocador);	
 	    tiempoentrebrincos+=tiempodechoque;
