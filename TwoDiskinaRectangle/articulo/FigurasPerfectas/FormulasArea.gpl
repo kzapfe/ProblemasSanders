@@ -7,25 +7,26 @@ Ahop(r)=16.*b(r)*(a(r)-r)**2
 
 #A colision con pared vertical
 ######################################
-# todo esta en un cuarto del total
+# todo esta en un 1/4 del total
 ####################################
-
-Apvtotal(r)=4.0*a(r)*b(r)**2
+Apvtotal(r)=2.*a(r)*b(r)**2
 # caso 1: r<h/4
-Apvnegsector1(r)=2*sqrt(2)*r**2*b(r)*pi/2.-(8./3.)*r**3
+Apvnegsector1(r)=2*(r**2*b(r)*pi/2.-(2./3.)*r**3)
 # caso 2: h/4<r<w/4
-Apvnegsector2(r)=2*sqrt(2)*r**2*b(r)*alfa(r)+(8./3.)*r**3*(cosalfa(r)-1.)
-Apvtriarriba2(r)=4./3.*b(r)*b(r)*sqrt(r**2-b(r)*b(r))
+Apvnegsector2(r)=2*(r**2*b(r)*alfa(r)+(2./3.)*r**3*(cosalfa(r)-1.))
+Apvtriarriba2(r)=2./3.*b(r)**2*sqrt(r**2-b(r)**2)
 Apvneg2(r)=Apvnegsector2(r)+Apvtriarriba2(r)
 # caso 3: h/4<w/4<r
 #a(r)/r==cosbeta(r)
-Apvnegsector3(r)=2*sqrt(2)*r**2*b(r)*(alfa(r)-beta(r))+(8./3.)*r**3*(cosalfa(r)-a(r)/r)
-Apvtriarriba3(r)=4./3.*b(r)*b(r)*sqrt(r**2-b(r)*b(r))
-Apvtriabajo3(r)=4./3.*a(r)*a(r)*sqrt(r**2-a(r)*a(r))
+Apvnegsector3(r)=2*(r**2*b(r)*(alfa(r)-beta(r))+(2./3.)*r**3*(cosalfa(r)-a(r)/r))
+Apvtriarriba3(r)=Apvtriarriba2(r)
+Apvtriabajo3(r)=2*(a(r)*b(r)*sqrt(r**2-a(r)**2)-1./3*a(r)*(r**2-a(r)**2))
 Apvneg3(r)=Apvnegsector3(r)+Apvtriarriba3(r)+Apvtriabajo3(r)
 
 Apvneg(r)=r<l/4.? Apvnegsector1(r) : r<w/4.? Apvneg2(r) : Apvneg3(r)
 
-Apv(r)=Apvtotal(r)-Apvneg(r)
+Apv(r)=4.0*(Apvtotal(r)-Apvneg(r))
+#### PERFECTO LO DE ARRIBA NO MAAAMES ##########
+#############ULTRAPERFECTOOOO!!!!! ####################################
 
 
