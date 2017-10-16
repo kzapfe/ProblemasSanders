@@ -1,5 +1,5 @@
-%\documentclass[letterpaper,10pt, jcp, aps]{revtex4-1}
-\documentclass[superscriptaddress,pre,reprint,showpacs]{revtex4-1}
+\documentclass[letterpaper,10pt, jcp, aps]{revtex4-1}
+%\documentclass[superscriptaddress,pre,reprint,showpacs]{revtex4-1}
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amsfonts}
@@ -285,6 +285,24 @@ The next step is obtaining the Volume (4 dimensional measure) of
 the available space and the Area (3 dimensional induced measure) of
 the collision conditions. We devote the next section to
 show the procedure, details can be found in the Appendix.
+
+
+The general result is
+\begin{equation}
+ \mean{\tau} = \frac{|Q|}{|A|} \frac{|S^{d-1}|}{|B^{d-1}|}
+\end{equation}
+when the particle has velocity $1$.
+Here, $|Q|$ denotes the $d$-dimensional volume of the available space in the billard and $|A|$ the $(d-1)$-dimensional volume of the cross-section.
+ $|S^{d-1}|$ is the $(d-1)$-dimensional volume of the unit sphere in $\RR^d$, given by
+\begin{equation}
+  |S^{d-1}| = \frac{2 \pi^{d/2}}{\Gamma(d/2)},
+\end{equation}
+where $\Gamma(\cdot)$ is the gamma function. $|B^{d-1}|$ is the volume of the unit ball in $\RR^{d-1}$, given by $|B^{d-1}| = |S^{d-2}| / (d-1)$.
+
+The system of two hard discs is equivalent to a billiard in $d=4$ dimensions, so that
+\begin{equation}
+ |S^{d-1}| = |S^3| = 2 \pi^2; \qquad |B^{d-1}| = 4 \pi / 3.
+\end{equation}
 
 
 \section{Calculation of Volumes and Areas}
