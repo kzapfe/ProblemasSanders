@@ -1,5 +1,5 @@
 %\documentclass[letterpaper,10pt, jcp, aps]{revtex4-1}
-\documentclass[superscriptaddress,pre,reprint,showpacs]{revtex4-1}
+\documentclass[superscriptaddress,pre,reprint,showpacs,onecolumn]{revtex4-1}
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amsfonts}
@@ -274,11 +274,10 @@ the mean time between events the general formula:
   \mean{\tau} =  \frac{1}{\sqrt{2E / m}} 
 \frac{|Q| \, |S^3|} {|A| \, |B^3|}.	
 \end{equation}
-In our particular case, the effective dimension is four,
-and $E=m=1$, so that the general factor of the formula appear as:
+We respect the convention of $E=1/2, m=1$ and we end up with
 \begin{equation} \label{meantimegeneralredux}
    \frac{1}{\sqrt{2E / m}} 
-\frac{|S^3|}{|B^3|}=\frac{3\pi}{2\sqrt{2}}.	 
+   \frac{|S^3|}{|B^3|}=\frac{3\pi}{2}.	 
 \end{equation}
 
 The next step is obtaining the Volume (4 dimensional measure) of
@@ -482,18 +481,17 @@ $\{ \sqrt{2}y=0 \}$ in the new coordinates.
 For obtaining the measure,
 we proceeded as follows:
 First we concentrate the measure indicated on the eq. \ref{volindic}
-multiplying by a Dirac Delta $\delta(y_1-y_2)$ on the integrating part
+multiplying by a Dirac Delta $\delta((y_1-y_2)/\sqrt{2})$ on the integrating part
 (for the adequate treatment of this Dirac Delta see the supplementary 
 material \footnote{Appendix B: On the change of coordinates with Dirac Delta 
 Operators. If your name happens to be David Sanders, then read it VERY slowly.}):
 \begin{widetext}
 \begin{equation}
  A_\text{hopp} = \int\limits_{x_1 = -a}^a \rd x_1 \int\limits_{x_2 = -a}^a \rd x_2 
-\int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \delta(y_1-y_2).
+\int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \delta((y_1-y_2)\sqrt{2}).
 \end{equation}
 \end{widetext}
-Except for a factor $1/\sqrt{2}$ due to the change of variables
-with the Dirac Delta, everything procedes as before. The integration is
+The integration is
 simpler than in the other cases and results in 
 \begin{equation}
  A_\text{hopp}  =  16 b(a-r)^2
@@ -1017,8 +1015,6 @@ corresponds to the overlapping condition. Again, the hatched area of the exclusi
 condition has a simpler representation in polar coordinates, and the triangular
 (dotted) regions can be treated in rectangular coordinates.
 
-
-
 The areas representing different types of collision events require careful treatment of Dirac delta operators.
 In general, an event is represented by a certain constraint of the form
 $f(x_1, x_2 , y_1,y_2) =0 $; the measure of the corresponding three-dimensional manifold (surface) in configuration space is
@@ -1027,17 +1023,27 @@ $f(x_1, x_2 , y_1,y_2) =0 $; the measure of the corresponding three-dimensional 
   \indicator{(x_1-x_2)^2+(y_1-y_2)^2>4r^2 }
 \end{equation}
 We must take into account that any change of coordinates inside the Dirac delta will include
-a Jacobian factor for the volume element. 
+a Jacobian factor for the volume element. If we use coordinates that restrict
+the function to a coordinate that is orthogonal to the surface of section, then
+the Jacobian Factor is one. 
 
-Firstly
-we integrate over the set $y_1 - y_2=0$ which happens to be different to the set
-$y=0$ by a factor of $\sqrt{2}$ this is not obvious until one does the detailed calculations:
+The Hopping Surface of Section is a good example to understand this (see fig. \ref{DiagramaDelta01}. The set  $y_1 - y_2=0$ is the same set that is described by $y=0$. But
+the $\delta(y_1-y_2)$ operator describes a different function than $\dirac(y)$. If we think of this operators as the limit of smooth functions, the first approaches
+the limit in a non orthogonal manner, while the former does. So the first one
+introduces a factor on the evaluation, in this
+ simple case it is $1\sqrt{2}$. 
+This is not obvious until one does the detailed calculations:
 \begin{widetext}\label{ahopcart}
 \begin{equation}
  A_\text{hopp} = \int \limits_{x_1 = -a}^a \rd {x_1} \int\limits_{x_2 = -a}^a \rd {x_2}
 \int\limits_{y_1 = -b}^b \rd {y_1} \int\limits_{y_2 = -b}^b \rd {y_2} \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \delta(y_1-y_2).
 \end{equation}
 \end{widetext}
+The extra factor represents the fact that the Dirac Delta is not in a system which
+guaranties orthogonality to the surface of section. The best coordinates to represent
+the condition for vertical, hopping are the $y,Y$. This can be better understood
+in the diagram on figure \ref{transDelta}.
+
 We have to acknowledge this: using Dirac Delta Operators does not grant us permission
 to ignore multiplicative factors. As a simple example consider the following
 development:
