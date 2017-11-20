@@ -56,6 +56,10 @@ function dynamics(w, h, r, num_collisions)
     x = vcat(x1, x2)  # all position coords of both discs
     v = vcat(v1, v2)  # all velocity coords
 
+    # Code for wall collisions (in variable which):
+    # 1, 2, 3, 4 correspond to x1, y1, x2, y2 colliding with wall
+    # positive corresponds to right or top wall; negative corresponds to left or bottom wall
+    # 5 corresponds to two discs colliding
 
     # set up arrays so that all wall collisions achieved
     # point particle at centre of disc collides with wall moved by radius
