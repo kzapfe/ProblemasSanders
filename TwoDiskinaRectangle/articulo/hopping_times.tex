@@ -47,7 +47,7 @@
 \affiliation{Departamento de Física, Facultad de Ciencias, Universidad Nacional Autónoma de México}
 
 \author{W.~P.~Karel Zapfe}
-\email{karelz@fis.unam.mx}
+\email{karelz@cinvestav.mx}
 \affiliation{CINVESTAV-IPN, Mexico}
 
 
@@ -906,8 +906,8 @@ V_h(r,\alpha,\beta)/16 &=
 \indicator{\rho^2<2r^2 }
 \end{split}
 \end{equation}
-The integrator function becomes the limits over the $\rho$ integrating variable.
-We set the $\alpha, \beta$ as the other two limits. The perform the
+The indicator function becomes the limits over the $\rho$ integrating variable.
+We set the $\alpha, \beta$ as the other two limits. Then perform the
 integral over the $\rho$ which doesn't change in the three regimes.
 \begin{equation}
   \begin{split}
@@ -1017,95 +1017,99 @@ condition has a simpler representation in polar coordinates, and the triangular
 
 The areas representing different types of collision events require careful treatment of Dirac delta operators.
 In general, an event is represented by a certain constraint of the form
-$f(x_1, x_2 , y_1,y_2) =0 $; the measure of the corresponding three-dimensional manifold (surface) in configuration space is
+$f(x_1, x_2 , y_1,y_2) =0 $; the measure of the corresponding three-dimensional manifold (surface) in configuration space is, in general,
 \begin{equation}
-  A_f=\iiiint \rd {x_1}  \rd {x_2}  \rd {y_1}  \rd {y_2} \delta(f(x_1, x_2 , y_1,y_2))
-  \indicator{(x_1-x_2)^2+(y_1-y_2)^2>4r^2 }
+  A_f=\iiiint \rd {x_1}  \rd {x_2}  \rd {y_1}  \rd {y_2}
+  \frac{\delta(f(x_1, x_2 , y_1,y_2))}
+  {\lVert \nabla f \rVert}
+  \indicator{(x_1-x_2)^2+(y_1-y_2)^2>4r^2 }.
 \end{equation}
+The factor $1/ {\lVert \nabla f \rVert}$ appears due to the fact
+that the measuring process must be done orthogonormally to the surface. 
 We must take into account that any change of coordinates inside the Dirac delta will include
 a Jacobian factor for the volume element. If we use coordinates that restrict
-the function to a coordinate that is orthogonal to the surface of section, then
-the Jacobian Factor is one. 
+the function to a coordinate system such that  one  coordinate is orthogonal to the surface of section, then the correcting factor is one. Luckily, in
+our examples one of our two sets of coordinates allways fits the bill. 
 
 The Hopping Surface of Section is a good example to understand this (see fig. \ref{DiagramaDelta01}. The set  $y_1 - y_2=0$ is the same set that is described by $y=0$. But
-the $\delta(y_1-y_2)$ operator describes a different function than $\dirac(y)$. If we think of this operators as the limit of smooth functions, the first approaches
-the limit in a non orthogonal manner, while the former does. So the first one
+the $\delta(y_1-y_2)$ operator describes a different function than $\delta(y)$. If we think of this operators as the limit of smooth functions, the former approaches
+the limit in a non orthogonal manner, while the latter does. So the first one
 introduces a factor on the evaluation, in this
- simple case it is $1\sqrt{2}$. 
-This is not obvious until one does the detailed calculations:
+simple case it is $1\sqrt{2}$. So the function describing the surface (as $f(x)=0$) has
+to be expressed so that a small variation to the value gives an ortogonal
+displacement from the surface. 
 \begin{widetext}\label{ahopcart}
 \begin{equation}
  A_\text{hopp} = \int \limits_{x_1 = -a}^a \rd {x_1} \int\limits_{x_2 = -a}^a \rd {x_2}
-\int\limits_{y_1 = -b}^b \rd {y_1} \int\limits_{y_2 = -b}^b \rd {y_2} \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \delta(y_1-y_2).
+\int\limits_{y_1 = -b}^b \rd {y_1} \int\limits_{y_2 = -b}^b \rd {y_2} \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \frac{\delta(y_1-y_2)}{\sqrt{2}}.
 \end{equation}
 \end{widetext}
-The extra factor represents the fact that the Dirac Delta is not in a system which
-guaranties orthogonality to the surface of section. The best coordinates to represent
-the condition for vertical, hopping are the $y,Y$. This can be better understood
-in the diagram on figure \ref{transDelta}.
 
-We have to acknowledge this: using Dirac Delta Operators does not grant us permission
-to ignore multiplicative factors. As a simple example consider the following
-development:
-%\begin{equation}
-  \begin{align*}
-    \int f(x) \delta(a x) \rd x \\
-    \text{ Let } y=ax \text{, then } \rd y = a \, \rd x\\
-    \int f(y/a) \frac{\delta(y)}{a} \rd y 
-  \end{align*}
- % \end{equation}
-  Then we apply this to the expression in eq. \ref{ahopcart} and work the following
+
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{FigurasPerfectas/DiagramaDelta01.pdf}
+\caption{The surface $y_1=y_2$ and the approximation to its measure by
+  $\epsilon$-width characteristic functions. Using the original coordinates
+  we perform an error of $\sqrt{2}$, but using the $y,Y$ coordinates
+  we arrive to the correct expresion. Using the MonteCarlo Numerics, this
+  error is dificult to detect, because both the numeric and the wrongly solved
+  analityc formula have the same multiplicative mistake. Is only when we plug this into
+Machta Zwanzig Formula that the error becomes evident. }\label{DiagramaDelta01}
+\end{figure}
+
+It turns out that the simpler approach is using directly the expression in $y,Y$
+coordinates, where the surface is allready orthogonal to the $Y$ axis. 
+We apply this to the expression in eq. \ref{ahopcart} and work the following
   derivation:
   \begin{align}
     A_\text{hopp}/16 & = \int_0^{a\sqrt{2}} \rd x  \int_0^{b \sqrt{2}} \rd y
     \int_0^{a\sqrt{2}-x} \rd X  \int_0^{b \sqrt{2}-y} \rd Y
-    \indicator{x^2+y^2 \geq 2 r^2} \delta (y\sqrt{2})\\
-    &= \frac{1}{\sqrt{2}} \int_0^{a\sqrt{2}} \rd x  \int_0^{b \sqrt{2}} \rd y
+    \indicator{x^2+y^2 \geq 2 r^2} \delta (y)\\
+    &=  \int_0^{a\sqrt{2}} \rd x  \int_0^{b \sqrt{2}} \rd y
     (a\sqrt{2}-x)(b\sqrt{2}-y)
     \indicator{x^2+y^2 \geq 2 r^2} \delta (y)\\
-    &=\frac{1}{\sqrt{2}} \int_0^{a\sqrt{2}} \rd x
+    &= \int_0^{a\sqrt{2}} \rd x
     \indicator{x^2\geq 2 r^2} \\
-    &=\frac{1}{\sqrt{2}} \int_{r\sqrt{2}}^{a\sqrt{2}} \rd x
+    &= \int_{r\sqrt{2}}^{a\sqrt{2}} \rd x
     (2ab-xb\sqrt{2})\\
-    &=\frac{1}{\sqrt{2}}\biggl[2abx-\frac{x^2b}{\sqrt{2}} \biggr]_{r\sqrt{2}}^{a\sqrt{2}}\\
-      A_\text{hopp}&=16b(a-r)^2
-  \end{align}  
+    &=\biggl[2abx-\frac{x^2b}{\sqrt{2}} \biggr]_{r\sqrt{2}}^{a\sqrt{2}}\\
+      A_\text{hopp}&=16\sqrt{2}b(a-r)^2
+  \end{align}
+
+  
   For other areas we take similar precautions. The area of collisions in
-  the 4D configuration space is when $\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}=2r$, so the
-  expression for its size would be:
-  \begin{equation}
-    A_\text{col}=\iiiint _{-a,-a,-b,-b}^{a,a,bb,}
-    \rd x_1 \rd x_2 \rd y_1 \rd y_2 
-    \delta (\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}-2r).
-    \end{equation}
-  Then we procede to juggle the expression inside the Dirac Delta operator:
+  the 4D configuration space is when $\sqrt{x^2+y^2}=\sqrt{2}r$, and the expression
+  in $x_1,x_2,y_1,y_2$ is again inconvienent as the normal to the surface (the
+  radial direction) is more clearly expressed in the unindexed set of
+  coordinates. We start then directly at the transformed expression again:
   \begin{align}
     A_\text{col}/16 & =\iiiint _{0,0,0,0}^{a\sqrt{2},a\sqrt{2}-x,b\sqrt{2},b\sqrt{2}-y}
     \rd x \rd X \rd y \rd Y
-    \delta (\sqrt{2x^2+2y^2}-2r)\\
+    \delta (\sqrt{x^2+y^2}-\sqrt{2}r)\\
     A_\text{col}/16 & =\iint _{0,0}^{a\sqrt{2},b\sqrt{2}}
     \rd x \rd y 
    \bigl[ 2ab-\sqrt{2}(ay+bx)+xy \bigr]
-    \delta (\sqrt{2x^2+2y^2}-2r).
+    \delta (\sqrt{x^2+y^2}-\sqrt{2}r)\\
     \end{align}
   We change to polar coordinates as we did in \ref{VolApen}:
   \begin{align}
-    x^2+y^2 =: \rho   \Rightarrow &  \delta(\sqrt{2x^2+2y^2}-2r) \rightarrow
-    \delta(\sqrt{2}\rho-2r)   
+    x^2+y^2 =: \rho \\   \Rightarrow   \delta(\sqrt{x^2+y^2}-\sqrt{2}r) \rightarrow
+    \delta(\rho-\sqrt{2}r)   
     \end{align}
   Then we continue straightforwardly:
     \begin{align}
-    A_\text{col}/4 & =\iint 
+    A_\text{col}/16 & =\iint 
     \rd \theta \rd \rho \rho
     \bigl[2ab-\sqrt{2}\rho(a\sin\theta+b\cos\theta)+\rho^2\cos\theta\sin\theta
       \bigr]
-    \delta(\sqrt{2}\rho-2r) \\
-    &=\int_\beta^\alpha \rd \theta r
+    \delta(\rho-\sqrt{2}r) \\
+    &=\int_\beta^\alpha \rd \theta \sqrt{2}r
     \bigl[
       2ab-2r(a\sin\theta+b\cos\theta)+2r^2\cos\theta\sin\theta)
       \bigr] \\
-    & = 2abr(\alpha-\beta) + 2r^2 [a (\cos \alpha-\cos\beta) -b (\sin\alpha -\sin\beta)]
-    +r^3(\sin^2 \alpha -\sin^2\beta)
+    A_\text{col} & = 16\sqrt{2} \bigl( 2abr(\alpha-\beta)
+    + 2r^2 [a (\cos \alpha-\cos\beta) -b (\sin\alpha -\sin\beta)]
+     + r^3(\sin^2 \alpha -\sin^2\beta) \bigr)
     \end{align}
     We have used the same trick as in previous subsection to obtain a general expression
     that works even when hopping is not possible. In the case of $r<w/4$ (all hopping possible)
@@ -1116,7 +1120,10 @@ development:
     the same manner.
     
 
-    For a collision with the wall we apply again a Dirac Delta, and then a change
+    For a collision with the wall the adecuate coordinates this time the
+    adecuate ones are the indexed ones, like $x_1, x_2$.
+
+    and then a change
     of variables on the three surviving integrating coordinates. Once again, we
     have to be careful with the multiplicative factors that appear due to change
     of variables. Let us suppose that we want the area that represents hits of
