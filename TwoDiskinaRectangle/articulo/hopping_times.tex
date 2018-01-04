@@ -920,7 +920,8 @@ integral over the $\rho$ which doesn't change in the three regimes.
   \end{equation}
 Now we integrate over the $\theta$ variable:
 \begin{equation}\label{Volrtheta}
-  V_h(r,\alpha,\beta)/16 = 2r^2ab\theta+4/3*r^3(a\cos\theta-b\sin\theta)
+  V_h(r,\alpha,\beta)/16 = 2r^2ab\theta
+  +4/3r^3(a\cos\theta-b\sin\theta)
   +\frac{r^4 \sin^2\theta}{2} \Bigg\vert_\beta^\alpha
 \end{equation}
 For the case in which all hopping is posible, the expression in eq. \ref{Volrtheta}
@@ -931,13 +932,7 @@ facts:
   \sin\alpha&=b/r & \cos\beta&=a/r 
 \end{align}
 and the corresponding inverse relations and Pythagoric identities.
-Then, in the case that all hopping is excluded, we end with the following beautiful
-formula for excluded volume.
-\begin{multline}\label{VolCaso3}
-  V(r \vert r>w/4 )=32abr^2(\arcsin(b/r)-\arccos(a/r))\\
-  +\frac{64r^3}{3}\biggl((a\sqrt{1-b^2/r^2}+b\sqrt{1-a^2/r^2})-(a^2+b^2)/r\biggr)\\
-  +r^2/2(a^2+b^2-r^2)
-\end{multline}
+
 
 Now we treat the dotted areas in the figures \ref{Caso2} and \ref{Caso3}. Those are triangular
 and are more easily treated in Cartesian coordinates. We start with the upper
@@ -1131,7 +1126,8 @@ We apply this to the expression in eq. \ref{ahopcart} and work the following
     \begin{align}
       A_{x_2=a} & =\iiiint_{-a,-a,-b,-b}^{a,a,b,b} \rd x_1 \rd x_2 \rd y_1 \rd y_2 
       \indicator{(x_1-x_2)^2+(y_1-y_2)^2 \geq (2 r)^2} \delta (x_2-a)\\
-      &=\iiint_{-a,-b,-b}^{a,b,b} \indicator{(x_1-a)^2+(y_1-y_2)^2 \geq (2 r)^2} 
+      &=\iiint_{-a,-b,-b}^{a,b,b} \rd x_1  \rd y_1 \rd y_2 
+      \indicator{(x_1-a)^2+(y_1-y_2)^2 \geq (2 r)^2} 
     \end{align}
     Changing variables;
     \begin{equation}
@@ -1139,10 +1135,10 @@ We apply this to the expression in eq. \ref{ahopcart} and work the following
     \end{equation}
     Integrating over $x$,
     \begin{align}\label{areachoquexy}
-      A_{x_2=a} & =\sqrt{2}\iiint_{-\sqrt{2}a,-\sqrt{2}b,-\sqrt{2}b+|y]}^{\sqrt{2}a,\sqrt{2}b,\sqrt{2}b-|y|}
+      A_{x_2=a} & =\sqrt{2}\iiint_{-\sqrt{2}a,-\sqrt{2}b,-\sqrt{2}b+|y]}^{0,\sqrt{2}b,\sqrt{2}b-|y|}
         \rd x \rd y \rd Y 
       \indicator{(x^2+y^2 \geq 2 r^2} \\
-      &=2\sqrt{2}\iint_{-\sqrt{2}a,-\sqrt{2}b}^{\sqrt{2}a,\sqrt{2}b}
+      &=2\sqrt{2}\iint_{-\sqrt{2}a,-\sqrt{2}b}^{0,\sqrt{2}b}
         \rd x \rd y (\sqrt{2} b - |y|)
       \indicator{(x^2+y^2 \geq 2 r^2}
     \end{align}
@@ -1179,30 +1175,31 @@ We apply this to the expression in eq. \ref{ahopcart} and work the following
     space evaluation.
 
     \begin{align}
-      A_{x_2=a}/4 & =2\sqrt{2}\iint_{0,0}^{\sqrt{2}a,\sqrt{2}b}
+      A_{x_2=a} & =4\sqrt{2}\iint_{0,0}^{\sqrt{2}a,\sqrt{2}b}
         \rd x \rd y (\sqrt{2} b - y)
-        \indicator{(x^2+y^2 \geq 2 r^2}\\
-     &=\underbrace{2\sqrt{2}\iint_{0,0}^{\sqrt{2}a,\sqrt{2}b}
+        \indicator{(x^2+y^2) \geq 2 r^2}\\
+     &=\underbrace{4\sqrt{2}\iint_{0,0}^{\sqrt{2}a,\sqrt{2}b}
         \rd x \rd y (\sqrt{2} b - y)}_{\text{whole space}}
-      -\underbrace{2\sqrt{2}\iint_{0,0}^{\sqrt{2}a,\sqrt{2}b}
+        -\underbrace{
+          4\sqrt{2}\iint_{0,0}^{\sqrt{2}a,\sqrt{2}b}
         \rd x \rd y \rd Y 
-        \indicator{(x^2+y^2 < 2 r^2}}_{\text{excluded space}}
+        \indicator{(x^2+y^2) < 2 r^2}(\sqrt{2} b - y)}_{\text{excluded space}}
        \end{align}
     The integrals are again routine to evaluate: the whole space part
     gives:
     \begin{equation}
-      A_{\text{whole}}/4=16ab^2
+      A_{\text{whole}}/4=8ab^2
     \end{equation}
     For the excluded part, we perform the same routine of evaluating the circular part
-    in polar coordinates, and the triangular parts if they exists, in Cartesian.
+    in polar coordinates, and the triangular parts if they exist, in Cartesian.
     From the circular sector we get (see fig \ref{CasosIntegra} and the following explanation
     for $\alpha, \beta$ variables):
     \begin{equation}
-      A_{sector}/4=16(r^2(\alpha-\beta)+2r^3/3(\cos\alpha - \cos\beta)
+      A_{sector}=8 b r^2(\alpha-\beta)+16r^3/3(\cos\alpha - \cos\beta)
     \end{equation}
-    The upper triangle where to give, for $\alpha \neq \pi/2$,
+    The upper triangle where to give, for $\alpha < \pi/2$,
     \begin{equation}
-    A_{ut}/4=\frac{4\sqrt{2}}{3}b^2\sqrt{r^2-b^2}
+    A_{ut}=\frac{8}{3}b^2\sqrt{r^2-b^2}
     \end{equation}
     And the lower triangle a similar expression with $a$ instead of $b$.
 
