@@ -206,7 +206,7 @@ two discs in the original space.
 \section{Mean time between events}
 
 
-\subsection{Known facts on collision rates}
+\subsection{Known facts on collision rates}\label{knownfacts}
 
 A system of $N$ hard spheres confined by hard walls in a $D$-dimensional
 space may be treated as a billiard system 
@@ -240,7 +240,7 @@ where $\Gamma(\cdot)$ is the gamma function.
 $|B^{D-1}|$ is the volume of the unit ball 
 in $\RR^{D-1}$, given by $|B^{D-1}| = |S^{D-2}| / (D-1)$.
 In Equation~\eqref{meanfreetime},  the particle has 
-its velocity scaled to unity.  USE GENERAL VALUE INSTEAD?
+its velocity scaled to unity. 
 
 Machta and Zwanzig \cite{MachtaZwan} used a similar method to derive an escape 
 time across a non-existent boundary by treating it as a recurrence time.
@@ -253,8 +253,15 @@ in which the disk interchange their horizontal position. This is simply
 \begin{equation} \label{condchoque}
 x_1 = x_2.
 \end{equation}
-We call such an event a ``hop''. Other first events shall also be studied
-to test the robustness of the methods followed here.
+We call such an event a ``hop''. This kind of events reveals that
+the equation \ref{meanfreetime} has shortcommings: it does not
+account for the possibility that the Cross Section could be reached
+at two different sides. For all practial purposes
+is as if the Area of the Cross Section is twice as big, representing
+two ways in that the event represented by the Cross Section could be
+fullfiled. In the hopping example, the two events are
+that Disc One gets lower than Disc Two or the other way around. 
+
 
 Given that each disk has different momentum, but
 they can interchange it without affecting the
@@ -272,8 +279,11 @@ giving for
 the mean time between events the general formula:
 \begin{equation} \label{meantimegeneral}
   \mean{\tau} =  \frac{1}{\sqrt{2E / m}} 
-\frac{|Q| \, |S^3|} {|A| \, |B^3|}.	
+\frac{|Q| \, |S^3|} {s \, |A| \, |B^3|},	
 \end{equation}
+where $s$ is $1$ or $2$ depending if the cross section can be reached
+in one or two sides.
+
 We respect the convention of $E=1/2, m=1$ and we end up with
 \begin{equation} \label{meantimegeneralredux}
    \frac{1}{\sqrt{2E / m}} 
@@ -286,7 +296,7 @@ the collision conditions. We devote the next section to
 show the procedure, details can be found in the Appendix.
 
 
-\section{Calculation of Volumes an dAreas}
+\section{Calculation of Volumes and Areas}
 
 The configuration
 space is an four dimensional prism with a four dimensional
@@ -1057,19 +1067,27 @@ coordinates, where the surface is allready orthogonal to the $Y$ axis.
 We apply this to the expression in eq. \ref{ahopcart} and work the following
   derivation:
   \begin{align}
-    A_\text{hopp}/16 & = \int_0^{a\sqrt{2}} \rd x  \int_0^{b \sqrt{2}} \rd y
+    A_\text{hopp}/8 & = \int_0^{a\sqrt{2}} \rd x  \int_{-b\sqrt{2}}^{b \sqrt{2}} \rd y
     \int_0^{a\sqrt{2}-x} \rd X  \int_0^{b \sqrt{2}-y} \rd Y
-    \indicator{x^2+y^2 \geq 2 r^2} \delta (y)\\
-    &=  \int_0^{a\sqrt{2}} \rd x  \int_0^{b \sqrt{2}} \rd y
+    \indicator{x^2+y^2 \geq 2 r^2} \delta (y) \label{pasoraro} \\
+    &=  \int_0^{a\sqrt{2}} \rd x  \int_{-b\sqrt{2}}^{b \sqrt{2}} \rd y
     (a\sqrt{2}-x)(b\sqrt{2}-y)
     \indicator{x^2+y^2 \geq 2 r^2} \delta (y)\\
-    &= \int_0^{a\sqrt{2}} \rd x
+    &= \int_0^{a\sqrt{2}} \rd x b\sqrt{2} (a\sqrt{2}-x)
     \indicator{x^2\geq 2 r^2} \\
     &= \int_{r\sqrt{2}}^{a\sqrt{2}} \rd x
     (2ab-xb\sqrt{2})\\
     &=\biggl[2abx-\frac{x^2b}{\sqrt{2}} \biggr]_{r\sqrt{2}}^{a\sqrt{2}}\\
-      A_\text{hopp}&=16\sqrt{2}b(a-r)^2
+      A_\text{hopp}&=8\sqrt{2}b(a-r)^2
   \end{align}
+  Notice how in the step \ref{pasoraro} we cannot reduce the symmetry in
+  $y$ because of the Dirac Delta (half a Dirac Delta is a bothersome concept).
+  Here we have to apply the reasoning that was outlined in section \ref{knownfacts}.
+  Given that this event can be realized in two ways which are
+  distingishable by their direction (disc one goes below disc two or the
+  other way around), it is as if the surface has two sides, so, we can take
+  into account a factor of two more in this expression or include it on
+  the expression for mean time in the denominator.
 
   
   For other areas we take similar precautions. The area of collisions in
@@ -1117,7 +1135,6 @@ We apply this to the expression in eq. \ref{ahopcart} and work the following
 
     For a collision with the wall the adecuate coordinates this time the
     adecuate ones are the indexed ones, like $x_1, x_2$.
-
     and then a change
     of variables on the three surviving integrating coordinates. Once again, we
     have to be careful with the multiplicative factors that appear due to change
@@ -1157,19 +1174,16 @@ We apply this to the expression in eq. \ref{ahopcart} and work the following
     that never mix under the dynamics (ergodic components). So we have to take that
     into account. When $h/4<r<w/4$, a disk cannot interchange left-right positions,
     but can still move across all vertical available space.  After $r\geq w/4$,
-    the system gets split again into more disjoint components and the
-    area representing ``hitting the right wall'' is smaller (altough the probabilty is
-    higher). So, when we calculate the ``avaible'' volume, we shall only use the
+    the system gets split again into two more disjoint components.
+    So, when we calculate the ``avaible'' volume, we shall only use the
     part of the volume that belongs to the specific set that has a possibility of
     generating an event. We shall take into account what is written in the last
-    paragraphs of the previous subsection. In this particular case, both the
-    volume and area split into disjoint components with the same multiplicative
-    factors, namely $1/2$ or $1/4$ of the total avaible. So this disapears in the
-    result for mean times, but in the numeric, if we start with the discs in some
-    prohibiting initial configuration, we may obtain the ``infinite time'' case.
-    Taking that into account we wont integrate over the whole range, but only over
-    the $1/4$ range, and then use the right multiplicative factor as needed.
-
+    paragraphs of the previous subsection. In this particular case, it is
+    if as the volume gets split into disjoint components, namely 1,2 or 4 of the
+    total avaible. This can be seen in the numerics as a discontinuity both
+    in  the simulated data and in the exact expression. The avaible area
+    for this event remains the same. 
+    
     Again, it is simpler to evaluate the last expression in eq. \ref{areachoquexy}
     in the excluded space and then to subtract that from the whole configuration
     space evaluation.
