@@ -22,8 +22,8 @@ function initial_condition(w, h, r)
         x1, x2 = rand(Uniform(-a, a), 2)
         y1, y2 = rand(Uniform(-b, b), 2)
     end
-
-    # generate velocities whose sum squared is 1 by rejection method
+ 
+   # generate velocities whose sum squared is 1 by rejection method
     v = ones(4)
 
     while normsq(v) > 1
