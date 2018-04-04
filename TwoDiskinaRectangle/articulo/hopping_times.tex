@@ -70,15 +70,16 @@ In all cases, we compare exact analytical results against Monte Carlo simulation
 %\typeout{`` this is ``  \the\columnwidth }
 
 Collision times play a fundamental role in statistical mechanics, since properties
-such as mixing, reaction and diffusion rates depend on them REFs.
-A paradigmatic model, introduced by Boltzmann REF Szasz conjecture for centuries,
+such as mixing, reaction and diffusion rates depend on them \cite{Boltz72, Tolman, VanKampen}.
+A paradigmatic model, introduced by Boltzmann allmost 150 years ago \cite{Boltz72, SzaszBook00},
 consists of a fluid of hard spheres colliding with each other, either in a periodic torus or 
 a rectangular box.
 
 The simplest such system, which is still non-trivial, is that of two discs in a box.
 The discs move rectilinearly until they undergo
-elastic collisions either with a wall of the box, or with one another; this has been called ``inertial motion'' (to distinguish it from Brownian motion) REF.
-Phenomena such as ... have been studied in this system, both analytically 
+elastic collisions either with a wall of the box, or with one another; this has been called ``inertial motion'' (to distinguish it from Brownian motion) \cite{Bowles04}.
+Phenomena such as transport, collision and reaction
+have been studied in this systems, both analytically 
  \cite{Awazu01, Munakata02, Suh05} and numerically REF MacElroy
  Events of physical interest in this system are \emph{hopping},
 in which two particles interchange position, either vertically or horizontally,
@@ -104,11 +105,11 @@ inertial motion, as a function of the geometrical parameters of the system. Such
 with suitable objects (``scatterers'') \cite{SzaszBook00}. 
 In particular, the system of two discs in a box is hyperbolic and ergodic when the discs are able to pass each other \cite{Sim99}. 
 
-We can thus apply a key result from ergodic theory on mean collision times  REF Chernov 1997, and hence obtain analytic expressions 
+We can thus apply a key result from ergodic theory on mean collision times \cite{Chernov97}, and hence obtain analytic expressions 
 for times between hops, between wall collisions, and between disc collisions. These are also verified numerically. 
 %The difficulty in the calculations lies in correctly accounting for various
 %factors occurring in the expressions. 
-In certain asymptotic regimes, we recover previously obtained power-law exponents REF Bowles.
+In certain asymptotic regimes, we recover previously obtained power-law exponents \cite{Bowles04}.
 
 
 %The previous  results on
@@ -211,13 +212,13 @@ This can be thought of as a mean return time to the $(d-1)$-dimensional
 
 For a particle with unit velocity moving in a general billiard table, there is 
 an exact expression for the mean time between 
-collisions of the particle with a given wall REF Chernov 1997:
+collisions of the particle with a given wall \cite{Chernov97}:
 
 \begin{equation}\label{meanfreetime}
- \mean{\tau} = \frac{|Q|}{|A|} \frac{|S^{d-1}|} {|B^{d-1}|}.
+ \mean{\tau} = \frac{|Q|}{|A|s} \frac{|S^{d-1}|} {|B^{d-1}|}.
 \end{equation}
 
-TODO: ADD s TO THIS FORMULA (CALL IT SOMETHING DIFFERNT)
+\pmb{TODO: Check if the s is well explained on the text below.}
 
 Here, $|Q|$ denotes the $d$-dimensional volume of the available 
 space in the billiard and 
@@ -242,8 +243,7 @@ in which the discs interchange their horizontal or vertical position, i.e.
 \begin{equation} \label{condchoque}
 x_1 = x_2  \qquad \text{or} \qquad y_1 = y_2.
 \end{equation}
-
-In this case, the cross-section can be reached from either side, so that the area
+In this kind of events, the cross-section can be reached from either side, so that the area
 $A$ is effectively twice as large; this will be given by a ``sidedness'' factor $s = 1$ or $s=2$ in the formula
 for $\mean{\tau}$.
 
@@ -317,7 +317,8 @@ $$ \int  \mathrm{d} \mathbf{x} :=  \int_{x_1 = -a}^a  \int_{x_2 = -a}^a  \int_{y
 is a four-dimensional integral over the whole volume, and 
 $\indicatorsymbol_Z$ is the indicator function of the set $Z$, 
 given by $\indicatorsymbol_Z (\mathbf{x}) = 1$ if $\mathbf{x} \in Z$, and $=0$ if $\mathbf{x} \notin Z$.
-Fig.~\ref{diagintegral01} shows the shape of the configuration space.
+Fig.~\ref{diagintegral01} shows a diagram of the product of
+spaces that give origin to the configuration space.
 Recall that $a$ and $b$ are functions of $r$, 
 but we suppress this explicit dependence for simplicity.
 
@@ -325,15 +326,17 @@ but we suppress this explicit dependence for simplicity.
   \begin{center}
     \includegraphics[width=0.45\textwidth]{FigurasPerfectas/diagramintegra01.pdf}
   \end{center}
-  \caption{The space to integrate is the product of the subspaces
+  \caption{The space to integrate is the product of the spaces
     belonging to horizontal and vertical coordinates. The colored
-    bands show the excluded set, where the condition 
+    bands show the excluded set, that is, the complement of $Z$, where the condition 
     $ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 $ is not satisfied.
     The width of each band is dependent on the particular 
     point of evaluation
-    on the \emph{other} subspace. Due to 
+    on the other subspace. Due to 
     symmetry, we only evaluate the area in stripes and
     multiply the result by 16. I DON'T UNDERSTAND THIS PICTURE.
+    \pmb{I do not know if I can make it simpler or give a sequence
+    of pictures so that is more understandable}
     \label{diagintegral01}  
     }
 \end{figure}
@@ -439,14 +442,14 @@ $[-a,a] \times [-b,b]$ and
 counting the fraction of initial conditions for 
 which the two discs do not overlap (rejecting those where is overlap); the results are shown in Fig.~\ref{VolMonteC}.
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/VolCyl02.pdf}
-\caption{Volume?? $V_\text{cyl}$ of exclusion cylinder, compared
-   to numerical results. 
-  \pmb{esta es la grafica antigua, no el caso mas general}
-}%\label{VolMonteC}%% 
-\end{figure}
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/VolCyl02.pdf}
+%\caption{Volume?? $V_\text{cyl}$ of exclusion cylinder, compared
+%   to numerical results. 
+%  \pmb{esta es la grafica antigua, no el caso mas general}
+%}%\label{VolMonteC}%% 
+%\end{figure}
 
 \begin{figure}[h]
 \centering
@@ -477,7 +480,7 @@ The surface area of $S$ is then given by
 A(S) = \int \indicatorsymbol_Z(\mathbf{x}) \, \delta(g(\mathbf{x})) \, \mathrm{d} \mathbf{x}.
 \label{eq:surface-area}
 \end{equation}
-To evaluate this, we use the relation REF Hörmander sec 6.1
+To evaluate this, we use the relation in H\"ormanders Book, sec 6.1 \cite{Hormander83}:
 \begin{equation}
 \int_{\mathbf{R}^d} f(\mathbf{x}) \, \delta(g(\mathbf{x})) \, \mathrm{d} \mathbf{x} = \int_{g^{-1}(0)}\frac{f(\mathbf{x})}{\| \mathbf{\nabla}g(\mathbf{x}) \|} \, \mathrm{d}S,
 \label{eq:surface-dirac}
@@ -490,21 +493,24 @@ The efficiency could be improved by a Markov Chain Monte Carlo algorithm that re
 
 \subsubsection{Hopping}
 
-The condition for vertical hopping is when the vertical positions of the two discs are equal FIG:
-$$g_\text{hop}(\mathbf{x}) := y_1 - y_2 = 0.$$
+\pmb{Checa bien esto: esta es la discucion infinita que hemos tenido mil veces.}
+The condition for vertical hopping is when the vertical positions of the two discs are equal FIG, that is: $y_1-y_2=0$. Nevertheless, this doesn't represent the area for hopping,
+in the same way that $y=x$ and making $ \int \delta(y-x) dx dy$  would give you an erroneus length of the diagonal line. The expression that gives the area is
+$$g_\text{hop}(\mathbf{x}) := (y_1 - y_2)/\sqrt{2} = 0.$$
 Applying Eqs.~\eqref{eq:surface-area} and \eqref{eq:surface-dirac}, we obtain
 %
 \begin{widetext}
 \begin{equation}
  A_\text{hop} = \int\limits_{x_1 = -a}^a \rd x_1 \int\limits_{x_2 = -a}^a \rd x_2 
-\int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \, \delta(y_1-y_2).
+\int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \, \delta(\frac{y_1-y_2}{\sqrt{2}}.
 \end{equation}
 \end{widetext}
 IS THIS WRITTEN CORRECTLY?
+\pmb{NOW IT IS}
 
 Carrying out the integrals gives
  \begin{equation}
- A_\text{hop}  =  16 b(a-r)^2.
+ A_\text{hop}  =  16 \sqrt{2} b(a-r)^2.
 \end{equation}
 As before, the formula is no longer valid for $r > w/4$. In this case,
 vertical hopping becomes impossible for a larger radius.
@@ -534,12 +540,14 @@ exactly at zero, the correct value. }
 
 The area which represents collisions between the two discs is the surface area of the cylinder
 that lies within the prism, given by
-$$g_\text{collision}(\mathbf{x}) := (x_1-x_2)^2 + (y_1-y_2)^2 - (2r)^2 = 0.$$
+$$g_\text{collision}(\mathbf{x}) := ((x_1-x_2)/\sqrt{2})^2 + ((y_1-y_2)/\sqrt{2})^2
+- 2*(r)^2) = 0.$$
+The factors have the same reasons to appear as in the case of the hop condition.
 
 For $r<w/4$, we find for the corresponding area
 \begin{align}\label{AreaChoque}
-A_\text{collision} & =  
-16\pi a b r -32 (a+b)r^2 +16 r^3.
+A_\text{collision} & =  \sqrt{2} (
+16\pi a b r -32 (a+b)r^2 +16 r^3).
 \end{align}
 
 We proceed in the same manner as last section, checking numerically which
@@ -573,7 +581,11 @@ The integration gives
  % & = 2(w-d)^2 (h-2)^2- \frac{\pi}{2} (h-d) d^2 +\frac{2}{3}d^3 
 \end{align}
 Once again, a simple Monte Carlo procedure verifies this result,
-shown in Fig.~\ref{area1derecha}. 
+shown in Fig.~\ref{area1derecha}.
+This time, the correcting factors of $\sqrt{2}$ don't appear, as
+these geometrical areas are orthogonal or parallel to the original
+position coordinates.
+
 
 \begin{figure}
 \centering
@@ -630,8 +642,8 @@ that depends only on the width of the table, since then the discs have almost no
 %%Esta ya la cheque con la numerica y esta PERFECTA, segun gnuplot y todos los 
 %%Scripts
 \end{equation}
-Also of interest is the limit $r\sim a/4$, where hopping becomes
-impossible. WHICH KIND OF HOPPING? The lower term goes to zero as $r^2$ become approximately constant.
+Also of interest is the limit $r\sim a/4$, where vertical hopping becomes
+impossible.  The lower term goes to zero as $r^2$ become approximately constant.
 This agrees with heuristic arguments. 
 In the particular case $w=h$ as in our examples,
 setting $r=h/4-\epsilon$ gives the limiting behaviour 
@@ -644,7 +656,8 @@ setting $r=h/4-\epsilon$ gives the limiting behaviour
 This last expression coincides  ?? with that of Bowles et al. \cite[Equation~12]{Bowles04},
 which
 predicts the same exponent for the behaviour of this hopping time. IS ONLY THE EXPONENT THE SAME OR THE WHOLE EXPRESSION? THEY ARE DOING FIRST PASSAGE TIME. The figures
-2 and 4 of their article correspond to that regime. 
+2 and 4 of their article correspond to that regime.
+\pmb{ YES. ONLY THE EXPONENT. It is to be EXPECTED}
 
 \subsection{Mean disc collision time}
 
