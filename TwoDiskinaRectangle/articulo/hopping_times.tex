@@ -502,7 +502,7 @@ Applying Eqs.~\eqref{eq:surface-area} and \eqref{eq:surface-dirac}, we obtain
 \begin{widetext}
 \begin{equation}
  A_\text{hop} = \int\limits_{x_1 = -a}^a \rd x_1 \int\limits_{x_2 = -a}^a \rd x_2 
-\int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \, \delta(\frac{y_1-y_2}{\sqrt{2}}.
+\int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \, \delta(\frac{y_1-y_2}{\sqrt{2}}).
 \end{equation}
 \end{widetext}
 IS THIS WRITTEN CORRECTLY?
@@ -605,9 +605,9 @@ Thus the cross section area for any impact on any wall is
  A_\text{walls} & = 32 a b (a+b)-16 \pi r^2 (a+b) +\frac{128}{3}r^3.
  %&=  4 (w-d) (h-d)  (w+h-2d) -2 \pi d^2 (w + h-2 d) +\frac{16}{3}d^3. 
 \end{align}
-The cross section area for any collision is then 
-the sum of the last expression
-and the area for collisions between discs, \eqref{AreaChoque}.
+%The cross section area for any collision is then 
+%the sum of the last expression
+%and the area for collisions between discs, \eqref{AreaChoque}.
 
 
 \section{Exact mean event times}
@@ -620,44 +620,36 @@ exact mean inter-hop times, as well as wall collision and disc collision times.
 \subsection{Mean hopping time}
 
  CHECK THE FORMULAS AND REVISIT THE ASYMPTOTICS 
-
+\pmb{Done}
+ 
 Inserting the results of the previous section 
 into the formula for the mean times for crossing
 surfaces of section, \eqref{meantimegeneral}, finally gives exact mean inter-event times.
 
-For horizontal
+For vertical
 hops we have:
 \begin{equation}\label{hoptau}
  \mean{\tau_\text{hop}} = 	
-\frac{3 \pi}{2\sqrt{2}}
+\frac{3 \pi}{4\sqrt{2}}
 \frac{2 a^{2} b^{2}  - 2 \pi a b r^{2} + \textstyle \frac{a+b}{3}  (2r)^{3}  -  r^4}
-{ a \sqrt{2}  ( b - r )^2}.
+{ b \sqrt{2}  ( a - r )^2}.
 \end{equation}
 Recall that here there is a factor $s = 2$.
 The limiting form for small discs is revealing: a constant
-that depends only on the width of the table, since then the discs have almost no interaction:
+that depends only on the height of the table, since then the discs have almost no interaction:
 \begin{equation}\label{hoptaulimit}
  \mean{\tau_\text{hop}} \overset{r \to 0}{\sim}
-\frac{3 \pi}{4}w.
-%%Esta ya la cheque con la numerica y esta PERFECTA, segun gnuplot y todos los 
-%%Scripts
+\frac{3 \pi}{8\sqrt{2}}h.
 \end{equation}
-Also of interest is the limit $r\sim a/4$, where vertical hopping becomes
-impossible.  The lower term goes to zero as $r^2$ become approximately constant.
-This agrees with heuristic arguments. 
-In the particular case $w=h$ as in our examples,
-setting $r=h/4-\epsilon$ gives the limiting behaviour 
-\begin{equation}
- \mean{\tau_\text{hop}}(\epsilon) \overset{\epsilon \to 0}{\sim}
-\frac{3 \pi}{8}
-\frac{(1-\frac{2\pi+1}{32})}
-{ \epsilon^2} w^3
-\end{equation} 
-This last expression coincides  ?? with that of Bowles et al. \cite[Equation~12]{Bowles04},
-which
-predicts the same exponent for the behaviour of this hopping time. IS ONLY THE EXPONENT THE SAME OR THE WHOLE EXPRESSION? THEY ARE DOING FIRST PASSAGE TIME. The figures
-2 and 4 of their article correspond to that regime.
-\pmb{ YES. ONLY THE EXPONENT. It is to be EXPECTED}
+Also of interest is the limit $r\sim w/4$, where vertical hopping becomes
+impossible.  The lower term goes to zero quadratically, while the avaible volume
+is still positive (except in the degenerate case that $w=2h$). The exact expression
+is cumbersome, due to the fact that the general volume expression in such a
+case is loaded with inverse trigonometric functions and doesn't appeal to
+intuiton, but the leading term is exactly $w^2(h/2-w/4)^2$, so, it goes to infinity
+like $1/x^2$. 
+
+
 
 \subsection{Mean disc collision time}
 
@@ -681,28 +673,41 @@ the corresponding area. The time between collisions should go to zero.
 
 \subsection{Mean wall collision time}
 
-Lastly, for wall collisions we obtain
+Lastly, for a specific disc colliding with a specific vertical wall we have
 \begin{equation}\label{impactwall}
  \mean{\tau_\text{wall}} = 	
 \frac{3 \pi}{2\sqrt{2}}
 \frac { 2a^{2} b^{2}  -  2\pi a b r^{2} + \frac{a+b}{3}(2r)^3 - r^4}
-{4ab(a+b)-2\pi(a+b) r^2 + \frac{16}{3} r^3 }.
+{ab^2-\pi/2b r^2 + \frac{16}{3} r^3 },
 \end{equation}
+in the case that $r<h/4$. The limiting form for very small r is
+quite interesting, as is only dependant on the width of the table and is exactly
+$3\pi w/(2)$. In the numerics this appears as the intersection with the $\tau$
+axis.
 
-Adding the areas representing the impact on the walls and
-the collisions on the discs, we  obtain
-the expression for \emph{any} 
-collision in the system:
-\begin{equation}\label{impactany}
- \mean{\tau_\text{any}} = 	
-\frac{3 \pi}{2\sqrt{2}}
-\frac { 2a^{2} b^{2}  -  2\pi a b r^{2} + \frac{a+b}{3}(2r)^3 - r^4}
-{4ab(a+b)+2 \pi \sqrt{2} abr-(2\pi+4\sqrt{2})(a+b)r^2+(\frac{16}{3}+2\sqrt{2})r^3}.
-\end{equation}
+For the case that $r\approx h/4$ we would have two limiting forms,
+as there is a discontinuity on the avaible Volume, but it is exactly
+a factor of two discontinuity, so we can check from above and see
+if it coincides. The expression is hardly appealing, as the Volume becomes
+a fourth order polynomial of $h,w$ and the area a third order polinomial of
+the same quantities. In our particular case this becomes,
+after some juggling with the variables the approximate value 3.34. 
 
-In the limit $r\rightarrow 0$ this is asymptotic to $3 \pi (hw)/(8\sqrt{2}(h+w))$.
-This should correspond to the average impact time on the walls
-for non-interacting point particles.
+
+%Adding the areas representing the impact on the walls and
+%the collisions on the discs, we  obtain
+%the expression for \emph{any} 
+%collision in the system:
+%\begin{equation}\label{impactany}
+% \mean{\tau_\text{any}} = 	
+%\frac{3 \pi}{2\sqrt{2}}
+%\frac { 2a^{2} b^{2}  -  2\pi a b r^{2} + \frac{a+b}{3}(2r)^3 - r^4}
+%{4ab(a+b)+2 \pi \sqrt{2} abr-(2\pi+4\sqrt{2})(a+b)r^2+(\frac{16}{3}+2\sqrt{2})r^3}.
+%\end{equation}
+
+%In the limit $r\rightarrow 0$ this is asymptotic to $3 \pi (hw)/(8\sqrt{2}(h+w))$.
+%This should correspond to the average impact time on the walls
+%for non-interacting point particles.
 %but, then, such as system would not be chaotic and the limit is senseless.
 %On the other hand, for the limit of radius as large as possible, we shall
 %again use the extended expressions in the formula for volume and area.
