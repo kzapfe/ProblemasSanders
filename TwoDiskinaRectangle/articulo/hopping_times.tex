@@ -453,11 +453,11 @@ which the two discs do not overlap (rejecting those where is overlap); the resul
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/VolumenExacto01.pdf}
-\caption{Formula for $V_\text{cyl}/V_\text{prism}$, the fraction of volume excluded from
-  the avaible free volume.
-  against the numerics, from eq. \ref{volumeabd}.
-  \pmb{esta es el caso general. Esto también hay que hacerlo con las areas y así. }
+\includegraphics[width=0.45\textwidth]{./figures/FreeVolume01.png}
+\caption{Free avaible Volume in configuration space as function of radius. The
+  line labeled $rhmax$ is the limit for horizontal hopping, and the one labeled
+  $rvmax$ is the limit for vertical hopping. The transition between formulas
+is continous, as it should be.}
 }\label{VolMonteC}%% 
 \end{figure}
 
@@ -509,7 +509,7 @@ IS THIS WRITTEN CORRECTLY?
 \pmb{NOW IT IS}
 
 Carrying out the integrals gives
- \begin{equation}
+ \begin{equation}\label{AreaH}
  A_\text{hop}  =  16 \sqrt{2} b(a-r)^2.
 \end{equation}
 As before, the formula is no longer valid for $r > w/4$. In this case,
@@ -527,7 +527,7 @@ Results are shown in figure \ref{AreaHopp01}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/AreaHop02.pdf}
+\includegraphics[width=0.45\textwidth]{./figures/AreaHop01.png}
 \caption{The hopping area, $A_\text{hop}$, 
   indicated in the formula in eq. \ref{AreaH}. As explained
 in the text, it gives nonsense for $r>1/4$, but numerical values stay
@@ -557,11 +557,11 @@ plotting this as a fraction of the total volume. The result is shown in the
 figure \ref{AreaChoqueTeoyNum}. 
 \begin{figure}
 \centering
-\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/AreaCol02.pdf}
+\includegraphics[width=0.45\textwidth]{./figures/AreaCol01.png}
 \caption{The numerical and theoretical calculation for the Area of the cross section
 for collision between the discs.  The theoretical formula 
 \ref{AreaChoque} breaks down at
-$r>1/4$.}
+$r>1/4$, but we have here used the general formula.}
 \label{AreaChoqueTeoyNum}.
 \end{figure}
 
@@ -589,10 +589,10 @@ position coordinates.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.45\textwidth]{./FigurasPerfectas/AreaParedx1Positiva02.pdf}
+\includegraphics[width=0.45\textwidth]{./figures/AreaWall01.png}
 \caption{The numerical and theoretical calculation for the cross section area
 for the impact of a determined disk with the right wall, as in eq. \ref{areaindic}.
-Again, the formula stops being valid at $r>1/4$. }
+Again, the general formula has been used.}
 \label{area1derecha}.
 \end{figure}
 
