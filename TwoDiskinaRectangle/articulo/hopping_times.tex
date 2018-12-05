@@ -88,7 +88,9 @@ These have been studied numerically, for example in \cite{MacElroy2004}
  
 Previous work
 by Bowles \etal gives general quantitative results for the mean hopping 
-time for both inertial and Brownian dynamics \cite{Bowles04}. THIS IS A DIFFERENT DEFINITION OF HOPPING TIME -- FIRST PASSAGE TIME.
+time for both inertial and Brownian dynamics \cite{Bowles04}, although they focus
+on the first passage time, that is, the mean time in which an event
+occurs for first time. 
 They use arguments from Transition State Theory 
 to provide expressions for the general behavior of these quantities, as functions of the
 radius of the discs. %Their results show the adequate algebraic behavior.
@@ -243,8 +245,11 @@ in which the discs interchange their horizontal or vertical position, i.e.
 \begin{equation} \label{condchoque}
 x_1 = x_2  \qquad \text{or} \qquad y_1 = y_2.
 \end{equation}
-In this kind of events, the cross-section can be reached from either side, so that the area
-$A$ is effectively twice as large; this will be given by a ``sidedness'' factor $s = 1$ or $s=2$ in the formula
+In this kind of events, the cross-section can be reached from either side;
+e.g., the disk 1 can be traveling from left to right or the other way around
+at the moment in which the interchange of positions take place. 
+The area $A$, then, 
+ is effectively twice as large; this will be given by a ``sidedness'' factor $s = 1$ or $s=2$ in the formula
 for $\mean{\tau}$.
 
 The other events of interest are collisions of disc number 1 with the right wall, and mutual
@@ -333,10 +338,9 @@ but we suppress this explicit dependence for simplicity.
     The width of each band is dependent on the particular 
     point of evaluation
     on the other subspace. Due to 
-    symmetry, we only evaluate the hatched area and
-    multiply the result by 16. I DON'T UNDERSTAND THIS PICTURE.
-    \pmb{I do not know if I can make it simpler or give a sequence
-    of pictures so that is more understandable}
+    symmetry, we only evaluate the hatched areas and multiply
+    the result by 16, representing all combinations of equal
+    evaluations. 
     \label{diagintegral01}  
     }
 \end{figure}
@@ -362,7 +366,8 @@ Since $X$ and $Y$ do not appear in the integrand, those integrals are trivial, g
 where we have used symmetry to reduce to one octant.
 Thus $V_\text{free} = 16(I_1 + I_2)$, where $I_1$ is the region where the value of $y$
 is affected by the exclusion condition and $I_2$ is where it is not affected
-by it.  FIG?
+by it.  In figure \ref{diagintegral01} this would correspond to the doted and
+white areas of the left diagram. See also figure \ref{CasosIntegra} in the appendix. 
 We have
 \begin{align}
  I_1 &= \int\limits_{x=0}^{r\sqrt{2}} \rd x \int\limits_{y = \sqrt{ 2r^2 - x^2}}^{b \sqrt{2}} \rd y
@@ -487,38 +492,40 @@ To evaluate this, we use the relation in H\"ormanders Book, sec 6.1 \cite{Horman
 \end{equation}
 where the integral on the right-hand side is over the surface $g^{-1}(0)$.
 
-The appearance of the normalization factor $\| \mathbf{\nabla}g(\mathbf{x}) \|$ can be understood intuitively by considering how to verify numerically these surface areas. One possible technique is to use rejection sampling to sample the volume given by $|g(\mathbf{x})| \le \eta$ for some $\eta$.
+The appearance of the normalization factor $\| \mathbf{\nabla}g(\mathbf{x}) \|$ can be understood intuitively by considering how to verify numerically these surface areas. One possible technique is to use rejection sampling to sample the volume given by $|g(\mathbf{x})| \le \eta$ for some $\eta$. We must take into account that we reject
+the points by their orthogonal distance to the surface. This is the factor that appears as the inverse gradient to $g(\mathbf{x})$ in the above expression. Our case is simple in this respect: most of our surfaces are either parallel to the coordinates, thus, requiring very simple expressions for their definitions that alter in nothing the measure, or are in some way ``diagonal'' to the integrating coordinates, giving the factor
+$| \mathbf{\nabla}g(\mathbf{x}) \| )\sqrt{2}$ constant for all points. 
+Failure to take this constants into account produce some curious results: both analytical
+and numerical calculation of the areas can be wrong by the same factor,
+thus passing unnoticed until one tries Szabo's formula and end up being
+$\sqrt{2}$ times wrong.
 
-The efficiency could be improved by a Markov Chain Monte Carlo algorithm that rejects steps that take the dynamics outside the set of interest.
+%The efficiency could be improved by a Markov Chain Monte Carlo algorithm that rejects steps that take the dynamics outside the set of interest.
 
 \subsubsection{Hopping}
 
-\pmb{Checa bien esto: esta es la discucion infinita que hemos tenido mil veces.}
-The condition for vertical hopping is when the vertical positions of the two discs are equal FIG, that is: $y_1-y_2=0$. Nevertheless, this doesn't represent the area for hopping,
-in the same way that $y=x$ and making $ \int \delta(y-x) dx dy$  would give you an erroneus length of the diagonal line. The expression that gives the area is
-$$g_\text{hop}(\mathbf{x}) := (y_1 - y_2)/\sqrt{2} = 0.$$
-Applying Eqs.~\eqref{eq:surface-area} and \eqref{eq:surface-dirac}, we obtain
-%
+The condition for vertical hopping is when the vertical positions of the two discs are equal (IG, that is: $y_1-y_2=0$. In the language of the previous subsection, the function
+that can be used for this is $g(x_1, x_2, y_1, y_2)= y_1-y_2$. Its gradient is $(0,0,1,-1)$ and its norm $\sqrt{2}$. Another way of looking at it is making the integral
+directly in the $(x,X,y,Y)$ coordinates, and representing the function there as
+$g(x,X,y,Y)=y=0$, and then returning to the original coordinates. This is actually
+simpler and results in the following expression:
 \begin{widetext}
 \begin{equation}
  A_\text{hop} = \int\limits_{x_1 = -a}^a \rd x_1 \int\limits_{x_2 = -a}^a \rd x_2 
-\int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \, \delta(\frac{y_1-y_2}{\sqrt{2}}).
+\int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \, \delta \big(\frac{y_1-y_2}{\sqrt{2}}\big).
 \end{equation}
 \end{widetext}
-IS THIS WRITTEN CORRECTLY?
-\pmb{NOW IT IS}
 
-Carrying out the integrals gives
+
+Carrying out the integrals  (see the Apendix A) gives
  \begin{equation}\label{AreaH}
  A_\text{hop}  =  16 \sqrt{2} b(a-r)^2.
 \end{equation}
 As before, the formula is no longer valid for $r > w/4$. In this case,
 vertical hopping becomes impossible for a larger radius.
 
-Monte Carlo simulations to calculate this area must also be done carefully.
-See Appendix: Calculate distance to surface.
-
-
+Monte Carlo simulations to calculate this area must also
+take into account the factor $\sqrt{2}'$ (see Apendix B).
 In this case we 
 by counted the proportion of successful placements of hard discs 
 for which the distance 
@@ -619,8 +626,6 @@ exact mean inter-hop times, as well as wall collision and disc collision times.
 % y la numerica: no aparecen factores espurios de raiz de dos
 \subsection{Mean hopping time}
 
- CHECK THE FORMULAS AND REVISIT THE ASYMPTOTICS 
-\pmb{Done}
  
 Inserting the results of the previous section 
 into the formula for the mean times for crossing
