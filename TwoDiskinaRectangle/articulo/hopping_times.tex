@@ -705,6 +705,7 @@ the system breaking into smaller ergodic components.
 
 
 \pmb{Shall we plot the distributions for fixed interesting r? }
+\pmb{We may}
 
 
 \section{Conclusions}
@@ -728,8 +729,17 @@ the results.
 The results may be extended to different radii and to more spatial dimensions, albeit
 with an increase in algebraic difficulty, as we would have an extra dimension
 to consider. Adding one more disk can be a challenging problem, although
-in principle, the general formula would still apply.
+in principle, the general formula would still apply. The greatest
+challenge would be to pose the integrands in a way that is possible
+to solve them without missing regime changes, such as the no hopping
+condition in this work.
 
+We may simulate even more complex systems that could represent subtle interactions,
+such as that each disc is ``transparent'' to some wall and not another. Those
+modifications would simply change the avaible volume formulas, but would be
+tractable in a more or less straightforward manner. A posible setup would be to
+make every disk stay in a separate but overlapping box, representing some kind
+of territorial interaction ( this has been done with difussive motion).
 
 REF: 3 discs
 
@@ -742,13 +752,15 @@ REF: 3 discs
 \subsection{Volume}\label{app:volume}
 
 We use the same notation as in the rest of the paper.
-To simplify the formulas, we do not write explicitly the dependence of $a$ and $b$ on $r$.
+To simplify the formulas, we do not write explicitly the dependence
+of $a$ and $b$ on $r$.
 
-An implicit assumption was made on the limits of integration in \eqref{integraltotal}. If $w, h > 4r$, then the limits of integration
+An implicit assumption was made on the limits of integration
+in \eqref{integraltotal}. If $w, h > 4r$, then the limits of integration
 are unaffected by the radius of the circles.
-In order to avoid uninteresting constant terms
-in the formulas, we integrate
-the excluded volume, instead of the available one. 
+In order to avoid the same positive term $16a^2b^2$, 
+in the formulas, we work here with
+the excluded volume instead of the available one. 
 
 We begin the derivation after integrating out $X$ and $Y$:
 \begin{equation}\label{VolumenGeneral}
