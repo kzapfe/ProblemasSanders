@@ -249,7 +249,7 @@ x_1 = x_2  \qquad \text{or} \qquad y_1 = y_2.
 In this kind of events, the cross-section can be reached from either side;
 e.g., the disk 1 can be traveling from left to right or the other way around
 at the moment in which the interchange of positions take place. 
-The area $A$, then, 
+The event area $A$, then, 
  is effectively twice as large; this will be given by a ``sidedness'' factor $s = 1$ or $s=2$ in the formula
 for $\mean{\tau}$.
 
@@ -432,7 +432,7 @@ which the two discs do not overlap (rejecting those where is overlap); the resul
   line labeled $rhmax$ is the limit for horizontal hopping, and the one labeled
   $rvmax$ is the limit for vertical hopping. The transition between formulas
 is continous, as it should be.}
-}\label{VolMonteC}%% 
+\label{VolMonteC}%% 
 \end{figure}
 
 
@@ -466,8 +466,9 @@ the points by their orthogonal distance to the surface. This is the factor that 
 $| \mathbf{\nabla}g(\mathbf{x}) \| )\sqrt{2}$ constant for all points. 
 Failure to take this constants into account produce some curious results: both analytical
 and numerical calculation of the areas can be wrong by the same factor,
-thus passing unnoticed until one tries Szabo's formula and end up being
-$\sqrt{2}$ times wrong.
+thus passing unnoticed until one tries Machta and Zwanzig formula (eq. \ref{meanfreetime}) and end up being wrong by a factor of exactly 
+$\sqrt{2}$, in the hopping case. Other events could have different factors, in the ones
+worked here they are allways constants and are either one or $\sqrt{2}$.
 
 %The efficiency could be improved by a Markov Chain Monte Carlo algorithm that rejects steps that take the dynamics outside the set of interest.
 
@@ -559,8 +560,8 @@ The integration gives
 \end{align}
 Once again, a simple Monte Carlo procedure verifies this result,
 shown in Fig.~\ref{area1derecha}.
-This time, the correcting factors of $\sqrt{2}$ don't appear, as
-these geometrical areas are orthogonal or parallel to the original
+In this occasion the correcting factors of $\sqrt{2}$ don't appear, as
+these surfaces are orthogonal or parallel to the original
 position coordinates.
 
 
@@ -758,9 +759,11 @@ of $a$ and $b$ on $r$.
 An implicit assumption was made on the limits of integration
 in \eqref{integraltotal}. If $w, h > 4r$, then the limits of integration
 are unaffected by the radius of the circles.
-In order to avoid the same positive term $16a^2b^2$, 
-in the formulas, we work here with
-the excluded volume instead of the available one. 
+The total volume in the parallelogram is $16a^2b^2$.
+In this section we work with the excluded part.
+The result thus obtained should be substracted from the
+quoted value.
+
 
 We begin the derivation after integrating out $X$ and $Y$:
 \begin{equation}\label{VolumenGeneral}
@@ -791,7 +794,7 @@ The largest possible radius is illustrated in Fig.~\ref{radiomaximo}.
 
 We shall look at these regimes on the integration space. The first one is solved
 in the main text, but we shall repeat it here with a different coordinate system, so as to
-make some points. In Fig.~\ref{diaglimites} we present the three regimes as
+make some points. In Fig.~\ref{CasosIntegra} we present the three regimes as
 the shaded area where we perform the integration. 
   
 \begin{figure}[h]
@@ -956,7 +959,7 @@ condition has a simpler representation in polar coordinates, and the triangular
 %  {\lVert \nabla f \rVert}
 %  \indicator{(x_1-x_2)^2+(y_1-y_2)^2>4r^2 }.
 %\end{equation}
-The factor $1/ {\| \nabla f \|}$ appears due to the fact
+The factor $1/ {\| \nabla g \|}$ appears due to the fact
 that the measuring process must be done orthogonormally to the surface. 
 
 \subsubsection{Hopping cross section}
@@ -1018,7 +1021,7 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
    \bigl[ 2ab-\sqrt{2}(ay+bx)+xy \bigr]
     \delta (\sqrt{x^2+y^2}-\sqrt{2}r)\\
     \end{align}
-  We change to polar coordinates as we did in \ref{VolApen}:
+  We change to polar coordinates as we did in \ref{app:volume}:
   \begin{align}
     x^2+y^2 =: \rho \\   \Rightarrow   \delta(\sqrt{x^2+y^2}-\sqrt{2}r) \rightarrow
     \delta(\rho-\sqrt{2}r)   
@@ -1038,9 +1041,12 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
     + 2r^2 [a (\cos \alpha-\cos\beta) -b (\sin\alpha -\sin\beta)]
      + r^3(\sin^2 \alpha -\sin^2\beta) \bigr)
     \end{align}
-    We have used the same trick as in previous subsection to obtain a general expression
-    that works even when hopping is not possible. In the case of $r<w/4$ (all hopping possible)
-    we have the substitution $\alpha=\pi/2$ and $b=0$, obtaining the result stated previously
+    We have used the same trick as in the previous
+    subsection to obtain a general expression
+    that works even when hopping is not possible.
+    In the case of $r<w/4$ (all hopping possible)
+    we have the substitution $\alpha=\pi/2$ and $b=0$,
+    obtaining the result stated previously
     in eq. \ref{AreaChoque}. It is practical to leave here the expression for 1/4 of the
     total area. The symmetry of the cases makes it so that when the phase space splits
     into disjoint components, the volume accessible and the area accessible scale in
@@ -1073,7 +1079,8 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
     \end{align}
     
     
-    In the case that all hopping is possible there are no problems with the above derivations,
+    In the case that all hopping is possible there are no problems with
+    the above derivations,
     but if vertical hopping is excluded, then there are differences.
     We must acknowledge some impossibles. If $r>h/4$, and the disc 2 starts
     on the left, it will never be able to hit the right wall. So, actually, this
@@ -1083,7 +1090,8 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
     was to find mean escape times. A particle cannot escape a volume if the exit is
     not in contact with that volume. So after hopping in one or both direction
     becomes impossible, the dynamical system gets split into disjoint components
-    that never mix under the dynamics (ergodic components). So we have to take that
+    that never mix under the dynamics (disjoint ergodic components).
+    So we have to take that
     into account. When $h/4<r<w/4$, a disk cannot interchange left-right positions,
     but can still move across all vertical available space.  After $r\geq w/4$,
     the system gets split again into two more disjoint components.
@@ -1129,8 +1137,9 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
     \end{equation}
     And the lower triangle a similar expression with $a$ instead of $b$.
 
-    Now, this are actually all the expressions needed for any collision, but
-    to combine them and to use them meaningfully is still needed. For example,
+    Now, this are  all the expressions needed for any kind of collision mean
+    times, but combining
+    them and using them meaningfully is still a challenge. For example,
     this last calculated area could be used as representation of the event of
     the disc 1 hitting the right wall, or the disc 2 hitting the left wall. Both
     can make sense in the case of excluded horizontal interchange. What would be
