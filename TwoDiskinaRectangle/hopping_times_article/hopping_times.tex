@@ -1,5 +1,5 @@
 %\documentclass[letterpaper,10pt, jcp, aps]{revtex4-1}
-\documentclass[superscriptaddress,pre,reprint,showpacs,onecolumn]{revtex4-1}
+\documentclass[superscriptaddress,pre,reprint,showpacs,twocolumn]{revtex4-1}
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amsfonts}
@@ -659,7 +659,7 @@ range of valid values for $r$.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.45\textwidth]{./figures/DiscCollitions01.png}
+  \includegraphics[width=0.45\textwidth]{figures/DiscCollisions01.pdf}
   \caption{Mean disc collision time as function of the radius. }\label{MeanCol01}
 \end{figure}
 
@@ -690,7 +690,7 @@ the system breaking into smaller ergodic components.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.45\textwidth]{./figures/HitRightWall01.png}
+  \includegraphics[width=0.45\textwidth]{./figures/HitRightWall01.pdf}
   \caption{The mean impact-on-walls time as function of the radius. 
   %Again, same
     notes as the figure \ref{MeanHopp01}}
@@ -700,12 +700,21 @@ the system breaking into smaller ergodic components.
 
 
 %
-%\subsection{Some histograms?}
+\section{Distributions}
+
 %
 %
 %
 %\pmb{Shall we plot the distributions for fixed interesting r? }
 %\pmb{We may}
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.45\textwidth]{figures/histogram_hopping_times.pdf}
+  \caption{Histogram of hopping times.}
+    \label{histogram_hopping}.
+\end{figure}
 
 
 \section{Conclusions}
@@ -791,7 +800,7 @@ The largest possible radius is illustrated in Fig.~\ref{radiomaximo}.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.4\textwidth]{FigurasPerfectas/DiagramaRadioMaximo.pdf}
+  \includegraphics[width=0.4\textwidth]{figures/DiagramaRadioMaximo.pdf}
   \caption{The largest possible radius for $h<w<2h$. From the diagram
     one can see that $t^2+v^2=(2r)^2$, $h=t+2r$ and $w=v+2r$, from which
     one can deduce the value for $r$.}
@@ -807,7 +816,7 @@ the shaded area where we perform the integration.
         \centering
         \begin{subfigure}[b]{0.32\textwidth}
           \centering
-          \includegraphics[width=\textwidth]{FigurasPerfectas/DiagramaIntegraCaso1.pdf}
+          \includegraphics[width=\textwidth]{figures/DiagramaIntegraCaso1.pdf}
           \caption{$r<b$}
           \label{Caso1}
         \end{subfigure}%
@@ -815,7 +824,7 @@ the shaded area where we perform the integration.
         % (or a blank line to force the subfigure onto a new line)
         \begin{subfigure}[b]{0.32\textwidth}
           \centering
-          \includegraphics[width=\textwidth]{FigurasPerfectas/DiagramaIntegraCaso2.pdf}
+          \includegraphics[width=\textwidth]{figures/DiagramaIntegraCaso2.pdf}
           \caption{$b<r<a$}
           \label{Caso2}
         \end{subfigure}%
@@ -823,7 +832,7 @@ the shaded area where we perform the integration.
           %(or a blank line to force the subfigure onto a new line)
         \begin{subfigure}[b]{0.32\textwidth}
           \centering
-          \includegraphics[width=\textwidth]{FigurasPerfectas/DiagramaIntegraCaso3.pdf}
+          \includegraphics[width=\textwidth]{figures/DiagramaIntegraCaso3.pdf}
           \caption{$a,b<r$}
           \label{Caso3}
         \end{subfigure}%
