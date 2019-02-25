@@ -398,11 +398,11 @@ For example, when $h/4 < r < w/4$
 we define an auxiliary variable,
 $c = \sqrt{4r^2-b^2}$. Then we have
 \begin{multline}\label{VolumenCasoFeo}
-V_{h/4<r<w/4} = 32abr^2[\arccos(b/2r)-\arccos(a/2r)]\\
-+\frac{64 r^3}{3 }[a((b-a)/2r)-b(c/2r+\sqrt{4r^2-a^2}/2r)]\\
+V_{h/4<r<w/4} = 32abr^2 \left[ \arccos(b/2r)-\arccos(a/2r) \right]\\
++\frac{64 r^3}{3 } \left[ a((b-a)/2r)-b(c/2r+\sqrt{4r^2-a^2}/2r) \right]\\
 -2r^2 (b^2-a^2)
-+16[ a b^2 c (4\sqrt{2}-1-\sqrt{2}/3)
-+c^2b^2 (\sqrt{2}/3-1) \big]
++16 \left[ a b^2 c (4\sqrt{2}-1-\sqrt{2}/3)
++c^2b^2 (\sqrt{2}/3-1) \right]
 \end{multline}
 
 When $r$ is larger than both $h/4$ and $w/4$, one must take
@@ -446,7 +446,7 @@ it is only the position interchange that gets excluded. \\
 
 \subsection{Cross-section areas}\label{areahop}
 
-The areas of cross sections $A$ are surface areas of 3-dimensional surfaces (manifolds) $S$ embedded in the configuration space,
+The terms of the form $|A|$ in \eqref{meanfreetime} are surface areas of 3-dimensional surfaces (manifolds) $S$ embedded in the configuration space,
 defined by algebraic equations of the form $g(\mathbf{x}) = 0$, so that $S = g^{-1}(0)$ is the zero set of $g$.
 The surface area of $S$ is then given by
 \begin{equation}
@@ -456,29 +456,31 @@ A(S) = \int \indicatorsymbol_Z(\mathbf{x}) \, \delta(g(\mathbf{x})) \, \mathrm{d
 To evaluate this, we use the following coarea formula
 %relation in H\"ormanders Book, 
 %sec 6.1 
-\cite[section 6.1]{Hormander83}:
+\cite[section 6.1]{Hormander83} 
 \begin{equation}
 \int_{\mathbf{R}^d} f(\mathbf{x}) \, \delta(g(\mathbf{x})) \, \mathrm{d} \mathbf{x} = \int_{g^{-1}(0)}\frac{f(\mathbf{x})}{\| \mathbf{\nabla}g(\mathbf{x}) \|} \, \mathrm{d}S,
 \label{eq:surface-dirac}
 \end{equation}
-where the integral on the right-hand side is over the surface $g^{-1}(0)$.
+where the integral on the right-hand side is over the surface $g^{-1}(0)$.  
+REF: E. Zappa, M. Holmes-Cerfon, J. Goodman. Monte Carlo on manifolds: sampling densities and integrating functions. Communications in Pure and Applied Mathematics, Vol 71 (12) pp.2609-2647 (2018).
 
-The appearance of the normalization factor $\| \mathbf{\nabla}g(\mathbf{x}) \|$ can be understood intuitively by considering how to verify numerically these surface areas. One possible technique is to use rejection sampling to sample the volume given by $|g(\mathbf{x})| \le \eta$ for some $\eta$. We must take into account that we reject
-the points by their orthogonal distance to the surface. This is the factor that appears as the inverse gradient to $g(\mathbf{x})$ in the above expression. Our case is simple in this respect: most of our surfaces are either parallel to the coordinates, thus, requiring very simple expressions for their definitions that alter in nothing the measure, or are in some way ``diagonal'' to the integrating coordinates, giving the factor
-$| \mathbf{\nabla}g(\mathbf{x}) \| )\sqrt{2}$ constant for all points. 
-Failure to take this constants into account produce some curious results: both analytical
-and numerical calculation of the areas can be wrong by the same factor,
-thus passing unnoticed until one tries Szabo's formula and end up being
-$\sqrt{2}$ times wrong.
+The appearance of the normalization factor $\| \mathbf{\nabla}g(\mathbf{x}) \|$ can be understood intuitively by considering how to verify numerically these surface areas. One possible technique is to use rejection sampling to sample the volume given by $|g(\mathbf{x})| \le \eta$ for some small value of $\eta$. Points will be accepted or rejected according to their orthogonal distance to the surface, which is the factor in the denominator in the above expression. Our case is simple in this respect: most of our surfaces are either parallel to the coordinates or are in some way ``diagonal'', giving constant factors
+%$| \mathbf{\nabla}g(\mathbf{x}) \| )\sqrt{2}$ constant for all points. 
+The main difficulty in these calculations is correctly accounting for the factors arising in this way.
+%Failing to take this constants into account produce some curious results: both analytical
+%and numerical calculation of the areas can be wrong by the same factor,
+%thus passing unnoticed until one tries Szabo's formula and end up being
+%$\sqrt{2}$ times wrong.
 
 %The efficiency could be improved by a Markov Chain Monte Carlo algorithm that rejects steps that take the dynamics outside the set of interest.
 
 \subsubsection{Hopping}
 
-The condition for vertical hopping is when the vertical positions of the two discs are equal, that is: $y_1-y_2=0$. In the language of the previous subsection, the function
-that can be used for this is $g(x_1, x_2, y_1, y_2)= y_1-y_2$. Its gradient is $(0,0,1,-1)$ and its norm $\sqrt{2}$. Another way of looking at it is making the integral
-directly in the $(x,X,y,Y)$ coordinates, and representing the function there as
-$g(x,X,y,Y)=y=0$, and then returning to the original coordinates. This is actually
+Vertical hopping occus when the vertical positions of the two discs are equal: $y_1 - y_2=0$. In the language of the previous subsection, we take
+ $g_\mathrm{hop}(x_1, x_2, y_1, y_2)= y_1 - y_2$, with gradient  $\nabla g_\mathrm{hop}(\mathbf{x}) = (0, 0, 1, -1)$, so that $ \| \nabla g_\mathrm{hop}(\mathbf{x}) \| = \sqrt{2}$. 
+ Alternatively, we can integrate 
+directly in the $(x,X,y,Y)$ coordinates, where we use
+$g(x,X,y,Y) = y$, and then returning to the original coordinates. This is actually
 simpler and results in the following expression:
 \begin{widetext}
 \begin{equation}
@@ -486,9 +488,7 @@ simpler and results in the following expression:
 \int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \, \delta \big(\frac{y_1-y_2}{\sqrt{2}}\big).
 \end{equation}
 \end{widetext}
-
-
-Carrying out the integrals  (see the Apendix A) gives
+Carrying out the integrals  (see Appendix A) gives
  \begin{equation}\label{AreaH}
  A_\text{hop}  =  16 \sqrt{2} b(a-r)^2.
 \end{equation}
@@ -496,9 +496,8 @@ As before, the formula is no longer valid for $r > w/4$. In this case,
 vertical hopping becomes impossible for a larger radius.
 
 Monte Carlo simulations to calculate this area must also
-take into account the factor $\sqrt{2}'$ (see Apendix B).
-In this case we 
-by counted the proportion of successful placements of hard discs 
+take into account the factor $\sqrt{2}$ (see Appendix B).
+In this case we counted the proportion of successful placements of hard discs 
 for which the distance 
 $|y_1 - y_2|$ was within a small tolerance of $0$. 
 Results are shown in figure \ref{AreaHopp01}.
@@ -507,9 +506,9 @@ Results are shown in figure \ref{AreaHopp01}.
 \centering
 \includegraphics[width=0.45\textwidth]{./figures/AreaHop01.png}
 \caption{The hopping area, $A_\text{hop}$, 
-  indicated in the formula in eq. \ref{AreaH}. As explained
-in the text, it gives nonsense for $r>1/4$, but numerical values stay
-exactly at zero, the correct value. } 
+  indicated in the formula in eq. \ref{AreaH}. As explained in the text
+in the text, the formula does not apply for $r>1/4$, but numerical values correctly
+remain at zero.}
 \label{AreaHopp01}
 \end{figure}
 
@@ -518,24 +517,23 @@ exactly at zero, the correct value. }
 
 The area which represents collisions between the two discs is the surface area of the cylinder
 that lies within the prism, given by
-$$g_\text{collision}(\mathbf{x}) := ((x_1-x_2)/\sqrt{2})^2 + ((y_1-y_2)/\sqrt{2})^2
-- 2r^2) = 0.$$
-The factors have the same reasons to appear as in the case of the hop condition.
+$$g_\text{coll}(\mathbf{x}) := (x_1 - x_2)^2 + (y_1 - y_2)^2 - 4r^2.$$
+%The factors have the same reasons to appear as in the case of the hop condition.
 
 For $r<w/4$, we find for the corresponding area
 \begin{align}\label{AreaChoque}
-A_\text{collision} & =  \sqrt{2} (
+A_\text{coll} & =  \sqrt{2} (
 16\pi a b r -32 (a+b)r^2 +16 r^3).
 \end{align}
 
 We proceed in the same manner as last section, checking numerically which
-random
-conditions fall at a small tolerance of $0$ from the collision condition, and
+random configurations
+fall within a small tolerance from the collision condition, and
 plotting this as a fraction of the total volume. The result is shown in Fig.~\ref{AreaChoqueTeoyNum}. 
 \begin{figure}
 \centering
 \includegraphics[width=0.45\textwidth]{./figures/AreaCol01.png}
-\caption{The numerical and theoretical calculation for the Area of the cross section
+\caption{Numerical and theoretical area 
 for collision between the discs.  The theoretical formula 
 \ref{AreaChoque} breaks down at
 $r>1/4$, but we have here used the general formula \ref{app:colgeneral}
@@ -547,7 +545,7 @@ that appears in the Appendix.}
 \subsubsection{Wall collisions}
 
 We restrict attention to collisions of disc $1$ with the right wall, for which
-$$g_\text{wall}(\mathbf{x}) = x_1 - a = 0.$$
+$$g_\text{wall}(\mathbf{x}) := x_1 - a.$$
 The corresponding area, after taking the delta into account, is
 \begin{equation}\label{areaindic}
  A_\mathrm{wall} =  \int_{x_2 = -a}^a \rd x_2 
@@ -559,26 +557,26 @@ The integration gives
  % & = 2(w-d)^2 (h-2)^2- \frac{\pi}{2} (h-d) d^2 +\frac{2}{3}d^3 
 \end{align}
 Once again, a simple Monte Carlo procedure verifies this result,
-shown in Fig.~\ref{area1derecha}.
-This time, the correcting factors of $\sqrt{2}$ don't appear, as
-these geometrical areas are orthogonal or parallel to the original
+shown in Fig.~\ref{area1derecha}. 
+This time, the correction factors of $\sqrt{2}$ do not appear, since
+the areas are orthogonal or parallel to the original
 position coordinates.
 
 
 \begin{figure}
 \centering
 \includegraphics[width=0.45\textwidth]{./figures/AreaWall01.png}
-\caption{The numerical and theoretical calculation for the cross section area
-for the impact of a determined disk with the right wall, as in eq. \ref{areaindic}.
+\caption{Numerical and theoretical calculation for the area
+for the impact of a particular disk with the right wall, as in \eqref{areaindic}.
 Again, the general formula has been used.}
 \label{area1derecha}.
 \end{figure}
 
 Taking into account the symmetry of the expression for either disc
  bouncing on either of the vertical walls, the
-cross section area for this event is four times $A_\textrm{wall}$. For horizontal wall 
+area for this event is  $4A_\text{wall}$. For horizontal wall 
 collisions, the roles of $a$ and $b$ are switched.
-Thus the cross section area for any impact on any wall is
+Thus the area for any impact on any wall is
 \begin{align}\label{areawalls}
  A_\text{walls} & = 32 a b (a+b)-16 \pi r^2 (a+b) +\frac{128}{3}r^3.
  %&=  4 (w-d) (h-d)  (w+h-2d) -2 \pi d^2 (w + h-2 d) +\frac{16}{3}d^3. 
@@ -599,10 +597,10 @@ exact mean inter-hop times, as well as wall collision and disc collision times.
  
 Inserting the results of the previous section 
 into the formula for the mean times for crossing
-surfaces of sectio ( equation \ref{meanfreetime}), finally gives exact mean inter-event times.
+surfaces of section \eqref{meanfreetime}, finally gives exact mean inter-event times.
 
 For vertical
-hops we have:
+hops we have
 \begin{equation}\label{hoptau}
  \mean{\tau_\text{hop}} = 	
 \frac{3 \pi}{4\sqrt{2}}
@@ -610,60 +608,59 @@ hops we have:
 { b \sqrt{2}  ( a - r )^2}.
 \end{equation}
 Recall that here there is a factor $s = 2$.
-The limiting form for small discs is revealing: a quantity
-that depends only on the height of the table, since then the discs have almost no interaction:
+
+In the limit of small disc radius, the discs have almost no interactions, and the result depends only
+on the table height:
 \begin{equation}\label{hoptaulimit}
  \mean{\tau_\text{hop}} \overset{r \to 0}{\sim}
 \frac{3 \pi}{8\sqrt{2}}h.
 \end{equation}
+
 Also of interest is the limit $r\sim w/4$, where vertical hopping becomes
-impossible.  The lower term goes to zero quadratically, while the avaible volume
-is still positive (except in the degenerate case that $w=2h$). The exact expression
-is cumbersome, due to the fact that the general volume expression in such a
-case is loaded with  trigonometric functions and doesn't appeal to
-intuiton (see the discusion in the Appendix, \ref{app:volume}),
+impossible.  The lower term goes to zero quadratically, while the available volume
+is still positive (except in the degenerate case $w=2h$). The exact expression
+is cumbersome, due to the fact that the general volume expression contains trigonometric functions
+ and is unintuitive (see Section~\ref{app:volume}),
 but the leading term in the numerator is  $w^2(h/2-w/4)^2$, and the denominator
 stays the same, so
 it goes to infinity
-like $1/x^2$. The figure \label{MeanHopp01} shows the compariton between
+like $1/x^2$. The figure \label{MeanHopp01} shows the comparison between
 numeric and analytic results for the complete valid range. Notice the abrupt
-change in beaviour as we go close to $r_{vmax}$.
+change in behavior as we approach $r_{vmax}$.
 
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.45\textwidth]{./figures/VertHop01.png}
-  \caption{The mean hopping time as function of the radius, Energy, mass, 
-and geometry fixed, numeric and Analytic results.}\label{MeanHopp01}
+  \caption{Mean hopping time as function of the radius.}\label{MeanHopp01}
 \end{figure}
 
 
 \subsection{Mean disc collision time}
 
-For collisions between discs, we have, for the case $r<w/4$,
+For collisions between discs, we have, for the case $r < w/4$,
 \begin{equation}\label{colltau}
  \mean{\tau_\text{coll}} = 	
 \frac{3 \pi}{2\sqrt{2}}
 \frac {2 a^{2} b^{2}  - 2 \pi a b r^{2} + \textstyle \frac{a+b}{3}  (2r)^{3}  -  r^4}
-{2\pi a b r -4(a+b)r^2+2r^3}
+{2\pi a b r -4(a+b)r^2+2r^3}.
 \end{equation}
-As expected, this goes to infinity with very small radius, its behaviour
-approaching the expression
+As expected, this tends to infinity in the limit of small radius, with asymptotics
 \begin{equation}\label{colltaulim0}
 \mean{\tau_\text{coll}} \overset{r \to 0}{\sim}
-\frac{3}{8\sqrt{2}}\frac{wh}{r}
+\frac{3}{8\sqrt{2}}\frac{wh}{r}.
 \end{equation}
+
 For the case in which the discs narrowly fit inside the table we need to
-use the more cumbersome expression in eq. \ref{VolumenCasoFeo} and
-the corresponding area. The time between collisions should go to zero.
-The comparision in in figure \ref{MeanCol01}. In this case, along all
-the valid values for $r$, the function is smooth. 
+use the more cumbersome expression in \eqref{VolumenCasoFeo} and
+the corresponding area. The time between collisions should go to zero; 
+see figure~\ref{MeanCol01}. In this case, the function is smooth for the whole
+range of valid values for $r$.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.45\textwidth]{./figures/DiscCollitions01.png}
-  \caption{Mean disc collision time as function of the radius. Same
-    specifications as the last figure. }\label{MeanCol01}
+  \caption{Mean disc collision time as function of the radius. }\label{MeanCol01}
 \end{figure}
 
 
@@ -677,107 +674,118 @@ Lastly, for a specific disc colliding with a specific vertical wall we have
 \frac { 2a^{2} b^{2}  -  2\pi a b r^{2} + \frac{a+b}{3}(2r)^3 - r^4}
 {ab^2-\pi/2b r^2 + \frac{16}{3} r^3 },
 \end{equation}
-in the case that $r<h/4$. The limiting form for very small r is
-quite interesting, as is only dependant on the width of the table and is exactly
-$3\pi w/(2)$. In the numerics this appears as the intersection with the $\tau$
+in the case that $r<h/4$. The limiting form for small $r$ depends
+only on the width of the table and is exactly
+$3\pi w/2$. In the numerics this appears as the intersection with the $\tau$
 axis.
 
 For the case that $r\approx h/4$ we would have two limiting forms,
-as there is a discontinuity on the avaible Volume, but it is exactly
-a factor of two. In the comparition with numerics, we can see
+as there is a discontinuity in the available Volume, but it is exactly
+a factor of two. In the comparison with numerics, we can see
 this jump in the function, accompanied by a larger error in the
-calculations (we have to begin to discard data as it is more difficult
-to find favorable starting positions). This is the exemplary case of
+calculations (since it is harder to find correct starting positions). 
+This is indicative of 
 the system breaking into smaller ergodic components.
 
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.45\textwidth]{./figures/HitRightWall01.png}
-  \caption{The mean impact-on-walls time as function of the radius. Again, same
-    notes as the figure \ref{MeanHopp01}}\label{MeanImp01}.
+  \caption{The mean impact-on-walls time as function of the radius. 
+  %Again, same
+    notes as the figure \ref{MeanHopp01}}
+    \label{MeanImp01}.
 \end{figure}
 
 
 
-
-\subsection{Some histograms?}
-
-
-
-\pmb{Shall we plot the distributions for fixed interesting r? }
-\pmb{We may}
+%
+%\subsection{Some histograms?}
+%
+%
+%
+%\pmb{Shall we plot the distributions for fixed interesting r? }
+%\pmb{We may}
 
 
 \section{Conclusions}
 
 We have calculated exact analytic expressions for mean hopping and
 collision times in the paradigmatic model of two discs in a hard box
-The  results which have helped us to do this came from the
-extensive theory of chaotic billiards. The subjacent theory
-of ergodic systems already contains strong theorems and formulas
-that only need judicious  application to show their 
-predictive power. The step done by Machta and Zwanzig in
-that direction is an example of bringing to the ground those
-ideas to applicable problems. We have expanded
-that line by showing a large class of events can be modeled
-as return times to appropriately chosen surfaces of section. 
+by treating them as return times to  appropriately chosen surfaces of section, 
+and applying results from ergodic theory.
+%using 
+%extensive theory of chaotic billiards. The subjacent theory
+%of ergodic systems already contains strong theorems and formulas
+%that only need judicious  application to show their 
+%predictive power. 
+%The step done by Machta and Zwanzig in
+%that direction is an example of bringing to the ground those
+%ideas to applicable problems. 
+%We have expanded
+%that line by showing a large class of events can be modeled
+%as return times to appropriately chosen surfaces of section. 
 The analytical results derived 
 confirm the limiting behaviour obtained
-by Bowles \etal by a different method, and Monte Carlo simulations confirm 
-the results. 
+by Bowles \etal by a different method, and are in agreement with Monte Carlo simulations.
 
 The results may be extended to different radii and to more spatial dimensions, albeit
-with an increase in algebraic difficulty, as we would have an extra dimension
-to consider. Adding one more disk can be a challenging problem, although
-in principle, the general formula would still apply. The greatest
-challenge would be to pose the integrands in a way that is possible
-to solve them without missing regime changes, such as the no hopping
-condition in this work.
+with an increase in algebraic difficulty. 
+%Adding one more disk can be a challenging problem, although
+%in principle, the general formula would still apply. The greatest
+%challenge would be to pose the integrands in a way that is possible
+%to solve them without missing regime changes, such as the no hopping
+%condition in this work.
 
-We may simulate even more complex systems that could represent subtle interactions,
-such as that each disc is ``transparent'' to some wall and not another. Those
-modifications would simply change the avaible volume formulas, but would be
-tractable in a more or less straightforward manner. A posible setup would be to
-make every disk stay in a separate but overlapping box, representing some kind
-of territorial interaction ( this has been done with difussive motion).
+%We may simulate even more complex systems that could represent subtle interactions,
+%such as that each disc is ``transparent'' to some wall and not another. Those
+%modifications would simply change the avaible volume formulas, but would be
+%tractable in a more or less straightforward manner. A posible setup would be to
+%make every disk stay in a separate but overlapping box, representing some kind
+%of territorial interaction ( this has been done with difussive motion).
 
 REF: 3 discs
 
-2 hard spheres in a spherical pore: conservation laws
+%2 hard spheres in a spherical pore: conservation laws
 
 \appendix
-\section{Area and volume calculations}
+\section{General area and volume calculations}
 \label{app:area_volume}
+
+In this section, we find expressions for areas and volumes in all 
+regimes.
+%We use the same notation as in the rest of the paper.
+To simplify the formulas, we omit the dependence
+of $a$ and $b$ on $r$.
+
+
 
 \subsection{Volume}\label{app:volume}
 
-We use the same notation as in the rest of the paper.
-To simplify the formulas, we do not write explicitly the dependence
-of $a$ and $b$ on $r$.
 
 An implicit assumption was made on the limits of integration
 in \eqref{integraltotal}. If $w, h > 4r$, then the limits of integration
 are unaffected by the radius of the circles.
 In order to avoid the same positive term $16a^2b^2$, 
 in the formulas, we work here with
-the excluded volume instead of the available one. 
+the excluded volume $V_\text{cyl}$, instead of the available one $V_\text{free}$. 
+
 
 We begin the derivation after integrating out $X$ and $Y$:
 \begin{equation}\label{VolumenGeneral}
-V/16 =\iint \rd x \rd y \left[ 2ab-\sqrt{2}(ay+bx)+x y \right]
+\frac{1}{16} V_\text{cyl} =\iint \rd x \rd y \left[ 2ab-\sqrt{2}(ay+bx)+x y \right]
 \indicator{x^2+y^2 < 2r^2 }.
 \end{equation}
 A diagram helps us visualize the limits of integration. The most general
-case is (without loss of generality) $h < w < 2h$, so that, as the radius of the
-discs increases, we can pass from the regime where both vertical and horizontal
-hopping occur, to the one where only vertical hopping
-is possible, to the one where no hopping is possible but a certain amount of movement
-can still occur. The three regimes are characterized by the following inequalities:
+case is (without loss of generality) $h < w < 2h$; as the disc radius 
+%$r$ increases, we  pass through the following three regimes: from the regime where both vertical and horizontal
+%hopping occur, to one in which only vertical hopping
+%is possible, and then to  one in which no hopping is possible but movement
+%can still occur. The three regimes are characterized by the following inequalities:
 \begin{itemize}
-\item All hopping possible: $0<r \leq h/4$
-\item Only vertical hopping possible: $h/4 < r \leq w/4$
-\item No hopping possible: $w/4 < r < (h+w-\sqrt{2hw})/2$
+\item Horizontal and vertical hopping possible: $0 <r \leq h/4$;
+\item Only vertical hopping possible: $h/4 < r \leq w/4$;
+\item No hopping possible: $w/4 < r < (h+w - \sqrt{2hw}) / 2$.
 \end{itemize}
 The largest possible radius is illustrated in Fig.~\ref{radiomaximo}.
 
@@ -790,9 +798,9 @@ The largest possible radius is illustrated in Fig.~\ref{radiomaximo}.
   \label{radiomaximo}
 \end{figure}
 
-We shall look at these regimes on the integration space. The first one is solved
-in the main text, but we shall repeat it here with a different coordinate system, so as to
-make some points. In Fig.~\ref{diaglimites} we present the three regimes as
+We examine these regimes on the integration space. The first one is solved
+in the main text, but we repeat it here using a different coordinate system
+that proves useful. In Fig.~\ref{diaglimites} we present the three regimes as
 the shaded area where we perform the integration. 
   
 \begin{figure}[h]
@@ -819,20 +827,22 @@ the shaded area where we perform the integration.
           \caption{$a,b<r$}
           \label{Caso3}
         \end{subfigure}%
-        \caption{The three possible cases. The shaded area is where the integral
-          must be evaluated. In the first case all hopping is possible; the middle case
-          allows only for vertical hopping; and the last case excludes hopping, but it is
-        is still possible for the discs to fit inside the table.}
+        \caption{Three hopping regimes. The integral must be evaluated over the shaded region.
+In the first case all hopping is possible; the middle case
+          allows only for vertical hopping; and the last case excludes hopping.}
 \label{CasosIntegra}
 \end{figure}
-The shaded area in figure \ref{CasosIntegra} represents where the indicator function
-has value 1. We can translate that to well chosen limits of integration. Notice
-how the hatched area in the first three cases may be integrated in polar coordinates
-simplifying the three cases to three cases of evaluation. We shall call the
-indefinite integral $V_h(r,\alpha,\beta)$ (h is for ``hatched'').
+The shaded area in Fig.~\ref{CasosIntegra} represents the region in which the indicator function
+has value 1. 
+
+We evaluate the integral by carefully choosing the limits of integration. Note
+that the hatched area in the first three cases may be integrated in polar coordinates $(\rho, \theta)$.
+We call the indefinite integral $V_h(r,\alpha,\beta)$ (where $h$ stands for ``hatched'').
 As can be seen from figure \ref{CasosIntegra}, the all hopping possible regime
-means that $\alpha = \pi/2, \beta=0$, the vertical hopping regime is where
-$\alpha < \pi/2, \beta=0$, and the no hopping regime is where $\pi/2 > \alpha > \beta > 0$.
+corresponds to $\alpha = \pi/2, \beta=0$, the vertical hopping regime is where
+$\alpha < \pi/2, \beta=0$, and the no-hopping regime is where $0 < \beta< \alpha < \pi/2$.
+
+We rewrite the integral in terms of an angle $\theta$:
 
 \begin{equation}\label{Vhatch1}
 \begin{split}
@@ -845,37 +855,35 @@ V_h(r,\alpha,\beta)/16 &=
 \indicator{\rho^2<2r^2 }
 \end{split}
 \end{equation}
-The indicator function becomes the limits over the $\rho$ integrating variable.
-We set the $\alpha, \beta$ as the other two limits. Then perform the
-integral over the $\rho$ which doesn't change in the three regimes.
+The indicator function determines the limits for the $\rho$ integration variable.
+We set $\alpha, \beta$ as the other two limits and perform the
+integral over $\rho$,  which does not change in the three regimes.
 \begin{equation}
   \begin{split}
  V_h(r,\alpha,\beta)/16 &=\iint\limits_{\beta,0}^{\alpha,r\sqrt{2}} \rd \rho \rd \theta \rho (2ab
 -\sqrt{2}(a\rho\sin\theta+b\rho\cos\theta)
 +\rho^2 \cos\theta\sin\theta)\\
  &=\int\limits_\beta^{\alpha}  \rd \theta  
-(2abr^2 - r^3 4/3 (a\sin\theta+b\cos\theta)+r^4 (\cos\theta\sin\theta))\\
+\left[ 2abr^2 - r^3 4/3 (a\sin\theta+b\cos\theta)+r^4 (\cos\theta\sin\theta) \right].\\
 \end{split}
   \end{equation}
 Now we integrate over the $\theta$ variable:
 \begin{equation}\label{Volrtheta}
   V_h(r,\alpha,\beta)/16 = 2r^2ab\theta
   +4/3r^3(a\cos\theta-b\sin\theta)
-  +\frac{r^4 \sin^2\theta}{2} \Bigg\vert_\beta^\alpha
+  +\frac{r^4 \sin^2\theta}{2} \Bigg\vert_\beta^\alpha.
 \end{equation}
 For the case in which all hopping is posible, the expression in \eqref{Volrtheta}
 takes the values $\alpha=\pi/2, \beta=0$ and after multiplying by 16 both sides,
-we recover the Munakata and Hu formula. For the other two cases, we can use the following
-facts:
-\begin{align}
-  \sin\alpha&=b/r & \cos\beta&=a/r 
-\end{align}
-and the corresponding inverse relations.
+we recover the Munakata and Hu formula. For the other two cases, we use that
+$\sin \alpha = b / r$ and $\cos \beta = a / r$.
+
+
 
 
 Now we treat the dotted areas in the figures \ref{Caso2} and \ref{Caso3}. Since they are triangular, they
 are more easily treated in Cartesian coordinates. We start with the upper
-triangular region, the subscript $ds$ indicating ``dotted superior'',
+triangular region
 and show the procedure, and then we cite the result for the
 other triangle.
 First, we realize that as we are inside the triangle, the characteristic function
@@ -883,7 +891,7 @@ translates to a simple integration limit:
 
 \begin{equation}
   \begin{split}
-    V_{ds}(r) /16 &=\iint \rd y \rd x [2ab-\sqrt{2}(ay+bx)+xy] \indicator{(x)^2+(y)^2<2r^2 }\\
+    V_{u}(r) /16 &=\iint \rd y \rd x [2ab-\sqrt{2}(ay+bx)+xy] \indicator{(x)^2+(y)^2<2r^2 }\\
     &=\int_0^{b\sqrt{2}}\rd y \int_{0}^{y\sqrt{r^2-b^2}/b} \rd x [2ab-\sqrt{2}(ay+bx)+xy] \\
    &=\int_0^{b\sqrt{2}}\rd y \bigl[2abx-\sqrt{2}(ayx+bx^2/2)+x^2y/2\bigr]_{0}^{y\sqrt{r^2-b^2}/b} \\
       &=\int_0^{b\sqrt{2}}\rd y
@@ -905,14 +913,14 @@ translates to a simple integration limit:
             \Bigl]_0^{b\sqrt{2}}\\
           &=2ab^2\sqrt{r^2-b^2}
           -\frac{2b^2(r^2-b^2+2a\sqrt{r^2-b^2}}{3}+\frac{b^2(r^2-b^2)}{2}\\
-          V_{ds}(r)&=32ab^2\sqrt{r^2-b^2} -\frac{32
+          V_{u}(r)&=32ab^2\sqrt{r^2-b^2} -\frac{32
             b^2}{3}(r^2-b^2+2a\sqrt{r^2-b^2}) +8b^2(r^2-b^2).
   \end{split}
   \end{equation}
-The procedure is similar for the doted inferior region on fig. \ref{Caso3},
+The procedure is similar for the lower dotted  region in Fig.~\ref{Caso3},
 and gives a symmetric expression:
 \begin{equation}
-          V_{di}(r)=32a^2b\sqrt{r^2-a^2} -\frac{32
+          V_{l}(r)=32a^2b\sqrt{r^2-a^2} -\frac{32
             a^2}{3}(r^2-a^2+2b\sqrt{r^2-a^2}) +8a^2(r^2-a^2).
 \end{equation}
 
@@ -923,14 +931,14 @@ as some events become impossible in each of these subsystems. For example,
 (see the next section), disc 1 cannot hit the left wall if
 it started on the right and horizontal hopping is excluded. So we have to
 take into account that only half of the positions are available (due to symmetry)
-and then take into account that in \eqref{meanfreetime}.
+ in \eqref{meanfreetime}.
 
 Due to the symmetry of the problem, the available volume
 for each disjoint component of the dynamical system is equal; for example, if horizontal hopping is no longer possible
-($w/4<r<h/4$), then there are two symmetric disjoint components: the dynamical system
-that starts with disc 1 on the left and the one that starts with the disc 1 on
-the right side. Both occupy the same phase space volume, as they are
-symmetric under interchange of labels. If $(h<4\leq r$), then the system gets further
+($w/4<r<h/4$), then there are two symmetric disjoint components: the system
+starting with disc 1 on the left and the one starting with disc 1 on
+the right. Both occupy the same phase space volume, as they are
+symmetric under interchange of labels. If $h<4\leq r$ then the system gets further
 divided into four disjoint components. 
 
 
@@ -941,7 +949,7 @@ The above procedure must be repeated for the different
 area calculations. We use a suitable Dirac delta to represent each codimension-1 collision
 event (touching of a disc with a wall or another disc). We multiply the characteristic function of the available space by the Dirac delta, and
 then again divide it into the three cases, namely, all hopping, only vertical hopping
-and no hopping possible, again referring to the figure \ref{CasosIntegra}.
+and no hopping possible, again referring to Fig.~\ref{CasosIntegra}.
 Sometimes it turns out to be easier to obtain 
 the integral  over all configuration space and then exclude the part that
 corresponds to the overlapping condition. Again, the hatched area of the exclusion
@@ -957,8 +965,8 @@ condition has a simpler representation in polar coordinates, and the triangular
 %  {\lVert \nabla f \rVert}
 %  \indicator{(x_1-x_2)^2+(y_1-y_2)^2>4r^2 }.
 %\end{equation}
-The factor $1/ {\| \nabla f \|}$ appears due to the fact
-that the measuring process must be done orthogonormally to the surface. 
+%The factor $1/ {\| \nabla g \|}$ appears due to the fact
+%that the measuring process must be done orthogonormally to the surface. 
 
 \subsubsection{Hopping cross section}
 
@@ -1021,7 +1029,7 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
     \end{align}
   We change to polar coordinates as we did in \ref{VolApen}:
   \begin{align}
-    x^2+y^2 =: \rho \\   \Rightarrow   \delta(\sqrt{x^2+y^2}-\sqrt{2}r) \rightarrow
+    x^2+y^2 =: \rho^2 \\   \Rightarrow   \delta(\sqrt{x^2+y^2}-\sqrt{2}r) \rightarrow
     \delta(\rho-\sqrt{2}r)   
     \end{align}
   Then we continue straightforwardly:
@@ -1075,31 +1083,33 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
     
     
     In the case that all hopping is possible there are no problems with the above derivations,
-    but if vertical hopping is excluded, then there are differences.
-    We must acknowledge some impossibles. If $r>h/4$, and the disc 2 starts
+    but if vertical hopping is excluded then there are differences.
+ If $r>h/4$, and disc 2 starts
     on the left, it will never be able to hit the right wall. So, actually, this
-    is a subsystem of the whole dynamic system in which our general formula needs
-    to be adjusted. We can trace this problem to the original purpose of
-    formula \ref{meanfreetime}
-    was to find mean escape times. A particle cannot escape a volume if the exit is
-    not in contact with that volume. So after hopping in one or both direction
-    becomes impossible, the dynamical system gets split into disjoint components
-    that never mix under the dynamics (ergodic components). So we have to take that
-    into account. When $h/4<r<w/4$, a disk cannot interchange left-right positions,
+    is a subsystem of the whole  system in which our general formula needs
+    to be adjusted. 
+%    We can trace this problem to the original purpose of
+%    \eqref{meanfreetime}, namely to
+%    find mean escape times. A particle cannot escape a volume if the exit is
+%    not in contact with that volume. So after hopping in one or both direction
+%    becomes impossible, the dynamical system gets split into disjoint components
+%    that never mix under the dynamics (ergodic components). 
+%So we have to take that
+%    into account. 
+    When $h/4<r<w/4$, a disk cannot interchange left--right positions,
     but can still move across all vertical available space.  After $r\geq w/4$,
     the system gets split again into two more disjoint components.
-    So, when we calculate the ``avaible'' volume, we shall only use the
-    part of the volume that belongs to the specific set that has a possibility of
-    generating an event. We shall take into account what is written in the last
-    paragraphs of the previous subsection. In this particular case, it is
-    if as the volume gets split into disjoint components, namely 1,2 or 4 of the
-    total avaible. This can be seen in the numerics as a discontinuity both
-    in  the simulated data and in the exact expression. The avaible area
-    for this event remains the same. 
+    So, when we calculate the available volume, we use only the
+    part of the volume corresponding to the set where the event can occur
+%    In this particular case, it is
+%    if as the volume gets split into disjoint components, namely 1,2 or 4 of the
+%    total avaible. This can be seen in the numerics as a discontinuity both
+%    in  the simulated data and in the exact expression. The avaible area
+%    for this event remains the same. 
     
     Again, it is simpler to evaluate the last expression in eq. \ref{areachoquexy}
     in the excluded space and then to subtract that from the whole configuration
-    space evaluation.
+    space evaluation:
 
     \begin{align}
       A_{x_2=a} & =4\sqrt{2}\iint_{0,0}^{\sqrt{2}a,\sqrt{2}b}
@@ -1113,13 +1123,13 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
         \indicator{(x^2+y^2) < 2 r^2}(\sqrt{2} b - y)}_{\text{excluded space}}
        \end{align}
     The integrals are again routine to evaluate: the whole space part
-    gives:
+    gives
     \begin{equation}
-      A_{\text{whole}}/4=8ab^2
+      \frac{1}{4}A_{\text{whole}}=8ab^2.
     \end{equation}
-    For the excluded part, we perform the same routine of evaluating the circular part
-    in polar coordinates, and the triangular parts if they exist, in Cartesian.
-    From the circular sector we get (see fig \ref{CasosIntegra} and the following explanation
+    For the excluded part, we perform the same routine of evaluating the circular region
+    in polar coordinates and the triangular regions, if they exist, in Cartesian coordinates.
+    From the circular sector we get (see Fig.~\ref{CasosIntegra} and the following explanation
     for $\alpha, \beta$ variables):
     \begin{equation}
       A_{sector}=8 b r^2(\alpha-\beta)+16r^3/3(\cos\alpha - \cos\beta)
@@ -1130,20 +1140,20 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
     \end{equation}
     And the lower triangle a similar expression with $a$ instead of $b$.
 
-    Now, this are actually all the expressions needed for any collision, but
-    to combine them and to use them meaningfully is still needed. For example,
-    this last calculated area could be used as representation of the event of
-    the disc 1 hitting the right wall, or the disc 2 hitting the left wall. Both
-    can make sense in the case of excluded horizontal interchange. What would be
-    the expression of any disk hitting the right wall? It would be twice this expression
-    but only before the exclusion sets in. Then we need to take into account
-    the disjointedness of the phase space and divide the cases accordingly.
+%    Now, these are actually all the expressions needed for any collision, but
+%    to combine them and to use them meaningfully is still needed. For example,
+%    this last calculated area could be used as representation of the event of
+%    the disc 1 hitting the right wall, or the disc 2 hitting the left wall. Both
+%    can make sense in the case of excluded horizontal interchange. What would be
+%    the expression of any disk hitting the right wall? It would be twice this expression
+%    but only before the exclusion sets in. Then we need to take into account
+%    the disjointedness of the phase space and divide the cases accordingly.
 
-    In the same vein we could conclude that the area that represents
-    any collision (wall, discs, etc) can be obtained by summing all the other
-    areas, before hopping is excluded. If there is some sort of hindrance to
-    the movement, then the expression becomes different, again, a sum over
-    disjoint components. This could lead to tedious exercises in cases ramifications.
+%    In the same vein we could conclude that the area that represents
+%    any collision (wall, discs, etc) can be obtained by summing all the other
+%    areas, before hopping is excluded. If there is some sort of hindrance to
+%    the movement, then the expression becomes different, again, a sum over
+%    disjoint components. This could lead to tedious exercises in cases ramifications.
 
     
     
