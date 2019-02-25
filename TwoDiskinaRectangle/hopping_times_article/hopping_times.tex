@@ -55,8 +55,8 @@
 
 
 \begin{abstract}
-We study the molecular dynamics of two discs undergoing hard collisions in a rectangular box ("inertial dynamics").
-Using the mapping to a billiard model, and results from ergodic theory, we obtain exact expressions for mean times between ``hops'' (horizontal or vertical interchanges), wall collisions and disc collisions, by calculating
+We study the molecular dynamics of two discs undergoing hard collisions in a rectangular box (``inertial dynamics'').
+Using a mapping to a billiard model and results from ergodic theory, we obtain exact expressions for mean times between hops, i.e. horizontal or vertical interchanges of the particles, wall collisions and disc collisions, by calculating
 volumes and cross-sectional areas in the four-dimensional configuration space.
 In all cases, we compare exact analytical results against Monte Carlo simulations.
 \end{abstract}
@@ -75,39 +75,38 @@ A paradigmatic model, introduced by Boltzmann almost 150 years ago \cite{Boltz72
 consists of a fluid of hard spheres colliding with one other, either in a periodic torus or in
 a rectangular box.
 
-The simplest such system that is still non-trivial is that of two discs in a box.
+The simplest such system that is non-trivial is that of two discs in a box.
 The discs move rectilinearly until they undergo
-elastic collisions, either with a wall of the box, or with one another; this has been called ``inertial motion'' (to distinguish it from Brownian motion) \cite{Bowles04}.
+elastic collisions, either with a wall of the box, or with one another; this has been called ``inertial motion'', to distinguish it from Brownian motion \cite{Bowles04}.
 Phenomena such as transport, collision and reaction
 have been studied in this systems, both analytically 
- \cite{Awazu01, Munakata02, Suh05} and numerically \cite{MacElroy2005}
+ \cite{Awazu01, Munakata02, Suh05} and numerically \cite{MacElroy2004, MacElroy2005}.
  Events of physical interest in this system are \emph{hopping},
 in which two particles interchange position, either vertically or horizontally,
-and \emph{collisions} of the particles, with the box or with one other.
-These have been studied numerically, for example in \cite{MacElroy2004}.
+and \emph{collisions} of the particles, with the box or with one other. Hopping plays an important role in the dynamics of confined fluids, for example
+REF.
+
  
 Previous work
 by Bowles \etal gives general quantitative results for hopping times 
-for both inertial and Brownian dynamics \cite{Bowles04}, although they focus
-on the \emph{first-passage} time, that is, the mean time at which events
-occur for the first time. 
-They use arguments from transition state theory 
+for both inertial and Brownian dynamics \cite{Bowles04}. They focus
+on the mean \emph{first-passage} time, using arguments from transition state theory 
 to provide expressions for the general behavior of these quantities, as a function of the
 disc radii. %Their results show the adequate algebraic behavior.
-A great deal of work has expanded along that line  \cite{Suh05, Ball09}.
+Further work has expanded along that line  \cite{Suh05, Ball09}.
 There is also a statistical thermodynamic treatment by Munakata \etal, 
 who study the partition function, pressure,
 and temperature in the system \cite{Munakata02, Munakata06}. 
 
 
-In this paper, we  obtain \emph{exact} analytical expressions, not for the first passage time,
+In this paper we obtain \emph{exact} analytical expressions, not for the first passage time,
 but rather for mean inter-hop and inter-collision times of two discs under 
 inertial (Newtonian) motion, as a function of the geometrical parameters of the system. Such a treatment is possible
  since the dynamics of $N$ hard discs in $d$ spatial dimensions
  is equivalent to a \emph{billiard model} in the $Nd$-dimensional configuration space, i.e. a \emph{single} point particle colliding elastically 
 with suitable objects (``scatterers'') \cite{SzaszBook00}. 
 In particular, the system of two discs in a box is hyperbolic (chaotic) and ergodic when the discs are able to pass each other \cite{Sim99}. Otherwise, the system decomposes itself into
-a finite number of disjoint ergodic components (two or four), which are each these still hyperbolic.
+a finite number of disjoint ergodic components (two or four), which are each still hyperbolic.
 
 We can thus apply a key result from ergodic theory on mean collision times \cite{Chernov97} to obtain analytical expressions 
 for times between hops, between wall collisions, and between disc collisions; these are verified numerically. 
@@ -132,11 +131,11 @@ In certain asymptotic regimes, we recover previously obtained power-law exponent
 
 \section{Model: Two hard discs in a rectangular box}
 
-We consider two hard discs with the same radius $r$,
-in a box of width $w$ and height $h$; see Fig.~\ref{billar01}. 
+We consider two hard discs with equal radius $r$,
+moving inside a box of width $w$ and height $h$; see Fig.~\ref{billar01}. 
 The discs move inertially in the absence of forces, 
 following straight line trajectories,
-and undergo elastic collisions with each 
+and undergo elastic collisions with one 
 other and with the walls of the box.
 
 \begin{figure}[h]
@@ -169,8 +168,8 @@ It is thus useful to perform an orthogonal transformation (rotation) to the foll
 In these coordinates, the configuration space is given by the following
 intervals:
 $x \in [-a \sqrt{2}, +a \sqrt{2}]$ with 
-$X \in [-a \sqrt{2} + |x|, a \sqrt{2} - |x|]$; and 
- $y \in [-b \sqrt{2}, b \sqrt{2}]$ with $Y \in [-b \sqrt{2} + |y|, +b \sqrt{2} - |y|]$.
+$X \in [-a \sqrt{2} + |x|, a \sqrt{2} - |x|]$; and similarly for $y$ and $Y$, replacing $a$ by $b$.
+% $y \in [-b \sqrt{2}, b \sqrt{2}]$ with $Y \in [-b \sqrt{2} + |y|, +b \sqrt{2} - |y|]$.
 The non-overlapping constraint becomes $x^2 + y^2 \ge 2 r^2$.
 The horizontal and vertical coordinates transform independently
 from each other, and the Jacobian of this transformation is  equal to $1$.
@@ -278,8 +277,8 @@ types of areas.
 \subsection{Volume of available space}
 
 
-We denote by $Z := \{ \mathbf{x} \in \mathbb{R}^4: (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 \}$ 
-the complement of the cylinder in the configuration space.
+We denote by $Z := \{ \mathbf{x} \in \mathbb{R}^4: (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 \}$, where
+the complement of the cylinder in the configuration space, where $\mathbf{x} := (x_1, x_2, y_1, y_2)$.
 The four-dimensional available volume $V_\text{free}$ is then given by
 \begin{align}\label{volindic}
 V_\text{free} &= 
@@ -289,10 +288,10 @@ V_\text{free} &=
 &=
 \int \indicatorsymbol_Z(\mathbf{x}) \, \mathrm{d} \mathbf{x},
 \end{align}
-where
-$$ \int  \mathrm{d} \mathbf{x} :=  \int_{x_1 = -a}^a \rd x_1  \int_{x_2 = -a}^a \rd x_2
-\int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b  \rd y_2 $$
-is a four-dimensional integral over the whole volume, and 
+where $\int  \mathrm{d} \mathbf{x}$
+%$$ \int  \mathrm{d} \mathbf{x} :=  \int_{x_1 = -a}^a \rd x_1  \int_{x_2 = -a}^a \rd x_2
+%\int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b  \rd y_2 $$
+denotes a four-dimensional integral over the whole volume, and 
 $\indicatorsymbol_Z$ is the indicator function of the set $Z$, 
 given by $\indicatorsymbol_Z (\mathbf{x}) = 1$ if $\mathbf{x} \in Z$, and $=0$ if $\mathbf{x} \notin Z$.
 Fig.~\ref{diagintegral01} shows a diagram of the product of
@@ -318,8 +317,7 @@ but we suppress this explicit dependence for simplicity.
 
 It is easiest to represent the  
 excluded cylinder in the coordinates defined in 
-Eq.~\eqref{cambiocoor01}, since the coordinates $X$ and $Y$ 
-do not appear in the exclusion condition:
+Eq.~\eqref{cambiocoor01}:
 \begin{equation}\label{integraltotal}
  V_\text{free} = \\ \int\limits_{x=-a \sqrt{2}}^{a \sqrt{2}} \rd x 
 \int\limits_{X=-a \sqrt{2} + |x| }^{a \sqrt{2} - |x|}  \rd X
@@ -327,7 +325,7 @@ do not appear in the exclusion condition:
 \int\limits_{Y=-b \sqrt{2} + |y| }^{b \sqrt{2}-|y|}  \rd Y
 \, \indicator{ x^2 + y^2 \ge 2r^2  }.
 \end{equation}
-Since $X$ and $Y$ do not appear in the integrand, those integrals are trivial, giving
+Since $X$ and $Y$ do not appear in the integrand, the corresponding integrals are trivial, giving
 \begin{align}
  V_\text{free}  &= \int\limits_{x=-a \sqrt{2}}^{a \sqrt{2}} \rd x  \int\limits_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
 2 \left( a \sqrt{2} - |x| \right) \, 2 \left( b \sqrt{2} - |y| \right) \indicator{ x^2 + y^2 \ge 2r^2 } \\
@@ -337,7 +335,7 @@ Since $X$ and $Y$ do not appear in the integrand, those integrals are trivial, g
 where we have used the symmetry visible in Fig.~\ref{diagintegral01}.
 Thus $V_\text{free} = 16(I_1 + I_2)$, where $I_1$ is the region where the range of values of $y$
 is affected by the exclusion condition, and $I_2$ is where the exclusion condition has no effect on that range.
- In figure \ref{diagintegral01} this would correspond to the doted and
+ In figure \ref{diagintegral01} this would correspond to the dotted and
 white areas of the left diagram; see also Fig.~\ref{CasosIntegra} in the appendix. 
 We have
 \begin{align}
@@ -357,13 +355,13 @@ Thus
 \begin{align}\label{volumeabd}
  V_\text{free}
  & =  16 a^{2} b^{2}  - 16 \pi a b r^{2} + \textstyle \frac{64}{3} (a+b) r^{3}  - 8 r^{4} \\
-&= V_\text{prism} - V_\text{cyl},
+&=: V_\text{prism} - V_\text{cyl},
 \end{align}
 as previously obtained by Munakata and Hu \cite{Munakata02}.
 It is useful to split this expression into the total volume of the prism, 
 $V_\text{prism}=16 a^2 b^2$, and the cylindrical volume excluded by the overlapping
 condition, 
-$V_\text{cyl}=  16 \pi a b r^{2} - \textstyle \frac{64}{3} (a+b) r^{3}  + 8 r^{4}$.
+$V_\text{cyl} =  16 \pi a b r^{2} - \textstyle \frac{64}{3} (a+b) r^{3}  + 8 r^{4}$.
 
 The substitutions $a(r)\leftarrow (w-2r)/2$ and $b(r)\leftarrow (h-2r)/2$ give us
  the volume as a function of the radius, for fixed table size:
@@ -381,12 +379,12 @@ When either or both is no longer possible, the
 integration limits for $X$ and $Y$ in \eqref{integraltotal} are altered; 
 see Appendix~\ref{app:area_volume} for the corresponding results.
 
-As an example, we consider the case where vertical hopping is possible
-and horizontal is excluded:  $w \geq h$.
+As an example, consider the case  in which vertical hopping is possible
+and horizontal is excluded, with  $w \geq h$.
 This case divides into two sub-cases: if
 $ h \leq  w < 2 h $, there is a value of $r$ above which hopping is no longer possible,
 but the discs still fit in the table. For $2 h \leq w $, vertical hopping is
-possible until $ 2 r= h$ (where vertical movement is impossible). 
+possible until $ 2 r= h$ (where vertical movement becomes impossible). 
 The configuration space splits into disjoint components, but 
 thanks to the symmetry of
 the problem, in some cases the cross-section areas and 
@@ -1149,16 +1147,11 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
 
     
     
-    
-
-    
-
-    
 \section*{Acknowledgements}
 
 
-DPS thanks Sidney Redner for asking the question that led to this work. Financial support is acknowledged from grants CONACYT-Mexico CB-101246 and CB-101997, and DGAPA-UNAM PAPIIT IN117117.
-
+DPS thanks Sidney Redner for asking the question that led to this work, and the Marcos Moshinsky Foundation for financial support via a fellowship.
+Support is also acknowledged from grants CONACYT-Mexico CB-101246 and CB-101997, and DGAPA-UNAM PAPIIT IN117117.
 
 
 
