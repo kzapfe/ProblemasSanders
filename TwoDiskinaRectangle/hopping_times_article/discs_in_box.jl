@@ -1,4 +1,4 @@
-using Distributions
+using Distributions, LinearAlgebra
 
 
 normsq(v) = sum(abs2, v)
@@ -30,6 +30,7 @@ function initial_condition(w, h, r)
         v = rand(Uniform(-1.0, 1.0), 4)
     end
 
+    ## normalize is now on LinearAlgebra
     normalize!(v)  # sum squared is 1
 
     return [x1, y1], v[1:2], [x2, y2], v[3:4]
