@@ -461,8 +461,10 @@ To evaluate this, we use the following coarea formula
 \int_{\mathbf{R}^d} f(\mathbf{x}) \, \delta(g(\mathbf{x})) \, \mathrm{d} \mathbf{x} = \int_{g^{-1}(0)}\frac{f(\mathbf{x})}{\| \mathbf{\nabla}g(\mathbf{x}) \|} \, \mathrm{d}S,
 \label{eq:surface-dirac}
 \end{equation}
-where the integral on the right-hand side is over the surface $g^{-1}(0)$.  
-REF: E. Zappa, M. Holmes-Cerfon, J. Goodman. Monte Carlo on manifolds: sampling densities and integrating functions. Communications in Pure and Applied Mathematics, Vol 71 (12) pp.2609-2647 (2018).
+where the integral on the right-hand side is over the surface $g^{-1}(0)$
+\cite{Zappa2018}
+
+
 
 The appearance of the normalization factor $\| \mathbf{\nabla}g(\mathbf{x}) \|$ can be understood intuitively by considering how to verify numerically these surface areas. One possible technique is to use rejection sampling to sample the volume given by $|g(\mathbf{x})| \le \eta$ for some small value of $\eta$. Points will be accepted or rejected according to their orthogonal distance to the surface, which is the factor in the denominator in the above expression. Our case is simple in this respect: most of our surfaces are either parallel to the coordinates or are in some way ``diagonal'', giving constant factors
 %$| \mathbf{\nabla}g(\mathbf{x}) \| )\sqrt{2}$ constant for all points. 
@@ -702,11 +704,22 @@ the system breaking into smaller ergodic components.
 %
 \section{Distributions}
 
-%
-%
-%
-%\pmb{Shall we plot the distributions for fixed interesting r? }
-%\pmb{We may}
+Event times are the return time to
+a certain surface of section of the phase space. We expect then the
+usual exponential distribution for return times of hard chaotic sistems
+\cite{Hirata1999}. It is also known that deviation from the
+exponential depend on the particular qualites of the system at hand
+\cite{Altmann2005}.
+In this system the relevant phase space on the
+energy surface is seven dimensional. That means that
+KAM islands if they exist are irrelevant (of measure zero)
+and the system is an example of hard chaos. Such systems
+have this exponential behaviour in their recurrence times. 
+ As an example, we explore
+the distribution of hopping times for different radii and find that the
+distribution depends both cualitatively and quantitatively on the
+radius, with the expected exponential decay on the middle range
+of the distribution. 
 
 
 \begin{figure}[h]
