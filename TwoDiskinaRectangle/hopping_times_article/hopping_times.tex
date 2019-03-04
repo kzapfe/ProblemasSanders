@@ -55,10 +55,12 @@
 
 
 \begin{abstract}
-We study the molecular dynamics of two discs undergoing hard collisions in a rectangular box (``inertial dynamics'').
-Using a mapping to a billiard model and results from ergodic theory, we obtain exact expressions for mean times between hops, i.e. horizontal or vertical interchanges of the particles, wall collisions and disc collisions, by calculating
+We study the molecular dynamics of two discs undergoing hard collisions in a rectangular box.
+Using a mapping to a billiard model and a key result from ergodic theory, we obtain exact expressions for mean times between different classes of events:
+hops, i.e. horizontal or vertical interchanges of the particles; wall collisions; and disc collisions.
+To do so, we calculate
 volumes and cross-sectional areas in the four-dimensional configuration space.
-In all cases, we compare exact analytical results against Monte Carlo simulations.
+In all cases, we compare exact analytical results against Monte Carlo simulations, with excellent agreement.
 \end{abstract}
 
 \maketitle
@@ -1187,13 +1189,18 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
 %    the movement, then the expression becomes different, again, a sum over
 %    disjoint components. This could lead to tedious exercises in cases ramifications.
 
-\section{Numerical methods}
+\section{Numerical method for calculating surface area}
     
 All code used for the simulations is available, in keeping with the philosophy of open science.
 
 For simplicity, we used traditional rejection sampling to calculate the free volume and cross-sectional areas.
-The cross-sectional areas are calculated by fattening the surface $g(\mathbf{x}) = 0$ to $g(\mathbf{x}) \le \epsilon$, or, in the
-case of the hopping cross-section, $|g(\mathbf{x})| \le \epsilon$.
+
+The cross-sectional areas are calculated by fattening the surface $g(\mathbf{x}) = 0$ to $S_\epsilon := \{ \mathbf{x} : 0 \le g(\mathbf{x}) \le \epsilon \}$, or in the
+case of the hopping cross-section $S_{2 \epsilon} := \{ \mathbf{x}: \|g(\mathbf{x}) \| \le \epsilon \}$.
+
+Thus 
+$$A = \lim_{\epsilon \to 0} \frac{ \int \mathbf{1}_{S_\epsilon}}{\epsilon}$$ 
+is calculated by sampling points from the whole volume and rejecting those lying outside $S_\epsilon$.
  
 As in the analytical calculation, the width of this strip must be calculated correctly by dividing by $\| \nabla g(x) \|$.
 
@@ -1201,7 +1208,7 @@ As in the analytical calculation, the width of this strip must be calculated cor
 \section*{Acknowledgements}
 
 
-DPS thanks Sidney Redner for asking the question that led to this work, and the Marcos Moshinsky Foundation for financial support via a fellowship.
+DPS thanks Sidney Redner for posing the question that led to this work, and the Marcos Moshinsky Foundation for financial support via a fellowship.
 Support is also acknowledged from grants CONACYT-Mexico CB-101246 and CB-101997, and DGAPA-UNAM PAPIIT IN117117.
 
 
