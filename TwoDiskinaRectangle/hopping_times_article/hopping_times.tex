@@ -114,6 +114,8 @@ for times between hops, between wall collisions, and between disc collisions; th
 %factors occurring in the expressions. 
 In certain asymptotic regimes, we recover previously obtained power-law exponents \cite{Bowles04}.
 
+The main difficulty in the analysis is correctly accounting for several geometric factors with different origins in both the
+analytical and numerical calculations.
 
 %The previous  results on
 %inertial dynamics can be extended  by particularizing 
@@ -636,7 +638,7 @@ change in behavior as we approach $r_{vmax}$.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.45\textwidth]{./figures/VertHop01.png}
+  \includegraphics[width=0.45\textwidth]{./figures/VertHop01.pdf}
   \caption{Mean hopping time as function of the radius.}\label{MeanHopp01}
 \end{figure}
 
@@ -707,21 +709,23 @@ the system breaking into smaller ergodic components.
 %
 \section{Distributions}
 
-Event times are the return time to
-a certain surface of section of the phase space. We expect then the
-usual exponential distribution for return times of hard chaotic sistems
-\cite{Hirata1999}. It is also known that deviation from the
-exponential depend on the particular qualites of the system at hand
+Since each type of event time that we study is a recurrence time to a
+certain surface in phase space, we expect to observe the standard
+exponential distribution for return times of hard chaotic systems
+\cite{Hirata1999}. It is known that deviations from the
+exponential depend on the particularities of the system at hand
 \cite{Altmann2005}.
-In this system the relevant phase space on the
-energy surface is seven dimensional. That means that
-KAM islands if they exist are irrelevant (of measure zero)
-and the system is an example of hard chaos. Such systems
-have this exponential behaviour in their recurrence times. 
- As an example, we explore
+
+%In this system the relevant phase space on the
+%energy surface is seven dimensional. That means that
+%KAM islands if they exist are irrelevant (of measure zero)
+%and the system is an example of hard chaos. Such systems
+%have this exponential behaviour in their recurrence times. 
+
+As an example, we explore
 the distribution of hopping times for different radii and find that the
-distribution depends both cualitatively and quantitatively on the
-radius, with the expected exponential decay on the middle range
+distribution depends both qualitatively and quantitatively on the
+radius, with the expected exponential decay being observed in the middle section
 of the distribution. 
 
 
@@ -736,8 +740,8 @@ of the distribution.
 \section{Conclusions}
 
 We have calculated exact analytic expressions for mean hopping and
-collision times in the paradigmatic model of two discs in a hard box
-by treating them as return times to  appropriately chosen surfaces of section, 
+collision times in the paradigmatic model of two discs in a hard box,
+by treating them as return times to  appropriately-chosen surfaces of section, 
 and applying results from ergodic theory.
 %using 
 %extensive theory of chaotic billiards. The subjacent theory
@@ -751,11 +755,14 @@ and applying results from ergodic theory.
 %that line by showing a large class of events can be modeled
 %as return times to appropriately chosen surfaces of section. 
 The analytical results derived 
-confirm the limiting behaviour obtained
-by Bowles \etal by a different method, and are in agreement with Monte Carlo simulations.
+confirm the limiting behavior obtained
+by Bowles \etal \cite{Bowles04} by a different method, and are in excellent agreement with Monte Carlo simulations.
 
 The results may be extended to different radii and to more spatial dimensions, albeit
-with an increase in algebraic difficulty. 
+with an increase in algebraic difficulty. It would also be possible to extend the results to calculate exact mean collision
+and hopping times for systems containing more discs, but the analytical calculations become more challenging \cite{three_hard_discs_2004}.
+In the limit of a large number of hard spheres, Chernov \cite{Chernov97} was able to apply these methods to derive the exact limiting  free flight time for a gas of hard spheres.
+
 %Adding one more disk can be a challenging problem, although
 %in principle, the general formula would still apply. The greatest
 %challenge would be to pose the integrands in a way that is possible
@@ -769,7 +776,7 @@ with an increase in algebraic difficulty.
 %make every disk stay in a separate but overlapping box, representing some kind
 %of territorial interaction ( this has been done with difussive motion).
 
-REF: 3 discs
+
 
 %2 hard spheres in a spherical pore: conservation laws
 
@@ -1180,7 +1187,16 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
 %    the movement, then the expression becomes different, again, a sum over
 %    disjoint components. This could lead to tedious exercises in cases ramifications.
 
+\section{Numerical methods}
     
+All code used for the simulations is available, in keeping with the philosophy of open science.
+
+For simplicity, we used traditional rejection sampling to calculate the free volume and cross-sectional areas.
+The cross-sectional areas are calculated by fattening the surface $g(\mathbf{x}) = 0$ to $g(\mathbf{x}) \le \epsilon$, or, in the
+case of the hopping cross-section, $|g(\mathbf{x})| \le \epsilon$.
+ 
+As in the analytical calculation, the width of this strip must be calculated correctly by dividing by $\| \nabla g(x) \|$.
+
     
 \section*{Acknowledgements}
 
