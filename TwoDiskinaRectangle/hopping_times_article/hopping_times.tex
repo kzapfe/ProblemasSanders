@@ -482,8 +482,7 @@ Vertical hopping occus when the vertical positions of the two discs are equal: $
  $g_\mathrm{hop}(x_1, x_2, y_1, y_2)= y_1 - y_2$, with gradient  $\nabla g_\mathrm{hop}(\mathbf{x}) = (0, 0, 1, -1)$, so that $ \| \nabla g_\mathrm{hop}(\mathbf{x}) \| = \sqrt{2}$. 
  Alternatively, we can integrate 
 directly in the $(x,X,y,Y)$ coordinates, where we use
-$g(x,X,y,Y) = y$, and then returning to the original coordinates. This is actually
-simpler and results in the following expression:
+$g(x,X,y,Y) = y$, and then return to the original coordinates. This results in the following expression:
 \begin{widetext}
 \begin{equation}
  A_\text{hop} = \int\limits_{x_1 = -a}^a \rd x_1 \int\limits_{x_2 = -a}^a \rd x_2 
@@ -519,7 +518,11 @@ remain at zero.}
 
 The area which represents collisions between the two discs is the surface area of the cylinder
 that lies within the prism, given by
-$$g_\text{coll}(\mathbf{x}) := (x_1 - x_2)^2 + (y_1 - y_2)^2 - 4r^2.$$
+$$g_\text{coll}(\mathbf{x}) := (x_1 - x_2)^2 + (y_1 - y_2)^2 - 4r^2, $$
+so that
+$$\nabla g_\text{coll}(\mathbf{x}) = (2 (x_1 - x_2), -2(x_1 - x_2), 2(y_1 - y_2), -2(y_1 - y_2)),$$ 
+with norm $\| \nabla g_\text{coll}(\mathbf{x}) \| = 2\sqrt{2} \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}$.
+
 %The factors have the same reasons to appear as in the case of the hop condition.
 
 For $r<w/4$, we find for the corresponding area
@@ -537,8 +540,8 @@ plotting this as a fraction of the total volume. The result is shown in Fig.~\re
 \includegraphics[width=0.45\textwidth]{./figures/AreaCol01.pdf}
 \caption{Numerical and theoretical area 
 for collision between the discs.  The theoretical formula 
-\ref{AreaChoque} breaks down at
-$r>1/4$, but we have here used the general formula \ref{app:colgeneral}
+\eqref{AreaChoque} breaks down at
+$r > 1/4$, but we have here used the general formula \ref{app:colgeneral}
 that appears in the Appendix.}
 \label{AreaChoqueTeoyNum}.
 \end{figure}
