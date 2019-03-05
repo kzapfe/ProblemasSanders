@@ -162,10 +162,12 @@ $b \defeq b(r) \defeq \frac{h}{2} - r $.
 The exclusion condition preventing the discs from overlapping is $(x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2$.
 It is thus useful to perform an orthogonal transformation (rotation) to the following new coordinates:
 \begin{equation}\label{cambiocoor01}
- x \defeq \frac{x_1 - x_2}{\sqrt{2}}; 
-\quad X \defeq \frac{x_1 + x_2}{\sqrt{2}}; 
-\quad y \defeq \frac{y_1 - y_2}{\sqrt{2}}; 
-\quad Y \defeq \frac{y_1 + y_2}{\sqrt{2}}.
+  \begin{split}
+ x  \defeq \frac{x_1 - x_2}{\sqrt{2}};  &
+\quad X  \defeq \frac{x_1 + x_2}{\sqrt{2}};  \\
+ y  \defeq \frac{y_1 - y_2}{\sqrt{2}}; & 
+\quad Y  \defeq \frac{y_1 + y_2}{\sqrt{2}}.
+\end{split}
 \end{equation}
 
 %%This is WRONG, or better, is not precise enough.
@@ -286,11 +288,12 @@ the complement of the cylinder in the configuration space, where $\mathbf{x} := 
 The four-dimensional available volume $V_\text{free}$ is then given by
 \begin{align}\label{volindic}
 V_\text{free} &= 
-\int_{x_1 = -a}^a  \int_{x_2 = -a}^a  \int_{y_1 = -b}^b \int_{y_2 = -b}^b
- \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \,
-\rd x_1 \rd x_2 \rd y_1 \rd y_2 \\
+\iiiint
+\limits_{\substack{x_1, x_2 = -a \\ y_1, y_2 = -b}}^{\substack{x_1, x_2 = a \\ y_1, y_2 = b}}
+\rd x_1 \rd x_2 \rd y_1 \rd y_2 
+\, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \\
 &=
-\int \indicatorsymbol_Z(\mathbf{x}) \, \mathrm{d} \mathbf{x},
+\int  \mathrm{d} \mathbf{x} \, \indicatorsymbol_Z(\mathbf{x}), 
 \end{align}
 where $\int  \mathrm{d} \mathbf{x}$
 %$$ \int  \mathrm{d} \mathbf{x} :=  \int_{x_1 = -a}^a \rd x_1  \int_{x_2 = -a}^a \rd x_2
@@ -322,18 +325,29 @@ but we suppress this explicit dependence for simplicity.
 It is easiest to represent the  
 excluded cylinder in the coordinates defined in 
 Eq.~\eqref{cambiocoor01}:
+
 \begin{equation}\label{integraltotal}
- V_\text{free} = \\ \int\limits_{x=-a \sqrt{2}}^{a \sqrt{2}} \rd x 
-\int\limits_{X=-a \sqrt{2} + |x| }^{a \sqrt{2} - |x|}  \rd X
- \int\limits_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
-\int\limits_{Y=-b \sqrt{2} + |y| }^{b \sqrt{2}-|y|}  \rd Y
+  V_\text{free} = 
+  \iint\limits_{\substack{ x=-a \sqrt{2} \\ y=-b \sqrt{2}}}
+  ^{\substack{ x=a \sqrt{2} \\ y=b \sqrt{2}}}
+   \mkern-9mu \rd x \rd y 
+  \iint \limits_{\substack{X=-a\sqrt{2} + |x| \\ Y=-b \sqrt{2} + |y| }}^
+  {\substack{X=a\sqrt{2} - |x| \\ Y=b \sqrt{2} - |y| }}
+   \mkern-18mu  \rd X \rd Y
 \, \indicator{ x^2 + y^2 \ge 2r^2  }.
 \end{equation}
+
 Since $X$ and $Y$ do not appear in the integrand, the corresponding integrals are trivial, giving
 \begin{align}
- V_\text{free}  &= \int\limits_{x=-a \sqrt{2}}^{a \sqrt{2}} \rd x  \int\limits_{y=-b \sqrt{2}}^{b \sqrt{2}} \rd y
+  V_\text{free}  &=
+  \iint\limits_{\substack{ x=-a \sqrt{2} \\ y=-b \sqrt{2}}}
+  ^{\substack{ x=a \sqrt{2} \\ y=b \sqrt{2}}}
+   \mkern-9mu \rd x \rd y 
 2 \left( a \sqrt{2} - |x| \right) \, 2 \left( b \sqrt{2} - |y| \right) \indicator{ x^2 + y^2 \ge 2r^2 } \\
- &= 16 \int\limits_{x=0}^{a \sqrt{2}} \rd x  \int\limits_{y=0}^{b \sqrt{2}} \rd y 
+&=
+16  \iint\limits_{\substack{ x= 0 \\ y=0 }}
+  ^{\substack{ x=a \sqrt{2} \\ y=b \sqrt{2}}}
+   \mkern-9mu \rd x \rd y  
 \left( a \sqrt{2} - x \right) \left( b \sqrt{2} - y \right) \indicator{ x^2 + y^2 \ge 2r^2 },
 \end{align}
 where we have used the symmetry visible in Fig.~\ref{diagintegral01}.
@@ -343,15 +357,17 @@ is affected by the exclusion condition, and $I_2$ is where the exclusion conditi
 white areas of the left diagram; see also Fig.~\ref{CasosIntegra} in the appendix. 
 We have
 \begin{align}
- I_1 &= \int\limits_{x=0}^{r\sqrt{2}} \rd x \int\limits_{y = \sqrt{ 2r^2 - x^2}}^{b \sqrt{2}} \rd y
+  I_1 &= \iint\limits_{\substack{x=0  \\ y = \sqrt{ 2r^2 - x^2}}}
+    ^{\substack{x=r\sqrt{2}\\ y=b \sqrt{2}}} \! \rd x \rd y
 \left( b \sqrt{2} - y \right)  \left( a \sqrt{2} - x \right) \\
 &= 	
 2 a b^{2} r  + \textstyle \frac{1}{6} (a+b) (2r)^{3} - \frac{1}{32}  (2r)^{4} - \frac{1}{4} {\left(\pi a b + b^{2}\right)} (2r)^2,
 \end{align}
 and
 \begin{align}
- I_2 &= \int\limits_{x=r  \sqrt{2}}^{a \sqrt{2}} \rd x  \int\limits_{y = 0}^{b \sqrt{2}} \rd y
- \left( b \sqrt{2} - y \right)  \left( a \sqrt{2} - x \right)  \\
+  I_2 &= \iint\limits_{\substack{x=r\sqrt{2}  \\ y=0 }}
+    ^{\substack{x=a\sqrt{2}\\ y=b \sqrt{2}}} \! \rd x \rd y
+  \left( b \sqrt{2} - y \right)  \left( a \sqrt{2} - x \right)  \\
 &=	
 {\left( a^{2} - 2ar +   r^{2}\right)} b^{2}.
 \end{align}
@@ -404,9 +420,9 @@ $c = \sqrt{4r^2-b^2}$. Then we have
 \begin{multline}\label{VolumenCasoFeo}
 V_{h/4<r<w/4} = 32abr^2 \left[ \arccos(b/2r)-\arccos(a/2r) \right]\\
 +\frac{64 r^3}{3 } \left[ a((b-a)/2r)-b(c/2r+\sqrt{4r^2-a^2}/2r) \right]\\
++16 \left[ a b^2 c (4\sqrt{2}-1-\sqrt{2}/3) 
+  +c^2b^2 (\sqrt{2}/3-1) \right]\\
 -2r^2 (b^2-a^2)
-+16 \left[ a b^2 c (4\sqrt{2}-1-\sqrt{2}/3)
-+c^2b^2 (\sqrt{2}/3-1) \right]
 \end{multline}
 
 When $r$ is larger than both $h/4$ and $w/4$, one must take
@@ -489,8 +505,11 @@ directly in the $(x,X,y,Y)$ coordinates, where we use
 $g(x,X,y,Y) = y$, and then return to the original coordinates. This results in the following expression:
 \begin{widetext}
 \begin{equation}
- A_\text{hop} = \int\limits_{x_1 = -a}^a \rd x_1 \int\limits_{x_2 = -a}^a \rd x_2 
-\int\limits_{y_1 = -b}^b \rd y_1 \int\limits_{y_2 = -b}^b \rd y_2 \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \, \delta \big(\frac{y_1-y_2}{\sqrt{2}}\big).
+  A_\text{hop} =
+\iiiint
+\limits_{\substack{x_1, x_2 = -a \\ y_1, y_2 = -b}}^{\substack{x_1, x_2 = a \\ y_1, y_2 = b}}
+\rd x_1 \rd x_2 \rd y_1 \rd y_2 
+ \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \, \delta \big(\frac{y_1-y_2}{\sqrt{2}}\big).
 \end{equation}
 \end{widetext}
 Carrying out the integrals  (see Appendix A) gives
@@ -557,8 +576,9 @@ We restrict attention to collisions of disc $1$ with the right wall, for which
 $$g_\text{wall}(\mathbf{x}) := x_1 - a.$$
 The corresponding area, after taking the delta into account, is
 \begin{equation}\label{areaindic}
- A_\mathrm{wall} =  \int_{x_2 = -a}^a \rd x_2 
-\int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b \rd y_2 \, \indicator{ (a-x_2)^2 + (y_1-y_2)^2 \ge 4 r^2 }
+  A_\mathrm{wall} =  \iiint \limits_ {\substack{x_2 = -a \\ y_1, y_2 = -b }}^
+  {\substack{x_2=a\\ y_1,y_2=b}} 
+   \rd x_2   \rd y_1   \rd y_2 \, \indicator{ (a-x_2)^2 + (y_1-y_2)^2 \ge 4 r^2 }
 \end{equation}
 The integration gives
 \begin{align}\label{areax1p}
@@ -807,7 +827,7 @@ the excluded volume $V_\text{cyl}$, instead of the available one $V_\text{free}$
 
 We begin the derivation after integrating out $X$ and $Y$:
 \begin{equation}\label{VolumenGeneral}
-\frac{1}{16} V_\text{cyl} =\iint \rd x \rd y \left[ 2ab-\sqrt{2}(ay+bx)+x y \right]
+\frac{V_{cyl}}{16}  =\iint \rd x \rd y \left[ 2ab-\sqrt{2}(ay+bx)+x y \right]
 \indicator{x^2+y^2 < 2r^2 }.
 \end{equation}
 A diagram helps us visualize the limits of integration. The most general
@@ -837,7 +857,7 @@ in the main text, but we repeat it here using a different coordinate system
 that proves useful. In Fig.~\ref{diaglimites} we present the three regimes as
 the shaded area where we perform the integration. 
   
-\begin{figure}[h]
+\begin{figure*}[h]
         \centering
         \begin{subfigure}[b]{0.32\textwidth}
           \centering
@@ -865,7 +885,7 @@ the shaded area where we perform the integration.
 In the first case all hopping is possible; the middle case
           allows only for vertical hopping; and the last case excludes hopping.}
 \label{CasosIntegra}
-\end{figure}
+\end{figure*}
 The shaded area in Fig.~\ref{CasosIntegra} represents the region in which the indicator function
 has value 1. 
 
@@ -878,32 +898,36 @@ $\alpha < \pi/2, \beta=0$, and the no-hopping regime is where $0 < \beta< \alpha
 
 We rewrite the integral in terms of an angle $\theta$:
 
-\begin{equation}\label{Vhatch1}
+\begin{equation}\label{app:volcyl}
 \begin{split}
-V_h(r,\alpha,\beta)/16 &=
+\frac{V_h(r,\alpha,\beta)}{16} &=
 \iint \rd x \rd y \left[ 2ab-\sqrt{2}(ay+bx)+x y \right]
 \indicator{x^2 + y^2 < 2r^2}\\
 &=
 \iint \rd \rho \rd \theta \rho 
-\left[ 2ab -\sqrt{2}(a\rho\sin\theta+b\rho\cos\theta) +\rho^2 \cos\theta\sin\theta \right]
+\left[ 2ab -\sqrt{2}(a\rho\sin\theta+b\rho\cos\theta) \right. \\
+& \qquad + \left. \rho^2 \cos\theta\sin\theta \right]
 \indicator{\rho^2<2r^2 }
 \end{split}
 \end{equation}
 The indicator function determines the limits for the $\rho$ integration variable.
 We set $\alpha, \beta$ as the other two limits and perform the
 integral over $\rho$,  which does not change in the three regimes.
+\begin{widetext}
 \begin{equation}
   \begin{split}
- V_h(r,\alpha,\beta)/16 &=\iint\limits_{\beta,0}^{\alpha,r\sqrt{2}} \rd \rho \rd \theta \rho (2ab
--\sqrt{2}(a\rho\sin\theta+b\rho\cos\theta)
-+\rho^2 \cos\theta\sin\theta)\\
+    \frac{V_h(r,\alpha,\beta)}{16} &=
+    \iint\limits_{\beta,0}^{\alpha,r\sqrt{2}} \rd \rho \rd \theta \rho
+    \left( 2ab -\sqrt{2}(a\rho\sin\theta+b\rho\cos\theta) 
+    +\rho^2 \cos\theta\sin\theta \right)\\
  &=\int\limits_\beta^{\alpha}  \rd \theta  
 \left[ 2abr^2 - r^3 4/3 (a\sin\theta+b\cos\theta)+r^4 (\cos\theta\sin\theta) \right].\\
 \end{split}
-  \end{equation}
+\end{equation}
+\end{widetext}
 Now we integrate over the $\theta$ variable:
 \begin{equation}\label{Volrtheta}
-  V_h(r,\alpha,\beta)/16 = 2r^2ab\theta
+  \frac{V_h(r,\alpha,\beta)}{16} = 2r^2ab\theta
   +4/3r^3(a\cos\theta-b\sin\theta)
   +\frac{r^4 \sin^2\theta}{2} \Bigg\vert_\beta^\alpha.
 \end{equation}
@@ -923,6 +947,7 @@ other triangle.
 First, we realize that as we are inside the triangle, the characteristic function
 translates to a simple integration limit:
 
+\begin{widetext}
 \begin{equation}
   \begin{split}
     V_{u}(r) /16 &=\iint \rd y \rd x [2ab-\sqrt{2}(ay+bx)+xy] \indicator{(x)^2+(y)^2<2r^2 }\\
@@ -957,6 +982,7 @@ and gives a symmetric expression:
           V_{l}(r)=32a^2b\sqrt{r^2-a^2} -\frac{32
             a^2}{3}(r^2-a^2+2b\sqrt{r^2-a^2}) +8a^2(r^2-a^2).
 \end{equation}
+\end{widetext}
 
 These expressions would account for all volume available in the configuration space, but
 cannot be used for calculation of all event times that interest us. We need also
@@ -1006,12 +1032,17 @@ condition has a simpler representation in polar coordinates, and the triangular
 
 The hopping cross section is a good example; see Fig.~\ref{DiagramaDelta01}. 
 This is given by $g_\text{hop}(\mathbf{x}) = y_1 - y_2 = 0$:
+
 \begin{widetext}\label{ahopcart}
 \begin{equation}
- A_\text{hopp} = \int \limits_{x_1 = -a}^a \rd {x_1} \int\limits_{x_2 = -a}^a \rd {x_2}
-\int\limits_{y_1 = -b}^b \rd {y_1} \int\limits_{y_2 = -b}^b \rd {y_2} \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \frac{\delta(y_1-y_2)}{\sqrt{2}}.
+  A_\text{hop} =
+\iiiint
+\limits_{\substack{x_1, x_2 = -a \\ y_1, y_2 = -b}}^{\substack{x_1, x_2 = a \\ y_1, y_2 = b}}
+\rd x_1 \rd x_2 \rd y_1 \rd y_2 
+ \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \, \delta \big(\frac{y_1-y_2}{\sqrt{2}}\big).
 \end{equation}
 \end{widetext}
+
 
 
 \begin{figure}
@@ -1027,17 +1058,28 @@ Machta Zwanzig Formula that the error becomes evident. }\label{DiagramaDelta01}
 
 The simplest approach to this integral is using directly the expression in the $y$ and $Y$
 coordinates, since the surface is orthogonal to the $Y$ axis:
-  \begin{align}
-    A_\text{hopp}/8 & = \int_0^{a\sqrt{2}} \rd x  \int_{-b\sqrt{2}}^{b \sqrt{2}} \rd y
-    \int_0^{a\sqrt{2}-x} \rd X  \int_0^{b \sqrt{2}-y} \rd Y
-    \indicator{x^2+y^2 \geq 2 r^2} \delta (y) \label{pasoraro} \\
-    &=  \int_0^{a\sqrt{2}} \rd x  \int_{-b\sqrt{2}}^{b \sqrt{2}} \rd y
+  \begin{align} 
+    \frac{A_\text{hopp}}{8} & = \iiiint \limits_
+      {\substack{x, X, Y=0 \\ y=b\sqrt{2}}}^
+               {\substack{x=a\sqrt{2}, y=b\sqrt{2} \\
+                   X=a\sqrt{2}-x, Y =b \sqrt{2}-y }}
+                \mkern-36mu
+     \rd x   \rd y  \rd X   \rd Y
+     \indicator{x^2+y^2 \geq 2 r^2} \delta (y)
+     \label{pasoraro}
+     \\   
+     &=  \iint \limits_{x=0, y=-b\sqrt{2}}^{x=a\sqrt{2}, y=\sqrt{2}}
+    \mkern-18mu  \rd x \rd y 
     (a\sqrt{2}-x)(b\sqrt{2}-y)
-    \indicator{x^2+y^2 \geq 2 r^2} \delta (y)\\
-    &= \int_0^{a\sqrt{2}} \rd x b\sqrt{2} (a\sqrt{2}-x)
-    \indicator{x^2\geq 2 r^2} \\
-    &= \int_{r\sqrt{2}}^{a\sqrt{2}} \rd x
-    (2ab-xb\sqrt{2})\\
+    \indicator{x^2+y^2 \geq 2 r^2} \delta (y)
+    \\
+    &= \int \limits _0^{a\sqrt{2}} \rd x
+    b\sqrt{2} (a\sqrt{2}-x)
+    \indicator{x^2\geq 2 r^2}
+    \\
+    &= \int\limits_{r\sqrt{2}}^{a\sqrt{2}} \rd x
+    (2ab-xb\sqrt{2})
+    \\
     &=\biggl[2abx-\frac{x^2b}{\sqrt{2}} \biggr]_{r\sqrt{2}}^{a\sqrt{2}}\\
       A_\text{hopp}&=8\sqrt{2}b(a-r)^2
   \end{align}
@@ -1052,23 +1094,33 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
   \subsubsection{Disc collisions}
   For other cross-section areas we proceed in a similar manner. 
   Disc collisions occur when $\sqrt{x^2 + y^2} = r \, \sqrt{2}$, giving
-  \begin{align}
-    A_\text{col}/16 & =\int_{x=0}^{a\sqrt{2}} \int_{X=0}^{a\sqrt{2}-x} \int_{y=0}^{b\sqrt{2}} \int_{Y=0}^{b\sqrt{2}-y}
+  \begin{equation}
+    \frac{A_\text{col}}{16}  = \iiiint\limits_
+         {x,X,y,Y=0}^
+         {\substack{x=a\sqrt{2},\, X=a\sqrt{2}-x
+             \\ y =  b\sqrt{2},\,  Y=b\sqrt{2}-y}}
+         \mkern-18mu
     \rd x \rd X \rd y \rd Y
+    \delta (\sqrt{x^2+y^2}-\sqrt{2}r)
+  \end{equation}
+  \begin{multline}
+    \frac{A_\text{col}}{16}  = \iint \limits_{x,y=0}^
+      {x=a\sqrt{2},\, y=b\sqrt{2}}
+    \mkern-18mu \rd x \rd y 
+    \bigl[ 2ab-\sqrt{2}(ay+bx)+xy \bigr] \\
+    \times
     \delta (\sqrt{x^2+y^2}-\sqrt{2}r)\\
-    A_\text{col}/16 & =\iint _{0,0}^{a\sqrt{2},b\sqrt{2}}
-    \rd x \rd y 
-   \bigl[ 2ab-\sqrt{2}(ay+bx)+xy \bigr]
-    \delta (\sqrt{x^2+y^2}-\sqrt{2}r)\\
-    \end{align}
-  We change to polar coordinates as we did in \ref{VolApen}:
+    \end{multline}
+  We change to polar coordinates as we did in \ref{app:volcyl}:
   \begin{align}
     x^2+y^2 =: \rho^2 \\   \Rightarrow   \delta(\sqrt{x^2+y^2}-\sqrt{2}r) \rightarrow
     \delta(\rho-\sqrt{2}r)   
     \end{align}
   Then we continue straightforwardly:
+  \begin{widetext}
     \begin{align}\label{app:colgeneral}
-    A_\text{col}/16 & =\iint 
+      A_\text{col}/16 & =\iint\limits_{\rho=0, \theta=\beta}^{\rho=r, \theta=\alpha}
+      \mkern-18mu
     \rd \theta \rd \rho \rho
     \bigl[2ab-\sqrt{2}\rho(a\sin\theta+b\cos\theta)+\rho^2\cos\theta\sin\theta
       \bigr]
@@ -1081,9 +1133,12 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
     + 2r^2 [a (\cos \alpha-\cos\beta) -b (\sin\alpha -\sin\beta)]
      + r^3(\sin^2 \alpha -\sin^2\beta) \bigr)
     \end{align}
+    \end{widetext}
     We have used the same trick as in previous subsection to obtain a general expression
-    that works even when hopping is not possible. In the case of $r<w/4$ (all hopping possible)
-    we have the substitution $\alpha=\pi/2$ and $b=0$, obtaining the result stated previously
+    that works even when hopping is not possible.
+    In the case of $r<w/4$ (all hopping possible)
+    we have the substitution $\alpha=\pi/2$ and $b=0$,
+    obtaining the result stated previously
     in eq. \ref{AreaChoque}. It is practical to leave here the expression for 1/4 of the
     total area. The symmetry of the cases makes it so that when the phase space splits
     into disjoint components, the volume accessible and the area accessible scale in
@@ -1095,22 +1150,29 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
     have to be careful with the multiplicative factors that appear due to change
     of variables. Let us suppose that we want the area that represents hits of
     the disc 2 against the right wall. That means that $x_2-a=0$. 
-    \begin{align}
-      A_{x_2=a} & =\iiiint_{-a,-a,-b,-b}^{a,a,b,b} \rd x_1 \rd x_2 \rd y_1 \rd y_2 
-      \indicator{(x_1-x_2)^2+(y_1-y_2)^2 \geq (2 r)^2} \delta (x_2-a)\\
-      &=\iiint_{-a,-b,-b}^{a,b,b} \rd x_1  \rd y_1 \rd y_2 
+    \begin{multline}
+      A_{x_2=a}  =\iiiint \limits_{-a,-a,-b,-b}^{a,a,b,b}
+       \mkern-9mu \rd x_1 \rd x_2 \rd y_1 \rd y_2 
+       \indicator{(x_1-x_2)^2+(y_1-y_2)^2 \geq (2 r)^2}
+       \\ \times \delta (x_2-a)\\
+      =\iiint\limits _{-a,-b,-b}^{a,b,b} \rd x_1  \rd y_1 \rd y_2 
       \indicator{(x_1-a)^2+(y_1-y_2)^2 \geq (2 r)^2} 
-    \end{align}
+    \end{multline}
     Changing variables;
     \begin{equation}
       \frac{y_1-y_y}{\sqrt{2}} =  y  \qquad \frac{y_1+y_y}{\sqrt{2}}=Y \qquad \frac{x_1-a}{\sqrt{2}}=x
     \end{equation}
     Integrating over $x$,
     \begin{align}\label{areachoquexy}
-      A_{x_2=a} & =\sqrt{2}\iiint_{-\sqrt{2}a,-\sqrt{2}b,-\sqrt{2}b+|y]}^{0,\sqrt{2}b,\sqrt{2}b-|y|}
-        \rd x \rd y \rd Y 
-      \indicator{(x^2+y^2 \geq 2 r^2} \\
-      &=2\sqrt{2}\iint_{-\sqrt{2}a,-\sqrt{2}b}^{0,\sqrt{2}b}
+      A_{x_2=a} & =\sqrt{2} \mkern-18mu
+      \iiint \limits
+      _{-\sqrt{2}a,-\sqrt{2}b,-\sqrt{2}b+|y]}^{0,\sqrt{2}b,\sqrt{2}b-|y|}
+        \mkern-18mu \rd x \rd y \rd Y 
+        \indicator{(x^2+y^2 \geq 2 r^2}
+        \\
+        &=2\sqrt{2}\mkern-9mu
+        \iint \limits_{-\sqrt{2}a,-\sqrt{2}b}^{0,\sqrt{2}b}
+        \mkern-9mu
         \rd x \rd y (\sqrt{2} b - |y|)
       \indicator{(x^2+y^2 \geq 2 r^2}
     \end{align}
@@ -1145,17 +1207,19 @@ coordinates, since the surface is orthogonal to the $Y$ axis:
     in the excluded space and then to subtract that from the whole configuration
     space evaluation:
 
+    \begin{widetext}
     \begin{align}
-      A_{x_2=a} & =4\sqrt{2}\iint_{0,0}^{\sqrt{2}a,\sqrt{2}b}
+      A_{x_2=a} & =4\sqrt{2}\iint \limits_{0,0}^{\sqrt{2}a,\sqrt{2}b}
         \rd x \rd y (\sqrt{2} b - y)
         \indicator{(x^2+y^2) \geq 2 r^2}\\
-     &=\underbrace{4\sqrt{2}\iint_{0,0}^{\sqrt{2}a,\sqrt{2}b}
+     &=\underbrace{4\sqrt{2}\iint \limits _{0,0}^{\sqrt{2}a,\sqrt{2}b}
         \rd x \rd y (\sqrt{2} b - y)}_{\text{whole space}}
         -\underbrace{
-          4\sqrt{2}\iint_{0,0}^{\sqrt{2}a,\sqrt{2}b}
+          4\sqrt{2}\iint \limits_{0,0}^{\sqrt{2}a,\sqrt{2}b}
         \rd x \rd y \rd Y 
         \indicator{(x^2+y^2) < 2 r^2}(\sqrt{2} b - y)}_{\text{excluded space}}
-       \end{align}
+    \end{align}
+    \end{widetext}
     The integrals are again routine to evaluate: the whole space part
     gives
     \begin{equation}
