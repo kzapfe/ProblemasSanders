@@ -58,7 +58,7 @@
 We study the molecular dynamics of two discs undergoing hard collisions in a rectangular box ("inertial dynamics").
 Using the mapping to a billiard model, and results from ergodic theory, we obtain exact expressions for mean times between ``hops'' (horizontal or vertical interchanges), wall collisions and disc collisions, by calculating
 volumes and cross-sectional areas in the four-dimensional configuration space.
-In all cases, we compare exact analytical results against Monte Carlo simulations.
+The found analytical expressions are confirmed through numerical integration as well as numerical simulations of the two disk system. 
 \end{abstract}
 
 \maketitle
@@ -132,7 +132,7 @@ In certain asymptotic regimes, we recover previously obtained power-law exponent
 \section{Model: Two hard discs in a rectangular box}
 
 We consider two hard discs with the same radius $r$,
-in a box of width $w$ and height $h$; see Fig.~\ref{billar01}. 
+in a box of width $w$ and height $h$ with $w \ge h \ge r >0$; see Fig.~\ref{billar01}.
 The discs move inertially in the absence of forces, 
 following straight line trajectories,
 and undergo elastic collisions with each 
@@ -316,7 +316,9 @@ but we suppress this explicit dependence for simplicity.
     \label{diagintegral01}  
     }
 \end{figure}
+%%%%%%% I would remove the hatched areas and change the caption to "Due to symmetry, we evaluate the integral for X,Y,x,y>0 and multiply by 16." I think it's not hard for people to understand that the integral can be simplified with the symetry and the image is overloaded as it is making it harder to understand the excluded set. 
 
+For the moment, we will consider $h > 4r$ and $w > 4r$ making both horizontal and vertical hopping possible.
 It is easiest to represent the  
 excluded cylinder in the coordinates defined in 
 Eq.~\ref{cambiocoor01}, since the coordinates $X$ and $Y$ 
@@ -360,11 +362,13 @@ Thus
  & =  16 a^{2} b^{2}  - 16 \pi a b r^{2} + \textstyle \frac{64}{3} (a+b) r^{3}  - 8 r^{4} \\
 &= V_\text{prism} - V_\text{cyl},
 \end{align}
-as previously obtained by Munakata and Hu \cite{Munakata02}.
+as previously obtained by Munakata and Hu \cite{Munakata02}. 
+%%%%%% Here did Munukata and Hu obtained only V_\text{free} = V_\text{prism} - V_\text{cyl}, or V_\text{free} =  16 a^{2} b^{2}  - 16 \pi a b r^{2} + \textstyle \frac{64}{3} (a+b) r^{3}  - 8 r^{4} also ??? From the way the text is written it seems that V_\text{free} =  16 a^{2} b^{2}  - 16 \pi a b r^{2} + \textstyle \frac{64}{3} (a+b) r^{3}  - 8 r^{4} was obtained by Munukata and Hu 
 It is useful to split this expression into the total volume of the prism 
 $V_\text{prism}=16 a^2 b^2$, and the cylindrical volume excluded by the overlapping
 condition, 
 $V_\text{cyl}=  16 \pi a b r^{2} - \textstyle \frac{64}{3} (a+b) r^{3}  + 8 r^{4}$.
+%%%% This is repetitive
 
 The substitutions $a\rightarrow (w-2r)/2$ and $b\rightarrow (h-2r)/2$ give us
  the volume as a function of the radius, for fixed table size:
@@ -412,13 +416,14 @@ into account a similar
 contribution which inverts the roles of $a$ and $b$. Then there is
 a case where hopping is impossible. 
 
+%%%%%% What are the degenerate cases?
 In order to not to pick a degenerate case for our numerical simulations,
 we have set $w=1.5, h=1$. This covers all of the uses of the general volume formulas.
 Otherwise there is a case in which both hopps become imposible simultaneously
 ($h=w$), or cases in which one of them never gets excluded (e.g. $h>2w$).
 
 
-We have checked this result with standard rejection sampling Monte Carlo simulations, 
+We have checked this result with numerical integration using standard rejection sampling Monte Carlo simulations, 
 by generating uniform random positions for the disc centers in 
 $[-a,a] \times [-b,b]$ and 
 counting the fraction of initial conditions for 
@@ -435,7 +440,7 @@ which the two discs do not overlap (rejecting those where is overlap); the resul
 is continous, as it should be.}
 \label{VolMonteC}%% 
 \end{figure}
-
+%%% Is it possible to change the legend from numerical to numerical integration?
 
 The following subsections shall only show the formulas for $r<w/4, h/4$.
 Bear in mind that some of the dynamics are possible above this limit,
