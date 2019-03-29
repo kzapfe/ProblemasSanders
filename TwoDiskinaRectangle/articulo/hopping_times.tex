@@ -416,20 +416,14 @@ into account a similar
 contribution which inverts the roles of $a$ and $b$. Then there is
 a case where hopping is impossible. 
 
-%%%%%% What are the degenerate cases?
-In order to not to pick a degenerate case for our numerical simulations,
-we have set $w=1.5, h=1$. This covers all of the uses of the general volume formulas.
-Otherwise there is a case in which both hopps become imposible simultaneously
-($h=w$), or cases in which one of them never gets excluded (e.g. $h>2w$).
 
-
-We have checked this result with numerical integration using standard rejection sampling Monte Carlo simulations, 
+We have checked the volume formulas with numerical integration using standard rejection sampling Monte Carlo simulations, 
 by generating uniform random positions for the disc centers in 
 $[-a,a] \times [-b,b]$ and 
 counting the fraction of initial conditions for 
 which the two discs do not overlap (rejecting those where is overlap); the results are shown in Fig.~\ref{VolMonteC}.
-
-
+We choose the values $w=1.5, h=1$ for the numerical integration since all the different cases of the volume formulas occur for these values: all hopps possible, only vertical hopps possible, no hopps possible. This does not occur for all values of $w$, $h$, for example if $h=w$ both hopps becomes impossible simultaneously and for $h>2w$ one of them never gets excluded.
+%%%% Estoy un poco confundida de cual de los hoppings se excluye primero, asi que no se si como lo puse es correcto. 
 
 \begin{figure}[h]
 \centering
@@ -552,7 +546,8 @@ that appears in the Appendix.}
 
 We restrict attention to collisions of disc $1$ with the right wall, for which
 $$g_\text{wall}(\mathbf{x}) = x_1 - a = 0.$$
-The corresponding area, after taking account of the delta, is
+The corresponding area is
+%after taking account of the delta, is
 \begin{equation}\label{areaindic}
  A_\mathrm{wall} =  \int_{x_2 = -a}^a \rd x_2 
 \int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b \rd y_2 \, \indicator{ (a-x_2)^2 + (y_1-y_2)^2 \ge 4 r^2 }
@@ -595,7 +590,7 @@ Thus the cross section area for any impact on any wall is
 \section{Exact mean event times}
 
 In this section, we apply the results of the last section to give
-exact mean inter-hop times, as well as wall collision and disc collision times.
+exact mean inter-hop times, as well as mean wall and disc collision times.
 
 
 \subsection{Mean hopping time}
@@ -603,7 +598,7 @@ exact mean inter-hop times, as well as wall collision and disc collision times.
  
 Inserting the results of the previous section 
 into the formula for the mean times for crossing
-surfaces of sectio ( equation \ref{meanfreetime}), finally gives exact mean inter-event times.
+surfaces of section ( equation \ref{meanfreetime}), gives exact mean inter-event times.
 
 For vertical
 hops we have:
@@ -614,22 +609,24 @@ hops we have:
 { b \sqrt{2}  ( a - r )^2}.
 \end{equation}
 Recall that here there is a factor $s = 2$.
-The limiting form for small discs is revealing: a quantity
-that depends only on the height of the table, since then the discs have almost no interaction:
+The limiting form for small discs is revealing. It depends only on the height of the table, 
+since then the discs have almost no interaction:
 \begin{equation}\label{hoptaulimit}
  \mean{\tau_\text{hop}} \overset{r \to 0}{\sim}
 \frac{3 \pi}{8\sqrt{2}}h.
 \end{equation}
 Also of interest is the limit $r\sim w/4$, where vertical hopping becomes
 impossible.  The lower term goes to zero quadratically, while the avaible volume
-is still positive (except in the degenerate case that $w=2h$). The exact expression
+is still positive (except in the degenerate case that $w=2h$). %% por que es degenerate este caso? 
+The exact expression
 is cumbersome, due to the fact that the general volume expression in such a
 case is loaded with  trigonometric functions and doesn't appeal to
 intuiton (see the discusion in the Appendix, \ref{app:volume}),
 but the leading term in the numerator is  $w^2(h/2-w/4)^2$, and the denominator
 stays the same, so
 it goes to infinity
-like $1/x^2$. The figure \label{MeanHopp01} shows the compariton between
+like $1/x^2$. 
+The figure \label{MeanHopp01} shows the comparison between
 numeric and analytic results for the complete valid range. Notice the abrupt
 change in beaviour as we go close to $r_{vmax}$.
 
@@ -640,18 +637,18 @@ change in beaviour as we go close to $r_{vmax}$.
   \caption{The mean hopping time as function of the radius, Energy, mass, 
 and geometry fixed, numeric and Analytic results.}\label{MeanHopp01}
 \end{figure}
-
+%%%%% Specify how you obtained the numeric results... 
 
 \subsection{Mean disc collision time}
 
-For collisions between discs, we have, for the case $r<w/4$,
+For collisions between discs f we have, for the case $r<w/4$,
 \begin{equation}\label{colltau}
  \mean{\tau_\text{coll}} = 	
 \frac{3 \pi}{2\sqrt{2}}
 \frac {2 a^{2} b^{2}  - 2 \pi a b r^{2} + \textstyle \frac{a+b}{3}  (2r)^{3}  -  r^4}
 {2\pi a b r -4(a+b)r^2+2r^3}
 \end{equation}
-As expected, this goes to infinity with very small radius, its behaviour
+As expected, this goes to infinity for very small radius, its behaviour
 approaching the expression
 \begin{equation}\label{colltaulim0}
 \mean{\tau_\text{coll}} \overset{r \to 0}{\sim}
@@ -717,10 +714,10 @@ the system breaking into smaller ergodic components.
 
 We have calculated exact analytic expressions for mean hopping and
 collision times in the paradigmatic model of two discs in a hard box
-The  results which have helped us to do this came from the
+The results which have helped us to do this came from the
 extensive theory of chaotic billiards. The subjacent theory
 of ergodic systems already contains strong theorems and formulas
-that only need judicious  application to show their 
+that only need judicious application to show their 
 predictive power. The step done by Machta and Zwanzig in
 that direction is an example of bringing to the ground those
 ideas to applicable problems. We have expanded
@@ -745,6 +742,8 @@ modifications would simply change the avaible volume formulas, but would be
 tractable in a more or less straightforward manner. A posible setup would be to
 make every disk stay in a separate but overlapping box, representing some kind
 of territorial interaction ( this has been done with difussive motion).
+
+
 
 REF: 3 discs
 
@@ -794,6 +793,7 @@ The largest possible radius is illustrated in Fig.~\ref{radiomaximo}.
     one can deduce the value for $r$.}
   \label{radiomaximo}
 \end{figure}
+%%%%%% No entiendo que es t y v
 
 We shall look at these regimes on the integration space. The first one is solved
 in the main text, but we shall repeat it here with a different coordinate system, so as to
@@ -830,6 +830,7 @@ the shaded area where we perform the integration.
         is still possibility for the discs to fit inside the table.}
 \label{CasosIntegra}
 \end{figure}
+%%%%% No entiendo bien la imagen, hay shaded area y area con puntos? Seria bueno mencionar que pasa en el area con puntos. Tambien creo que podriamos los casos como 1, 2, 3, o a), b), c) en la lista y en la imagen para hacer las cosas mas faciles para lxs lectorxs. Ademas en la imagen las desigualdades estan en terminos de a, b y r en la imagen y en terminos de w, h, y r en la lista lo que es innecesariamente confuso. 
 The shaded area in figure \ref{CasosIntegra} represents where the indicator function
 has value 1. We can translate that to well chosen limits of integration. Notice
 how the hatched area in the first three cases may be integrated in polar coordinates
