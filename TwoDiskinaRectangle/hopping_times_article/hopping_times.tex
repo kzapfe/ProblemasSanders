@@ -316,8 +316,9 @@ but we suppress this explicit dependence for simplicity.
     $ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 $ is not satisfied.
     The width of each band is dependent on the particular 
     point of evaluation
-    on the other subspace, which ranges from 0 to $r\sqrt{2}$. By symmetry, 
-    we evaluate only the hatched areas and multiply by 16. 
+    on the other subspace, which ranges from 0 to $r\sqrt{2}$. Due to symmetry, 
+    we evaluate integral for X,Y,x,y>0 (indicated by hatches in the
+    figure), and multiply by 16.
     \label{diagintegral01}  
     }
 \end{figure}
@@ -351,8 +352,10 @@ Since $X$ and $Y$ do not appear in the integrand, the corresponding integrals ar
 \left( a \sqrt{2} - x \right) \left( b \sqrt{2} - y \right) \indicator{ x^2 + y^2 \ge 2r^2 },
 \end{align}
 where we have used the symmetry visible in Fig.~\ref{diagintegral01}.
-Thus $V_\text{free} = 16(I_1 + I_2)$, where $I_1$ is the region where the range of values of $y$
-is affected by the exclusion condition, and $I_2$ is where the exclusion condition has no effect on that range.
+Thus $V_\text{free} = 16(I_1 + I_2)$, where $I_1$ is the region where the range of
+values of $y$
+is affected by the exclusion condition, and $I_2$ is where the exclusion condition has
+no effect on that range.
  In figure \ref{diagintegral01} this would correspond to the dotted and
 white areas of the left diagram; see also Fig.~\ref{CasosIntegra} in the appendix. 
 We have
@@ -381,7 +384,7 @@ as previously obtained by Munakata and Hu \cite{Munakata02}.
 It is useful to split this expression into the total volume of the prism, 
 $V_\text{prism}=16 a^2 b^2$, and the cylindrical volume excluded by the overlapping
 condition, 
-$V_\text{cyl} =  16 \pi a b r^{2} - \textstyle \frac{64}{3} (a+b) r^{3}  + 8 r^{4}$.
+ $V_\text{cyl} =  16 \pi a b r^{2} - \textstyle \frac{64}{3} (a+b) r^{3}  + 8 r^{4}$.
 
 The substitutions $a(r)\leftarrow (w-2r)/2$ and $b(r)\leftarrow (h-2r)/2$ give us
  the volume as a function of the radius, for fixed table size:
@@ -440,8 +443,13 @@ We have checked this result with standard rejection-sampling Monte Carlo simulat
 by generating uniform random positions for the disc centers in 
 $[-a,a] \times [-b,b]$ and 
 counting the fraction of initial conditions for 
-which the two discs do not overlap (rejecting those where is overlap); the results are shown in Fig.~\ref{VolMonteC}.
-
+which the two discs do not overlap (rejecting those where is overlap);
+the results are shown in Fig.~\ref{VolMonteC}.
+We choose the values $w=1.5, h=1$ for the numerical integration since all the different
+cases of the volume formulas occur for these values: all hopps possible, only vertical
+hopps possible, no hopps possible. This does not occur for all values of $w$, $h$,
+for example if $h=w$ both hopps becomes impossible simultaneously and for $h>2w$
+one of them never gets excluded.
 
 
 \begin{figure}[h]
@@ -878,7 +886,10 @@ The largest possible radius is illustrated in Fig.~\ref{radiomaximo}.
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.4\textwidth]{figures/DiagramaRadioMaximo.pdf}
-  \caption{The largest possible radius for $h<w<2h$. From the diagram
+  \caption{The largest possible radius for $h<w<2h$. The auxiliary variable
+    $v$ is the horizontal difference in coordinates between the centers,
+    and $t$ the corresponding vertical one.
+    From the diagram
     one can see that $t^2+v^2=(2r)^2$, $h=t+2r$ and $w=v+2r$, from which
     one can deduce the value for $r$.}
   \label{radiomaximo}
@@ -894,7 +905,7 @@ the shaded area where we perform the integration.
         \begin{subfigure}[b]{0.32\textwidth}
           \centering
           \includegraphics[width=\textwidth]{figures/DiagramaIntegraCaso1.pdf}
-          \caption{$r<b$}
+          \caption{$2r<h/2$}
           \label{Caso1}
         \end{subfigure}%
         ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
@@ -902,7 +913,7 @@ the shaded area where we perform the integration.
         \begin{subfigure}[b]{0.32\textwidth}
           \centering
           \includegraphics[width=\textwidth]{figures/DiagramaIntegraCaso2.pdf}
-          \caption{$b<r<a$}
+          \caption{$h/2<2r<w/2$}
           \label{Caso2}
         \end{subfigure}%
         ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
@@ -910,7 +921,7 @@ the shaded area where we perform the integration.
         \begin{subfigure}[b]{0.32\textwidth}
           \centering
           \includegraphics[width=\textwidth]{figures/DiagramaIntegraCaso3.pdf}
-          \caption{$a,b<r$}
+          \caption{$w/2,h/2<2r$}
           \label{Caso3}
         \end{subfigure}%
         \caption{Three hopping regimes. The integral must be evaluated over the shaded region.
