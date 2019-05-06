@@ -170,12 +170,11 @@ It is thus useful to perform an orthogonal transformation (rotation) to the foll
 \end{split}
 \end{equation}
 
-%%This is WRONG, or better, is not precise enough.
+
 In these coordinates, the configuration space is given by the following
 intervals:
 $x \in [-a \sqrt{2}, +a \sqrt{2}]$ with 
 $X \in [-a \sqrt{2} + |x|, a \sqrt{2} - |x|]$; and similarly for $y$ and $Y$, replacing $a$ by $b$.
-% $y \in [-b \sqrt{2}, b \sqrt{2}]$ with $Y \in [-b \sqrt{2} + |y|, +b \sqrt{2} - |y|]$.
 The non-overlapping constraint becomes $x^2 + y^2 \ge 2 r^2$.
 The horizontal and vertical coordinates transform independently
 from each other, and the Jacobian of this transformation is  equal to $1$.
@@ -493,8 +492,7 @@ where the integral on the right-hand side is over the surface $g^{-1}(0)$
 \cite{Zappa2018}
 
 
-
-The appearance of the normalization factor $\| \mathbf{\nabla}g(\mathbf{x}) \|$ can be understood intuitively by considering how to verify numerically these surface areas. One possible technique is to use rejection sampling to sample the volume given by $|g(\mathbf{x})| \le \eta$ for some small value of $\eta$. Points will be accepted or rejected according to their orthogonal distance to the surface, which is the factor in the denominator in the above expression. Our case is simple in this respect: most of our surfaces are either parallel to the coordinates or are in some way ``diagonal'', giving constant factors
+The appearance of the normalization factor $\| \mathbf{\nabla}g(\mathbf{x}) \|$ can be understood intuitively by considering how to verify numerically these surface areas. One possible technique is to use rejection sampling to sample the volume given by $|g(\mathbf{x})| \le \eta$ for some small value of $\eta$. Points will be accepted or rejected according to their orthogonal distance to the surface, which is the factor in the denominator in the above expression. Our case is simple in this respect: most of our surfaces are either parallel to the coordinates or are in some way ``diagonal'', giving constant factors.
 %$| \mathbf{\nabla}g(\mathbf{x}) \| )\sqrt{2}$ constant for all points. 
 The main difficulty in these calculations is correctly accounting for the factors arising in this way.
 %Failing to take this constants into account produce some curious results: both analytical
@@ -627,6 +625,22 @@ Thus the area for any impact on any wall is
 
 In this section, we apply the results of the last section to give
 exact mean inter-hop times, as well as wall collision and disc collision times.
+The analytical results have been tested against numerical simulations.
+The latter where obtained via Monte Carlo initial conditions and standard
+billiard dynamic simulations. The trayectories of the centers of the
+discs are determined by their momentum and the first collition
+(either with wall or between discs) is given by
+the one that produces a smaller positive time. The discs are then set into its new
+position at the event, new momenta are calculated.
+and the procedure is repeated. The first event time is discarded. Hopping
+times can be infered by retracing the collitions and filter those that have
+changed the sign of the difference of the coordinates in question (either
+horizontal or vertical). The exact time can be determined from
+the momenta betwen the beforehand collition and the afterwards one.
+In order to
+obtain more reliable statistics, specialized subroutines where written
+such that only one kind of event was tracked. 
+All the code is avaible as a Jupyter/Julia Notebook. 
 
 
 \subsection{Mean hopping time}
@@ -924,8 +938,15 @@ the shaded area where we perform the integration.
           \caption{$w/2,h/2<2r$}
           \label{Caso3}
         \end{subfigure}%
-        \caption{Three hopping regimes. The integral must be evaluated over the shaded region.
-In the first case all hopping is possible; the middle case
+        \caption{Three hopping regimes.
+          The integral must be evaluated over the shaded region.
+          It is divided in two cases: 
+           the hatched area is
+          solved by polar coordinates as in eq. \ref{app:volcyl},
+          and the dotted area indicates the part of the integral
+          that is carried away in Cartesian Coordinates as in eq.
+          \ref{app:voldot}.
+          In the first case all hopping is possible; the middle case
           allows only for vertical hopping; and the last case excludes hopping.}
 \label{CasosIntegra}
 \end{figure*}
@@ -991,7 +1012,7 @@ First, we realize that as we are inside the triangle, the characteristic functio
 translates to a simple integration limit:
 
 \begin{widetext}
-\begin{equation}
+\begin{equation} \label{app:voldot}
   \begin{split}
     V_{u}(r) /16 &=\iint \rd y \rd x [2ab-\sqrt{2}(ay+bx)+xy] \indicator{(x)^2+(y)^2<2r^2 }\\
     &=\int_0^{b\sqrt{2}}\rd y \int_{0}^{y\sqrt{r^2-b^2}/b} \rd x [2ab-\sqrt{2}(ay+bx)+xy] \\
