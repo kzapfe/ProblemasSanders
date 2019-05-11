@@ -40,7 +40,7 @@
 \title{Exact hopping and collision times for two hard discs in a box}
 
 \author{Rosa Rodríguez}
-\email{rosa.g.asor@gmail.com }
+\email{rosarm@physics.mcgill.ca}
 \affiliation{Physics Department, McGill University}
 
 \author{David P.~Sanders}
@@ -211,7 +211,7 @@ $\sqrt{2E/m}$, and corresponding factors in the times to be determined below.
 
 A system of $N$ hard spheres confined by hard walls in a $d$-dimensional
 space may be treated as a billiard system 
-in which a single point  particle undergoes free motion between reflecting obstacles 
+in which a single point particle undergoes free motion between reflecting obstacles 
 in a $ (d N) $-dimensional configuration space \cite{Sinai70, Sim99, MarkChern}. 
 %If the resulting billiard is ergodic and hyperbolic, then we know that
 %these systems are equivalent to Bernoulli flows \cite{Gallavotti74}.
@@ -256,7 +256,7 @@ At such an event, the cross-section can be hit from \emph{either} side,
 e.g., the disk 1 can be traveling from left to right or the other way around
 at the moment when the interchange of positions take place. 
 The area $A$ of the surface is, then, 
- is effectively twice as large; this will be given by a ``sidedness'' factor $s=2$ in the formula
+effectively twice as large; this will be given by a ``sidedness'' factor $s=2$ in the formula
 for $\mean{\tau}$.
 
 The other events of interest correspond to collisions of a specific
@@ -281,7 +281,7 @@ types of areas.
 
 \subsection{Volume of available space}
 
-
+%%%% Re-escribir este parrafo
 We denote by $Z := \{ \mathbf{x} \in \mathbb{R}^4: (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 \}$, where
 the complement of the cylinder in the configuration space, where $\mathbf{x} := (x_1, x_2, y_1, y_2)$.
 The four-dimensional available volume $V_\text{free}$ is then given by
@@ -401,8 +401,8 @@ When either or both is no longer possible, the
 integration limits for $X$ and $Y$ in \eqref{integraltotal} are altered; 
 see Appendix~\ref{app:area_volume} for the corresponding results.
 
-As an example, consider the case  in which vertical hopping is possible
-and horizontal is excluded, with  $w \geq h$.
+As an example, consider the case in which vertical hopping is possible
+and horizontal is excluded, with $w \geq h$.
 This case divides into two sub-cases: if
 $ h \leq  w < 2 h $, there is a value of $r$ above which hopping is no longer possible,
 but the discs still fit in the table. For $2 h \leq w $, vertical hopping is
@@ -432,24 +432,25 @@ into account a similar
 contribution which inverts the roles of $a$ and $b$. Then there is
 a case where hopping is impossible. 
 
-For our numerical simulations, we take $w=1.5$, $h=1$, which avoids degenerate cases. 
-This covers all of the uses of the general volume formulas.
-Otherwise there is a case in which both hops become impossible simultaneously
-($h=w$), or cases in which one of them never gets excluded (e.g. $h>2w$).
+%Omiti este parrafo ya que esta repetido abajo.
+%For our numerical simulations, we take $w=1.5$, $h=1$, which avoids degenerate cases. 
+%This covers all of the uses of the general volume formulas.
+%Otherwise there is a case in which both hops become impossible simultaneously
+%($h=w$), or cases in which one of them never gets excluded (e.g. $h>2w$).
 
-
-We have checked this result with standard rejection-sampling Monte Carlo simulations, 
+We verified our expressions for the available space volume numerically using 
+standard rejection-sampling Monte Carlo simulations, i.e. 
 by generating uniform random positions for the disc centers in 
 $[-a,a] \times [-b,b]$ and 
 counting the fraction of initial conditions for 
-which the two discs do not overlap (rejecting those where is overlap);
-the results are shown in Fig.~\ref{VolMonteC}.
-We choose the values $w=1.5, h=1$ for the numerical integration since all the different
+which the two discs do not overlap (rejecting those where is overlap).
+The results are shown in Fig.~\ref{VolMonteC}.
+We chose the values $w=1.5, h=1$ for the numerical integration since all the different
 cases of the volume formulas occur for these values: all hopps possible, only vertical
 hopps possible, no hopps possible. This does not occur for all values of $w$, $h$,
 for example if $h=w$ both hopps becomes impossible simultaneously and for $h>2w$
 one of them never gets excluded.
-
+%%%%% 
 
 \begin{figure}[h]
 \centering
@@ -494,7 +495,7 @@ where the integral on the right-hand side is over the surface $g^{-1}(0)$
 
 The appearance of the normalization factor $\| \mathbf{\nabla}g(\mathbf{x}) \|$ can be understood intuitively by considering how to verify numerically these surface areas. One possible technique is to use rejection sampling to sample the volume given by $|g(\mathbf{x})| \le \eta$ for some small value of $\eta$. Points will be accepted or rejected according to their orthogonal distance to the surface, which is the factor in the denominator in the above expression. Our case is simple in this respect: most of our surfaces are either parallel to the coordinates or are in some way ``diagonal'', giving constant factors.
 %$| \mathbf{\nabla}g(\mathbf{x}) \| )\sqrt{2}$ constant for all points. 
-The main difficulty in these calculations is correctly accounting for the factors arising in this way.
+%The main difficulty in these calculations is correctly accounting for the factors arising in this way.
 %Failing to take this constants into account produce some curious results: both analytical
 %and numerical calculation of the areas can be wrong by the same factor,
 %thus passing unnoticed until one tries Szabo's formula and end up being
