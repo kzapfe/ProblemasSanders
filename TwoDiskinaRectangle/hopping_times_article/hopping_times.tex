@@ -281,7 +281,8 @@ types of areas.
 
 \subsection{Volume of available space}
 
-%%%% Re-escribir este parrafo
+%%%% Esta linea me confunde, no entiendo del todo a que se refiere "the complement of the cylinder in the configuration space",
+%%%% y se podria evitar el where where
 We denote by $Z := \{ \mathbf{x} \in \mathbb{R}^4: (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 \}$, where
 the complement of the cylinder in the configuration space, where $\mathbf{x} := (x_1, x_2, y_1, y_2)$.
 The four-dimensional available volume $V_\text{free}$ is then given by
@@ -396,9 +397,9 @@ The substitutions $a(r)\leftarrow (w-2r)/2$ and $b(r)\leftarrow (h-2r)/2$ give u
 \end{equation}
 
 Note that the above formula is correct only when both
-vertical and horizontal hopping are possible, i.e., when $h > 4r$ and $w > 4r$.
-When either or both is no longer possible, the 
-integration limits for $X$ and $Y$ in \eqref{integraltotal} are altered; 
+vertical and horizontal hopping are possible, i.e., when $h, w > 4r$.
+If this is not the case, the 
+integration limits for $X$ and $Y$ in \eqref{integraltotal} are altered, 
 see Appendix~\ref{app:area_volume} for the corresponding results.
 
 As an example, consider the case in which vertical hopping is possible
@@ -495,7 +496,9 @@ where the integral on the right-hand side is over the surface $g^{-1}(0)$
 
 The appearance of the normalization factor $\| \mathbf{\nabla}g(\mathbf{x}) \|$ can be understood intuitively by considering how to verify numerically these surface areas. One possible technique is to use rejection sampling to sample the volume given by $|g(\mathbf{x})| \le \eta$ for some small value of $\eta$. Points will be accepted or rejected according to their orthogonal distance to the surface, which is the factor in the denominator in the above expression. Our case is simple in this respect: most of our surfaces are either parallel to the coordinates or are in some way ``diagonal'', giving constant factors.
 %$| \mathbf{\nabla}g(\mathbf{x}) \| )\sqrt{2}$ constant for all points. 
+%%%% Removi esta linea porque se parece mucho a ""The main difficulty in the analysis is correctly accounting for several geometric factors with different origins in both the analytical and numerical calculations."
 %The main difficulty in these calculations is correctly accounting for the factors arising in this way.
+
 %Failing to take this constants into account produce some curious results: both analytical
 %and numerical calculation of the areas can be wrong by the same factor,
 %thus passing unnoticed until one tries Szabo's formula and end up being
@@ -506,7 +509,7 @@ The appearance of the normalization factor $\| \mathbf{\nabla}g(\mathbf{x}) \|$ 
 \subsubsection{Hopping}
 
 Vertical hopping occus when the vertical positions of the two discs are equal: $y_1 - y_2=0$. In the language of the previous subsection, we take
- $g_\mathrm{hop}(x_1, x_2, y_1, y_2)= y_1 - y_2$, with gradient  $\nabla g_\mathrm{hop}(\mathbf{x}) = (0, 0, 1, -1)$, so that $ \| \nabla g_\mathrm{hop}(\mathbf{x}) \| = \sqrt{2}$. 
+ $g_\mathrm{hop}(x_1, x_2, y_1, y_2)= y_1 - y_2$, with gradient $\nabla g_\mathrm{hop}(\mathbf{x}) = (0, 0, 1, -1)$, so that $ \| \nabla g_\mathrm{hop}(\mathbf{x}) \| = \sqrt{2}$. 
  Alternatively, we can integrate 
 directly in the $(x,X,y,Y)$ coordinates, where we use
 $g(x,X,y,Y) = y$, and then return to the original coordinates. This results in the following expression:
@@ -581,7 +584,7 @@ that appears in the Appendix.}
 
 We restrict attention to collisions of disc $1$ with the right wall, for which
 $$g_\text{wall}(\mathbf{x}) := x_1 - a.$$
-The corresponding area, after taking the delta into account, is
+The corresponding area, after taking the delta function into account, is
 \begin{equation}\label{areaindic}
   A_\mathrm{wall} =  \iiint \limits_ {\substack{x_2 = -a \\ y_1, y_2 = -b }}^
   {\substack{x_2=a\\ y_1,y_2=b}} 
@@ -629,19 +632,21 @@ exact mean inter-hop times, as well as wall collision and disc collision times.
 The analytical results have been tested against numerical simulations.
 The latter where obtained via Monte Carlo initial conditions and standard
 billiard dynamic simulations. The trayectories of the centers of the
-discs are determined by their momentum and the first collition
+discs are determined by their momentum and the first collision
 (either with wall or between discs) is given by
 the one that produces a smaller positive time. The discs are then set into its new
 position at the event, new momenta are calculated.
-and the procedure is repeated. The first event time is discarded. Hopping
-times can be infered by retracing the collitions and filter those that have
+and the procedure is repeated. 
+%%%%%%%%%% Why is the first event time discarded???
+The first event time is discarded. Hopping
+times can be inferred by retracing the collisions and filtering those that have
 changed the sign of the difference of the coordinates in question (either
 horizontal or vertical). The exact time can be determined from
-the momenta betwen the beforehand collition and the afterwards one.
+the momenta between the beforehand collision and the afterwards one.
 In order to
 obtain more reliable statistics, specialized subroutines where written
-such that only one kind of event was tracked. 
-All the code is avaible as a Jupyter/Julia Notebook. 
+such that only one kind of event was tracked. %%%%%%%%%%%%%% Aca tampoco entiendo porque medir cada evento por separado hace las estadisticas mas confiable
+All the code is avaible as a Jupyter/Julia Notebook. %%%%% anadir link/referencia 
 
 
 \subsection{Mean hopping time}
@@ -729,7 +734,7 @@ Lastly, for a specific disc colliding with a specific vertical wall we have
 in the case that $r<h/4$. The limiting form for small $r$ depends
 only on the width of the table and is exactly
 $3\pi w/2$. In the numerics this appears as the intersection with the $\tau$
-axis.
+axis. %%%%%%%????????????
 
 For the case that $r\approx h/4$ we would have two limiting forms,
 as there is a discontinuity in the available Volume, but it is exactly
@@ -743,7 +748,7 @@ the system breaking into smaller ergodic components.
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.45\textwidth]{./figures/HitRightWall01.pdf}
-  \caption{The mean impact-on-walls time as function of the radius. 
+  \caption{The mean impact-on-walls time as function of the radius, 
   %Again, same
     notes as the figure \ref{MeanHopp01}}
     \label{MeanImp01}.
@@ -786,7 +791,7 @@ of the distribution.
 
 We have calculated exact analytic expressions for mean hopping and
 collision times in the paradigmatic model of two discs in a hard box,
-by treating them as return times to  appropriately-chosen surfaces of section, 
+by treating them as return times to appropriately-chosen surfaces of section, %%%%% surfaces of section?
 and applying results from ergodic theory.
 %using 
 %extensive theory of chaotic billiards. The subjacent theory
@@ -803,47 +808,47 @@ The analytical results derived
 confirm the limiting behavior obtained
 by Bowles \etal \cite{Bowles04} by a different method, and are in excellent agreement with Monte Carlo simulations.
 
-The results may be extended to different radii, considering two parameters,
+The results may be extended to discs with different radii, considering two parameters,
 $r_1$ and $r_2$. That would give some bifurcations in cases, that could
-produce scenarios in which hopping is allways permited or that one of the
+produce scenarios in which hopping is always permitted or that one of the
 discs cannot be larger (or cannot move anymore,
-blocking sections of the configurations space), but the other still has space to use.
-The integrals would be similars as those presented here, but the space avaible
-would change. 
+blocking sections of the configurations space), but the other still has space to use. 
+The integrals would be similar as those presented here, but the space avaible
+would change.  
 On the other hand more spatial dimensions could increase not
-onlgy the algebraic difficulty, but the grasping of the posible scenarios.
+only the algebraic difficulty, but the grasping of the posible scenarios.
 Even with spheres bouncing inside a three dimensional box,
 hopping can occur in multiple not intuitive ways. As an example,
 there may be not enough space to interchange $x$ position
 \emph{in the same plane}, but there may be a way around that
 is barely visible without an adecuate experiment or
-simulation.
+simulation.%%%%%%%%%% dificil de entender
 
 
 It would also be possible to extend the results to calculate exact mean collision
 and hopping times for systems containing more discs,
 but the analytical calculations become more challenging \cite{three_hard_discs_2004}.
 In the limit of a large number of hard spheres, Chernov \cite{Chernov97}
-was able to apply these methods to derive the exact limiting  free flight time for a gas of hard spheres. Limiting case tend to overlock the scenario bifurcations that
+was able to apply these methods to derive the exact limiting free flight time for a gas of hard spheres. Limiting case tend to overlock the scenario bifurcations that
 can occur on specific instances. Hopping, in particular, would become very
 messy after the addition of a third disc. Discs can block each other for long periods,
 but not make a definitive block, and so on.
 
-Our work has presented here the simplest case for the problem at hand, but it still
-can give a cuantitative insight in the distribution of times and their
-general behaviour. As an example, this can be even applied for the design of a certain
-random switch, with a known distribution of times. A microscopic table with two
+The work presented here deals with the simplest case for the problem at hand, but provides 
+quantitative insight in the distribution of times and their
+general behaviour. Furthermore, the results shown here could be applied for the design of a
+random switch--with a known distribution of times. A microscopic table with two
 fullerene balls may produce a similar dynamical system, and the change of positions
 or the hit against walls be measured and used to trigger certain switches. 
 Knowing the mean times and approximate distributions can be then used
 to obtain the desirable switching times of a random, deterministic machine.
 
-The known laws of behaviour of chaotic systems are powerfull universal insights
+The known laws of behaviour of chaotic systems are powerful universal insights
 into seemingly random motion. Nevertheless, each systems has its own
-particularietis which make it stand from the rest. The slight deviation from
+particularities which make it stand from the rest. The slight deviation from
 these universal laws are a fingerprint of the underlying systems. By
 accumulation of examples, we may gain insight into other problems that
-present allready seen behaviour. We hope that the distributions presented here
+present already seen behaviour. We hope that the distributions presented here
 help in that direction. 
 
 %We may simulate even more complex systems that could represent subtle interactions,
@@ -875,7 +880,7 @@ of $a$ and $b$ on $r$.
 An implicit assumption was made on the limits of integration
 in \eqref{integraltotal}. If $w, h > 4r$, then the limits of integration
 are unaffected by the radius of the circles.
-In order to avoid the same positive term $16a^2b^2$, 
+In order to avoid the same positive term $16a^2b^2$,  %%%%%%%suena m
 in the formulas, we work here with
 the excluded volume $V_\text{cyl}$, instead of the available one $V_\text{free}$. 
 
@@ -954,9 +959,8 @@ the shaded area where we perform the integration.
 The shaded area in Fig.~\ref{CasosIntegra} represents the region in which the indicator function
 has value 1. 
 
-We evaluate the integral by carefully choosing the limits of integration. Note
-that the hatched area in the first three cases may be integrated in polar coordinates $(\rho, \theta)$.
-We call the indefinite integral $V_h(r,\alpha,\beta)$ (where $h$ stands for ``hatched'').
+We evaluate the integral--carefully choosing the limits of integration. We perform the integral over the hatched area in polar coordinates $(\rho, \theta)$.
+We call the integral $V_h(r,\alpha,\beta)$ (where $h$ stands for ``hatched''). %%% Removi la palabra "indefinite" ya que el termino indefinite integral no es apropiado aqui puesto que la integral tiene limite superior e inferior.
 As can be seen from figure \ref{CasosIntegra}, the all hopping possible regime
 corresponds to $\alpha = \pi/2, \beta=0$, the vertical hopping regime is where
 $\alpha < \pi/2, \beta=0$, and the no-hopping regime is where $0 < \beta< \alpha < \pi/2$.
@@ -977,7 +981,7 @@ We rewrite the integral in terms of an angle $\theta$:
 \end{equation}
 The indicator function determines the limits for the $\rho$ integration variable.
 We set $\alpha, \beta$ as the other two limits and perform the
-integral over $\rho$,  which does not change in the three regimes.
+integral over $\rho$, which does not change in the three regimes.
 \begin{widetext}
 \begin{equation}
   \begin{split}
@@ -1049,7 +1053,7 @@ and gives a symmetric expression:
 \end{equation}
 \end{widetext}
 
-These expressions would account for all volume available in the configuration space, but
+These expressions account for all volume available in the configuration space, but
 cannot be used for calculation of all event times that interest us. We need also
 expressions that take into account that this space is divided into disjoint components,
 as some events become impossible in each of these subsystems. For example,
@@ -1071,7 +1075,7 @@ divided into four disjoint components.
 \subsection{Area}
 
 The above procedure must be repeated for the different
-area calculations. We use a suitable Dirac delta to represent each codimension-1 collision
+area calculations. We use a suitable Diracdelta to represent each codimension-1 collision
 event (touching of a disc with a wall or another disc). We multiply the characteristic function of the available space by the Dirac delta, and
 then again divide it into the three cases, namely, all hopping, only vertical hopping
 and no hopping possible, again referring to Fig.~\ref{CasosIntegra}.
@@ -1095,7 +1099,7 @@ condition has a simpler representation in polar coordinates, and the triangular
 
 \subsubsection{Hopping cross section}
 
-The hopping cross section is a good example; see Fig.~\ref{DiagramaDelta01}. 
+The hopping cross section is a good example; see Fig.~\ref{DiagramaDelta01}. %%%%%%% a good example of what??
 This is given by $g_\text{hop}(\mathbf{x}) = y_1 - y_2 = 0$:
 
 \begin{widetext}\label{ahopcart}
