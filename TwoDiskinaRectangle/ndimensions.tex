@@ -1,0 +1,250 @@
+%\documentclass[letterpaper,10pt, jcp, aps]{revtex4-1}
+\documentclass[superscriptaddress,pre,reprint,showpacs,onecolumn]{revtex4-1}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsfonts}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{authblk} parece ser que ya esta metido cuando usas preprint
+
+\usepackage{hyperref}
+
+
+%\bibliographystyle{alpha}
+
+%opening
+
+%\author{Rosa Rodríguez \& David P.~Sanders \& W. P. K. Zapfe}
+%\affil{Departamento de Física, Facultad de Ciencias, Universidad Nacional Autónoma de México, Ciudad Universitaria, Del.~Coyoacán, México D.F. 04510, Mexico}
+
+\usepackage{mathptmx}
+% I dont know if that package is compatible with revtex.
+
+\newcommand{\defeq}{:=}
+\newcommand{\mean}[1]{\left \langle #1 \right \rangle}
+\newcommand{\rd}[1]{\mathrm{d}{#1} \,}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\indicatorsymbol}{\mathbf{1}}
+\newcommand{\indicator}[1]{\indicatorsymbol_{ \{   #1 \} } } 
+\newcommand{\etal}{et al.\ } 
+
+\setlength{\parskip}{10pt}
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+
+\title{Exact hopping \dots appendix more dimensions, more balls}
+
+\section{Generalizations}
+
+We may try to see how well the above procedures generalize to more
+complex cases. There are two possible complexifications: one is
+to think in n-dimensional balls in an n-dimensional space, and the
+other is augment the number of balls.
+
+\section{More Dimensions}
+
+\subsection{Volume}
+
+In this case is simpler if we modify the notation somewhat. We shall
+call the balls $X$ and $Y$ instead of $1$ and $2$. We have $n$ coordinates
+for the center of each ball, so the coordinates of the first ball will be
+$x_1, x_2, \ldots x_n$, and the second will have center coordinates
+$y_1, y_2, \ldots y_n$. We denote the sizes of the box as $h_1, h_2 , \ldots h_n$
+and we can procede as before:
+\begin{align*}
+  a_1&=h_1/2-r & a_2 =h_2/2-r &\\
+  &\cdots &       a_n=h_n/2-r &
+  \end{align*}
+We can call these $h_k$ quantities the ``effective half sizes'' of the box.
+The collition condition is, of course:
+\begin{equation}
+  \sqrt{\sum_j (x_j-y_j)^2} = 2r
+\end{equation}
+
+We peform a similar rotation of coordinates as in the 2-dimensional case:
+\begin{align}
+  z_j & = (x_j-y_j)/2  &\\
+  w_j & =(x_j+y_j)/2 , &
+\end{align}
+so that the collision conditon reads
+\begin{equation}
+  \sum_{j=1}^n z_j^2=2r.
+\end{equation}
+We will now procede to calculate the total ``effective Volume'':
+\begin{equation}
+V_{box}=2^{2n}=\prod_{j=1}^n a_j^2
+\end{equation}
+to which we substract:
+\begin{equation}
+  V_{exc}=\prod_{j=1}^n \iint_{-a_j}^{a_j} \rd{x_j} \rd{y_j} \indicator{Z^C} (x,y)
+\end{equation}
+Here we define the symbol:
+\begin{equation*}
+  \prod_{j=1}^n\iint_{-a_j}^{a_j} \rd{x_j} \rd{y_j} 
+\end{equation*}
+as shorthand for the integral operator over the avaiable space:
+\begin{equation*}
+  \int_̣{ -a_1 }} ^{a_1} \rd{x_1}  \int_̣{-a_1 }}^{a_1} \rd{y_1}
+  \cdots
+  \int_̣{-a_n }}^{a_n} \rd{x_n}  \int_̣{-a_n }} ^{a_1} \rd{y_n}
+\end{equation*}
+The excluded set is
+\begin{equation}
+  Z^c= \biggl\lbrace (x,y) \vert \sqrt{\left( \sum_{j=1}^n (x_j - y_j )^2 \right)}
+  \leq 2 r \biggr\rbrace
+\end{equation}
+We change those expressions to the $(w, z)$ coordinates.
+\begin{equation}
+  Z^c= \biggl\lbrace (x,y) \vert \sqrt{\left( \sum_{j=1}^n (z_j)^2 \right)}
+  \leq \sqrt{2} r \biggr\rbrace
+\end{equation}
+The excluded volume
+then reads as:
+\begin{equation}
+  V_{exc} =  \prod_{j=1}^n \int_{-\sqrt{2}a_j} ^{\sqrt{2}a_j} \rd{z_j}
+  \int_{-\sqrt{2}a_j+|x_j|} ^{\sqrt{2}a_j-|z_j|} \rd{w_j} \indicator{Z^C}
+\end{equation}
+Again, the Integrand doesn't depend on the $w$ coordinates:
+\begin{equation}
+  V_{exc} = 2^n \prod_{j=1}^n \int_{-\sqrt{2}a_j} ^{\sqrt{2}a_j} \rd{z_j}
+  \prod_{k=1}^n (\sqrt{2}a_j-|z_k|) \indicator{Z^C}.
+\end{equation}
+The integrand is an even function, so:
+\begin{equation}
+  V_{exc} = 2^{2n} \prod_{j=1}^n \int_{0} ^{\sqrt{2}a_j} \rd{z_j}
+  \prod_{k=1}^n (\sqrt{2}a_j-z_k) \indicator{Z^C}.
+\end{equation}
+
+We assume for simplicity that all hopping is possible,
+\begin{equation}
+  0 < r \leq \min_j {h_j/4}
+\end{equation}
+We notice that the structure is the same as in the two dimensional case,
+so that we may be able to use n-dimensional spherical coordinates:
+
+\begin{equation}
+  \begin{split}
+    z_1 & =\rho \cos \phi_1 \\
+    z_2 & =\rho \sin \phi_1 \cos \phi_2 \\
+     z_2 & =\rho \sin \phi_1 \sin \phi_2 \cos \phi_2 \\
+    \vdots & \\
+    z_n & = \rho \sin \phi_1 \cdots \sin \phi_{n-1}
+  \end{split}
+\end{equation}
+That results in:
+\begin{equation}
+  V_{exl}=2^{2n} \prod_{j=1}^{n-1} \int_0^{\pi/2} \rd{\phi_j}
+  \int_0^{\sqrt{2}r} \rd{\rho} \rho^{n-1} \sin^{n-2-j}(\phi_j)
+  \prod_{k=1}^n (a_j -z_j(\rho, \phi)) 
+\end{equation}
+
+The integral will have for given n a specific combination of powers
+of trigonometric functions, that are all solvable analitycally, and have
+to result in symmetric expressions in all the $a_j$ parameters. As
+a realistic example we solve the case for $n=3$.
+
+\begin{equation}
+  V_{exl}=2^{2\cdot 3} \iiint_0^ {\sqrt{2} a_j} \rd{z_1} \rd{z_2}  \rd{z_3} 
+  (a_1 -z_1)(a_2 -z_2)(a_3-z_3) \indicator{Z^Ĉ}
+\end{equation}
+
+\begin{equation}
+  V_{exl} = 64 \iiint_0^ {\sqrt{2} a_j} \rd{z_1} \rd{z_2}  \rd{z_3} 
+  (a_1 a_2 a_3 -a_1 a_2 z_3 -a_2 a_3 z_1 -a_3 a_1 z_2
+   +a_1 z_2 z_3+a_2 z_3 z_1+a_3 z_1 z_2
+   -z_1 z _2 z_3 )
+  )
+\end{equation}
+
+Changing to spherical:
+\begin{equation}
+  \begin{split}
+    z_1 & =\rho \cos \phi_1 \\
+    z_2 & =\rho \sin \phi_1 \cos \phi_2 \\
+     z_2 & =\rho \sin \phi_1 \sin \phi_2 
+  \end{split}
+\end{equation}
+
+and substiting:
+  \begin{multline}
+  \frac{V_{exl}}{64}= \int_0^{\sqrt{2}r} \rd{\rho}
+  \int_0^{\pi/2} \rd{\phi_1}   \int_0^{\pi/2} \rd{\phi_2}
+  \rho^2 \sin\phi_1
+  \bigg( a_1 a_2 a_3 \\
+  -\rho ( a_1 a_2 \sin \phi_1 \sin \phi_2
+  +a_2 a_3 \cos \phi_1 + a_3 a_1 \sin \phi_1 \cos \phi_2) \\
+  +\rho^2( a_1 \sin^2\phi_1 \cos\phi_2 \sin\phi_2 
+  a_2 \cos \phi_1 \sin phi_1 \sin\phi_2 
+  + a_3 \cos \phi_1 \sin phi_1 \cos \phi_2 ) \\
+  -\rho^3  \cos\phi_1 \sin^2\phi_1 \cos\phi_2 \sin\phi_2 
+  \bigg)
+   \end{multline}
+The integral consist of only exercices for Calculo II, so its very treatable, and gives
+\begin{equation}
+  \frac{V_{exl}}{64}=
+  (\sqrt{2} r)^3 a_1 a_2 a_3 \frac{\pi}{6}
+  -(\sqrt{2}r)^4/4 \frac{\pi}{4} (a_1 a_2 +a_2 a_3 + a_3 a_1)
+  + (\sqrt{2}r)^5/20 (a_1 + a_2 + a_3)
+  -(\sqrt{2}r)^6/48.
+\end{equation}
+
+\subsection{Hopping Area}
+
+It turns out that by following the upper formalism, it is rather
+straightforward to calculate the excluded area for the hopping area
+cross section. Let us say that we want to hopp in the $k$ axis:
+
+\begin{equation}
+  \begin{split}
+    A_{exc} 
+   &  =  \prod_{j=1}^n \iint_{-a_j}^{a_j} \rd{x_j} \rd{y_j} \indicator{Z^C} (x,y)
+    \delta \big(\frac{x_k-y_k}{\sqrt{2}}\big) \\
+    &  =  \prod_{j=1}^n \int_{-\sqrt{2} a_j}^{\sqrt{2}a_j} \rd{z_j}
+\int_{-\sqrt{2} a_j+|z_j|}^{\sqrt{2}a_j-|z_j|} \rd{w_j}
+ \indicator{Z^C} (z,w)
+    \delta (z_k) \\
+        &  =  \prod_{j=1}^n \int_{-\sqrt{2} a_j}^{\sqrt{2}a_j} \rd{z_j}
+2^n \prod_{l=1}^n (\sqrt{2}a_l-|z_l|)
+ \indicator{Z^C} (z)
+    \delta (z_j) 
+  \end{split}
+\end{equation}
+
+Without loss of generality, we can set $k=1$
+
+\begin{equation}
+  \begin{split}
+    A_{exc} &=  \int_{-\sqrt{2}a_1}^{\sqrt{2}a_1} \rd{z_1} \rd{z_1}
+    \prod_{j=2}^n \int_{-\sqrt{2} a_j}^{\sqrt{2}a_j} \rd{z_j}
+    2^n \prod_{l=2}^n (\sqrt{2}a_l-|z_l|)
+    \indicator{Z^C} (z)
+    \delta (z_j) \\
+    &= 2^n\sqrt{2}a_1    \prod_{j=2}^n \int_{-\sqrt{2} a_j}^{\sqrt{2}a_j} \rd{z_j}
+    2^n \prod_{l=2}^n (\sqrt{2}a_l-|z_l|)
+    \indicator{Z^C} (z)    
+  \end{split}
+\end{equation}
+
+It can be seen that this has the structure of the excluded volume
+for $n-1$ dimensional balls, so we can say that, by using the other
+$n-1$ axes, we end up with:
+\begin{equation}
+  A_{exc,n}=\sqrt{2}a_1V_{exc,n-1}
+\end{equation}
+Remember that this is the excluded part. The real cross
+section area would take
+the ``whole'' area and to substract this term:
+\begin{equation}
+  \begin{split}
+    A_{hop,n}  = & 2^(2n-1)\sqrt{2}a_1\prod_{j=2}^n a_j^2-A_{exc,n} \\
+      = & \sqrt{2}a_1 (V_{tot,n-1} - V_{exc,n-1})
+  \end{split} 
+\end{equation}
+Which resembles a symmetry for the Machta Zwanzig formula.
+
+\end{document}
