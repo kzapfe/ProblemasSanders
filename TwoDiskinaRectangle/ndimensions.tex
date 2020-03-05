@@ -37,20 +37,21 @@
 
 \begin{document}
 
-\title{Exact hopping \dots appendix more dimensions, more balls}
+\title{Exact hopping \dots appendix more dimensions}
 
 \section{Generalizations}
 
-We may try to see how well the above procedures generalize to more
+We shall generalize the above procedures to more
 complex cases. There are two possible complexifications: one is
 to think in n-dimensional balls in an n-dimensional space, and the
-other is augment the number of balls.
+other is augment the number of balls. In this appendix we shall deal
+with the former. 
 
 \section{More Dimensions}
 
 \subsection{Volume}
 
-In this case is simpler if we modify the notation somewhat. We shall
+We modify the notation a little in order to generalize. We shall
 call the balls $X$ and $Y$ instead of $1$ and $2$. We have $n$ coordinates
 for the center of each ball, so the coordinates of the first ball will be
 $x_1, x_2, \ldots x_n$, and the second will have center coordinates
@@ -246,6 +247,51 @@ the ``whole'' area and to substract this term:
 Which has a nice rhyme to the Machta Zwanzig Formula in the substitution
 for Volume and Area \ldots
 
+\section{Collition cross section area}
+
+The expression for the Cross Section Area that represents the collition
+between spheres or disks is the following:
+\begin{equation}
+  A_{c}=  \prod_{j=1}^n\iint_{-a_j}^{a_j} \rd{x_j} \rd{y_j}
+  \indicator{Z^C}
+  \delta (\sqrt{\sum_j (x_j-y_j)^2} - (2r))
+\end{equation}
+In the collition of two disk the condition denoted by the indicator function
+becomes irrelevant. We can argue that the collition is the ``edge'' case
+of the avaible volume and so we can integrate over the the whole space,
+as the Dirac delta representing the collition takes care that we are
+marginally on the permited space. We can proceed taking this into
+account and change to the $z_j, w_j$ corrdinates:
+\begin{equation}
+  \begin{split}
+  A_{c} & =  \prod_{j=1}^n\int_{-\sqrt{2}a_j}^{\sqrt{2}a_j} \rd{z_j}
+  \int_{-\sqrt{2}a_j+|z_j|}^{\sqrt{2}a_j-|z_j|} \rd{w_j}
+  \delta (\sqrt{2 \sum_j (z_j)^2} - (2r)) \\
+  & = 2^n \prod_{j=1}^n\int_{-\sqrt{2}a_j}^{\sqrt{2}a_j} \rd{z_j}
+  \prod_k^n(\sqrt{2} a_k -|z_k|)
+  \delta (\sqrt{2 \sum_j (z_j)^2} - (2r))
+  \end{split}
+\end{equation}
+This again, is simpler to solve in n-dimensional spherical coordinates,
+where the function inside the Dirac Delta becomes a simple linear expresion.
+In the 3D case we restrict us to the case where all hoping is posible, so that
+the space does not split into disjoint components, and all sides of the spheres
+are avaible for collition. Otherwise, dificult to visualize conditions arise
+on the integration limits. We call such maximal radius $r_f$ and asumme $r<r_f$.
+\begin{equation}
+    A_{c}/8=\int_0^{r_f} \rho^2 \rd \rho \delta({\sqrt{2} \rho - 2r)
+      8 \iint_0^{\pi/2} \rd \phi_1 \rd \phi_2 \sin \phi_1
+      (\sqrt{2}a_1-\rho \cos \phi_1)
+      (\sqrt{2}a_2-\rho \sin \phi_1 \cos \phi_2)
+      (\sqrt{2}a_3-\rho \sin \phi_1 \sin \phi_2)
+\end{equation}
+The integration is tedious but feasible, and after a little algebra it gives:
+\begin{equation}
+  A_{col}=64 ( 2 \pi r^2 a_1a_2a_3 -  \pi r^3 (a_1a_2 +a_2a_3 + a_3 a_1)
+  +4r^4/3 (a_1+a_2+a_3)
+  -r^5/2)
+  
+\end{equation}
 
 
 \section{Maximal possible radius}
