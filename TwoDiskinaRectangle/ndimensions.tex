@@ -279,7 +279,7 @@ the space does not split into disjoint components, and all sides of the spheres
 are avaible for collition. Otherwise, dificult to visualize conditions arise
 on the integration limits. We call such maximal radius $r_f$ and asumme $r<r_f$.
 \begin{equation}
-    A_{c}/8=\int_0^{r_f} \rho^2 \rd \rho \delta({\sqrt{2} \rho - 2r)
+    A_{c}/8=\int_0^{r_f} \rho^2 \rd \rho \delta(\sqrt{2} \rho - 2r)
       8 \iint_0^{\pi/2} \rd \phi_1 \rd \phi_2 \sin \phi_1
       (\sqrt{2}a_1-\rho \cos \phi_1)
       (\sqrt{2}a_2-\rho \sin \phi_1 \cos \phi_2)
@@ -290,8 +290,91 @@ The integration is tedious but feasible, and after a little algebra it gives:
   A_{col}=64 ( 2 \pi r^2 a_1a_2a_3 -  \pi r^3 (a_1a_2 +a_2a_3 + a_3 a_1)
   +4r^4/3 (a_1+a_2+a_3)
   -r^5/2)
-  
 \end{equation}
+
+\section{Collition against a Wall}
+
+The collition against a Wall can also be expressed by means of a Dirac Delta.
+Without loss of generality, we can assume that we want the $X$ ball to hit
+the ``right'' (positive direction) wall in direction n, that is expressed
+as:
+\begin{equation}
+x_n-a=0   
+\end{equation}
+The integral that represents that Area then would be:
+
+\begin{equation}
+  A_W=\prod_j^n \int_{-a_j}^{a_j} \rd x_j \rd y_j
+  \indicator{Z} \delta(x_n-a_n)
+\end{equation}
+
+Once more, is simpler to ignore the indicator function, as if the
+balls could overlap, calculate this ``excesive area'' and then substract
+the integral with the indicator function of the complementary set, $Z^C$.
+We start with the unrestrained integral:
+\begin{equation}
+  A_{WF}=\prod_j^n \int_{-a_j}^{a_j} \rd x_j \rd y_j \delta(x_n -a_n)
+\end{equation}
+This is straightforward to solve and it gives as expected:
+\begin{equation}
+  A_{WF}=2^{2n-1} a_n \prod_{j=1}^{n-1} a_j^2
+\end{equation}
+The complementary set is a bit more tedious but not impossible to solve:
+\begin{equation}
+  \begin{split}
+  A_{WC} & =\prod_j^n \int_{-a_j}^{a_j} \rd x_j \rd y_j
+  \indicator{\sqrt{\sum_k (x_k-y_k)^2 }\leq 2 r} \delta(x_n-a_n)  \\
+  & = \int_{-a_n}^{a_n} \prod{j=1}^{n-1} \int_{-a_j}^{a_j} \rd x_j \rd y_j
+  \indicator{\sqrt{(a_n - y_n)^2 +\sum_k^{n-1} (x_k-y_k)^2 }\leq 2 r}
+  \end{split}
+\end{equation}
+  The Condition of the indicator function can be translated to a
+  new limit of integration in the $\int \rd y_n$ operator:
+  \begin{equation}
+    4 r^2 -\sum_{k}^{n-1} (x_k - y_k) ^2 \geq ( a_n - y_n )^2
+  \end{equation}
+  Let $u = a - y_n $, $\rd u = -\rd y$:
+  \begin{equation}
+    \begin{split}
+      A_{WC}& =\int_0^{\sqrt{4r^2-\Sigma}} \rd u  \prod_j^{n_1} \int_{-a_j}^{a_j} \rd x_j \rd y_j
+        \indicator{\sqrt{\sum_k^{n-1} (x_k -y_k)^2} \leq 2 r}\\ 
+      & = \prod_j^{n_1} \int_{-a_j}^{a_j} \rd x_j \rd y_j \sqrt{4 r^2 - \sum_k^{n-} (x_k-y_k)^2}  
+        \indicator{\sqrt{\sum_k^{n-1} (x_k -y_k)^2} \leq 2 r} 
+    \end{split}
+    \end{equation}
+  This, again, can be set to the $w_j, z_j$ coordinates:
+  \begin{equation}
+    \begin{split}
+      A_{WC}& =  \prod_j^{n_1} \int_{-\sqrt{2}a_j}^{\sqrt{2}a_j} \rd w_j \rd z_j
+      \sqrt{4 r^2 - \sum_k^{n-} 2 z^2}  
+        \indicator{\sqrt{\sum_k^{n-1} 2 z^2} \leq 2 r}\\ 
+        & =  \prod_j^{n_1} \int_{-\sqrt{2}a_j}^{\sqrt{2}a_j}  \rd z_j
+        \sqrt{4 r^2 - \sum_k^{n-} 2 z^2} \prod_k^{n-1} 2 ( \sqrt{2}a_k - |z_k| ) 
+        \indicator{\sqrt{\sum_k^{n-1} 2 z^2} \leq 2 r}
+    \end{split}
+  \end{equation}
+  We take the $2$ factors out of the integrand.
+  The indicator function can be made also a new limit of integration over
+  spherical coordinates, stating the maximal possible radius. As the function
+  is even in all $z_k$ coordinates, we can integrate over a ``$2^n$-tant'' of a sphere.
+  Remember that we have a coordinate less that has allready been integrated, so
+  it is a $n-1$ dimensional sphere element. We call it $O$ for generalizated octant:
+  \begin{equation}
+    A_{WC}/2^{n-1}=\int_0^{\sqrt{2}r} \rho^{n-2} \rd \rho \int_O \rd \Omega^{n-1}
+    \sqrt{2}\sqrt{2 r^2 - \rho^2} \prod (\sqrt{2}a_k - z_k(\rho, \Omega)).
+  \end{equation}
+  This expression can actually be solved in terms of hypergeometric functions,
+  but we shall focus ourselves in the 3D case right now:
+  \begin{equation}
+    A_{WC}/(4\sqrt{2})=\int_0^{\sqrt{2}r} \rho^{n-2} \rd \rho \int_0^{\pi/2} \rd \phi
+    \sqrt{2}\sqrt{2 r^2 - \rho^2} (2 a_1 a_2 -\sqrt{2} \rho (a_1 \sin \phi+ a_2 \cos\phi)
+    +\rho^2 \sin\phi \cos\phi)
+  \end{equation}
+  This integral is not horrible and after a little blackboard work it gives:
+  \begin{equation}
+    A_{WC}= 64 \pi a_1 a_2 r^3 - 4\pi r^4 (a_1 +a_2) + 65/15 r^5.
+  \end{equation}
+  This has to be substracted to the ``unrestricted area''.
 
 
 \section{Maximal possible radius}
