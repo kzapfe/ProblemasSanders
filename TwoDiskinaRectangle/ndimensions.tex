@@ -152,31 +152,32 @@ a realistic example we solve the case for $n=3$.
   V_{exl} = 64 \iiint_0^ {\sqrt{2} a_j} \rd{z_1} \rd{z_2}  \rd{z_3} 
   \bigg( 2\sqrt{2}a_1 a_2 a_3
   -2(a_1 a_2 z_3 +a_2 a_3 z_1 +a_3 a_1 z_2) \\
-   +\sqrt{2}(a_1 z_2 z_3+a_2 z_3 z_1+a_3 z_1 z_2)
+   +\sqrt{2}(a_1 z_2 z_3+a_2 z_3 z_1+a_3 z_1 z_2)\\
    -z_1 z _2 z_3 )
-  \bigg)
+  \bigg) \indicator{Z^C}
 \end{multline}
 
-Changing to spherical:
+Changing to spherical,
 \begin{equation}
   \begin{split}
     z_1 & =\rho \cos \phi_1 \\
     z_2 & =\rho \sin \phi_1 \cos \phi_2 \\
-     z_2 & =\rho \sin \phi_1 \sin \phi_2 
+     z_2 & =\rho \sin \phi_1 \sin \phi_2 ,
   \end{split}
 \end{equation}
-
-and substiting:
+ and remembering that the limit in the
+ $z_j$ coordinates for the set  $Z^C$ is $\sqrt{2} r$, we
+ perform the subsitution:
   \begin{multline}
-  \frac{V_{exl}}{64}= \int_0^r \rd{\rho}
+  \frac{V_{exl}}{64}= \int_0^{\sqrt{2}r} \rd{\rho}
   \int_0^{\pi/2} \rd{\phi_1}   \int_0^{\pi/2} \rd{\phi_2}
   \rho^2 \sin\phi_1
   \bigg( 2*\sqrt{2} a_1 a_2 a_3 \\
   -2 \rho  ( a_1 a_2 \sin \phi_1 \sin \phi_2
   +a_2 a_3 \cos \phi_1 + a_3 a_1 \sin \phi_1 \cos \phi_2) \\
   +\sqrt{2} \rho^2( a_1 \sin^2\phi_1 \cos\phi_2 \sin\phi_2 
-  a_2 \cos \phi_1 \sin phi_1 \sin\phi_2 
-  + a_3 \cos \phi_1 \sin phi_1 \cos \phi_2 ) \\
+  + a_2 \cos \phi_1 \sin phi_1 \sin\phi_2 
+  + a_3 \cos \phi_1 \sin \phi_1 \cos \phi_2 ) \\
   -\rho^3  \cos\phi_1 \sin^2\phi_1 \cos\phi_2 \sin\phi_2 
   \bigg)
    \end{multline}
@@ -185,7 +186,7 @@ The integral consist of only exercices for Calculo II, so its very treatable, an
   \frac{V_{exl}}{64}= 8 \bigg(
    r^3 a_1 a_2 a_3 \frac{\pi}{6}
   - r^4/4 \frac{\pi}{4} (a_1 a_2 +a_2 a_3 + a_3 a_1)
-  +  r^5/20 (a_1 + a_2 + a_3)
+  +  r^5/15 (a_1 + a_2 + a_3)
   -  r^6/48 \bigg).
 \end{equation}
 
@@ -287,7 +288,7 @@ on the integration limits. We call such maximal radius $r_f$ and asumme $r<r_f$.
 \end{equation}
 The integration is tedious but feasible, and after a little algebra it gives:
 \begin{equation}
-  A_{col}=64 ( 2 \pi r^2 a_1a_2a_3 -  \pi r^3 (a_1a_2 +a_2a_3 + a_3 a_1)
+  A_{col}=64 \sqrt{2} ( 2 \pi r^2 a_1a_2a_3 -  \pi r^3 (a_1a_2 +a_2a_3 + a_3 a_1)
   +4r^4/3 (a_1+a_2+a_3)
   -r^5/2)
 \end{equation}
@@ -322,9 +323,10 @@ This is straightforward to solve and it gives as expected:
 The complementary set is a bit more tedious but not impossible to solve:
 \begin{equation}
   \begin{split}
-  A_{WC} & =\prod_j^n \int_{-a_j}^{a_j} \rd x_j \rd y_j
+  A_{WC} & =\Big[ \prod_j^n \int_{-a_j}^{a_j} \rd x_j \rd y_j \big]
   \indicator{\sqrt{\sum_k (x_k-y_k)^2 }\leq 2 r} \delta(x_n-a_n)  \\
-  & = \int_{-a_n}^{a_n} \prod{j=1}^{n-1} \int_{-a_j}^{a_j} \rd x_j \rd y_j
+  & = \Big[ \prod_{j=1}^{n-1} \int_{-a_j}^{a_j} \rd x_j \rd y_j \Big]
+  \int_{-a_n}^{a_n} \rd y_n
   \indicator{\sqrt{(a_n - y_n)^2 +\sum_k^{n-1} (x_k-y_k)^2 }\leq 2 r}
   \end{split}
 \end{equation}
@@ -336,43 +338,92 @@ The complementary set is a bit more tedious but not impossible to solve:
   Let $u = a - y_n $, $\rd u = -\rd y$:
   \begin{equation}
     \begin{split}
-      A_{WC}& =\int_0^{\sqrt{4r^2-\Sigma}} \rd u  \prod_j^{n_1} \int_{-a_j}^{a_j} \rd x_j \rd y_j
+      A_{WC}& =
+      \Big[ \prod_j^{n-1} \int_{-a_j}^{a_j} \rd x_j \rd y_j \big]
+      \int_0^{\sqrt{4r^2-\Sigma}} \rd u
         \indicator{\sqrt{\sum_k^{n-1} (x_k -y_k)^2} \leq 2 r}\\ 
-      & = \prod_j^{n_1} \int_{-a_j}^{a_j} \rd x_j \rd y_j \sqrt{4 r^2 - \sum_k^{n-} (x_k-y_k)^2}  
+        & = \Big[ \prod_j^{n-1} \int_{-a_j}^{a_j} \rd x_j \rd y_j \Big]
+        \sqrt{4 r^2 - \sum_k^{n-1} (x_k-y_k)^2}  
         \indicator{\sqrt{\sum_k^{n-1} (x_k -y_k)^2} \leq 2 r} 
     \end{split}
     \end{equation}
   This, again, can be set to the $w_j, z_j$ coordinates:
   \begin{equation}
     \begin{split}
-      A_{WC}& =  \prod_j^{n_1} \int_{-\sqrt{2}a_j}^{\sqrt{2}a_j} \rd w_j \rd z_j
-      \sqrt{4 r^2 - \sum_k^{n-} 2 z^2}  
-        \indicator{\sqrt{\sum_k^{n-1} 2 z^2} \leq 2 r}\\ 
-        & =  \prod_j^{n_1} \int_{-\sqrt{2}a_j}^{\sqrt{2}a_j}  \rd z_j
-        \sqrt{4 r^2 - \sum_k^{n-} 2 z^2} \prod_k^{n-1} 2 ( \sqrt{2}a_k - |z_k| ) 
-        \indicator{\sqrt{\sum_k^{n-1} 2 z^2} \leq 2 r}
+      A_{WC}& =  \Bigg[ \prod_j^{n-1}
+        \int_{-\sqrt{2}a_j}^{\sqrt{2}a_j} \rd z_j
+        \int_{-\sqrt{2}a_j+|z_j|}^{\sqrt{2}a_j-|z|_j} \rd w_j \Bigg]
+      \sqrt{4 r^2 - \sum_k^{n-1} 2 z_k^2}  
+        \indicator{\sqrt{\sum_k^{n-1} 2 z_k^2} \leq 2 r}\\ 
+        & =  \Bigg[\prod_j^{n-1} \int_{-\sqrt{2}a_j}^{\sqrt{2}a_j}  \rd z_j \Bigg]
+         \Bigg( \sqrt{4 r^2 - \sum_k^{n-1} 2 z_k^2} \Bigg)
+        \Bigg(\prod_l^{n-1} 2 ( \sqrt{2}a_l - |z_l| )  \Bigg)
+        \Bigg( \indicator{\sqrt{\sum_k^{n-1} 2 z_k^2} \leq 2 r} \Bigg)
     \end{split}
   \end{equation}
-  We take the $2$ factors out of the integrand.
+  We have used various indices for the sums, integrand or products.
+  Care must be taken in order to not get confused. Also the square
+  brackets separate the integrator operator from the integrand
+  that is sepparated in factors by big parentheses.
+  We take the $2$ factors out of the integrand
+  and also take into account the eveness of the integrand and also
+  take the other factors 2 that are produced by taking only
+  half of the integration range:
+  \begin{equation}
+    A_{WC} = 2^{n-1} 2^{n-1}  \Bigg[ \prod_j^{n-1}
+      \int_{0}^{\sqrt{2}a_j} \rd z_j
+      \Bigg]
+         \Bigg( \sqrt{4 r^2 - \sum_k^{n-1} 2 z_k^2} \Bigg)
+        \Bigg(\prod_l^{n-1}  ( \sqrt{2}a_l - |z_l| )  \Bigg)
+        \Bigg( \indicator{\sqrt{\sum_k^{n-1} 2 z_k^2} \leq 2 r} \Bigg)
+  \end{equation}
   The indicator function can be made also a new limit of integration over
-  spherical coordinates, stating the maximal possible radius. As the function
+  spherical coordinates, stating the maximal possible radius, i.e.
+  $\sqrt{2} r$. As the function
   is even in all $z_k$ coordinates, we can integrate over a ``$2^n$-tant'' of a sphere.
   Remember that we have a coordinate less that has allready been integrated, so
   it is a $n-1$ dimensional sphere element. We call it $O$ for generalizated octant:
   \begin{equation}
-    A_{WC}/2^{n-1}=\int_0^{\sqrt{2}r} \rho^{n-2} \rd \rho \int_O \rd \Omega^{n-1}
-    \sqrt{2}\sqrt{2 r^2 - \rho^2} \prod (\sqrt{2}a_k - z_k(\rho, \Omega)).
+    A_{WC}/2^{2n-2}=
+    \Bigg[\int_0^{\sqrt{2}r} \rho^{n-2} \rd \rho \int_O \rd \Omega^{n-1}\Bigg]
+    \Bigg( \sqrt{2}\sqrt{2 r^2 - \rho^2} \Bigg)
+    \Bigg( \prod_k^{n-1} (\sqrt{2}a_k - z_k(\rho, \Omega)) \Bigg).
   \end{equation}
   This expression can actually be solved in terms of hypergeometric functions,
-  but we shall focus ourselves in the 3D case right now:
+  but we shall focus ourselves in the 3D case right now. Be carefull not to
+  skip the $\rho$ parts inside the angular integral!
   \begin{equation}
-    A_{WC}/(4\sqrt{2})=\int_0^{\sqrt{2}r} \rho^{n-2} \rd \rho \int_0^{\pi/2} \rd \phi
-    \sqrt{2}\sqrt{2 r^2 - \rho^2} (2 a_1 a_2 -\sqrt{2} \rho (a_1 \sin \phi+ a_2 \cos\phi)
-    +\rho^2 \sin\phi \cos\phi)
+    A_{WC}/(16\sqrt{2})=\int_0^{\sqrt{2}r} 
+    \rd \rho \Bigg(
+    \int_0^{\pi/2} \rd \phi
+    (\rho \sqrt{2 r^2 - \rho^2})
+    (2 a_1 a_2 -\sqrt{2} \rho (a_1 \sin \phi+ a_2 \cos\phi)
+    +\rho^2 \sin\phi \cos\phi) \Bigg)
   \end{equation}
-  This integral is not horrible and after a little blackboard work it gives:
+  This integral is not horrible and after a little blackboard work it recedes.
+  First, we take on the angular part:
   \begin{equation}
-    A_{WC}= 64 \pi a_1 a_2 r^3 - 4\pi r^4 (a_1 +a_2) + 65/15 r^5.
+    A_{WC}/(16\sqrt{2})=\int_0^{\sqrt{2}r}
+    \rd \rho
+    (\rho \sqrt{2 r^2 - \rho^2})
+    \big(
+    \pi a_1a_2-\sqrt{2}\rho(a_1+a_2)+\rho^2/2
+    \big)
+  \end{equation}
+  Then the $\rho$ integration, which gives some horrible
+  expressions that annulate themselves for the most part:
+  \begin{equation}
+    A_{WC}/(16\sqrt{2})=
+    2 r^3/3  a_1 a_2 \pi \sqrt{2}
+    -\sqrt{2}(a_1+a_2)r^4/4
+    +\sqrt{2}4 r^5/15,
+  \end{equation}
+  that is:
+  \begin{equation}
+    A_{WC}=
+    64 r^3/3  a_1 a_2 \pi 
+    -8(a_1+a_2)r^4
+    +128 r^5/15.
   \end{equation}
   This has to be substracted to the ``unrestricted area''.
 
