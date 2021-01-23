@@ -25,11 +25,13 @@
 \newcommand{\defeq}{:=}
 \newcommand{\mean}[1]{\left \langle #1 \right \rangle}
 \newcommand{\rd}[1]{\mathrm{d}{#1} \,}
+\newcommand{\sumprod}[1]{\mathbf{P}_{#1} \,}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\vv}{\mathbf{v}}
 \newcommand{\indicatorsymbol}{\mathbf{1}}
 \newcommand{\indicator}[1]{\indicatorsymbol_{ \{   #1 \} } } 
 \newcommand{\etal}{et al.\ } 
+
 
 \setlength{\parskip}{10pt}
 \setlength{\parindent}{0pt}
@@ -164,13 +166,11 @@ $a_j \defeq a_j(r) \defeq \frac{h_j}{2} - r $.
 The exclusion condition preventing the balls from overlapping is $ \sum_i (x_i-y_i)^2  \ge (2r)^2$.
 It is thus useful to consider center of mass and relative coordinates:
 \begin{equation}\label{cambiocoor01}
- \begin{align}
+ \begin{aligned}
 z_j & = x_j -y_j \\
-w_j & = \frac{x_j +y_j}{2} .\\
-  \end{align}
+w_j & = \frac{x_j +y_j}{2} .
+  \end{aligned}
 \end{equation}
-
-
 
 In these coordinates, the configuration space is given by the following
 intervals:
@@ -280,138 +280,105 @@ happen, which makes calculations even more difficult.
 
 \section{Calculation of volume and areas}
 
-%The configuration
-%space is an four dimensional prism with a four dimensional
-%cylinder subtracted.
-%The calculation can be carried out indirectly,
-% using indicator functions for the
-%available space or for the prohibited space.
+The configuration space is a $2n$ dimensional rectangular box
+that has a sort of cylinder substracted from it, the
+product of a ball defined in relative coordinates by
+\begin{equation}
+  \sum_j z_j^2 \leq 4 r^2,
+\end{equation}
+and the linear center of mass coordinates.
+
+
 
 \subsection{Volume of available space}
 
+We shall sketch here the calculations for the volume and cross section areas
+of configuration space. The detailed derivations are as complementary material.
+We denote by $Z := \{ \mathbf{x} \in \mathbb{R}^{2n}: \sum (x_j-y_j)^2 \ge (2r)^2 \}$,
+the complement of the cylinder in the configuration space.
+We shall denote $Z^C$ the complement of such set \emph{inside} the rectangular
+box defined by the cartesian product of all $[-a_j, a_j ]$ intervals.
+The volume of the box is easy to calculate, so we shall only deal with
+the volume (or cross area) inside the cylinder. That is, $V$ is the volume of
+our interest, and $V_{box}$ the volume of the rectangular box, and $V_{exc}$ the
+excluded cylinder:
+\begin{equation}
+V = V_{box} - V_{exc}
+\end{equation}
+with
+\begin{equation}
+V_{box} =  \prod_{j=1}^n \int_{-a_j}^{a_j} dx_j \int_{-a_j}^{a_j}  dy_j = \prod_{j=1}^n (2 a_j)^2 
+\end{equation}
+and
+\begin{equation}
+V_{exc} =  \prod_{j=1}^n \int_{-a_j}^{a_j} dx_j \int_{-a_j}^{a_j}  dy_j  \indicator{Z^C}
+\end{equation}
+We change to
+the center of mass and relative coordinates defined in \eqref{cambiocoor01}:
 
-We denote by $Z := \{ \mathbf{x} \in \mathbb{R}^4: (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 \}$, where
-the complement of the cylinder in the configuration space, where $\mathbf{x} := (x_1, x_2, y_1, y_2)$.
-The four-dimensional available volume $V_\text{free}$ is then given by
-\begin{align}\label{volindic}
-V_\text{free} &= 
-\iiiint
-\limits_{\substack{x_1, x_2 = -a \\ y_1, y_2 = -b}}^{\substack{x_1, x_2 = a \\ y_1, y_2 = b}}
-\rd x_1 \rd x_2 \rd y_1 \rd y_2 
-\, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \\
-&=
-\int  \mathrm{d} \mathbf{x} \, \indicatorsymbol_Z(\mathbf{x}), 
+In terms of these coordinates the exluded volume is 
+\begin{align}
+V_{exc} & =  \prod_{j=1}^n \int_{-2a_j}^{2a_j} dz_j \int_{-a_j + \frac{|z_j|}{2}}^{a_j - \frac{|z_j|}{2}}  dw_j  \indicator{Z^C} \\
+& = \int_{-2a_1}^{2a_1} dz_1 (2a_1 -|z_1|)  \ldots \int_{-2a_n}^{2a_n} dz_n (2a_n - |z_n|)  \mathbf{1}_{Z^C} 
 \end{align}
-where $\int  \mathrm{d} \mathbf{x}$
-%$$ \int  \mathrm{d} \mathbf{x} :=  \int_{x_1 = -a}^a \rd x_1  \int_{x_2 = -a}^a \rd x_2
-%\int_{y_1 = -b}^b \rd y_1 \int_{y_2 = -b}^b  \rd y_2 $$
-denotes a four-dimensional integral over the whole volume, and 
-$\indicatorsymbol_Z$ is the indicator function of the set $Z$, 
-given by $\indicatorsymbol_Z (\mathbf{x}) = 1$ if $\mathbf{x} \in Z$, and $=0$ if $\mathbf{x} \notin Z$.
-Fig.~\ref{diagintegral01} shows a diagram of the product of
-spaces that give rise to the whole configuration space.
-Recall that the dimensions $a$ and $b$ of the available configuration space are functions of the disc radius $r$, 
+
+To simplify the notation we define the following operators
+\begin{equation}
+\hat{O}_j  = \int_{-2 a_j}^{2 a_j} dz_j \left( 2a_j -|z_j| \right), 
+\end{equation}
+so that
+\begin{equation}\label{voloper}
+V_{exc} = \prod_{j=1}^n \hat{O}_j \mathbf{1}_{Z^C}
+\end{equation}
+
+Recall that the dimensions $a_j$ of the available configuration space are functions of the disc radius $r$, 
 but we suppress this explicit dependence for simplicity.
 
-\begin{figure}[h]
-  \begin{center}
-    \includegraphics[width=0.45\textwidth]{figures/diagramintegra01.pdf}
-  \end{center}
-  \caption{The space to integrate is the product of the spaces
-    corresponding to the horizontal and vertical coordinates. The dotted
-    bands show the excluded set, that is, the complement of $Z$, where the condition 
-    $ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 $ is not satisfied.
-    The width of each band is dependent on the particular 
-    point of evaluation
-    on the other subspace, which ranges from 0 to $r\sqrt{2}$. By symmetry, 
-    we evaluate only the hatched areas and multiply by 16. 
-    \label{diagintegral01}  
-    }
-\end{figure}
+For each dimension $j$, there are two possible cases $a_j \geq r$ or $a_j < r$. In the first case, the two spheres fit completely along the $j$ dimension. In the second one, only one of the spheres fit along the $j$ dimension. We where able to arrive at
+exact expressions for the case when none or only one dimension where so small that
+the balls did not fit side by side along it. In the Supplementary Material we
+show the general derivation, but here we show the key results.
+We shall encounter many times the sum of products of subsets of a certain size,
+so it is convenient to designate them by a specific symbol.
+Let us consider a subset of size $m$ of the indices $\{1,\ldots, n\}$
+ that label the dimensions. We call the sets of all subsets of indices of
+ cardinality $m$ $C_m$. Then we shall introduce the following variations
+ of the sum of products symbol:
 
-It is easiest to represent the  
-excluded cylinder in the coordinates defined in 
-Eq.~\eqref{cambiocoor01}:
+ \begin{equation}
+   \begin{aligned}
+   \sumprod{m}(\mathbf{a}) & = \sum_{A \in C _m } \prod_{ l \in A } a_l \\
+   \sumprod{m} (\mathbf{a}; j\neq k) & =
+   \sum_{\substack{A \in  C _m \\ a_k \notin A} } \prod_{ l \in A } a_l
+   \end{aligned}
+ \end{equation}
+The last expression is the sum of products of subsets omiting the
+value $a_k$. 
 
-\begin{equation}\label{integraltotal}
-  V_\text{free} = 
-  \iint\limits_{\substack{ x=-a \sqrt{2} \\ y=-b \sqrt{2}}}
-  ^{\substack{ x=a \sqrt{2} \\ y=b \sqrt{2}}}
-   \mkern-9mu \rd x \rd y 
-  \iint \limits_{\substack{X=-a\sqrt{2} + |x| \\ Y=-b \sqrt{2} + |y| }}^
-  {\substack{X=a\sqrt{2} - |x| \\ Y=b \sqrt{2} - |y| }}
-   \mkern-18mu  \rd X \rd Y
-\, \indicator{ x^2 + y^2 \ge 2r^2  }.
+The general Volume for the case that the balls fit side by side in all directions is
+\begin{align}
+V_{exc}  & =  \sum_{m=0}^{n}
+ \frac{ (-1)^{m} 2^{n-m} \pi^\frac{n-m}{2}}{\Gamma \left( \frac{n+m + 1}{2}\right)} \left(2r\right)^{m+n}
+ \mathbf{P}_{n-m}(\mathbf{a})
+\end{align}
+
+In two dimensions this gives back the result of Munakata and Hu \cite{Munakata02}.
+\begin{equation}
+V_\text{exc} = 16 \pi a_1 a_2 r^{2} - \textstyle \frac{64}{3} (a_1+a_2) r^{3}  + 8 r^{4}
 \end{equation}
 
-Since $X$ and $Y$ do not appear in the integrand, the corresponding integrals are trivial, giving
-\begin{align}
-  V_\text{free}  &=
-  \iint\limits_{\substack{ x=-a \sqrt{2} \\ y=-b \sqrt{2}}}
-  ^{\substack{ x=a \sqrt{2} \\ y=b \sqrt{2}}}
-   \mkern-9mu \rd x \rd y 
-2 \left( a \sqrt{2} - |x| \right) \, 2 \left( b \sqrt{2} - |y| \right) \indicator{ x^2 + y^2 \ge 2r^2 } \\
-&=
-16  \iint\limits_{\substack{ x= 0 \\ y=0 }}
-  ^{\substack{ x=a \sqrt{2} \\ y=b \sqrt{2}}}
-   \mkern-9mu \rd x \rd y  
-\left( a \sqrt{2} - x \right) \left( b \sqrt{2} - y \right) \indicator{ x^2 + y^2 \ge 2r^2 },
-\end{align}
-where we have used the symmetry visible in Fig.~\ref{diagintegral01}.
-Thus $V_\text{free} = 16(I_1 + I_2)$, where $I_1$ is the region where the range of values of $y$
-is affected by the exclusion condition, and $I_2$ is where the exclusion condition has no effect on that range.
- In figure \ref{diagintegral01} this would correspond to the dotted and
-white areas of the left diagram; see also Fig.~\ref{CasosIntegra} in the appendix. 
-We have
-\begin{align}
-  I_1 &= \iint\limits_{\substack{x=0  \\ y = \sqrt{ 2r^2 - x^2}}}
-    ^{\substack{x=r\sqrt{2}\\ y=b \sqrt{2}}} \! \rd x \rd y
-\left( b \sqrt{2} - y \right)  \left( a \sqrt{2} - x \right) \\
-&= 	
-2 a b^{2} r  + \textstyle \frac{1}{6} (a+b) (2r)^{3} - \frac{1}{32}  (2r)^{4} - \frac{1}{4} {\left(\pi a b + b^{2}\right)} (2r)^2,
-\end{align}
-and
-\begin{align}
-  I_2 &= \iint\limits_{\substack{x=r\sqrt{2}  \\ y=0 }}
-    ^{\substack{x=a\sqrt{2}\\ y=b \sqrt{2}}} \! \rd x \rd y
-  \left( b \sqrt{2} - y \right)  \left( a \sqrt{2} - x \right)  \\
-&=	
-{\left( a^{2} - 2ar +   r^{2}\right)} b^{2}.
-\end{align}
-Thus 
-\begin{align}\label{volumeabd}
- V_\text{free}
- & =  16 a^{2} b^{2}  - 16 \pi a b r^{2} + \textstyle \frac{64}{3} (a+b) r^{3}  - 8 r^{4} \\
-&=: V_\text{prism} - V_\text{cyl},
-\end{align}
-as previously obtained by Munakata and Hu \cite{Munakata02}.
-It is useful to split this expression into the total volume of the prism, 
-$V_\text{prism}=16 a^2 b^2$, and the cylindrical volume excluded by the overlapping
-condition, 
-$V_\text{cyl} =  16 \pi a b r^{2} - \textstyle \frac{64}{3} (a+b) r^{3}  + 8 r^{4}$.
+In this particular case, we were also able to calculate the case when the balls
+did not fit into one or both directions side by side,
+see Fig.~\ref{CasosIntegra} in the appendix. 
 
-The substitutions $a(r)\leftarrow (w-2r)/2$ and $b(r)\leftarrow (h-2r)/2$ give us
- the volume as a function of the radius, for fixed table size:
-\begin{equation}\label{volumewhd}
- V_\text{free} 
-= (w-2r)^{2} (h-2r)^{2}  - 
- \pi (w-2r)(h-2r) 4 r^{2} + 
-\textstyle \frac{32}{3} (w+h-2r) r^{3}  
-- 8^{4}.
-\end{equation}
-
-Note that the above formula is correct only when both
-vertical and horizontal hopping are possible, i.e., when $h > 4r$ and $w > 4r$.
-When either or both is no longer possible, the 
-integration limits for $X$ and $Y$ in \eqref{integraltotal} are altered; 
-see Appendix~\ref{app:area_volume} for the corresponding results.
-
-As an example, consider the case  in which vertical hopping is possible
-and horizontal is excluded, with  $w \geq h$.
+For 2 dimensions, 
+consider the case  in which vertical hopping is possible
+and horizontal is excluded, with  $h_1 \geq h_2$.
 This case divides into two sub-cases: if
-$ h \leq  w < 2 h $, there is a value of $r$ above which hopping is no longer possible,
-but the discs still fit in the table. For $2 h \leq w $, vertical hopping is
-possible until $ 2 r= h$ (where vertical movement becomes impossible). 
+$ h_1 \leq  h_2 < 2 h_1 $,
+there is a value of $r$ above which hopping is no longer possible,
+but the discs still fit in the table. For $2 h_1 \leq h_2 $, vertical hopping is
+possible until $ 2 r= h_1$ (where vertical movement becomes impossible). 
 The configuration space splits into disjoint components, but 
 thanks to the symmetry of
 the problem, in some cases the cross-section areas and 
@@ -421,40 +388,40 @@ a discontinuity in the formulas,
 corresponding to a factor of 2 or 4. 
 
 
-For example, when $h/4 < r < w/4$ 
-we define an auxiliary variable,
+For example, when $h_1/4 < r < h_2/4$ 
+we define an auxiliary variables, $a=a_1, b=a_2$
+and
 $c = \sqrt{4r^2-b^2}$. Then we have
 \begin{multline}\label{VolumenCasoFeo}
-V_{h/4<r<w/4} = 32abr^2 \left[ \arccos(b/2r)-\arccos(a/2r) \right]\\
+V_{h_1/4<r<h_2/4} = 32abr^2 \left[ \arccos(b/2r)-\arccos(a/2r) \right]\\
 +\frac{64 r^3}{3 } \left[ a((b-a)/2r)-b(c/2r+\sqrt{4r^2-a^2}/2r) \right]\\
 +16 \left[ a b^2 c (4\sqrt{2}-1-\sqrt{2}/3) 
   +c^2b^2 (\sqrt{2}/3-1) \right]\\
 -2r^2 (b^2-a^2)
 \end{multline}
 
-When $r$ is larger than both $h/4$ and $w/4$, one must take
-into account a similar
-contribution which inverts the roles of $a$ and $b$. Then there is
-a case where hopping is impossible. 
+In the general n-dimensional case we have an expresion for when the balls
+do not fit side by side just in one direction (see Sup. Mat.).
 
-For our numerical simulations, we take $w=1.5$, $h=1$, which avoids degenerate cases. 
+For our numerical simulations, we take $h_1=1.5$, $h_2=1$ and for 3d, $h_3=1.75$,
+which avoids degenerate cases. 
 This covers all of the uses of the general volume formulas.
 Otherwise there is a case in which both hops become impossible simultaneously
-($h=w$), or cases in which one of them never gets excluded (e.g. $h>2w$).
+(e.g. $h_1=h_2$), or cases in which one of them never gets excluded (e.g. $h_2>2h_1$).
 
 
 We have checked this result with standard rejection-sampling Monte Carlo simulations, 
 by generating uniform random positions for the disc centers in 
-$[-a,a] \times [-b,b]$ and 
+$[-a_1,a_1] \times [-a_2,a_2]$ and 
 counting the fraction of initial conditions for 
 which the two discs do not overlap (rejecting those where is overlap); the results are shown in Fig.~\ref{VolMonteC}.
 
 
-
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.45\textwidth]{./figures/FreeVolume01.pdf}
-\caption{Free available volume in configuration space as function of radius. The
+\includegraphics[width=0.45\textwidth]{./figures/freevolume01.pdf}
+\caption{Free available volume in configuration space for 2d case,
+  as function of radius. The
   line labeled $rhmax$ is the limit for horizontal hopping, and the one labeled
   $rvmax$ is the limit for vertical hopping. The transition between the formulas
 is continuous.}
@@ -462,80 +429,83 @@ is continuous.}
 \end{figure}
 
 
-The following subsections shall only show the formulas for $r<w/4, h/4$.
-Bear in mind that some of the dynamics are possible above this limit,
-it is only the position interchange that gets excluded. \\
-
-%%
-%% ¿Que ondas David, hacemos las simulaciones para el caso espantoso tambien?
-%% Ok. Ya las voy haciendo
-
-
 \subsection{Cross-section areas}\label{areahop}
 
-The terms of the form $|A|$ in \eqref{meanfreetime} are surface areas of 3-dimensional surfaces (manifolds) $S$ embedded in the configuration space,
-defined by algebraic equations of the form $g(\mathbf{x}) = 0$, so that $S = g^{-1}(0)$ is the zero set of $g$.
+The terms of the form $|A|$ in \eqref{meanfreetime} are surface areas of
+$2n-1$-dimensional surfaces (manifolds) $S$ embedded in the configuration space,
+defined by algebraic equations of the form $g(\mathbf{x}, \mathbf{y}) = 0$,
+so that $S = g^{-1}(0)$ is the zero set of $g$.
 The surface area of $S$ is then given by
 \begin{equation}
-A(S) = \int \indicatorsymbol_Z(\mathbf{x}) \, \delta(g(\mathbf{x})) \, \mathrm{d} \mathbf{x}.
+  A(S) = \int \indicatorsymbol_Z(\mathbf{x ,y}) \delta(g(\mathbf{x, y}))
+   \rd{\mathbf{x}} \rd{\mathbf{y}}.
 \label{eq:surface-area}
 \end{equation}
 To evaluate this, we use the following coarea formula
-%relation in H\"ormanders Book, 
-%sec 6.1 
 \cite[section 6.1]{Hormander83} 
 \begin{equation}
-\int_{\mathbf{R}^d} f(\mathbf{x}) \, \delta(g(\mathbf{x})) \, \mathrm{d} \mathbf{x} = \int_{g^{-1}(0)}\frac{f(\mathbf{x})}{\| \mathbf{\nabla}g(\mathbf{x}) \|} \, \mathrm{d}S,
+\int_{\mathbf{R}^d} f(\mathbf{x,y}) \, \delta(g(\mathbf{x,y})) \, \rd{d} \mathbf{x} = \int_{g^{-1}(0)}\frac{f(\mathbf{x})}{\| \mathbf{\nabla}g(\mathbf{x}) \|} \, \rd{S},
 \label{eq:surface-dirac}
 \end{equation}
 where the integral on the right-hand side is over the surface $g^{-1}(0)$
 \cite{Zappa2018}
 
-
-
 The appearance of the normalization factor $\| \mathbf{\nabla}g(\mathbf{x}) \|$ can be understood intuitively by considering how to verify numerically these surface areas. One possible technique is to use rejection sampling to sample the volume given by $|g(\mathbf{x})| \le \eta$ for some small value of $\eta$. Points will be accepted or rejected according to their orthogonal distance to the surface, which is the factor in the denominator in the above expression. Our case is simple in this respect: most of our surfaces are either parallel to the coordinates or are in some way ``diagonal'', giving constant factors
 %$| \mathbf{\nabla}g(\mathbf{x}) \| )\sqrt{2}$ constant for all points. 
 The main difficulty in these calculations is correctly accounting for the factors arising in this way.
-%Failing to take this constants into account produce some curious results: both analytical
-%and numerical calculation of the areas can be wrong by the same factor,
-%thus passing unnoticed until one tries Szabo's formula and end up being
-%$\sqrt{2}$ times wrong.
 
-%The efficiency could be improved by a Markov Chain Monte Carlo algorithm that rejects steps that take the dynamics outside the set of interest.
+The procedure was to start from expression \eqref{voloper} and put a Dirac Delta
+in the integrand, so that we started allways ffrom expressions of the following
+form:
+\begin{equation}\label{areagral}
+A_{g} = \prod_{j=1}^n \hat{O}_j \mathbf{1}_{Z^C} \delta(g(\mathbf{x, y}))
+\end{equation}
 
 \subsubsection{Hopping}
 
-Vertical hopping occus when the vertical positions of the two discs are equal: $y_1 - y_2=0$. In the language of the previous subsection, we take
- $g_\mathrm{hop}(x_1, x_2, y_1, y_2)= y_1 - y_2$, with gradient  $\nabla g_\mathrm{hop}(\mathbf{x}) = (0, 0, 1, -1)$, so that $ \| \nabla g_\mathrm{hop}(\mathbf{x}) \| = \sqrt{2}$. 
- Alternatively, we can integrate 
-directly in the $(x,X,y,Y)$ coordinates, where we use
-$g(x,X,y,Y) = y$, and then return to the original coordinates. This results in the following expression:
+Let us start with the 2 dimensional case, with $h_1 > h_2$:
+Vertical hopping occus when the vertical positions of the two discs are equal: $x_2 - y_2=0$. In the language of the previous subsection, we take
+ $g_\mathrm{hop}(x_1, x_2, y_1, y_2)= x_2 - y_2$, with gradient  $\nabla g_\mathrm{hop}(\mathbf{x}) = (0, 1, 0, -1)$, so that $ \| \nabla g_\mathrm{hop}(\mathbf{x}) \| = \sqrt{2}$. 
+This results in the following expression:
 \begin{widetext}
 \begin{equation}
   A_\text{hop} =
 \iiiint
-\limits_{\substack{x_1, x_2 = -a \\ y_1, y_2 = -b}}^{\substack{x_1, x_2 = a \\ y_1, y_2 = b}}
+\limits_{\substack{x_1, y_1 = -a_1 \\ x_2, y_2 = -a_2}}^{\substack{x_1, y_1 = a_1 \\ x_2, y_2 = a_2}}
 \rd x_1 \rd x_2 \rd y_1 \rd y_2 
- \, \indicator{ (x_1-x_2)^2 + (y_1-y_2)^2 \ge (2r)^2 } \, \delta \big(\frac{y_1-y_2}{\sqrt{2}}\big).
+ \, \indicator{ (x_1-y_1)^2 + (x_2-y_2)^2 \ge (2r)^2 } \, \delta \big(\frac{x_2-y_2}{\sqrt{2}}\big).
 \end{equation}
 \end{widetext}
-Carrying out the integrals  (see Appendix A) gives
+In this case the same result applies for the case that
+horizontal hopping is possible or excluded, that is,
+the case where the balls fit side to side vertically or not.
+The finnal expression is:
  \begin{equation}\label{AreaH}
- A_\text{hop}  =  16 \sqrt{2} b(a-r)^2.
+ A_\text{hop}  =  16 \sqrt{2} a_2(a_1-r)^2.
+ \end{equation}
+
+Now, for the general n-dimensional case, we have the following
+expression for the case that all hoping is possible.
+Without loss of generality, the hopping here is on the first axis.
+\begin{equation}
+  \begin{split}
+    A_{hop,n}  = & 2^{2n-1}\sqrt{2}a_1\prod_{j=2}^n a_j^2-A_{exc,n} \\
+      = & 2 \sqrt{2}a_1 (V_{tot,n-1} - V_{exc,n-1})
+  \end{split} 
 \end{equation}
-As before, the formula is no longer valid for $r > w/4$. In this case,
-vertical hopping becomes impossible for a larger radius.
 
 Monte Carlo simulations to calculate this area must also
 take into account the factor $\sqrt{2}$ (see Appendix B).
 In this case we counted the proportion of successful placements of hard discs 
 for which the distance 
-$|y_1 - y_2|$ was within a small tolerance of $0$. 
+$|x_2 - y_2|$ was within a small tolerance of $0$. 
 Results are shown in figure \ref{AreaHopp01}.
 
+
+%% CAMBIAR ESTA FIGURA, SE PUEDE HASTA r=0.375$
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.45\textwidth]{./figures/AreaHop01.pdf}
+\includegraphics[width=0.45\textwidth]{./figures/areaHopvertical01.pdf}
 \caption{The hopping area, $A_\text{hop}$, 
   indicated in the formula in eq. \ref{AreaH}. As explained in the text
 in the text, the formula does not apply for $r>1/4$, but numerical values correctly
@@ -546,20 +516,70 @@ remain at zero.}
 
 \subsubsection{Disc collisions}
 
+
 The area which represents collisions between the two discs is the surface area of the cylinder
 that lies within the prism, given by
-$$g_\text{coll}(\mathbf{x}) := (x_1 - x_2)^2 + (y_1 - y_2)^2 - 4r^2, $$
-so that
-$$\nabla g_\text{coll}(\mathbf{x}) = (2 (x_1 - x_2), -2(x_1 - x_2), 2(y_1 - y_2), -2(y_1 - y_2)),$$ 
-with norm $\| \nabla g_\text{coll}(\mathbf{x}) \| = 2\sqrt{2} \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}$.
+$f(x,y) = \sqrt{\sum_j (x_j-y_j)^2} -2r=0$.
+Notice that here the Indicator Function for $Z$ is irrelevant, as
+the Dirac Delta is valuated exactly on the border of the border
+of such set. We do not deal whith an Excluded and Free expresion pair.
+ We found integral expressions for
+arbitrary number of dimensions, even if the balls do not fit
+together in one axis.
+For $r<h_j \forall j$, the integral expression is:
+\begin{equation}
+  \begin{split}
+  A_{c} & =  \prod_{j=1}^n\int_{-\sqrt{2}a_j}^{\sqrt{2}a_j} \rd{z_j}
+  \int_{-\sqrt{2}a_j+|z_j|}^{\sqrt{2}a_j-|z_j|} \rd{w_j}
+  \delta (\sqrt{2 \sum_j (z_j)^2} - (2r)) \\
+  & = 2^n \prod_{j=1}^n\int_{-\sqrt{2}a_j}^{\sqrt{2}a_j} \rd{z_j}
+  \prod_k^n(\sqrt{2} a_k -|z_k|)
+  \delta (\sqrt{2 \sum_j (z_j)^2} - (2r))
+  \end{split}
+\end{equation}
+In the case where all positions are avaible for the balls, we can solve
+the integral:
+\begin{equation}
+  A_{c}=  2^{2n+1/2} \sum_{k=0}^{n} (-1)^k
+  \frac{\pi^{n/2-k/2} r^{k+n-1}}{\Gamma(k/2+n/2)}
+  \sumprod{n-k}(\mathbf{a}) 
+\end{equation}
+In three dimensions
+this resolves into
+\begin{equation}
+   \begin{split}
+     A_{c}=64 \sqrt{2} \big( 2 \pi r^2 a_1a_2a_3 
+      -\pi r^3 (a_1a_2 +a_2a_3 + a_3 a_1) \\
+  +4r^4/3 (a_1+a_2+a_3)
+  -r^5/2 \big).
+  \end{split}
+\end{equation}
+In two dimensions is:
+\begin{equation}\label{AreaChoque}
+A_{c}  =  \sqrt{2} (
+16\pi a_1 a_2 r -32 (a_1+a_2)r^2 +16 r^3).
+\end{equation}.
+In this last case we were able to generalize this expression for
+the case that the balls did not fit side by side along one or both
+axis. The general expression depends on two angles
+(see Supl. Material), defined by
+\begin{equation}\label{angulos2d}
+ \begin{aligned}
+\alpha & :=\pi/2 - \arccos(a_2/r) \\
+\beta & := \frac{x_j +y_j}{2} .\\
+  \end{aligned}
+\end{equation}
 
-%The factors have the same reasons to appear as in the case of the hop condition.
-
-For $r<w/4$, we find for the corresponding area
-\begin{align}\label{AreaChoque}
-A_\text{coll} & =  \sqrt{2} (
-16\pi a b r -32 (a+b)r^2 +16 r^3).
-\end{align}
+Then the resulting expression ends up being:
+ 
+\begin{equation}\label{colgeneral}
+  \begin{split}
+  A_\text{col}  = 16\sqrt{2} \bigl( 2a_1a_2r(\alpha-\beta)
+ \\ + 2r^2 [a_1 (\cos \alpha-\cos\beta) -a_2 (\sin\alpha -\sin\beta)]
+ \\ + r^3(\sin^2 \alpha -\sin^2\beta) \bigr)
+  \end{split}
+\end{equation}
+ 
 
 We proceed in the same manner as last section, checking numerically which
 random configurations
@@ -567,11 +587,11 @@ fall within a small tolerance from the collision condition, and
 plotting this as a fraction of the total volume. The result is shown in Fig.~\ref{AreaChoqueTeoyNum}. 
 \begin{figure}
 \centering
-\includegraphics[width=0.45\textwidth]{./figures/AreaCol01.pdf}
+\includegraphics[width=0.45\textwidth]{./figures/areaCol01.pdf}
 \caption{Numerical and theoretical area 
 for collision between the discs.  The theoretical formula 
 \eqref{AreaChoque} breaks down at
-$r > 1/4$, but we have here used the general formula \ref{app:colgeneral}
+$r > h_2/4$, but we have here used the general formula \eqref{app:colgeneral}
 that appears in the Appendix.}
 \label{AreaChoqueTeoyNum}.
 \end{figure}
@@ -579,8 +599,28 @@ that appears in the Appendix.}
 
 \subsubsection{Wall collisions}
 
-We restrict attention to collisions of disc $1$ with the right wall, for which
-$$g_\text{wall}(\mathbf{x}) := x_1 - a.$$
+We restrict attention to collisions of disc $X$ with the right wall, for which
+$$g_\text{wall}(\mathbf{x}) := x_1 - a_1.$$.
+It turns out that the expression can be put in general
+in term of hypergeometric functions, but that is hardly
+usefull or intuitive. Still, restricting us to
+feasible cases, the expressions are mangeable. For two dimensions,
+in the case that balls can be put side by side allways, the expression
+is:
+\begin{equation}\label{areax1p}
+ A_\mathrm{wall}  = 8 a_1 a_2 ^2-4  \pi a_2 r^2 +\frac{16}{3}r^3 .
+\end{equation}
+(an expression for the case where $r>h_j/4$ for some $j$ is in
+the Supp. Mat.).
+For three dimensios this gives:
+  \begin{equation}
+    A_{WC}=32 a_1 a_2^2a_3^2 
+    -64/3 r^3  a_2 a_3 \pi 
+    +8(a_2+a_3)r^4
+    -128 r^5/15.
+  \end{equation}
+
+
 The corresponding area, after taking the delta into account, is
 \begin{equation}\label{areaindic}
   A_\mathrm{wall} =  \iiint \limits_ {\substack{x_2 = -a \\ y_1, y_2 = -b }}^
@@ -601,7 +641,7 @@ position coordinates.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.45\textwidth]{./figures/AreaWall01.pdf}
+\includegraphics[width=0.45\textwidth]{./figures/areawall01.pdf}
 \caption{Numerical and theoretical calculation for the area
 for the impact of a particular disk with the right wall, as in \eqref{areaindic}.
 Again, the general formula has been used.}
